@@ -62,6 +62,8 @@ public class GDP_VistaPrincipal extends JFrame {
 		getContentPane().add(texto1);
 		JTextArea texto2 = new JTextArea();
 		texto2.setBounds(165,75,240,70);
+		texto2.setLineWrap(true);
+		texto2.setWrapStyleWord(true);
 		getContentPane().add(texto2);
 		JButton boton1 = new JButton("Añadir Investigador");
 		boton1.setBounds(55,350,120,30);
