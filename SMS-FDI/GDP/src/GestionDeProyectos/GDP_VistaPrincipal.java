@@ -101,9 +101,9 @@ public class GDP_VistaPrincipal extends JFrame {
 					JOptionPane.showMessageDialog(null, "El proyecto ha de tener algun participante");
 				}
 				else {
-					controlador.CrearProyecto(new GDP_TProyecto(texto1.getText(), texto2.getText(), participantes.size()), participantes);
-					cerrar();
-					
+					if(controlador.CrearProyecto(new GDP_TProyecto(texto1.getText(), texto2.getText(), participantes.size()), participantes)) {
+						cerrar();
+					}				
 				}
 			}		
 		});

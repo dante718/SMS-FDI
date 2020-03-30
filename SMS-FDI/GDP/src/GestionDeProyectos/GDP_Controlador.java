@@ -26,15 +26,18 @@ public class GDP_Controlador {
 		}
 	 }
 	
-	public void CrearProyecto(GDP_TProyecto proyecto,List<GDP_TPersona> participantes) {
+	public boolean CrearProyecto(GDP_TProyecto proyecto,List<GDP_TPersona> participantes) {
 		int ret= BuscarProyecto(proyecto.getNombre());
 		if(ret==-1) {
 			JOptionPane.showMessageDialog(null, "Ya existe un proyecto con el mismo nombre");
+			return false;
 		}
 		else if(ret==1) {
 			SA.CrearProyecto(proyecto,participantes); 
 			JOptionPane.showMessageDialog(null, "Proyecto añadido con exito");
-		}
+			return true;
+		} 
+		else return false;
 	}
 	public int BuscarProyecto(String NombreProy) {
 		int ret= SA.BuscarProyecto(NombreProy);

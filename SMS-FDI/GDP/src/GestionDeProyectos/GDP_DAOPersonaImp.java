@@ -133,17 +133,15 @@ public class GDP_DAOPersonaImp implements GDP_DAOPersona{
 	@Override
 	public int BuscarProyecto(String nombreProy) {
 		int ret=1;	
+		boolean find=false;
 		try {
-			BufferedReader read= new BufferedReader(new FileReader(new File("src/GestionDeProyectos/Personas.txt")));
+			BufferedReader read= new BufferedReader(new FileReader(new File("src/GestionDeProyectos/Proyectos.txt")));
 			String line=read.readLine();
-			while(line!=null) {			
+			while(line!=null && !find) {			
 				if(line.equals(nombreProy)) {
 					ret=-1;
-					line=read.readLine();//Saltarte la descripcion
-				}
-				else {
-					line=read.readLine();//Saltarte la descripcion
-				}
+					find=true;
+				}			
 				line=read.readLine();
 			}
 			read.close();
