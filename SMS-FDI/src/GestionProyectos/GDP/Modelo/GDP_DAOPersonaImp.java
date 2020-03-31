@@ -19,7 +19,6 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 
-import GestionProyectos.GDP.Vista.GDP_TableModel;
 
 public class GDP_DAOPersonaImp implements GDP_DAOPersona{
 	//(Metodo alternativo) Atributos que use para acceder a la bse de datos de mysql

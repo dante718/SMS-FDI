@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.swing.table.TableModel;
 
-import GestionProyectos.GDP.Vista.GDP_TableModel;
+
 
 public class GDP_SAPersonaImp implements GDP_SAPersona{
   

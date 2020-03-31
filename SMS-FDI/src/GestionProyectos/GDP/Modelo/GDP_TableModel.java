@@ -1,5 +1,5 @@
 
-package GestionProyectos.GDP.Vista;
+package GestionProyectos.GDP.Modelo;
 
 import java.sql.Connection;
 import GestionProyectos.GDP.Modelo.GDP_TPersona;

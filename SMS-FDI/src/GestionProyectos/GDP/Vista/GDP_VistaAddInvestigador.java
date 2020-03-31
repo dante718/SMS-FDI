@@ -9,7 +9,8 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 import GestionProyectos.GDP.Modelo.GDP_TPersona;
-import GestionProyectos.GDP.Modelo.GDP_TProyecto;
+import GestionProyectos.GDP.Modelo.GDP_TableModel;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
