@@ -2,6 +2,7 @@ package supercontrolador;
 
 import GestionLaboratorio.presentacion_Laboratorio.Vista_Lab;
 import GestionMedicos.GDM_Vista.InterfazVista;
+import GestionProyectos.GDP.Main.GDP_initGUI;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -43,6 +44,7 @@ public class main {
 		case 3:
 			break;
 		case 4:
+			GDP_initGUI.mainProyectos(null);
 			break;
 		case 5:
 			break;
