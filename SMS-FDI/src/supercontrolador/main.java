@@ -3,6 +3,7 @@ package supercontrolador;
 import GestionLaboratorio.presentacion_Laboratorio.Vista_Lab;
 import GestionMedicos.GDM_Vista.InterfazVista;
 import GestionProyectos.GDP.Main.GDP_initGUI;
+import GestionDeFabrica.Vista.VistaFabrica;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -22,7 +23,7 @@ public class main {
 		System.out.println("3)GDI");
 		System.out.println("4)GDProy Implementado");
 		System.out.println("5)GDP");
-		System.out.println("6)GDF");
+		System.out.println("6)GDF Implementado");
 		System.out.println("7)GDL Implementado");
 		System.out.println("8)GDA Implementado");
 		System.out.println("9)GDE Implementado");
@@ -49,6 +50,8 @@ public class main {
 		case 5:
 			break;
 		case 6:
+			VistaFabrica vistaFabrica = new VistaFabrica();
+			vistaFabrica.start();
 			break;
 		case 7:
 			new Vista_Lab();
