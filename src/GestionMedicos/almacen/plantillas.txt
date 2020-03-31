@@ -1,0 +1,3 @@
+2
+Estudio_1 Pastilla_contra_el_catarro Etapa_1
+Estudio_2 Pastilla_contra_la_alergia Etapa_2
