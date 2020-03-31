@@ -4,7 +4,7 @@ import java.awt.EventQueue;
 
 import GestionDeEnvios.GDE.Vista.*;
 
-public class Controlador {
+public class ControladorEnvio {
 
 	
 	public static void main(String[] args) {
