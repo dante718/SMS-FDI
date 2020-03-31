@@ -19,10 +19,10 @@ public class PantallaSeleccion  extends JFrame implements ActionListener{
 	private static String Estudio ="";
 	private static String Etapa=" ";
 	private static String Pastilla=" ";
-	//private ControladorMed Controlador;
+	private ControladorMed Controlador;
 public PantallaSeleccion(ControladorMed contrl){
 	super("seleccione opcion");
-	//Controlador=contrl;
+	Controlador=null;
 	this.setLayout(null);
 	this.setVisible(true);
 	this.setSize(100,100);
@@ -79,8 +79,9 @@ public PantallaSeleccion(ControladorMed contrl){
 			//aqui debo generar una llamada al transfer y al mismo tiempo  debo llamar 
 			//al controlador ->SerApp->DaoDatos->Almacen
 			
-			ControladorMed.BuscarPlantilla(Estudio,Pastilla,Etapa);
-			Plantilla PlantillaDatos=new Plantilla();
+			//ControladorMed.BuscarPlantilla(Estudio,Pastilla,Etapa);
+		 Controlador= new ControladorMed (Estudio,Pastilla,Etapa);
+			Plantilla PlantillaDatos=new Plantilla(Controlador);
 			
 		
 			

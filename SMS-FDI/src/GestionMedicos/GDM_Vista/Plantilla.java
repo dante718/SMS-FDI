@@ -21,9 +21,10 @@ public class Plantilla extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	
-	public Plantilla() {
+	ControladorMed Controlador;
+	public Plantilla(ControladorMed controlador) {
 		super("Plantilla:");
+		this.Controlador=controlador;
 		this.setLayout(null);
 		this.setVisible(true);
 		this.setSize(100,100);
@@ -86,11 +87,11 @@ public class Plantilla extends JFrame {
 		System.out.println("PULSA GUARDAR");
 	
 		
-		ControladorMed.agregarDatos(id, sexo, edad, cantidad, fecha);
+		Controlador.agregarDatos(id, sexo, edad, cantidad, fecha);
 		
 	}
 	public void GuardarDatosIntroducidos() {
-		ControladorMed.GuardarDatos();
+		Controlador.GuardarDatos();
 		
 	}
 

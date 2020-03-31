@@ -9,12 +9,13 @@ import GestionMedicos.FactoriaServAplicacion.TransPlantilla;
 
 public class ControladorMed extends FactoriaControladorMed {
 	static ServAppMed plantilla;
-	public ControladorMed(){
+	public ControladorMed(String estudio, String pastilla, String etapa){
+		BuscarPlantilla( estudio,  pastilla,  etapa);
 		
 	}
+	public  ControladorMed() {};
 	
-	
-	public static void BuscarPlantilla(String estudio, String pastilla, String etapa) {
+	public  void BuscarPlantilla(String estudio, String pastilla, String etapa) {
 		
 		//realizo la comprobacion de los datos :
 		//comprobacionDatos(estudio, pastilla, etapa);
@@ -24,12 +25,12 @@ public class ControladorMed extends FactoriaControladorMed {
 		//plantilla.mostrarDatosPlantilla();		<-cambiarlo
 	}
 	//va a ser interpretado como un objeto con una serie de datos 
-	public static void agregarDatos(String id,String sexo,int edad,int cantidad,String fecha) {
+	public  void agregarDatos(String id,String sexo,int edad,int cantidad,String fecha) {
 		plantilla.introducirDatos(id, sexo, edad, cantidad, fecha);
 		
 	}
 	
-	public static void GuardarDatos() {
+	public  void GuardarDatos() {
 		plantilla.GuardarEnPlantilla();
 	} 
 	
