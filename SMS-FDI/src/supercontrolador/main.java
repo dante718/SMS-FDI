@@ -1,0 +1,70 @@
+package supercontrolador;
+
+import GestionLaboratorio.presentación_Laboratorio.Vista_Lab;
+import GestionMedicos.GDM_Vista.InterfazVista;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+import GestionDeEnvios.GDE.Controlador.ControladorEnvio;
+
+public class main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int opcion = 0;
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		while(true) {
+		System.out.println("Menu de Subsistemas");
+		System.out.println("1)GDEM");
+		System.out.println("2)GDMe");
+		System.out.println("3)GDI");
+		System.out.println("4)GDP");
+		System.out.println("5)GDP");
+		System.out.println("6)GDF");
+		System.out.println("7)GDL");
+		System.out.println("8)GDA");
+		System.out.println("9)GDE");
+		System.out.println("10)GDP");
+		
+		System.out.println("Opcion--->");
+		try {
+			opcion = Integer.parseInt(br.readLine());
+		}catch (Exception e) {
+			opcion = -1;
+		}
+		
+		switch(opcion){
+		case 1:
+			break;
+		case 2:
+			InterfazVista.mainMedicos(null);
+			new Vista_Lab();
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		case 6:
+			break;
+		case 7:
+			break;
+		case 8:
+			break;
+		case 9:	
+				ControladorEnvio envio = new ControladorEnvio();
+				envio.iniciar();
+			break;
+		case 10:
+			break;
+		default: System.out.println("no es una opcion");
+			break;
+		}
+		
+			
+		}
+	}
+
+}

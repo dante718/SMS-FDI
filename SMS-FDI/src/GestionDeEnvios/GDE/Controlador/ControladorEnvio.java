@@ -6,8 +6,10 @@ import GestionDeEnvios.GDE.Vista.*;
 
 public class ControladorEnvio {
 
-	
-	public static void main(String[] args) {
+	public ControladorEnvio(){
+		
+	}
+	public void iniciar() {
 		EventQueue.invokeLater(new Runnable() {
 			@Override
 			public void run() {
