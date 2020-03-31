@@ -1,6 +1,6 @@
 package supercontrolador;
 
-import GestionLaboratorio.presentación_Laboratorio.Vista_Lab;
+import GestionLaboratorio.presentacion_Laboratorio.Vista_Lab;
 import GestionMedicos.GDM_Vista.InterfazVista;
 
 import java.io.BufferedReader;
@@ -17,14 +17,14 @@ public class main {
 		while(true) {
 		System.out.println("Menu de Subsistemas");
 		System.out.println("1)GDEM");
-		System.out.println("2)GDMe");
+		System.out.println("2)GDMe Implementado");
 		System.out.println("3)GDI");
-		System.out.println("4)GDP");
+		System.out.println("4)GDProy Implementado");
 		System.out.println("5)GDP");
 		System.out.println("6)GDF");
-		System.out.println("7)GDL");
-		System.out.println("8)GDA");
-		System.out.println("9)GDE");
+		System.out.println("7)GDL Implementado");
+		System.out.println("8)GDA Implementado");
+		System.out.println("9)GDE Implementado");
 		System.out.println("10)GDP");
 		
 		System.out.println("Opcion--->");
@@ -39,7 +39,6 @@ public class main {
 			break;
 		case 2:
 			InterfazVista.mainMedicos(null);
-			new Vista_Lab();
 			break;
 		case 3:
 			break;
@@ -50,6 +49,7 @@ public class main {
 		case 6:
 			break;
 		case 7:
+			new Vista_Lab();
 			break;
 		case 8:
 			break;
