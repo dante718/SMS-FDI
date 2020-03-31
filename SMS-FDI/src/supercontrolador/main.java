@@ -30,7 +30,9 @@ public class main {
 		System.out.println("Opcion--->");
 		try {
 			opcion = Integer.parseInt(br.readLine());
-		}catch (Exception e) {}
+		}catch (Exception e) {
+			opcion = -1;
+		}
 		
 		switch(opcion){
 		case 1:
