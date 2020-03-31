@@ -1,4 +1,4 @@
-package GDA.Modelo;
+package GestionDeAlmacen.GDA.Modelo;
 
 import java.io.File;
 import java.util.Scanner;

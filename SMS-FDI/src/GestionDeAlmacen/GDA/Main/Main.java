@@ -1,9 +1,9 @@
-package GDA.Main;
+package GestionDeAlmacen.GDA.Main;
 
-import GDA.Controlador.Controlador;
-import GDA.Modelo.ModeloGestionProducto;
-import GDA.Vista.InterfazVista;
-import GDA.Vista.VentanaGDA;
+import GestionDeAlmacen.GDA.Controlador.Controlador;
+import GestionDeAlmacen.GDA.Modelo.ModeloGestionProducto;
+import GestionDeAlmacen.GDA.Vista.InterfazVista;
+import GestionDeAlmacen.GDA.Vista.VentanaGDA;
 
 public class Main {
 

@@ -1,6 +1,6 @@
-package GDA.Vista;
+package GestionDeAlmacen.GDA.Vista;
 
-import GDA.Controlador.Controlador;
+import GestionDeAlmacen.GDA.Controlador.Controlador;
 
 public interface InterfazVista {
 	

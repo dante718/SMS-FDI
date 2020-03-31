@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
-import GDA.Controlador.Controlador;
+import GestionDeAlmacen.GDA.Controlador.Controlador;
 
 public class VentanaGDA extends JFrame implements InterfazVista{
 	

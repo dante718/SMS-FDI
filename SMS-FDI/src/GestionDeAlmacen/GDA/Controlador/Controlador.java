@@ -1,10 +1,10 @@
-package GDA.Controlador;
+package GestionDeAlmacen.GDA.Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import GDA.Modelo.ModeloGestionProducto;
-import GDA.Vista.InterfazVista;
+import GestionDeAlmacen.GDA.Modelo.ModeloGestionProducto;
+import GestionDeAlmacen.GDA.Vista.InterfazVista;
 
 public class Controlador implements ActionListener{
 	

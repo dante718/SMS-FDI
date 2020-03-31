@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import GDA.Controlador.Controlador;
+import GestionDeAlmacen.GDA.Controlador.Controlador;
 
 public class VentanaInventario extends JFrame implements InterfazVista{
 	

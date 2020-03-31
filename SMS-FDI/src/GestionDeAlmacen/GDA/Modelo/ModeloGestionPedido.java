@@ -1,4 +1,4 @@
-package GDA.Modelo;
+package GestionDeAlmacen.GDA.Modelo;
 
 public class ModeloGestionPedido {
 
