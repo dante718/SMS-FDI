@@ -29,7 +29,7 @@ public class DAODatosClinicos {
 		String Estudio=plantilla.getEstudio();
 		String Pastilla=plantilla.getFarmaco();
 		String Etapa=plantilla.getEtapa();
-		String ruta="src/almacen/"+Estudio+"_"+Pastilla+"_"+Etapa+".txt";
+		String ruta="src/GestionMedicos/almacen/"+Estudio+"_"+Pastilla+"_"+Etapa+".txt";
 
 		FileWriter fichero = null;
 		String datos="";

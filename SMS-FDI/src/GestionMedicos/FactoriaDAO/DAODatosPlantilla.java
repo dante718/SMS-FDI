@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 import GestionMedicos.FactoriaServAplicacion.TransPlantilla;
 
 public class DAODatosPlantilla {
-	private static String ruta="src/almacen/plantillas.txt";
+	private static String ruta="src/GestionMedicos/almacen/plantillas.txt";
 	
 	private TransPlantilla ListaPlantillas[];
 	
