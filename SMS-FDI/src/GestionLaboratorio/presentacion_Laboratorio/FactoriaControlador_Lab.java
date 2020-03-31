@@ -1,5 +1,4 @@
-package GestionLaboratorio.presentación_Laboratorio;
-
+package GestionLaboratorio.presentacion_Laboratorio;
 
 public abstract class FactoriaControlador_Lab {
 
