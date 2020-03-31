@@ -6,9 +6,9 @@ public class ServAppMed {
 	private TransDatosClinicos plantillaDatosClinicos;
 	private TransPlantilla Plantilla;
 	public ServAppMed(String estudio, String pastilla, String etapa){
-		//esto esta bien si lo hago aqui? o sería mejor hacerlo en el modulo del controlador
+		//esto esta bien si lo hago aqui? o serï¿½a mejor hacerlo en el modulo del controlador
 		Plantilla=buscarPlantilla(estudio, pastilla,  etapa);  
-		//ya hemos consulado através del DAODatosClinicos el almacen
+		//ya hemos consulado atravï¿½s del DAODatosClinicos el almacen
 		plantillaDatosClinicos=null;
 		
 	}
@@ -35,7 +35,7 @@ public class ServAppMed {
 		
 	}
 	public void GuardarEnPlantilla() {
-		FactoriaDAO_Med.getInstancia().CrearTablaDatosClinicos().guardarDatosEnAlmacén(Plantilla, plantillaDatosClinicos);
+		FactoriaDAO_Med.getInstancia().CrearTablaDatosClinicos().guardarDatosEnAlmacÃ©n(Plantilla, plantillaDatosClinicos);
 		
 	}
 

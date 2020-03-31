@@ -17,13 +17,13 @@ public class DAODatosClinicos {
 
 	public TransDatosClinicos CrearDatos(String id,String sexo,int edad,int cantidad,String fecha) {
 		// TODO Auto-generated method stub
-		//se creará el objeto Plantilla para ser Completada
+		//se crearï¿½ el objeto Plantilla para ser Completada
 		 
 		return new TransDatosClinicos(id, sexo, edad, cantidad, fecha) ;
 	}
 	
-	public void guardarDatosEnAlmacén(TransPlantilla plantilla, TransDatosClinicos  tablaDatos) {   
-		//aqui realizaré una serializacion de los datos 
+	public void guardarDatosEnAlmacÃ©n(TransPlantilla plantilla, TransDatosClinicos  tablaDatos) {   
+		//aqui realizarï¿½ una serializacion de los datos 
 		//aqui debo escribir en un fichero cuya ruta es Estudio pastilla etapa la linea
 		//de datos
 		String Estudio=plantilla.getEstudio();

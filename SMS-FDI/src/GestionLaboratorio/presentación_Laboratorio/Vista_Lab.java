@@ -1,4 +1,4 @@
-package GestionLaboratorio.presentación_Laboratorio;
+package GestionLaboratorio.presentaciÃ³n_Laboratorio;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;

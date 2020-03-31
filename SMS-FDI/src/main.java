@@ -1,4 +1,5 @@
-import GestionLaboratorio.presentación_Laboratorio.Vista_Lab;
+
+import GestionLaboratorio.presentaciÃ³n_Laboratorio.Vista_Lab;
 import GestionMedicos.GDM_Vista.InterfazVista;
 
 public class main {

@@ -1,4 +1,4 @@
-package GestionLaboratorio.presentación_Laboratorio;
+package GestionLaboratorio.presentaciÃ³n_Laboratorio;
 
 import java.util.List;
 
