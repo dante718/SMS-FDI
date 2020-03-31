@@ -11,7 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class DAOPedido_Lab {
-	String sis_pedidos = "src/integracion_Laboratorio/sis_pedidos.txt";
+	String sis_pedidos = "src/GestionLaboratorio/integracion_Laboratorio/sis_pedidos.txt";
 	
 	File _filePed= new File(sis_pedidos);
 	
