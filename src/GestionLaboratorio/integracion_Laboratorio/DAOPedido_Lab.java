@@ -1,7 +1,5 @@
 package GestionLaboratorio.integracion_Laboratorio;
 
-import java.util.List;
-
 import GestionLaboratorio.negocio_Laboratorio.TransferPedido_Lab;
 import GestionLaboratorio.negocio_Laboratorio.TransferProducto_Lab;
 

@@ -57,13 +57,20 @@ public class frmEnvios extends JFrame {
 		btnNewButton.setBounds(63, 89, 159, 39);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Pendientes");
+		JButton btnNewButton_1 = new JButton("Crear Envio");
+		btnNewButton_1.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			frmCrearEnvio verventana = new frmCrearEnvio();
+			
+			verventana.show();
+		}
+	});
 		btnNewButton_1.setBackground(new Color(102, 102, 102));
 		btnNewButton_1.setForeground(new Color(255, 255, 255));
 		btnNewButton_1.setBounds(63, 171, 159, 39);
 		contentPane.add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("Status Env\u00EDo(Cliente) En desarrollo");
+		JButton btnNewButton_2 = new JButton("Status Envio");
 		btnNewButton_2.setBackground(new Color(102, 102, 102));
 		btnNewButton_2.setForeground(new Color(255, 255, 255));
 		btnNewButton_2.setBounds(315, 89, 251, 39);
@@ -75,7 +82,14 @@ public class frmEnvios extends JFrame {
 		lblNewLabel.setBounds(237, 30, 98, 31);
 		contentPane.add(lblNewLabel);
 		
-		JButton btnNewButton_3 = new JButton("Modificar Env\u00EDo (Cliente) En desarrollo");
+		JButton btnNewButton_3 = new JButton("Modificar Envio");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmModificarEnvio verventana = new frmModificarEnvio();
+				
+				verventana.show();
+			}
+		});
 		btnNewButton_3.setForeground(new Color(255, 255, 255));
 		btnNewButton_3.setBackground(new Color(102, 102, 102));
 		btnNewButton_3.setBounds(315, 171, 251, 39);
@@ -86,5 +100,17 @@ public class frmEnvios extends JFrame {
 		btnNewButton_4.setBackground(new Color(102, 102, 102));
 		btnNewButton_4.setBounds(63, 253, 159, 31);
 		contentPane.add(btnNewButton_4);
+		
+		JButton btnNewButton_5 = new JButton("Pendientes");
+        btnNewButton_5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
+        btnNewButton_5.setForeground(new Color(255, 255, 255));
+		btnNewButton_5.setBackground(new Color(102, 102, 102));
+        btnNewButton_5.setBounds(309, 253, 257, 31);
+        contentPane.add(btnNewButton_5);
+        
+    
 	}
 }

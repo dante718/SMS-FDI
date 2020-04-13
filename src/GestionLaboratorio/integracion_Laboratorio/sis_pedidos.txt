@@ -27,3 +27,16 @@ Productos:
   Nombre_Producto: null
   Cantidad_Por_Producto: 20
 
+Id_Pedido: 100
+Id_Solicitante: null
+Nombre_Solicitante: null
+Productos: 
+  ID_Producto: 145
+  Nombre_Producto: null
+  Cantidad_Por_Producto: 2
+
+Id_Pedido: 102
+Id_Solicitante: null
+Nombre_Solicitante: null
+Productos: 
+
