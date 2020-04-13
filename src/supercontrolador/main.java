@@ -38,11 +38,11 @@ public class main {
 		
 		switch(opcion){
 		case 1:
-			InterfazVista medicos=new InterfazVista();
-			medicos.mainMedicos();
+			
 			break;
 		case 2:
-			
+			InterfazVista medicos=new InterfazVista();
+			medicos.mainMedicos();
 			break;
 		case 3:
 			break;

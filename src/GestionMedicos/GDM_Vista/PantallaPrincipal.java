@@ -23,7 +23,7 @@ public class PantallaPrincipal extends JFrame implements ActionListener{
 
 
 	public	PantallaPrincipal(){
-		super("Subsistema médicos");
+		super("Subsistema mï¿½dicos");
 		this.setLayout(null);
 		this.setVisible(true);
 		this.setSize(0,0);
@@ -75,8 +75,8 @@ public class PantallaPrincipal extends JFrame implements ActionListener{
 
 	public JLabel createLabel(String caption, Color color, int tam,int x, int y, int w, int h){
 		JLabel label = new JLabel(caption); // se crea la etiqueta
-		label.setBounds(x,y,w,h); // se coloca y da tamaño
-		label.setHorizontalAlignment(JLabel.CENTER); // se centra en su rectángulo
+		label.setBounds(x,y,w,h); // se coloca y da tamaï¿½o
+		label.setHorizontalAlignment(JLabel.CENTER); // se centra en su rectï¿½ngulo
 		label.setForeground(color); // se le da color a la fuente
 		Font fuente = new Font("Arial",Font.ITALIC,tam);
 		label.setFont(fuente);
