@@ -40,3 +40,14 @@ Id_Solicitante: null
 Nombre_Solicitante: null
 Productos: 
 
+Id_Pedido: 100
+Id_Solicitante: null
+Nombre_Solicitante: null
+Productos: 
+  ID_Producto: 145
+  Nombre_Producto: null
+  Cantidad_Por_Producto: 1
+  ID_Producto: 1211
+  Nombre_Producto: null
+  Cantidad_Por_Producto: 12
+

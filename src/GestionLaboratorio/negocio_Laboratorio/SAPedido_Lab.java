@@ -2,7 +2,7 @@ package GestionLaboratorio.negocio_Laboratorio;
 
 import java.util.List;
 
-import GestionLaboratorio.integracion_Laboratorio.FactoriaDAO_Lab;
+import General.FactoriaDAO;
 
 
 public class SAPedido_Lab {
@@ -14,13 +14,13 @@ public class SAPedido_Lab {
 	}
 	
 	public void crearPedido() {
-		   pedido=FactoriaDAO_Lab.getInstancia().crearDAOPedido().crearPedido();
+		   pedido=FactoriaDAO.getInstancia_Lab().crearDAOPedido().crearPedido();
 		   ModificaPedido(pedido, null, null, null);
 	}
 
 	public void addProducto(int id_Producto,int cantidad) {
 		TransferProducto_Lab ProductoBuscado=null;
-		ProductoBuscado=FactoriaDAO_Lab.getInstancia().crearDAOProducto().ConsultaStock(id_Producto, cantidad);
+		ProductoBuscado=FactoriaDAO.getInstancia_Lab().crearDAOProducto().ConsultaStock(id_Producto, cantidad);
 		if(ProductoBuscado!=null) {
 			List<TransferProducto_Lab>lista =pedido.get_productos();
 			lista.add(ProductoBuscado);
@@ -73,7 +73,7 @@ public class SAPedido_Lab {
 	
 	
 	public void guardarPedido() {
-		FactoriaDAO_Lab.getInstancia().crearDAOPedido().guardarPedidoEnSisPedidos(pedido);;
+		FactoriaDAO.getInstancia_Lab().crearDAOPedido().guardarPedidoEnSisPedidos(pedido);;
 	}
 	public int Id_Pedido() {
 		return pedido.get_idPedido();
