@@ -8,11 +8,14 @@ import GestionDeFabrica.Vista.VistaFabrica;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 import GestionDeEnvios.GDE.Controlador.ControladorEnvio;
 
-public class main {
+public class main extends JFrame {
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int opcion = 0;
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -72,6 +75,9 @@ public class main {
 		
 			
 		}
-	}
+	}*/
+     public static void main(String [] args) {
+    	 VentanaPrincipal vp= new VentanaPrincipal();
+     }
 
 }
