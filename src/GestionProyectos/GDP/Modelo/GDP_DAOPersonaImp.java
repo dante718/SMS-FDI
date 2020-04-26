@@ -42,7 +42,7 @@ public class GDP_DAOPersonaImp implements GDP_DAOPersona{
 		try {
 					
 		String line=null;
-		BufferedReader read2= new BufferedReader(new FileReader(new File("src/GestionProyectos/GDP/Modelo/Proyectos.txt")));
+		BufferedReader read2= new BufferedReader(new FileReader(new File("src/BaseDatos/Proyectos.txt")));
 		line=read2.readLine();
 	    int tamNif=0;	
 		while(line!=null) {
@@ -58,7 +58,7 @@ public class GDP_DAOPersonaImp implements GDP_DAOPersona{
 							
 		read2.close();
 		NIFS= new String[tamNif];
-		BufferedReader read3= new BufferedReader(new FileReader(new File("src/GestionProyectos/GDP/Modelo/PersonaldeProyectos.txt")));
+		BufferedReader read3= new BufferedReader(new FileReader(new File("src/BaseDatos/PersonaldeProyectos.txt")));
 		line=read3.readLine();
 		int i=0, j=0,n=0, k=0;
 		while(line!=null) {		
@@ -87,7 +87,7 @@ public class GDP_DAOPersonaImp implements GDP_DAOPersona{
 	public TableModel leerdatosini(String tipo) {
 		GDP_TableModel TA=new GDP_TableModel();
         try {
-        	BufferedReader read= new BufferedReader(new FileReader(new File("src/GestionProyectos/GDP/Modelo/Personas.txt")));
+        	BufferedReader read= new BufferedReader(new FileReader(new File("src/BaseDatos/Personas.txt")));
 			String line=read.readLine();
 			
 			while(line!=null) {
@@ -136,7 +136,7 @@ public class GDP_DAOPersonaImp implements GDP_DAOPersona{
 		int ret=1;	
 		boolean find=false;
 		try {
-			BufferedReader read= new BufferedReader(new FileReader(new File("src/GestionProyectos/GDP/Modelo/Proyectos.txt")));
+			BufferedReader read= new BufferedReader(new FileReader(new File("src/BaseDatos/Proyectos.txt")));
 			String line=read.readLine();
 			while(line!=null && !find) {			
 				if(line.equals(nombreProy)) {
@@ -171,7 +171,7 @@ public class GDP_DAOPersonaImp implements GDP_DAOPersona{
 		int i=0;
 	    try {
 	    	String line=null;
-			BufferedWriter write1= new BufferedWriter(new FileWriter(new File("src/GestionProyectos/GDP/Modelo/Proyectos.txt")));
+			BufferedWriter write1= new BufferedWriter(new FileWriter(new File("src/BaseDatos/Proyectos.txt")));
 			String s1="";
 			while(i<proyectos.size()) {
 				s1+=proyectos.get(i).getNombre()+"\n";
@@ -189,7 +189,7 @@ public class GDP_DAOPersonaImp implements GDP_DAOPersona{
 			write1.close();
 			
 			
-			BufferedWriter write2= new BufferedWriter(new FileWriter(new File("src/GestionProyectos/GDP/Modelo/PersonaldeProyectos.txt")));
+			BufferedWriter write2= new BufferedWriter(new FileWriter(new File("src/BaseDatos/PersonaldeProyectos.txt")));
 			
 			String s2="";
 			int f=0,g=0, h=0, n=0;
@@ -214,7 +214,7 @@ public class GDP_DAOPersonaImp implements GDP_DAOPersona{
 			}			
 			write2.close();
 			
-			BufferedWriter write3= new BufferedWriter(new FileWriter(new File("src/GestionProyectos/GDP/Modelo/Personas.txt")));
+			BufferedWriter write3= new BufferedWriter(new FileWriter(new File("src/BaseDatos/Personas.txt")));
 			
 		
 			String s3="";
