@@ -3,12 +3,15 @@ package GestionProyectos.GDP.Controlador;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 
+import GestionProyectos.GDP.Modelo.GDP_ModeloTabla;
 import GestionProyectos.GDP.Modelo.GDP_SAPersona;
 import GestionProyectos.GDP.Modelo.GDP_SAPersonaImp;
 import GestionProyectos.GDP.Modelo.GDP_TPersona;
 import GestionProyectos.GDP.Modelo.GDP_TProyecto;
+import GestionProyectos.GDP.Modelo.GDP_TableModel;
 
 public class GDP_Controlador {
      private GDP_SAPersona SA;
@@ -17,13 +20,13 @@ public class GDP_Controlador {
 		SA= new GDP_SAPersonaImp();
 		inidatos();
 	}
-	public TableModel iniciarBasedeDatos(String tipo) {
+	public GDP_ModeloTabla iniciarBasedeDatos(String tipo) {
 	 if(!tipo.toLowerCase().contentEquals("investigador") && !tipo.toLowerCase().contentEquals("trabajador")) {
 		 JOptionPane.showMessageDialog(null, "El rol de persona no es valido");
 		 return null;
 	 }
 	 else {
-		  TableModel Ta=SA.leerdatosini(tipo);
+		 GDP_ModeloTabla Ta= SA.leerdatosini(tipo);
 		  if(Ta!=null) {
 			  return Ta;
 		  }

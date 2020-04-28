@@ -1,5 +1,6 @@
 package GestionProyectos.GDP.Vista;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -8,37 +9,41 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
+
+import GestionProyectos.GDP.Modelo.GDP_ModeloTabla;
 import GestionProyectos.GDP.Modelo.GDP_TPersona;
 import GestionProyectos.GDP.Modelo.GDP_TableModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
+@SuppressWarnings("serial")
 public class GDP_VistaAddTrabajador extends JFrame{
-	 private GDP_TableModel tabla;
+	 private GDP_ModeloTabla tabla;
 	 private JTable table;
+	 private JPanel panel= new JPanel();
 	 private int contador;
-	 private GDP_VistaPrincipal vp;
-     public GDP_VistaAddTrabajador(TableModel tabla, GDP_VistaPrincipal vp) {
+	 private GDP_VistaCrearProyecto vp;
+     public GDP_VistaAddTrabajador(GDP_ModeloTabla tabla, GDP_VistaCrearProyecto vp) {
     	 this.vp=vp;
     	 contador=vp.getParticipantes().size();
-    	 this.tabla=(GDP_TableModel) tabla;
+    	 this.tabla= tabla;
     	 this.table= new JTable(this.tabla);
     	 iniciarVentana();
      }
 
 	private void iniciarVentana() {
 		setTitle("Trabajadores Disponibles");
-		setLayout(null);
-		setSize(500, 500);
+		setSize(500, 300);
+		panel.setLayout(new BorderLayout());
 		JLabel eti=new JLabel("Trabajadores:");
-		eti.setBounds(175, 10, 150, 30);
 		eti.setFont(new Font("arial", 1, 12));
-		getContentPane().add(eti);
-		table.setBounds(50, 40, 380, 250);
+		panel.add(eti, BorderLayout.NORTH);
 		table.setFont(new Font("arial", 3, 10));
 		MouseListener mousetabla= new MouseListener() {
 			@Override
@@ -59,9 +64,9 @@ public class GDP_VistaAddTrabajador extends JFrame{
     		  
     	  };
     	table.addMouseListener(mousetabla);
-		getContentPane().add(table);
+		panel.add(new JScrollPane(table), BorderLayout.CENTER);
+	    JPanel botones = new JPanel();
 		JButton boton1 = new JButton("Aceptar");
-		boton1.setBounds(50,400, 120, 30);
 		boton1.setFont(new Font("arial", 3, 10));
 		boton1.setForeground(Color.white);
 		boton1.setBackground(Color.green);
@@ -72,9 +77,8 @@ public class GDP_VistaAddTrabajador extends JFrame{
 			}
 			
 		});
-		getContentPane().add(boton1);
+		botones.add(boton1);	
 		JButton boton2 = new JButton("Cancelar");
-		boton2.setBounds(300,400, 120, 30);
 		boton2.setFont(new Font("arial", 3, 10));
 		boton2.setForeground(Color.white);
 		boton2.setBackground(Color.red);
@@ -86,8 +90,11 @@ public class GDP_VistaAddTrabajador extends JFrame{
 			}
 			
 		});
-		getContentPane().add(boton2);
+		botones.add(boton2);
+		panel.add(botones, BorderLayout.SOUTH);
+		getContentPane().add(panel);
 		setVisible(true);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
     public void cerrar() {

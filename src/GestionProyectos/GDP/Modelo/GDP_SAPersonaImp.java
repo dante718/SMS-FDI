@@ -3,6 +3,7 @@ package GestionProyectos.GDP.Modelo;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 
 
@@ -15,9 +16,9 @@ public class GDP_SAPersonaImp implements GDP_SAPersona{
     	daopersona= new GDP_DAOPersonaImp();
     }
 	@Override
-	public TableModel leerdatosini(String tipo)  {
+	public GDP_ModeloTabla leerdatosini(String tipo)  {
 
-		TableModel TA= new GDP_TableModel();
+		GDP_ModeloTabla TA= null;
 		
 	    TA = daopersona.leerdatosini(tipo);
 	

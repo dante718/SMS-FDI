@@ -9,14 +9,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.event.TableModelListener;
-import javax.swing.table.TableModel;
 
-public class GDP_TableModel implements TableModel{
+import javax.swing.table.AbstractTableModel;
+
+
+public class GDP_TableModel extends AbstractTableModel{
     private List<GDP_TPersona> personas;
     private String[] campos= {"DNI", "Nombre", "Apellido1", "Apellido2", "Profesion", "Estado", "Rol"};
     public GDP_TableModel() {
-    	personas= new ArrayList<GDP_TPersona>();
+    	this.personas= new ArrayList<GDP_TPersona>();
     }   
     
 	public void addPersonas(GDP_TPersona persona){	
@@ -34,23 +35,8 @@ public class GDP_TableModel implements TableModel{
 	}
 
 	@Override
-	public String getColumnName(int columnIndex) {		
-		return campos[columnIndex];
-	}
-
-	@Override
-	public Class<?> getColumnClass(int columnIndex) {
-		return String.class;
-	}
-
-	@Override
-	public boolean isCellEditable(int rowIndex, int columnIndex) {		
-		return false;
-	}
-
-	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		String ret=null;
+		Object ret=null;
 		switch(columnIndex) {
 		case 0:
 			ret=personas.get(rowIndex).getDNI();
@@ -77,19 +63,5 @@ public class GDP_TableModel implements TableModel{
 		return ret;
 	}
 
-	@Override
-	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-       
-	}
-
-	@Override
-	public void addTableModelListener(TableModelListener l) {
-	
-	}
-
-	@Override
-	public void removeTableModelListener(TableModelListener l) {
-	
-	}
 
 }

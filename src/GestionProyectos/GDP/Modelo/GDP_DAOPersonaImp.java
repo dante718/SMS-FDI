@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 
 
@@ -84,8 +85,8 @@ public class GDP_DAOPersonaImp implements GDP_DAOPersona{
 
 
 	@Override
-	public TableModel leerdatosini(String tipo) {
-		GDP_TableModel TA=new GDP_TableModel();
+	public GDP_ModeloTabla leerdatosini(String tipo) {
+		GDP_ModeloTabla TA=new GDP_ModeloTabla();
         try {
         	BufferedReader read= new BufferedReader(new FileReader(new File("src/BaseDatos/Personas.txt")));
 			String line=read.readLine();
