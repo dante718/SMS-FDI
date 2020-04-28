@@ -11,7 +11,6 @@ import GestionProyectos.GDP.Modelo.GDP_ModeloTabla;
 import GestionProyectos.GDP.Modelo.GDP_TPersona;
 import GestionProyectos.GDP.Controlador.GDP_Controlador;
 import GestionProyectos.GDP.Modelo.GDP_TProyecto;
-import GestionProyectos.GDP.Modelo.GDP_TableModel;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;

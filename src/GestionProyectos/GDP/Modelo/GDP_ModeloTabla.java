@@ -57,4 +57,7 @@ public class GDP_ModeloTabla extends AbstractTableModel{
     public String getColumnName(int indice) {
     	return campos[indice];
     }
+    public void actualizar() {
+    	this.fireTableDataChanged();
+    }
 }

@@ -28,7 +28,7 @@ public class GDP_DAOPersonaImp implements GDP_DAOPersona{
     }
 
 	
-    public void leerPersonas() {
+    private void leerPersonas() {
     	 try {
          	BufferedReader read= new BufferedReader(new FileReader(new File("src/BaseDatos/Personas.txt")));
  			String line=read.readLine();			
@@ -54,7 +54,7 @@ public class GDP_DAOPersonaImp implements GDP_DAOPersona{
  			e.printStackTrace();
  		}
     }
-    public void leerProyectos() {
+    private void leerProyectos() {
     	List<String> personas= new ArrayList<String>();		 	
 		String line=null;
 		
@@ -176,8 +176,16 @@ public class GDP_DAOPersonaImp implements GDP_DAOPersona{
 
 	@Override
 	public void liberar(String DNI) {
-		
-		
+		boolean find=false;
+		int i=0;
+		while(i<personas.size() && !find) {
+			if(personas.get(i).getDNI().equals(DNI)) {
+				personas.get(i).setEstado("Disponible");
+				find=true;
+			}			
+			i++;
+		}
+		escribirPersonas();
 	}
 
 	@Override

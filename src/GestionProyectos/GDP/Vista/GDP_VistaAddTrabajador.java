@@ -12,7 +12,6 @@ import java.util.List;
 
 import GestionProyectos.GDP.Modelo.GDP_ModeloTabla;
 import GestionProyectos.GDP.Modelo.GDP_TPersona;
-import GestionProyectos.GDP.Modelo.GDP_TableModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;

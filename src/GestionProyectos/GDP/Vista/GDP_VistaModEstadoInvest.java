@@ -18,12 +18,13 @@ import javax.swing.table.TableModel;
 
 import GestionProyectos.GDP.Controlador.GDP_Controlador;
 import GestionProyectos.GDP.Modelo.GDP_ModeloTabla;
-import GestionProyectos.GDP.Modelo.GDP_TableModel;
+
 
 @SuppressWarnings("serial")
 public class GDP_VistaModEstadoInvest extends JFrame{
 		private GDP_Controlador	controlador= new GDP_Controlador();
 		private JTable tabla;
+		private GDP_ModeloTabla modelo= new GDP_ModeloTabla();
 		private JLabel etiqueta;
 		private JButton liberar, cambiarproyecto;
 		private JPanel panel= new JPanel();
@@ -36,7 +37,6 @@ public class GDP_VistaModEstadoInvest extends JFrame{
 			panel.setLayout(new BorderLayout());
 			etiqueta= new JLabel("Investigadores:");
 			panel.add(etiqueta,BorderLayout.NORTH);
-			TableModel modelo= new GDP_ModeloTabla();
 			modelo=controlador.creartabla("investigador");			
 		    tabla= new JTable(modelo);
 			panel.add(new JScrollPane(tabla), BorderLayout.CENTER);
@@ -48,6 +48,7 @@ public class GDP_VistaModEstadoInvest extends JFrame{
 				public void actionPerformed(ActionEvent e) {
 					if(tabla.getSelectedRow()!=-1) {
 						controlador.liberar((String) tabla.getValueAt(tabla.getSelectedRow(), 0));
+						modelo.actualizar();
 					}
 					else {
 						JOptionPane.showMessageDialog(null, "No has seleccionado ningun investigador");

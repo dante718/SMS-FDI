@@ -11,7 +11,7 @@ import GestionProyectos.GDP.Modelo.GDP_SAPersona;
 import GestionProyectos.GDP.Modelo.GDP_SAPersonaImp;
 import GestionProyectos.GDP.Modelo.GDP_TPersona;
 import GestionProyectos.GDP.Modelo.GDP_TProyecto;
-import GestionProyectos.GDP.Modelo.GDP_TableModel;
+
 
 public class GDP_Controlador {
      private GDP_SAPersona SA;
