@@ -6,8 +6,9 @@ import java.util.List;
 import javax.swing.table.TableModel;
 
 public interface GDP_SAPersona {
-     public void inidatos();
-     public GDP_ModeloTabla leerdatosini(String tipo);
+     public void leerdatos();
+     public GDP_ModeloTabla creartabla(String tipo);
 	public int BuscarProyecto(String nombreProy);
-	public void CrearProyecto(GDP_TProyecto proyecto,List<GDP_TPersona> participantes);
+	public void liberar(String DNI);
+	public void AddProyecto(GDP_TProyecto proyecto);
 }

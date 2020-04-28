@@ -18,15 +18,15 @@ public class GDP_Controlador {
 	
 	public GDP_Controlador() {
 		SA= new GDP_SAPersonaImp();
-		inidatos();
+		leerdatos();
 	}
-	public GDP_ModeloTabla iniciarBasedeDatos(String tipo) {
+	public GDP_ModeloTabla creartabla(String tipo) {
 	 if(!tipo.toLowerCase().contentEquals("investigador") && !tipo.toLowerCase().contentEquals("trabajador")) {
 		 JOptionPane.showMessageDialog(null, "El rol de persona no es valido");
 		 return null;
 	 }
 	 else {
-		 GDP_ModeloTabla Ta= SA.leerdatosini(tipo);
+		 GDP_ModeloTabla Ta= SA.creartabla(tipo);
 		  if(Ta!=null) {
 			  return Ta;
 		  }
@@ -34,14 +34,14 @@ public class GDP_Controlador {
 		}
 	 }
 	
-	public boolean CrearProyecto(GDP_TProyecto proyecto,List<GDP_TPersona> participantes) {
+	public boolean AddProyecto(GDP_TProyecto proyecto) {
 		int ret= BuscarProyecto(proyecto.getNombre());
 		if(ret==-1) {
 			JOptionPane.showMessageDialog(null, "Ya existe un proyecto con el mismo nombre");
 			return false;
 		}
 		else if(ret==1) {
-			SA.CrearProyecto(proyecto,participantes); 
+			SA.AddProyecto(proyecto); 
 			JOptionPane.showMessageDialog(null, "Proyecto añadido con exito");
 			return true;
 		} 
@@ -51,7 +51,10 @@ public class GDP_Controlador {
 		int ret= SA.BuscarProyecto(NombreProy);
 		return ret;
 	}
-	public void inidatos() {
-		SA.inidatos();
+	public void leerdatos() {
+		SA.leerdatos();
+	}
+	public void liberar(String DNI) {
+		SA.liberar(DNI);
 	}
 }

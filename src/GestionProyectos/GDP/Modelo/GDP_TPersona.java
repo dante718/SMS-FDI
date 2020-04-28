@@ -35,4 +35,7 @@ public class GDP_TPersona {
       public String getRol() {
     	  return Rol;
       }
+      public void setEstado(String Estado) {
+    	  this.Estado=Estado;
+      }
 }

@@ -83,7 +83,7 @@ public class GDP_VistaCrearProyecto extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				TableModel modelo1=new GDP_ModeloTabla();
-				modelo1=controlador.iniciarBasedeDatos("investigador");
+				modelo1=controlador.creartabla("investigador");
 				GDP_VistaAddInvestigador NuevoInvestigador= new GDP_VistaAddInvestigador((GDP_ModeloTabla) modelo1, getThis());	
 			}
 			
@@ -96,7 +96,7 @@ public class GDP_VistaCrearProyecto extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				TableModel modelo2=new GDP_ModeloTabla();
-				modelo2=controlador.iniciarBasedeDatos("trabajador");
+				modelo2=controlador.creartabla("trabajador");
 				GDP_VistaAddTrabajador NuevoTrabajador= new GDP_VistaAddTrabajador((GDP_ModeloTabla) modelo2, getThis());	
 			}		
 		});
@@ -116,7 +116,11 @@ public class GDP_VistaCrearProyecto extends JFrame {
 					JOptionPane.showMessageDialog(null, "El proyecto ha de tener algun participante");
 				}
 				else {
-					if(controlador.CrearProyecto(new GDP_TProyecto(texto1.getText(), texto2.getText(), participantes.size()), participantes)) {
+					List<String> personal= new ArrayList<String>();
+					for(int i=0;i<participantes.size();i++) {
+						personal.add(participantes.get(i).getDNI());
+					}
+					if(controlador.AddProyecto(new GDP_TProyecto(texto1.getText(), texto2.getText(), personal))) {
 						cerrar();
 					}				
 				}

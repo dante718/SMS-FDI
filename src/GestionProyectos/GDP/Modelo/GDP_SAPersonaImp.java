@@ -16,11 +16,11 @@ public class GDP_SAPersonaImp implements GDP_SAPersona{
     	daopersona= new GDP_DAOPersonaImp();
     }
 	@Override
-	public GDP_ModeloTabla leerdatosini(String tipo)  {
+	public GDP_ModeloTabla creartabla(String tipo)  {
 
 		GDP_ModeloTabla TA= null;
 		
-	    TA = daopersona.leerdatosini(tipo);
+	    TA = daopersona.creartabla(tipo);
 	
 		
 		if(TA!=null) {
@@ -36,12 +36,16 @@ public class GDP_SAPersonaImp implements GDP_SAPersona{
 	}
 
 	@Override
-	public void CrearProyecto(GDP_TProyecto proyecto,List<GDP_TPersona> participantes) {
-		daopersona.CrearProyecto(proyecto,participantes);
+	public void AddProyecto(GDP_TProyecto proyecto) {
+		daopersona.AddProyecto(proyecto);
 	}
 	@Override
-	public void inidatos() {
-		daopersona.inidatos();		
+	public void leerdatos() {
+		daopersona.leerdatos();		
+	}
+	@Override
+	public void liberar(String DNI) {
+		daopersona.liberar(DNI);
 	}
 
 }
