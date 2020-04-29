@@ -15,7 +15,7 @@ import GestionDeEnvios.GDE.Controlador.ControladorEnvio;
 import GestionDeFabrica.Vista.VistaFabrica;
 import GestionLaboratorio.presentacion_Laboratorio.Vista_Lab;
 import GestionMedicos.GDM_Vista.InterfazVista;
-import GestionProyectos.GDP.Main.GDP_initGUI;
+import GestionProyectos.GDP.Main.initGUI;
 
 public class VentanaPrincipal extends JFrame{
     
@@ -87,7 +87,7 @@ public class VentanaPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GDP_initGUI.mainProyectos(null);			
+				initGUI.mainProyectos(null);			
 			}
 			
 		});
