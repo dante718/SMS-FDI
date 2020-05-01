@@ -15,6 +15,9 @@ public class TProyecto {
     	  this.fechadeversion=fechadeversion;
     	  this.version=version;
       }
+      public void setVersion(String version) {
+    	  this.version=version;
+      }
       public String getNombre(){
     	  return nombre;
       }

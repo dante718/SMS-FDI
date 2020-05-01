@@ -2,10 +2,13 @@ package GestionProyectos.GDP.Vista;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -16,17 +19,18 @@ import GestionProyectos.GDP.Modelo.ModeloTablaProyectos;
 public class VistaProyectos extends JFrame{
 		private Controlador controlador;
 		private JTable tabla;
+		private String DNISeleccionado;
 		private ModeloTablaProyectos modelo= new ModeloTablaProyectos();
 		private JLabel etiqueta;
-		private VistaProyectos vp;
-		private JButton añadir, cancelar;
 		private JPanel panel= new JPanel();
         public VistaProyectos(Controlador controlador) {
         	this.controlador=controlador;
         	initVista();
         }
-
-		private void initVista() {
+        public void setDNI(String DNI) {
+         	this.DNISeleccionado=DNI;
+         }
+		public void initVista() {
 			setSize(500,350);
 			panel.setLayout(new BorderLayout());
 			etiqueta= new JLabel("Proyectos:");
@@ -34,15 +38,22 @@ public class VistaProyectos extends JFrame{
 			modelo=controlador.crearTablaProyectos();			
 		    tabla= new JTable(modelo);
 			panel.add(new JScrollPane(tabla), BorderLayout.CENTER);
-			JPanel SouthPanel = new JPanel();
-			SouthPanel.setLayout(new FlowLayout());
-			añadir=new JButton("Añadir");
-			cancelar= new JButton("Cancelar");
-			SouthPanel.add(añadir);
-			SouthPanel.add(cancelar);
-			panel.add(SouthPanel, BorderLayout.PAGE_END);
-			getContentPane().add(panel);
 			setLocationRelativeTo(null);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 		}
+        public JPanel getPanel() {
+        	return panel;
+        }
+        public JTable getTabla() {
+        	return tabla;
+        }
+        public Controlador getControlador() {
+        	return controlador;
+        }
+        public String getDNISeleccionado() {
+        	return DNISeleccionado;
+        }
+        public ModeloTablaProyectos getModelo() {
+        	return modelo;
+        }
 }

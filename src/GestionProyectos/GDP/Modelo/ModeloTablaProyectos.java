@@ -12,6 +12,9 @@ public class ModeloTablaProyectos extends AbstractTableModel{
     public ModeloTablaProyectos() {
     	proyectos= new ArrayList<TProyecto>();
     }
+    public void actualizar() {
+    	this.fireTableDataChanged();
+    }
     public void addProyecto(TProyecto proyecto) {
     	proyectos.add(proyecto);
     }

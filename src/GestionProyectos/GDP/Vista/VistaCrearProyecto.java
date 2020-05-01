@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +28,7 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 
 public class VistaCrearProyecto extends JFrame {
-    private Controlador controlador= new Controlador();
+    private Controlador controlador;
     private List<TPersona> participantes= new ArrayList<TPersona>();
     private JLabel etiqueta1 , etiqueta2, etiqueta3, etiqueta4, etiqueta5;
     private JTextField texto1;
@@ -36,7 +37,8 @@ public class VistaCrearProyecto extends JFrame {
     private JTextArea texto2;
     private JButton boton1, boton2, boton3;
     private JPanel panel=new JPanel();
-	public VistaCrearProyecto() {
+	public VistaCrearProyecto(Controlador controlador) {
+		this.controlador=controlador;
 		addcomponentes();
 	}
 	private void addcomponentes() {
@@ -111,8 +113,9 @@ public class VistaCrearProyecto extends JFrame {
 					for(int i=0;i<participantes.size();i++) {
 						personal.add(participantes.get(i).getDNI());
 					}
-					SimpleDateFormat sdf= new SimpleDateFormat("dd/mm/yyyy");
-					String fecha= sdf.format(new Date());
+					Date date= new Date();
+					SimpleDateFormat sdf= new SimpleDateFormat("dd/MM/yyyy");
+					String fecha= sdf.format(date);
 					if(controlador.AddProyecto(new TProyecto(texto1.getText(), texto2.getText(), personal,  "Version "+ 1,fecha, "NO"))) {
 						cerrar();
 					}				

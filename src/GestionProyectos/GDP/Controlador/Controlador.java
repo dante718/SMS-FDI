@@ -38,26 +38,36 @@ public class Controlador {
 		return Tp;
 	}
 	public boolean AddProyecto(TProyecto proyecto) {
-		int ret= BuscarProyecto(proyecto.getNombre());
-		if(ret==-1) {
+		
+		if(BuscarProyecto(proyecto.getNombre())) {
 			JOptionPane.showMessageDialog(null, "Ya existe un proyecto con el mismo nombre");
 			return false;
 		}
-		else if(ret==1) {
+		else {
 			sa.AddProyecto(proyecto); 
 			JOptionPane.showMessageDialog(null, "Proyecto añadido con exito");
 			return true;
 		} 
-		else return false;
 	}
-	public int BuscarProyecto(String NombreProy) {
-		int ret= sa.BuscarProyecto(NombreProy);
-		return ret;
+	public boolean BuscarProyecto(String NombreProy) {
+		return sa.BuscarProyecto(NombreProy);
 	}
 	public void leerdatos() {
 		sa.leerdatos();
 	}
 	public boolean liberar(String DNI) {
 		return sa.liberar(DNI);
+	}
+	public boolean cambiarproyecto(String DNI, String NombreProy) {
+		return sa.cambiarproyecto(DNI, NombreProy);
+	}
+	public void añadiraproyecto(String DNI, String NombreProy) {
+		sa.añadiraproyecto(DNI, NombreProy);
+	}
+	public boolean compararfechas(String fechaAntigua) {
+		return sa.compararfechas(fechaAntigua);
+	}
+	public void GenerarNuevaVersion(String NombreProy) {
+		sa.GenerarNuevaVersion(NombreProy);
 	}
 }

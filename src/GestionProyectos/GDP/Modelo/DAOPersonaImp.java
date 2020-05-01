@@ -87,11 +87,13 @@ public class DAOPersonaImp implements DAOPersona{
 				if(personas.get(i).getDNI().equals(proyecto.getparticipantes().get(j))) {
 					personas.get(i).setEstado("No Disponible");
 					j++;
+					i=0;
 				}
-			   i++;
+				else {
+					i++;
+				}
 			}
 		EscribirPersonas();
-
 	}
 
 	@Override
@@ -107,9 +109,6 @@ public class DAOPersonaImp implements DAOPersona{
 		}
 		EscribirPersonas();
 	}
-
-	
-
 
 
 }

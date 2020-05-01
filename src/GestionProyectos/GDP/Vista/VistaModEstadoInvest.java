@@ -23,14 +23,15 @@ import GestionProyectos.GDP.Modelo.ModeloTablaPersona;
 
 @SuppressWarnings("serial")
 public class VistaModEstadoInvest extends JFrame{
-		private Controlador	controlador= new Controlador();
+		private Controlador	controlador;
 		private JTable tabla;
 		private ModeloTablaPersona modelo= new ModeloTablaPersona();
 		private JLabel etiqueta;
 		private VistaProyectos vp;
 		private JButton liberar, cambiarproyecto, addinvestigador;
 		private JPanel panel= new JPanel();
-         public VistaModEstadoInvest() {
+         public VistaModEstadoInvest(Controlador controlador) {
+        	  this.controlador= controlador;
         	  initVista();
          }
 
@@ -43,47 +44,82 @@ public class VistaModEstadoInvest extends JFrame{
 		    tabla= new JTable(modelo);
 			panel.add(new JScrollPane(tabla), BorderLayout.CENTER);
 			JPanel downPanel= new JPanel();		
-			liberar= new JButton("Liberar");
+			liberar= new JButton("Borrar de Proyecto");
 			liberar.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					String estado= (String) tabla.getValueAt(tabla.getSelectedRow(), 5);
-					if(estado.toLowerCase().equals("disponible")) {
-						JOptionPane.showMessageDialog(null, "Selecciona un investigador que esté en proyecto.");
-					}
-					else if(tabla.getSelectedRow()!=-1) {
-						if(controlador.liberar((String) tabla.getValueAt(tabla.getSelectedRow(), 0))) {
-							modelo.actualizar();
-						}
-						else {
-							JOptionPane.showMessageDialog(null, "No puedes liberar a este trabajador, un proyecto debe tener al menos uno.");
-						}
-					}
-					else {
+					
+					if(tabla.getSelectedRow()==-1) {
 						JOptionPane.showMessageDialog(null, "No has seleccionado ningun investigador.");
 					}
-				}
-				
-			});
-			vp= new VistaProyectos(controlador);
-			cambiarproyecto= new JButton("Asignar otro Proyecto");
-			cambiarproyecto.addActionListener(new ActionListener() {
-
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					String estado= (String) tabla.getValueAt(tabla.getSelectedRow(), 5);
-					if(estado.toLowerCase().equals("no disponible")) {
-						vp.setVisible(true);
-					}
 					else {
-						JOptionPane.showMessageDialog(null, "Selecciona un investigador que ya esté en un proyecto");
+						String estado= (String) tabla.getValueAt(tabla.getSelectedRow(), 5);
+						if(estado.toLowerCase().equals("disponible")) {
+							JOptionPane.showMessageDialog(null, "Selecciona un investigador que esté en proyecto.");
+						}
+						else if(tabla.getSelectedRow()!=-1) {
+							if(controlador.liberar((String) tabla.getValueAt(tabla.getSelectedRow(), 0))) {
+								modelo.actualizar();
+							}
+							else {
+								JOptionPane.showMessageDialog(null, "No puedes liberar a este trabajador, un proyecto debe tener al menos uno.");
+							}
+						}
 					}
+					
 				}
 				
 			});
 			
-			addinvestigador= new JButton("Añadir Investigador");
+			cambiarproyecto= new JButton("Cambiar de Proyecto");
+			cambiarproyecto.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if(tabla.getSelectedRow()==-1) {
+						JOptionPane.showMessageDialog(null, "No has seleccionado ningun investigador.");
+					}
+					else {
+						String estado= (String) tabla.getValueAt(tabla.getSelectedRow(), 5);
+						if(estado.toLowerCase().equals("no disponible")) {
+							vp= new VistaCambiarProyecto(controlador);
+							vp.setDNI((String) tabla.getValueAt(tabla.getSelectedRow(), 0));
+							vp.setVisible(true);
+						}
+						else {
+							JOptionPane.showMessageDialog(null, "Selecciona un investigador que ya esté en un proyecto");
+						}
+					}					
+				}
+				
+			});
+			
+			
+			addinvestigador= new JButton("Añadir a Proyecto");
+			
+			addinvestigador.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if(tabla.getSelectedRow()==-1) {
+						JOptionPane.showMessageDialog(null, "No has seleccionado ningun investigador.");
+					}
+					else {
+						String estado= (String) tabla.getValueAt(tabla.getSelectedRow(), 5);
+						if(estado.toLowerCase().equals("disponible")) {
+							vp= new VistaAñadirAProyecto(controlador);
+							vp.setDNI((String) tabla.getValueAt(tabla.getSelectedRow(), 0));
+							vp.setVisible(true);
+						}
+						else {
+							JOptionPane.showMessageDialog(null, "Selecciona un investigador que esté libre.");
+						}		
+					}
+					
+				}
+				
+			});
 			downPanel.add(liberar);
 			downPanel.add(cambiarproyecto);
 			downPanel.add(addinvestigador);
