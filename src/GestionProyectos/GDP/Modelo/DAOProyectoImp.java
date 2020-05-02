@@ -234,7 +234,10 @@ public class DAOProyectoImp implements DAOProyecto{
 		int num= extraerNumeroDeVersion(proyectos.get(i).getVersion());
 		
 		proyectos.get(i).setVersion("Version "+num);
-		
+		Date date = new Date();
+		SimpleDateFormat sdf= new SimpleDateFormat("dd/MM/yyyy");
+		String fecha= sdf.format(date);
+		proyectos.get(i).setFecha(fecha);
 		
 		EscribirProyectos();
 	}
@@ -250,4 +253,51 @@ public class DAOProyectoImp implements DAOProyecto{
 		}
 		return numero+1;
 	}
+	public boolean pasarafabricacion(String NombreProy) {
+		boolean acabar=false;
+		int i=0;
+		while(i<proyectos.size() && !acabar) {
+			if(proyectos.get(i).getNombre().equals(NombreProy)) {
+				acabar=true;
+			}
+			else i++;
+		}
+		
+		if(acabar) {
+			if(proyectos.get(i).getVersion().equals("Version 1") || proyectos.get(i).getVersion().equals("Version 2")) {
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
+		else return false;
+	}
+	@Override
+	public List<String> getParticipantesProyecto(String NombreProy) {
+		boolean acabar=false;
+		int i=0;
+		while(i<proyectos.size() && !acabar) {
+			if(proyectos.get(i).getNombre().equals(NombreProy)) {
+				acabar=true;
+			}
+			else i++;
+		}
+		return proyectos.get(i).getparticipantes();
+	}
+	@Override
+	public void ponerenfabricacion(String nombreProy) {
+		boolean acabar=false;
+		int i=0;
+		while(i<proyectos.size() && !acabar) {
+			if(proyectos.get(i).getNombre().equals(nombreProy)) {
+				acabar=true;
+			}
+			else i++;
+		}
+		proyectos.get(i).setFabricacion("SI");
+		EscribirProyectos();
+	}
+	
+	
 }

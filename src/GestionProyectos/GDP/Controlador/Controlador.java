@@ -15,13 +15,13 @@ import GestionProyectos.GDP.Modelo.TProyecto;
 
 
 public class Controlador {
-     private SA sa;
+    private SA sa;
 	public Controlador() {
 		sa= new SAImp();
 		leerdatos();
 	}
 	public ModeloTablaPersona creartablaPersonas(String tipo) {
-	 if(!tipo.toLowerCase().contentEquals("investigador") && !tipo.toLowerCase().contentEquals("trabajador")) {
+	 if(!tipo.toLowerCase().contentEquals("investigador") && !tipo.toLowerCase().contentEquals("trabajador") && !tipo.toLowerCase().contentEquals("participantes")) {
 		 JOptionPane.showMessageDialog(null, "El rol de persona no es valido");
 		 return null;
 	 }
@@ -69,5 +69,15 @@ public class Controlador {
 	}
 	public void GenerarNuevaVersion(String NombreProy) {
 		sa.GenerarNuevaVersion(NombreProy);
+	}
+	public boolean pasarafabricacion(String NombreProy) {
+		return sa.pasarafabricacion(NombreProy);
+	}
+	public ModeloTablaPersona tablapersonaldeproyecto(String NombreProy) {
+		return sa.tablapersonaldeproyecto(NombreProy);
+	}
+	public void ponerenfabricacion(String nombreProy) {
+		
+		sa.ponerenfabricacion(nombreProy);
 	}
 }

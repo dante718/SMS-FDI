@@ -15,6 +15,12 @@ public class TProyecto {
     	  this.fechadeversion=fechadeversion;
     	  this.version=version;
       }
+      public void setFecha(String fecha) {
+    	  this.fechadeversion=fecha;
+      }
+      public void setFabricacion(String Fab) {
+    	  this.mododefabricacion=Fab;
+      }
       public void setVersion(String version) {
     	  this.version=version;
       }

@@ -78,7 +78,7 @@ public class SAImp implements SA{
 			Date AntiguaDate= sdf.parse(fechaAntigua);
 			if(NuevaDate.getYear()==AntiguaDate.getYear()) {
 				if(NuevaDate.getMonth()==AntiguaDate.getMonth()) {
-					if(NuevaDate.getDay()-AntiguaDate.getDay()>=15) {
+					if(NuevaDate.getDay()-AntiguaDate.getDay()>=1) {
 						return true;
 					}
 					else {
@@ -102,5 +102,20 @@ public class SAImp implements SA{
 	public void GenerarNuevaVersion(String NombreProy) {
 		daoproyecto.GenerarNuevaVersion(NombreProy);
 		
+	}
+	@Override
+	public boolean pasarafabricacion(String NombreProy) {
+		
+		return daoproyecto.pasarafabricacion(NombreProy);
+	}
+	@Override
+	public ModeloTablaPersona tablapersonaldeproyecto(String NombreProy) {
+		List<String> DNIs= daoproyecto.getParticipantesProyecto(NombreProy);
+		return daopersona.creartablapersonaldeproyecto(DNIs);
+	}
+	@Override
+	public void ponerenfabricacion(String nombreProy) {
+		daoproyecto.ponerenfabricacion(nombreProy);
+	
 	}
 }

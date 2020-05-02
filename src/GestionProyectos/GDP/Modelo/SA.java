@@ -16,4 +16,7 @@ public interface SA {
 	 public void añadiraproyecto(String DNI, String NombreProy);
 	 public boolean compararfechas(String fechaAntigua);
 	 public void GenerarNuevaVersion(String NombreProy);
+	 public boolean pasarafabricacion(String NombreProy);
+	 public ModeloTablaPersona tablapersonaldeproyecto(String NombreProy);
+	public void ponerenfabricacion(String nombreProy); 
 }

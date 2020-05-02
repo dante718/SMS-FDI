@@ -66,9 +66,27 @@ public class VistaPrincipal extends JFrame{
 	    panel.add(cvd);
 	    cef=new JButton("Confirmar Estado de Fabricación");
 	    cef.setBounds(250, 450, 250, 30);
+	    cef.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VistaProyectos vp= new VistaAñadirFabricacion(controlador);
+				
+			}
+	    	
+	    });
 	    panel.add(cef);
 	    spm=new JButton("Solicitar Partida de Medicamentos");
 	    spm.setBounds(250, 550, 250, 30);
+	    spm.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VistaProyectos vp= new VistaSolicitarPartidaDeMedicamentos(controlador);
+				
+			}
+	    	
+	    });
 	    panel.add(spm);
 		panel.setBackground(Color.CYAN);
 		

@@ -110,5 +110,20 @@ public class DAOPersonaImp implements DAOPersona{
 		EscribirPersonas();
 	}
 
+	@Override
+	public ModeloTablaPersona creartablapersonaldeproyecto(List<String> DNIs) {
+		ModeloTablaPersona tabla= new ModeloTablaPersona();
+		int i=0, j=0;
+		while(i<personas.size() && j<DNIs.size()) {
+			if(personas.get(i).getDNI().equals(DNIs.get(j))) {
+				tabla.addPersonas(personas.get(i));
+				j++;
+				i=0;
+			}				
+			else i++;
+		}
+		return tabla;
+	}
+
 
 }

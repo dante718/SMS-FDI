@@ -4,9 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -14,38 +11,34 @@ import javax.swing.JPanel;
 
 import GestionProyectos.GDP.Controlador.Controlador;
 
-public class VistaNuevaVersionDeProyecto extends VistaProyectos{
-    private JButton nuevaversion, cancelar;
-	public VistaNuevaVersionDeProyecto(Controlador controlador) {
+public class VistaSolicitarPartidaDeMedicamentos extends VistaProyectos{
+    private JButton solicitar, cancelar;
+    private VistaFormularioMedicamentos vfm;
+	public VistaSolicitarPartidaDeMedicamentos(Controlador controlador) {
 		super(controlador);
 		initVista();
 		initGUI();
 	}
 
 	private void initGUI() {
+		vfm= new VistaFormularioMedicamentos(getControlador());
 		JPanel SouthPanel = new JPanel();
 		SouthPanel.setLayout(new FlowLayout());
-		nuevaversion=new JButton("Generar Nueva Version");
+		solicitar=new JButton("Solicitar Partida");
 		cancelar= new JButton("Cancelar");	
-		nuevaversion.addActionListener(new ActionListener() {
+		solicitar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(getTabla().getSelectedRow()==-1) {
 					JOptionPane.showMessageDialog(null, "No has seleccionado ningún proyecto.");
 				}
-				else {
-				if(getControlador().compararfechas((String) getTabla().getValueAt(getTabla().getSelectedRow(), 4))) {
-						getControlador().GenerarNuevaVersion((String) getTabla().getValueAt(getTabla().getSelectedRow(), 0));
-						JOptionPane.showMessageDialog(null, "Nueva Versión Generada Correctamente. ");
-						dispose();
-					}
-					else {
-						JOptionPane.showMessageDialog(null, "Deben pasar al menos un dia para que los estadísticos concluyan sus estudios. Y generar así una nueva versión. ");
-					}			
-					dispose();
+				else if(getTabla().getValueAt(getTabla().getSelectedRow(), 5).equals("SI")) {
+					vfm.setVisible(true);
 				}
-								
+				else {
+					JOptionPane.showMessageDialog(null, "Solo pueden solicitar partida de medicamentos proyectos en fabricacion. ");
+				}
 			}
 			
 		});
@@ -59,7 +52,7 @@ public class VistaNuevaVersionDeProyecto extends VistaProyectos{
 			
 		});
 		
-		SouthPanel.add(nuevaversion);
+		SouthPanel.add(solicitar);
 		SouthPanel.add(cancelar);
 		getPanel().add(SouthPanel, BorderLayout.PAGE_END);
 		getContentPane().add(getPanel());

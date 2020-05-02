@@ -11,4 +11,5 @@ public interface DAOPersona {
 	  public void LiberarPersonadeProyecto(String DNI);
 	  public void AddProyecto(TProyecto proyecto);
 	  public void EscribirPersonas();
+	  public ModeloTablaPersona creartablapersonaldeproyecto(List<String> DNIs);
 }
