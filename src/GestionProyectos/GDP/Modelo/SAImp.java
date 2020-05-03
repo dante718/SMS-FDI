@@ -9,15 +9,19 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 
+import GestionDeAlmacen.GDA.Modelo.Producto;
+
 
 
 public class SAImp implements SA{
-  
+    private Producto[] productos;
+    private int contadordeproductos=0;
     private DAOPersona daopersona;
     private DAOProyecto daoproyecto;
     public SAImp() {
     	daopersona= new DAOPersonaImp();
     	daoproyecto= new DAOProyectoImp();
+    	productos= new Producto[1000];
     }
 	@Override
 	public ModeloTablaPersona creartablaPersonas(String tipo)  {
@@ -117,5 +121,37 @@ public class SAImp implements SA{
 	public void ponerenfabricacion(String nombreProy) {
 		daoproyecto.ponerenfabricacion(nombreProy);
 	
+	}
+	@Override
+	public boolean addProducto(Producto producto) {
+		if(!estaelproducto(producto)) {
+			productos[contadordeproductos]=producto;
+			contadordeproductos++;
+			return true;
+		}
+		else return false;
+	}
+	private boolean estaelproducto(Producto producto) {
+		int i=0;
+		boolean encontrado=false;		
+		while(i<contadordeproductos && !encontrado) {
+			if(productos[i].get_id()==producto.get_id()) {
+				encontrado=true;
+			}	
+			i++;
+		}	
+		return encontrado;
+	}
+	public Producto[] getProductos() {
+		return productos;
+	}
+	@Override
+	public void reiniciarpedido() {
+		this.contadordeproductos=0;
+		
+	}
+	@Override
+	public int getTamProductos() {		
+		return contadordeproductos;
 	}
 }

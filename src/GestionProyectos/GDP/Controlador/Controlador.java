@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 
+import GestionDeAlmacen.GDA.Modelo.Producto;
 import GestionProyectos.GDP.Modelo.ModeloTablaPersona;
 import GestionProyectos.GDP.Modelo.ModeloTablaProyectos;
 import GestionProyectos.GDP.Modelo.SA;
@@ -79,5 +80,17 @@ public class Controlador {
 	public void ponerenfabricacion(String nombreProy) {
 		
 		sa.ponerenfabricacion(nombreProy);
+	}
+	public boolean Addproducto(Producto producto) {
+		return sa.addProducto(producto);
+	}
+	public Producto[] getProductos() {
+		return sa.getProductos();
+	}
+	public int getTamProductos() {
+		return sa.getTamProductos();
+	}
+	public void reinicarpedido() {
+		sa.reiniciarpedido();
 	}
 }

@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.swing.table.TableModel;
 
+import GestionDeAlmacen.GDA.Modelo.Producto;
+
 public interface SA {
      public void leerdatos();
      public ModeloTablaPersona creartablaPersonas(String tipo);
@@ -18,5 +20,9 @@ public interface SA {
 	 public void GenerarNuevaVersion(String NombreProy);
 	 public boolean pasarafabricacion(String NombreProy);
 	 public ModeloTablaPersona tablapersonaldeproyecto(String NombreProy);
-	public void ponerenfabricacion(String nombreProy); 
+	 public void ponerenfabricacion(String nombreProy);
+	 public boolean addProducto(Producto producto); 
+	 public Producto[] getProductos();
+	 public void reiniciarpedido();
+	 public int getTamProductos();
 }
