@@ -3,19 +3,15 @@ package GestionProyectos.GDP.Modelo;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
+
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-import javax.swing.table.AbstractTableModel;
-import javax.swing.table.TableModel;
 
 
 public class DAOPersonaImp implements DAOPersona{
@@ -32,7 +28,7 @@ public class DAOPersonaImp implements DAOPersona{
  			while(line!=null) {				
  				String DNI=line;			
  				line=read.readLine();
-                 String Nombre=line;
+                String Nombre=line;
  				line=read.readLine(); 
  				String Apellido1=line;
  				line=read.readLine();
@@ -98,15 +94,7 @@ public class DAOPersonaImp implements DAOPersona{
 
 	@Override
 	public void LiberarPersonadeProyecto(String DNI) {
-		boolean find=false;
-		int i=0;
-		while(i<personas.size() && !find) {
-			if(personas.get(i).getDNI().equals(DNI)) {
-				personas.get(i).setEstado("Disponible");
-				find=true;
-			}			
-			i++;
-		}
+		getPersona(DNI).setEstado("Disponible");
 		EscribirPersonas();
 	}
 
@@ -123,6 +111,22 @@ public class DAOPersonaImp implements DAOPersona{
 			else i++;
 		}
 		return tabla;
+	}
+
+	@Override
+	public TPersona getPersona(String DNI) {
+		boolean acabar=false;
+		int i=0;
+		while(i<personas.size() && !acabar) {
+			if(personas.get(i).getDNI().equals(DNI)){
+				acabar=true;
+			}
+			else i++;
+		}
+		if(acabar) {
+			return personas.get(i);
+		}
+		else return null;
 	}
 
 

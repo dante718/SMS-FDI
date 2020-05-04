@@ -4,7 +4,6 @@ import java.util.List;
 
 public interface DAOProyecto {
       public void leerProyectos();
-      public boolean BuscarProyecto(String Nombre);
       public void AddProyecto(TProyecto proyecto);
       public void EscribirProyectos();
       public boolean LiberarPersonadeProyecto(String DNI);

@@ -1,13 +1,12 @@
 package GestionProyectos.GDP.Modelo;
 
-import java.sql.SQLException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.swing.table.AbstractTableModel;
-import javax.swing.table.TableModel;
+
 
 import GestionDeAlmacen.GDA.Modelo.Producto;
 
@@ -29,8 +28,7 @@ public class SAImp implements SA{
 		ModeloTablaPersona TA= null;
 		
 	    TA = daopersona.creartablaPersonas(tipo);
-	
-		
+			
 		if(TA!=null) {
 			return TA;
 		}
@@ -38,8 +36,8 @@ public class SAImp implements SA{
 	}
 
 	@Override
-	public boolean BuscarProyecto(String nombreProy) {		
-		return daoproyecto.BuscarProyecto(nombreProy);
+	public TProyecto BuscarProyecto(String nombreProy) {		
+		return daoproyecto.getProyecto(nombreProy);
 	}
 
 	@Override

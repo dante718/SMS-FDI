@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.swing.JOptionPane;
 
 public class DAOProyectoImp implements DAOProyecto{
        private List<TProyecto> proyectos;
@@ -22,7 +21,7 @@ public class DAOProyectoImp implements DAOProyecto{
 	  public TProyecto getProyecto(String NombreProy) {
 		  boolean acabar=false;
 		  int i=0;
-		  while(i<proyectos.size() && ! acabar) {
+		  while(i<proyectos.size() && !acabar) {
 			  if(proyectos.get(i).getNombre().equals(NombreProy)) {
 				  acabar=true;
 			  }
@@ -30,7 +29,12 @@ public class DAOProyectoImp implements DAOProyecto{
 				  i++;
 			  }
 		  }
-		  return proyectos.get(i);
+		  if(acabar) {
+			  return proyectos.get(i); 
+		  }
+		  else {
+			  return null;
+		  }
 	  }
 	  public void leerProyectos() {
     	List<String> personas= new ArrayList<String>();		 	
@@ -66,32 +70,12 @@ public class DAOProyectoImp implements DAOProyecto{
 			e.printStackTrace();
 		}
     }
-	  public boolean BuscarProyecto(String Nombre) {		
-			boolean find=false;
-			try {
-				BufferedReader read= new BufferedReader(new FileReader(new File("src/BaseDatos/Proyectos.txt")));
-				String line=read.readLine();
-				while(line!=null && !find) {			
-					if(line.equals(Nombre)) {
-						find=true;
-					}			
-					line=read.readLine();
-				}
-				read.close();
-			} catch (IOException e) {
-				
-				e.printStackTrace();
-			}			
-		
-			return find;
-		}
-    
-
 	@Override
 	public void AddProyecto(TProyecto proyecto) {
 		proyectos.add(proyecto);
 		EscribirProyectos();	
 	}
+	
 	public void EscribirProyectos() {
 		int i=0;
 		String line=null;
@@ -164,26 +148,22 @@ public class DAOProyectoImp implements DAOProyecto{
 		return Tp;
 	}
 	public boolean cambiarproyecto(String DNI, String NombreProy) {
+		TProyecto proyecto=getProyecto(NombreProy);
 		boolean acabar= false;
-		int i=0, j=0, indice=0;
-		while(i<proyectos.size() && !acabar) {
-			if(proyectos.get(i).getNombre().equals(NombreProy)) {
-				indice=i;
-				while(j<proyectos.get(i).getparticipantes().size() && !acabar){
-					if(proyectos.get(i).getparticipantes().get(j).equals(DNI)) {
-						acabar=true;
-					}					
-					j++;
-				}
+		int i=0;
+		while(i<proyecto.getparticipantes().size()) {
+			if(proyecto.getparticipantes().get(i).equals(DNI)) {
+				acabar=true;
 			}
-			i++;
+			else {
+				i++;
+			}
 		}
-		
 		if(acabar) {
 			return false;
 		}
 		else {
-			intercambiarproyectos(DNI, NombreProy, indice);
+			intercambiarproyectos(DNI, NombreProy, proyectos.indexOf(proyecto));
 			EscribirProyectos();
 			return true;
 		}
@@ -204,46 +184,28 @@ public class DAOProyectoImp implements DAOProyecto{
 				j=0;
 				i++;
 			}
+		
 		}
 
 
 	@Override
-	public void añadirpersona(String DNI, String NombreProy) {
-		int i=0;
-		boolean acabar=false;
-		while(i<proyectos.size() && ! acabar) {
-			if(proyectos.get(i).getNombre().equals(NombreProy)) {
-				proyectos.get(i).getparticipantes().add(DNI);
-				acabar=true;
-			}
-			i++;
-		}		
+	public void añadirpersona(String DNI, String NombreProy) {	
+		getProyecto(NombreProy).getparticipantes().add(DNI);
 		EscribirProyectos();
 	}
 	@Override
 	public void GenerarNuevaVersion(String NombreProy) {
-		int i=0;
-		boolean find=false;
-		while(i<proyectos.size() && !find) {			
-			if(proyectos.get(i).getNombre().equals(NombreProy)) {
-				find=true;
-			}
-			else i++;
-		}
-		
-		int num= extraerNumeroDeVersion(proyectos.get(i).getVersion());
-		
-		proyectos.get(i).setVersion("Version "+num);
+		TProyecto proyecto=getProyecto(NombreProy);
+		int num= extraerNumeroDeVersion(proyecto.getVersion());
+		proyecto.setVersion("Version "+num);
 		Date date = new Date();
 		SimpleDateFormat sdf= new SimpleDateFormat("dd/MM/yyyy");
 		String fecha= sdf.format(date);
-		proyectos.get(i).setFecha(fecha);
-		
+		proyecto.setFecha(fecha);	
 		EscribirProyectos();
 	}
 	private int extraerNumeroDeVersion(String version) {
-		int i=version.length()-1, exponente=1, numero=0;
-		
+		int i=version.length()-1, exponente=1, numero=0;	
 		while(i>7) {
 			String s= version.charAt(i)+"";
 			int numpos= Integer.parseInt(s);
@@ -254,17 +216,9 @@ public class DAOProyectoImp implements DAOProyecto{
 		return numero+1;
 	}
 	public boolean pasarafabricacion(String NombreProy) {
-		boolean acabar=false;
-		int i=0;
-		while(i<proyectos.size() && !acabar) {
-			if(proyectos.get(i).getNombre().equals(NombreProy)) {
-				acabar=true;
-			}
-			else i++;
-		}
-		
-		if(acabar) {
-			if(proyectos.get(i).getVersion().equals("Version 1") || proyectos.get(i).getVersion().equals("Version 2")) {
+		TProyecto proyecto=getProyecto(NombreProy);
+		if(proyecto!=null) {
+			if(proyecto.getVersion().equals("Version 1") || proyecto.getVersion().equals("Version 2")) {
 				return false;
 			}
 			else {
@@ -275,29 +229,12 @@ public class DAOProyectoImp implements DAOProyecto{
 	}
 	@Override
 	public List<String> getParticipantesProyecto(String NombreProy) {
-		boolean acabar=false;
-		int i=0;
-		while(i<proyectos.size() && !acabar) {
-			if(proyectos.get(i).getNombre().equals(NombreProy)) {
-				acabar=true;
-			}
-			else i++;
-		}
-		return proyectos.get(i).getparticipantes();
+		return getProyecto(NombreProy).getparticipantes();
 	}
 	@Override
 	public void ponerenfabricacion(String nombreProy) {
-		boolean acabar=false;
-		int i=0;
-		while(i<proyectos.size() && !acabar) {
-			if(proyectos.get(i).getNombre().equals(nombreProy)) {
-				acabar=true;
-			}
-			else i++;
-		}
-		proyectos.get(i).setFabricacion("SI");
+		getProyecto(nombreProy).setFabricacion("SI");
 		EscribirProyectos();
 	}
-	
-	
+		
 }

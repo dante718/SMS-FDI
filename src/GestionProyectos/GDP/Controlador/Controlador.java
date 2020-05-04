@@ -40,7 +40,7 @@ public class Controlador {
 	}
 	public boolean AddProyecto(TProyecto proyecto) {
 		
-		if(BuscarProyecto(proyecto.getNombre())) {
+		if(BuscarProyecto(proyecto.getNombre())!=null) {
 			JOptionPane.showMessageDialog(null, "Ya existe un proyecto con el mismo nombre");
 			return false;
 		}
@@ -50,7 +50,7 @@ public class Controlador {
 			return true;
 		} 
 	}
-	public boolean BuscarProyecto(String NombreProy) {
+	public TProyecto BuscarProyecto(String NombreProy) {
 		return sa.BuscarProyecto(NombreProy);
 	}
 	public void leerdatos() {
@@ -78,7 +78,6 @@ public class Controlador {
 		return sa.tablapersonaldeproyecto(NombreProy);
 	}
 	public void ponerenfabricacion(String nombreProy) {
-		
 		sa.ponerenfabricacion(nombreProy);
 	}
 	public boolean Addproducto(Producto producto) {
