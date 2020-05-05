@@ -8,7 +8,7 @@ import javax.swing.table.TableModel;
 public interface DAOPersona {
       public void leerPersonas();
       public TPersona getPersona(String DNI);
-      public ModeloTablaPersona creartablaPersonas(String tipo);
+      public ModeloTablaPersona creartablaPersonas();
 	  public void LiberarPersonadeProyecto(String DNI);
 	  public void AddProyecto(TProyecto proyecto);
 	  public void EscribirPersonas();

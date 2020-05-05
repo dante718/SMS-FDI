@@ -54,12 +54,10 @@ public class DAOPersonaImp implements DAOPersona{
     }
   
 	@Override
-	public ModeloTablaPersona creartablaPersonas(String tipo) {
+	public ModeloTablaPersona creartablaPersonas() {
 		ModeloTablaPersona TA= new ModeloTablaPersona();
         for(int i=0; i<personas.size();i++) {
-        	if(personas.get(i).getRol().toLowerCase().equals(tipo)) {
-        		TA.addPersonas(personas.get(i));
-        	}
+              TA.addPersonas(personas.get(i));    	
         }
 		return TA;
 	}

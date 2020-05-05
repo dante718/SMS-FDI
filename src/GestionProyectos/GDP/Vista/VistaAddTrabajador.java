@@ -33,7 +33,7 @@ public class VistaAddTrabajador extends JFrame{
 	
      private VistaAddTrabajador() {
     	TableModel modelo=new ModeloTablaPersona();
- 		 modelo=Controlador.getInstancia().creartablaPersonas("trabajador");
+ 		 modelo=Controlador.getInstancia().creartablaPersonas("Trabajador");
     	 contador=VistaCrearProyecto.getInstancia().getParticipantes().size();
     	 this.modelo= (ModeloTablaPersona) modelo;
     	 this.tabla= new JTable(this.modelo);

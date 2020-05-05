@@ -33,7 +33,7 @@ public class VistaAddInvestigador extends JFrame{
 	 private JPanel panel= new JPanel();
      private VistaAddInvestigador() {
     	 TableModel modelo=new ModeloTablaPersona();
- 		 modelo=Controlador.getInstancia().creartablaPersonas("investigador");
+ 		 modelo=Controlador.getInstancia().creartablaPersonas("Investigador");
     	 contador=VistaCrearProyecto.getInstancia().getParticipantes().size();
     	 this.modelo=(ModeloTablaPersona) modelo;
     	 this.tabla= new JTable(this.modelo);

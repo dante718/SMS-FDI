@@ -69,8 +69,7 @@ public class VistaAñadirFabricacion extends VistaProyectos{
 				
 				
 				PANEL.add(new JScrollPane(tabla), BorderLayout.CENTER);
-				
-				
+							
 				JPanel surpanel= new JPanel();
 				
 				JButton  continuar= new JButton("Continuar en el proyecto");

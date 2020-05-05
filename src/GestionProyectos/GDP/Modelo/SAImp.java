@@ -28,37 +28,39 @@ public class SAImp implements SA{
     }
     
 	@Override
-	public ModeloTablaPersona creartablaPersonas(String tipo)  {
+	public ModeloTablaPersona creartablaPersonas(String RolPersona)  {
 
-		ModeloTablaPersona TA= null;
+		ModeloTablaPersona TA= FactoriaTabla.getInstancia().CrearObjetoPersona();
 		
-	    TA = DAOPersonaImp.getInstancia().creartablaPersonas(tipo);
-			
-		if(TA!=null) {
-			return TA;
-		}
-		else return null;
+		for(int i=0;i<TA.getRowCount();i++) {
+			if(!RolPersona.equals((String) TA.getValueAt(i, 6))) {
+				TA.removeFila(i);
+				TA.fireTableDataChanged();
+				i--;
+			}
+		}	
+		return TA;
 	}
 
 	@Override
 	public TProyecto BuscarProyecto(String nombreProy) {		
-		return DAOProyectoImp.getInstancia().getProyecto(nombreProy);
+		return FactoriaDAO.getInstancia().CrearObjetoProyecto().getProyecto(nombreProy);
 	}
 
 	@Override
 	public void AddProyecto(TProyecto proyecto) {
-		DAOPersonaImp.getInstancia().AddProyecto(proyecto);
-		DAOProyectoImp.getInstancia().AddProyecto(proyecto);
+		FactoriaDAO.getInstancia().CrearObjetoPersona().AddProyecto(proyecto);
+		FactoriaDAO.getInstancia().CrearObjetoProyecto().AddProyecto(proyecto);
 	}
 	@Override
 	public void leerdatos() {
-		DAOPersonaImp.getInstancia().leerPersonas();	
-		DAOProyectoImp.getInstancia().leerProyectos();
+		FactoriaDAO.getInstancia().CrearObjetoPersona().leerPersonas();	
+		FactoriaDAO.getInstancia().CrearObjetoProyecto().leerProyectos();
 	}
 	@Override
 	public boolean liberar(String DNI) {
-		if(DAOProyectoImp.getInstancia().LiberarPersonadeProyecto(DNI)) {
-			DAOPersonaImp.getInstancia().LiberarPersonadeProyecto(DNI);
+		if(FactoriaDAO.getInstancia().CrearObjetoProyecto().LiberarPersonadeProyecto(DNI)) {
+			FactoriaDAO.getInstancia().CrearObjetoPersona().LiberarPersonadeProyecto(DNI);
 			return true;
 		}
 		else {
@@ -66,16 +68,15 @@ public class SAImp implements SA{
 		}
 	}
 	@Override
-	public ModeloTablaProyectos creartablaProyectos() {
-		ModeloTablaProyectos Tp= DAOProyectoImp.getInstancia().creartablaProyectos();
-		return Tp;
+	public ModeloTablaProyectos creartablaProyectos() {		
+		return FactoriaTabla.getInstancia().CrearObjetoProyecto();
 	}
 	public boolean cambiarproyecto(String DNI, String NombreProy) {
-		return DAOProyectoImp.getInstancia().cambiarproyecto(DNI, NombreProy);
+		return FactoriaDAO.getInstancia().CrearObjetoProyecto().cambiarproyecto(DNI, NombreProy);
 	}
 	public void añadiraproyecto(String DNI, String NombreProy) {
-		DAOProyectoImp.getInstancia().añadirpersona(DNI, NombreProy);
-		DAOPersonaImp.getInstancia().AddProyecto(DAOProyectoImp.getInstancia().getProyecto(NombreProy));
+		FactoriaDAO.getInstancia().CrearObjetoProyecto().añadirpersona(DNI, NombreProy);
+		FactoriaDAO.getInstancia().CrearObjetoPersona().AddProyecto(DAOProyectoImp.getInstancia().getProyecto(NombreProy));
 	}
 	@Override
 	public boolean compararfechas(String fechaAntigua) {
@@ -107,22 +108,21 @@ public class SAImp implements SA{
 	}
 	@Override
 	public void GenerarNuevaVersion(String NombreProy) {
-		DAOProyectoImp.getInstancia().GenerarNuevaVersion(NombreProy);
+		FactoriaDAO.getInstancia().CrearObjetoProyecto().GenerarNuevaVersion(NombreProy);
 		
 	}
 	@Override
-	public boolean pasarafabricacion(String NombreProy) {
-		
-		return DAOProyectoImp.getInstancia().pasarafabricacion(NombreProy);
+	public boolean pasarafabricacion(String NombreProy) {	
+		return FactoriaDAO.getInstancia().CrearObjetoProyecto().pasarafabricacion(NombreProy);
 	}
 	@Override
 	public ModeloTablaPersona tablapersonaldeproyecto(String NombreProy) {
-		List<String> DNIs= DAOProyectoImp.getInstancia().getParticipantesProyecto(NombreProy);
-		return DAOPersonaImp.getInstancia().creartablapersonaldeproyecto(DNIs);
+		List<String> DNIs= FactoriaDAO.getInstancia().CrearObjetoProyecto().getParticipantesProyecto(NombreProy);
+		return FactoriaDAO.getInstancia().CrearObjetoPersona().creartablapersonaldeproyecto(DNIs);
 	}
 	@Override
 	public void ponerenfabricacion(String nombreProy) {
-		DAOProyectoImp.getInstancia().ponerenfabricacion(nombreProy);
+		FactoriaDAO.getInstancia().CrearObjetoProyecto().ponerenfabricacion(nombreProy);
 	
 	}
 	@Override

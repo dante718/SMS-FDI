@@ -43,7 +43,7 @@ public class VistaModEstadoInvest extends JFrame{
 			panel.setLayout(new BorderLayout());
 			etiqueta= new JLabel("Personal de proyecto:");
 			panel.add(etiqueta,BorderLayout.NORTH);
-			modelo=Controlador.getInstancia().creartablaPersonas("investigador");			
+			modelo=Controlador.getInstancia().creartablaPersonas("Investigador");			
 		    tabla= new JTable(modelo);
 			panel.add(new JScrollPane(tabla), BorderLayout.CENTER);
 			JPanel downPanel= new JPanel();		

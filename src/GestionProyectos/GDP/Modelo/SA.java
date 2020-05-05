@@ -9,7 +9,7 @@ import GestionDeAlmacen.GDA.Modelo.Producto;
 
 public interface SA {
      public void leerdatos();
-     public ModeloTablaPersona creartablaPersonas(String tipo);
+     public ModeloTablaPersona creartablaPersonas(String RolPersona);
 	 public TProyecto BuscarProyecto(String nombreProy);
 	 public boolean liberar(String DNI);
 	 public boolean cambiarproyecto(String DNI, String NombreProy);
