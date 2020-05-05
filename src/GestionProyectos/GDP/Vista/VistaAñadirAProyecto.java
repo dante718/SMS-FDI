@@ -12,10 +12,17 @@ import javax.swing.JPanel;
 import GestionProyectos.GDP.Controlador.Controlador;
 
 public class VistaAñadirAProyecto extends VistaProyectos{
+	private static VistaProyectos instancia=null;
     private JButton añadir, cancelar;
-	public VistaAñadirAProyecto() {
+	private VistaAñadirAProyecto() {
 		initVista();
 		initGUI();
+	}
+	public static VistaProyectos getInstancia() {
+		if(instancia==null) {
+			instancia= new VistaAñadirAProyecto();
+		}
+		return instancia;
 	}
 	private void initGUI() {
 		JPanel SouthPanel = new JPanel();

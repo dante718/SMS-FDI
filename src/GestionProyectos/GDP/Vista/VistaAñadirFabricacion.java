@@ -18,11 +18,17 @@ import GestionProyectos.GDP.Modelo.ModeloTablaPersona;
 
 public class VistaAñadirFabricacion extends VistaProyectos{
 	private JButton fabricacion, cancelar;
-	public VistaAñadirFabricacion() {	
+	private static VistaProyectos instancia=null;
+	private VistaAñadirFabricacion() {	
 		initVista();
 		initGUI();
 	}
-
+	public static VistaProyectos getInstancia() {
+		if(instancia==null) {
+			instancia= new VistaAñadirFabricacion();
+		}
+		return instancia;
+	}
 	private void initGUI() {
 		JPanel SouthPanel = new JPanel();
 		SouthPanel.setLayout(new FlowLayout());

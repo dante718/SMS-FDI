@@ -23,16 +23,21 @@ import GestionProyectos.GDP.Modelo.ModeloTablaPersona;
 
 @SuppressWarnings("serial")
 public class VistaModEstadoInvest extends JFrame{
+	    private static VistaModEstadoInvest instancia=null;
 		private JTable tabla;
 		private ModeloTablaPersona modelo= new ModeloTablaPersona();
 		private JLabel etiqueta;
-		private VistaProyectos vp;
 		private JButton liberar, cambiarproyecto, addinvestigador;
 		private JPanel panel= new JPanel();
-         public VistaModEstadoInvest() {
+        private VistaModEstadoInvest() {
         	  initVista();
-         }
-
+        }
+        public static VistaModEstadoInvest getInstancia() {
+        	if(instancia==null) {
+        		instancia= new VistaModEstadoInvest();
+        	}
+        	return instancia;
+        }
 		private void initVista() {
 			setSize(500, 350);
 			panel.setLayout(new BorderLayout());
@@ -80,10 +85,9 @@ public class VistaModEstadoInvest extends JFrame{
 					}
 					else {
 						String estado= (String) tabla.getValueAt(tabla.getSelectedRow(), 5);
-						if(estado.toLowerCase().equals("no disponible")) {
-							vp= new VistaCambiarProyecto();
-							vp.setDNI((String) tabla.getValueAt(tabla.getSelectedRow(), 0));
-							vp.setVisible(true);
+						if(estado.toLowerCase().equals("no disponible")) {		
+							VistaCambiarProyecto.getInstancia().setDNI((String) tabla.getValueAt(tabla.getSelectedRow(), 0));
+							VistaCambiarProyecto.getInstancia().setVisible(true);
 						}
 						else {
 							JOptionPane.showMessageDialog(null, "Selecciona un investigador que ya esté en un proyecto");
@@ -106,9 +110,8 @@ public class VistaModEstadoInvest extends JFrame{
 					else {
 						String estado= (String) tabla.getValueAt(tabla.getSelectedRow(), 5);
 						if(estado.toLowerCase().equals("disponible")) {
-							vp= new VistaAñadirAProyecto();
-							vp.setDNI((String) tabla.getValueAt(tabla.getSelectedRow(), 0));
-							vp.setVisible(true);
+							VistaAñadirAProyecto.getInstancia().setDNI((String) tabla.getValueAt(tabla.getSelectedRow(), 0));
+							VistaAñadirAProyecto.getInstancia().setVisible(true);
 						}
 						else {
 							JOptionPane.showMessageDialog(null, "Selecciona un investigador que esté libre.");

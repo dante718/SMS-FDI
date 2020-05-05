@@ -16,11 +16,17 @@ import GestionProyectos.GDP.Controlador.Controlador;
 
 public class VistaNuevaVersionDeProyecto extends VistaProyectos{
     private JButton nuevaversion, cancelar;
-	public VistaNuevaVersionDeProyecto() {
+    private static VistaProyectos instancia=null;
+	private VistaNuevaVersionDeProyecto() {
 		initVista();
 		initGUI();
 	}
-
+	public static VistaProyectos getInstancia() {
+		if(instancia==null) {
+			instancia= new VistaNuevaVersionDeProyecto();
+		}
+		return instancia;
+	}
 	private void initGUI() {
 		JPanel SouthPanel = new JPanel();
 		SouthPanel.setLayout(new FlowLayout());
@@ -62,8 +68,6 @@ public class VistaNuevaVersionDeProyecto extends VistaProyectos{
 		SouthPanel.add(cancelar);
 		getPanel().add(SouthPanel, BorderLayout.PAGE_END);
 		getContentPane().add(getPanel());
-		setVisible(true);
-		
 	}
 
 }

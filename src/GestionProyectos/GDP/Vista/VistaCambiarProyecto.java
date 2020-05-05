@@ -13,12 +13,17 @@ import GestionProyectos.GDP.Controlador.Controlador;
 
 public class VistaCambiarProyecto extends VistaProyectos{
     private JButton cambiar, cancelar;
-   
-	public VistaCambiarProyecto() {
+    private static VistaProyectos instancia=null;
+	private VistaCambiarProyecto() {
 		initVista();
 		initGUI();
 	}
-	 	 
+	public static VistaProyectos getInstancia() {
+		if(instancia==null) {
+			instancia= new VistaCambiarProyecto();
+		}
+		return instancia;
+	}	 
 	private void initGUI() {
 		JPanel SouthPanel = new JPanel();
 		SouthPanel.setLayout(new FlowLayout());

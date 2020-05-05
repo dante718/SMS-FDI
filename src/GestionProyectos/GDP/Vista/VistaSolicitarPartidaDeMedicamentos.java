@@ -13,14 +13,18 @@ import GestionProyectos.GDP.Controlador.Controlador;
 
 public class VistaSolicitarPartidaDeMedicamentos extends VistaProyectos{
     private JButton solicitar, cancelar;
-    private VistaFormularioMedicamentos vfm;
-	public VistaSolicitarPartidaDeMedicamentos() {
+    private static VistaProyectos instancia=null;
+	private VistaSolicitarPartidaDeMedicamentos() {
 		initVista();
 		initGUI();
 	}
-
+	public static VistaProyectos getInstancia() {
+		if(instancia==null) {
+			instancia= new VistaSolicitarPartidaDeMedicamentos();
+		}
+		return instancia;
+	}
 	private void initGUI() {
-		vfm= new VistaFormularioMedicamentos();
 		JPanel SouthPanel = new JPanel();
 		SouthPanel.setLayout(new FlowLayout());
 		solicitar=new JButton("Solicitar Partida");
@@ -33,7 +37,7 @@ public class VistaSolicitarPartidaDeMedicamentos extends VistaProyectos{
 					JOptionPane.showMessageDialog(null, "No has seleccionado ningún proyecto.");
 				}
 				else if(getTabla().getValueAt(getTabla().getSelectedRow(), 5).equals("SI")) {
-					vfm.setVisible(true);
+					VistaFormularioMedicamentos.getInstancia().setVisible(true);
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Solo pueden solicitar partida de medicamentos proyectos en fabricacion. ");

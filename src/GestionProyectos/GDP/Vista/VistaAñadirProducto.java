@@ -15,14 +15,20 @@ import GestionDeAlmacen.GDA.Modelo.Producto;
 import GestionProyectos.GDP.Controlador.Controlador;
 
 public class VistaAñadirProducto extends JFrame{
-       private JPanel centerpanel, southpanel;
-       private JButton añadir, cancelar;
-       private JLabel id, cantidad, nombre, precio;
-       private JTextField idtexto, cantexto, nametexto, preciotexto;
-       public VistaAñadirProducto() {	  
-    	   initVista();
-    	  }
-
+	private static VistaAñadirProducto instancia=null;
+     private JPanel centerpanel, southpanel;
+     private JButton añadir, cancelar;
+     private JLabel id, cantidad, nombre, precio;
+     private JTextField idtexto, cantexto, nametexto, preciotexto;
+     private VistaAñadirProducto() {	  
+    	  initVista();
+     }
+     public static VistaAñadirProducto getInstancia() {
+    	 if(instancia==null) {
+    		 instancia= new VistaAñadirProducto();
+    	 }
+    	 return instancia;
+     }
 	private void initVista() {
 		setSize(500,400);
 		getContentPane().setLayout(new BorderLayout());

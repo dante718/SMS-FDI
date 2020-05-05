@@ -16,15 +16,12 @@ import javax.swing.JTable;
 import GestionProyectos.GDP.Controlador.Controlador;
 import GestionProyectos.GDP.Modelo.ModeloTablaProyectos;
 
-public class VistaProyectos extends JFrame{
+public abstract class VistaProyectos extends JFrame{
 		private JTable tabla;
 		private String DNISeleccionado;
 		private ModeloTablaProyectos modelo= new ModeloTablaProyectos();
 		private JLabel etiqueta;
 		private JPanel panel= new JPanel();
-        public VistaProyectos() {	
-        	initVista();
-        }
         public void setDNI(String DNI) {
          	this.DNISeleccionado=DNI;
          }
@@ -51,4 +48,5 @@ public class VistaProyectos extends JFrame{
         public ModeloTablaProyectos getModelo() {
         	return modelo;
         }
+       
 }

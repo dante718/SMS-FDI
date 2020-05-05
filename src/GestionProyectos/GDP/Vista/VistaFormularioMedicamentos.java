@@ -14,16 +14,22 @@ import GestionDeAlmacen.GDA.Modelo.Pedido;
 import GestionProyectos.GDP.Controlador.Controlador;
 
 public class VistaFormularioMedicamentos extends JFrame{
+	  private static VistaFormularioMedicamentos instancia=null;
       private JPanel panel = new JPanel();
       private JButton addproducto, enviarpedido, cancelar;
       private JLabel idpedido;
       private JTextField fieldpedido;
-      private VistaAñadirProducto vap;
-      public VistaFormularioMedicamentos() {    	  
+      private VistaFormularioMedicamentos() {    	  
     	  initVista();
       }
-	private void initVista() {
-		vap= new VistaAñadirProducto();
+      public static VistaFormularioMedicamentos getInstancia() {
+  		if(instancia==null) {
+  			instancia= new VistaFormularioMedicamentos();
+  		}
+  		return instancia;
+  	}
+      
+	  private void initVista() {
 		setSize(500, 250);
 		panel.setLayout(null);
 		idpedido= new JLabel("Introduce id de pedido: ");
@@ -35,10 +41,9 @@ public class VistaFormularioMedicamentos extends JFrame{
 		addproducto= new JButton("Añadir Producto");
 		addproducto.setBounds(210, 100, 150, 40);
 		addproducto.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				vap.setVisible(true);	
+				VistaAñadirProducto.getInstancia().setVisible(true);	
 			}
 			
 		});

@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import GestionProyectos.GDP.Controlador.Controlador;
 import GestionProyectos.GDP.Modelo.ModeloTablaPersona;
 import GestionProyectos.GDP.Modelo.TPersona;
 
@@ -26,20 +26,27 @@ import javax.swing.table.TableModel;
 
 @SuppressWarnings("serial")
 public class VistaAddInvestigador extends JFrame{
+	 private static VistaAddInvestigador instancia=null;
 	 private ModeloTablaPersona modelo;
 	 private JTable tabla;
 	 private int contador;
 	 private JPanel panel= new JPanel();
-	 private VistaCrearProyecto vp;
-     public VistaAddInvestigador(ModeloTablaPersona modelo, VistaCrearProyecto vp) {
-    	 this.vp=vp;
-    	 contador=vp.getParticipantes().size();
-    	 this.modelo=modelo;
+     private VistaAddInvestigador() {
+    	 TableModel modelo=new ModeloTablaPersona();
+ 		 modelo=Controlador.getInstancia().creartablaPersonas("investigador");
+    	 contador=VistaCrearProyecto.getInstancia().getParticipantes().size();
+    	 this.modelo=(ModeloTablaPersona) modelo;
     	 this.tabla= new JTable(this.modelo);
-    	 iniciarVentana();
+    	 initVista();
      }
-
-	private void iniciarVentana() {
+     public static VistaAddInvestigador getInstancia() {
+    	 if(instancia==null) {
+    		 instancia= new VistaAddInvestigador();
+    	 }
+    	 return instancia;
+     }
+     
+	private void initVista() {
 		setTitle("Investigadores Disponibles");
 		setSize(500,300);
 		panel.setLayout(new BorderLayout());
@@ -92,7 +99,7 @@ public class VistaAddInvestigador extends JFrame{
         	while(i<modelo.getPersonas().size() && !find) {
         		if(DNI.equals(modelo.getPersonas().get(i).getDNI())) {
         			find=true;
-        			vp.addPersona(new TPersona(modelo.getPersonas().get(i).getDNI(),modelo.getPersonas().get(i).getNombre(), modelo.getPersonas().get(i).getApellido1(),modelo.getPersonas().get(i).getApellido2(), modelo.getPersonas().get(i).getProfesion(), modelo.getPersonas().get(i).getEstado(), modelo.getPersonas().get(i).getRol()));
+        			VistaCrearProyecto.getInstancia().addPersona(new TPersona(modelo.getPersonas().get(i).getDNI(),modelo.getPersonas().get(i).getNombre(), modelo.getPersonas().get(i).getApellido1(),modelo.getPersonas().get(i).getApellido2(), modelo.getPersonas().get(i).getProfesion(), modelo.getPersonas().get(i).getEstado(), modelo.getPersonas().get(i).getRol()));
         			modelo.getPersonas().remove(i);
         			modelo.fireTableDataChanged();
         		}

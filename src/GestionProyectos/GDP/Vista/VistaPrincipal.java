@@ -45,7 +45,7 @@ public class VistaPrincipal extends JFrame{
         cp.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaCrearProyecto cp= new VistaCrearProyecto();	
+				VistaCrearProyecto.getInstancia().setVisible(true);
 			}
         	
         });
@@ -56,7 +56,7 @@ public class VistaPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaModEstadoInvest mei= new VistaModEstadoInvest();
+				VistaModEstadoInvest.getInstancia().setVisible(true);
 			}
 	    	
 	    });
@@ -67,7 +67,7 @@ public class VistaPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaProyectos vp= new VistaNuevaVersionDeProyecto();
+				VistaNuevaVersionDeProyecto.getInstancia().setVisible(true);
 			}
 	    	
 	    });
@@ -78,8 +78,7 @@ public class VistaPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaProyectos vp= new VistaAñadirFabricacion();
-				
+				VistaAñadirFabricacion.getInstancia().setVisible(true);			
 			}
 	    	
 	    });
@@ -89,8 +88,7 @@ public class VistaPrincipal extends JFrame{
 	    spm.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaProyectos vp= new VistaSolicitarPartidaDeMedicamentos();
-				
+				VistaSolicitarPartidaDeMedicamentos.getInstancia().setVisible(true);
 			}
 	    	
 	    });

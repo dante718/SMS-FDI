@@ -28,18 +28,25 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 
 public class VistaCrearProyecto extends JFrame {
+	private static VistaCrearProyecto instancia=null;
     private List<TPersona> participantes= new ArrayList<TPersona>();
     private JLabel etiqueta1 , etiqueta2, etiqueta3, etiqueta4, etiqueta5;
     private JTextField texto1;
-    private VistaAddTrabajador vt;
-    private VistaAddInvestigador vi;
     private JTextArea texto2;
     private JButton boton1, boton2, boton3;
     private JPanel panel=new JPanel();
-	public VistaCrearProyecto() {
-		addcomponentes();
+	private VistaCrearProyecto() {
+		initVista();
 	}
-	private void addcomponentes() {
+	
+	public static VistaCrearProyecto getInstancia() {
+		if(instancia==null) {
+			instancia= new VistaCrearProyecto();
+		}
+		return instancia;
+	}
+	
+	private void initVista() {
 		setTitle("Crear Proyecto");
 		setSize(500,350);
 		panel.setLayout(null);
@@ -77,7 +84,7 @@ public class VistaCrearProyecto extends JFrame {
 		boton1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				vi.setVisible(true);
+				VistaAddInvestigador.getInstancia().setVisible(true);
 			}
 			
 		});
@@ -88,7 +95,7 @@ public class VistaCrearProyecto extends JFrame {
 		boton2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				vt.setVisible(true);
+				VistaAddTrabajador.getInstancia().setVisible(true);
 			}		
 		});
 		panel.add(boton2);
@@ -120,18 +127,10 @@ public class VistaCrearProyecto extends JFrame {
 				}
 			}		
 		});
-		TableModel modelo1=new ModeloTablaPersona();
-		modelo1=Controlador.getInstancia().creartablaPersonas("investigador");
-		vi= new VistaAddInvestigador((ModeloTablaPersona) modelo1, this);
-		TableModel modelo2=new ModeloTablaPersona();
-		modelo2=Controlador.getInstancia().creartablaPersonas("trabajador");
-		vt= new VistaAddTrabajador((ModeloTablaPersona) modelo2, this);
 		panel.add(boton3);
 		getContentPane().add(panel);
-		setVisible(true);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);		
 	}
 	public void cerrar() {
 		dispose();
