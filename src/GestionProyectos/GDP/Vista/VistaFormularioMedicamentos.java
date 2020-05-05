@@ -14,18 +14,16 @@ import GestionDeAlmacen.GDA.Modelo.Pedido;
 import GestionProyectos.GDP.Controlador.Controlador;
 
 public class VistaFormularioMedicamentos extends JFrame{
-      private Controlador controlador;
       private JPanel panel = new JPanel();
       private JButton addproducto, enviarpedido, cancelar;
       private JLabel idpedido;
       private JTextField fieldpedido;
       private VistaAñadirProducto vap;
-      public VistaFormularioMedicamentos(Controlador controlador) {
-    	  this.controlador= controlador;
+      public VistaFormularioMedicamentos() {    	  
     	  initVista();
       }
 	private void initVista() {
-		vap= new VistaAñadirProducto(controlador);
+		vap= new VistaAñadirProducto();
 		setSize(500, 250);
 		panel.setLayout(null);
 		idpedido= new JLabel("Introduce id de pedido: ");
@@ -53,13 +51,13 @@ public class VistaFormularioMedicamentos extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(!fieldpedido.getText().equals("")) {
-					if(controlador.getTamProductos()==0) {
+					if(Controlador.getInstancia().getTamProductos()==0) {
 						JOptionPane.showMessageDialog(null, "El pedido debe tener al menos un producto añadido. ");
 					}
 					else{
 						try {
-							Pedido pedido= new Pedido(Integer.parseInt(fieldpedido.getText()), controlador.getProductos());
-							controlador.reinicarpedido();
+							Pedido pedido= new Pedido(Integer.parseInt(fieldpedido.getText()), Controlador.getInstancia().getProductos());
+							Controlador.getInstancia().reinicarpedido();
 							JOptionPane.showMessageDialog(null, "Pedido realizado con éxito. ");
 						}catch(NumberFormatException e1) {
 							throw new IllegalArgumentException("El id ha de ser un valor entero. ");
@@ -87,7 +85,7 @@ public class VistaFormularioMedicamentos extends JFrame{
 		cancelar.setBounds(270, 160, 120, 40);
 		panel.add(cancelar);
 		getContentPane().add(panel);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 	}
 }

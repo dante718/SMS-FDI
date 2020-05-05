@@ -15,13 +15,11 @@ import GestionDeAlmacen.GDA.Modelo.Producto;
 import GestionProyectos.GDP.Controlador.Controlador;
 
 public class VistaAñadirProducto extends JFrame{
-       private Controlador controlador;
        private JPanel centerpanel, southpanel;
        private JButton añadir, cancelar;
        private JLabel id, cantidad, nombre, precio;
        private JTextField idtexto, cantexto, nametexto, preciotexto;
-       public VistaAñadirProducto(Controlador controlador) {
-    	   this.controlador=controlador;
+       public VistaAñadirProducto() {	  
     	   initVista();
     	  }
 
@@ -67,7 +65,7 @@ public class VistaAñadirProducto extends JFrame{
 				if(!idtexto.getText().equals("") && !nametexto.getText().equals("") && !cantexto.getText().equals("") && !preciotexto.getText().equals("")) {
 					try {
 						Producto producto= new Producto(Integer.parseInt(idtexto.getText()),nametexto.getText(),Integer.parseInt(cantexto.getText()), Double.parseDouble(preciotexto.getText()));
-						if(controlador.Addproducto(producto)) {
+						if(Controlador.getInstancia().Addproducto(producto)) {
 							idtexto.setText("");
 							nametexto.setText("");
 							cantexto.setText("");
@@ -101,7 +99,7 @@ public class VistaAñadirProducto extends JFrame{
 		southpanel.add(cancelar);
 		
 		getContentPane().add(southpanel, BorderLayout.PAGE_END);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 	}
 	

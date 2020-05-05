@@ -13,8 +13,7 @@ import GestionProyectos.GDP.Controlador.Controlador;
 
 public class VistaAñadirAProyecto extends VistaProyectos{
     private JButton añadir, cancelar;
-	public VistaAñadirAProyecto(Controlador controlador) {
-		super(controlador);
+	public VistaAñadirAProyecto() {
 		initVista();
 		initGUI();
 	}
@@ -32,7 +31,7 @@ public class VistaAñadirAProyecto extends VistaProyectos{
 				}
 				else {
 					String NombreProy= (String) getTabla().getValueAt(getTabla().getSelectedRow(), 0);
-					getControlador().añadiraproyecto(getDNISeleccionado(), NombreProy);
+					Controlador.getInstancia().añadiraproyecto(getDNISeleccionado(), NombreProy);
 					JOptionPane.showMessageDialog(null, "Investigador añadido a "+NombreProy);
 					dispose();
 				}

@@ -16,18 +16,26 @@ import GestionProyectos.GDP.Modelo.TProyecto;
 
 
 public class Controlador {
-    private SA sa;
-	public Controlador() {
-		sa= new SAImp();
+	private static Controlador instancia=null;
+	private Controlador() {
+		
 		leerdatos();
 	}
+	
+	public static Controlador getInstancia() {
+		if(instancia==null) {
+			instancia= new Controlador();
+		}
+		return instancia;
+	}
+	
 	public ModeloTablaPersona creartablaPersonas(String tipo) {
 	 if(!tipo.toLowerCase().contentEquals("investigador") && !tipo.toLowerCase().contentEquals("trabajador") && !tipo.toLowerCase().contentEquals("participantes")) {
 		 JOptionPane.showMessageDialog(null, "El rol de persona no es valido");
 		 return null;
 	 }
 	 else {
-		 ModeloTablaPersona Ta= sa.creartablaPersonas(tipo);
+		 ModeloTablaPersona Ta= SAImp.getInstancia().creartablaPersonas(tipo);
 		  if(Ta!=null) {
 			  return Ta;
 		  }
@@ -35,7 +43,7 @@ public class Controlador {
 		}
 	 }
 	public ModeloTablaProyectos crearTablaProyectos() {
-		ModeloTablaProyectos Tp= sa.creartablaProyectos();
+		ModeloTablaProyectos Tp= SAImp.getInstancia().creartablaProyectos();
 		return Tp;
 	}
 	public boolean AddProyecto(TProyecto proyecto) {
@@ -45,51 +53,51 @@ public class Controlador {
 			return false;
 		}
 		else {
-			sa.AddProyecto(proyecto); 
+			SAImp.getInstancia().AddProyecto(proyecto); 
 			JOptionPane.showMessageDialog(null, "Proyecto añadido con exito");
 			return true;
 		} 
 	}
 	public TProyecto BuscarProyecto(String NombreProy) {
-		return sa.BuscarProyecto(NombreProy);
+		return SAImp.getInstancia().BuscarProyecto(NombreProy);
 	}
 	public void leerdatos() {
-		sa.leerdatos();
+		SAImp.getInstancia().leerdatos();
 	}
 	public boolean liberar(String DNI) {
-		return sa.liberar(DNI);
+		return SAImp.getInstancia().liberar(DNI);
 	}
 	public boolean cambiarproyecto(String DNI, String NombreProy) {
-		return sa.cambiarproyecto(DNI, NombreProy);
+		return SAImp.getInstancia().cambiarproyecto(DNI, NombreProy);
 	}
 	public void añadiraproyecto(String DNI, String NombreProy) {
-		sa.añadiraproyecto(DNI, NombreProy);
+		SAImp.getInstancia().añadiraproyecto(DNI, NombreProy);
 	}
 	public boolean compararfechas(String fechaAntigua) {
-		return sa.compararfechas(fechaAntigua);
+		return SAImp.getInstancia().compararfechas(fechaAntigua);
 	}
 	public void GenerarNuevaVersion(String NombreProy) {
-		sa.GenerarNuevaVersion(NombreProy);
+		SAImp.getInstancia().GenerarNuevaVersion(NombreProy);
 	}
 	public boolean pasarafabricacion(String NombreProy) {
-		return sa.pasarafabricacion(NombreProy);
+		return SAImp.getInstancia().pasarafabricacion(NombreProy);
 	}
 	public ModeloTablaPersona tablapersonaldeproyecto(String NombreProy) {
-		return sa.tablapersonaldeproyecto(NombreProy);
+		return SAImp.getInstancia().tablapersonaldeproyecto(NombreProy);
 	}
 	public void ponerenfabricacion(String nombreProy) {
-		sa.ponerenfabricacion(nombreProy);
+		SAImp.getInstancia().ponerenfabricacion(nombreProy);
 	}
 	public boolean Addproducto(Producto producto) {
-		return sa.addProducto(producto);
+		return SAImp.getInstancia().addProducto(producto);
 	}
 	public Producto[] getProductos() {
-		return sa.getProductos();
+		return SAImp.getInstancia().getProductos();
 	}
 	public int getTamProductos() {
-		return sa.getTamProductos();
+		return SAImp.getInstancia().getTamProductos();
 	}
 	public void reinicarpedido() {
-		sa.reiniciarpedido();
+		SAImp.getInstancia().reiniciarpedido();
 	}
 }

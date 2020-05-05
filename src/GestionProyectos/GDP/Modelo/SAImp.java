@@ -13,21 +13,26 @@ import GestionDeAlmacen.GDA.Modelo.Producto;
 
 
 public class SAImp implements SA{
+	private static SA instancia= null;
     private Producto[] productos;
-    private int contadordeproductos=0;
-    private DAOPersona daopersona;
-    private DAOProyecto daoproyecto;
-    public SAImp() {
-    	daopersona= new DAOPersonaImp();
-    	daoproyecto= new DAOProyectoImp();
+    private int contadordeproductos=0;  
+    private SAImp() {   	
     	productos= new Producto[1000];
     }
+    
+    public static SA getInstancia() {
+    	if(instancia==null) {
+    		instancia= new SAImp();
+    	}
+    	return instancia;
+    }
+    
 	@Override
 	public ModeloTablaPersona creartablaPersonas(String tipo)  {
 
 		ModeloTablaPersona TA= null;
 		
-	    TA = daopersona.creartablaPersonas(tipo);
+	    TA = DAOPersonaImp.getInstancia().creartablaPersonas(tipo);
 			
 		if(TA!=null) {
 			return TA;
@@ -37,23 +42,23 @@ public class SAImp implements SA{
 
 	@Override
 	public TProyecto BuscarProyecto(String nombreProy) {		
-		return daoproyecto.getProyecto(nombreProy);
+		return DAOProyectoImp.getInstancia().getProyecto(nombreProy);
 	}
 
 	@Override
 	public void AddProyecto(TProyecto proyecto) {
-		daopersona.AddProyecto(proyecto);
-		daoproyecto.AddProyecto(proyecto);
+		DAOPersonaImp.getInstancia().AddProyecto(proyecto);
+		DAOProyectoImp.getInstancia().AddProyecto(proyecto);
 	}
 	@Override
 	public void leerdatos() {
-		daopersona.leerPersonas();	
-		daoproyecto.leerProyectos();
+		DAOPersonaImp.getInstancia().leerPersonas();	
+		DAOProyectoImp.getInstancia().leerProyectos();
 	}
 	@Override
 	public boolean liberar(String DNI) {
-		if(daoproyecto.LiberarPersonadeProyecto(DNI)) {
-			daopersona.LiberarPersonadeProyecto(DNI);
+		if(DAOProyectoImp.getInstancia().LiberarPersonadeProyecto(DNI)) {
+			DAOPersonaImp.getInstancia().LiberarPersonadeProyecto(DNI);
 			return true;
 		}
 		else {
@@ -62,15 +67,15 @@ public class SAImp implements SA{
 	}
 	@Override
 	public ModeloTablaProyectos creartablaProyectos() {
-		ModeloTablaProyectos Tp= daoproyecto.creartablaProyectos();
+		ModeloTablaProyectos Tp= DAOProyectoImp.getInstancia().creartablaProyectos();
 		return Tp;
 	}
 	public boolean cambiarproyecto(String DNI, String NombreProy) {
-		return daoproyecto.cambiarproyecto(DNI, NombreProy);
+		return DAOProyectoImp.getInstancia().cambiarproyecto(DNI, NombreProy);
 	}
 	public void añadiraproyecto(String DNI, String NombreProy) {
-		daoproyecto.añadirpersona(DNI, NombreProy);
-		daopersona.AddProyecto(daoproyecto.getProyecto(NombreProy));
+		DAOProyectoImp.getInstancia().añadirpersona(DNI, NombreProy);
+		DAOPersonaImp.getInstancia().AddProyecto(DAOProyectoImp.getInstancia().getProyecto(NombreProy));
 	}
 	@Override
 	public boolean compararfechas(String fechaAntigua) {
@@ -102,22 +107,22 @@ public class SAImp implements SA{
 	}
 	@Override
 	public void GenerarNuevaVersion(String NombreProy) {
-		daoproyecto.GenerarNuevaVersion(NombreProy);
+		DAOProyectoImp.getInstancia().GenerarNuevaVersion(NombreProy);
 		
 	}
 	@Override
 	public boolean pasarafabricacion(String NombreProy) {
 		
-		return daoproyecto.pasarafabricacion(NombreProy);
+		return DAOProyectoImp.getInstancia().pasarafabricacion(NombreProy);
 	}
 	@Override
 	public ModeloTablaPersona tablapersonaldeproyecto(String NombreProy) {
-		List<String> DNIs= daoproyecto.getParticipantesProyecto(NombreProy);
-		return daopersona.creartablapersonaldeproyecto(DNIs);
+		List<String> DNIs= DAOProyectoImp.getInstancia().getParticipantesProyecto(NombreProy);
+		return DAOPersonaImp.getInstancia().creartablapersonaldeproyecto(DNIs);
 	}
 	@Override
 	public void ponerenfabricacion(String nombreProy) {
-		daoproyecto.ponerenfabricacion(nombreProy);
+		DAOProyectoImp.getInstancia().ponerenfabricacion(nombreProy);
 	
 	}
 	@Override

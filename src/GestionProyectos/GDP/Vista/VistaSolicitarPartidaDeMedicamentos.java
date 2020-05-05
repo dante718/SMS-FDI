@@ -14,14 +14,13 @@ import GestionProyectos.GDP.Controlador.Controlador;
 public class VistaSolicitarPartidaDeMedicamentos extends VistaProyectos{
     private JButton solicitar, cancelar;
     private VistaFormularioMedicamentos vfm;
-	public VistaSolicitarPartidaDeMedicamentos(Controlador controlador) {
-		super(controlador);
+	public VistaSolicitarPartidaDeMedicamentos() {
 		initVista();
 		initGUI();
 	}
 
 	private void initGUI() {
-		vfm= new VistaFormularioMedicamentos(getControlador());
+		vfm= new VistaFormularioMedicamentos();
 		JPanel SouthPanel = new JPanel();
 		SouthPanel.setLayout(new FlowLayout());
 		solicitar=new JButton("Solicitar Partida");

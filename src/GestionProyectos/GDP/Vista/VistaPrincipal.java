@@ -16,14 +16,22 @@ import javax.swing.JPanel;
 import GestionProyectos.GDP.Controlador.Controlador;
 
 public class VistaPrincipal extends JFrame{
-	private Controlador controlador= new Controlador();
+	private static VistaPrincipal instancia=null;
 	private JLabel titulo ;
 	private JButton cp, mei, cvd, cef,spm; 
 	private JPanel panel= new JPanel();
-     public VistaPrincipal() {
+    private VistaPrincipal() {
     	 initVista();
-     }
-
+    }
+    
+    public static VistaPrincipal getInstancia() {
+    	if(instancia==null) {
+    		instancia= new VistaPrincipal();
+    	}
+    	return instancia;
+    }
+    
+    
 	private void initVista() {
 		setSize(700,700);
 		panel.setLayout(null);
@@ -37,7 +45,7 @@ public class VistaPrincipal extends JFrame{
         cp.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaCrearProyecto cp= new VistaCrearProyecto(controlador);	
+				VistaCrearProyecto cp= new VistaCrearProyecto();	
 			}
         	
         });
@@ -48,7 +56,7 @@ public class VistaPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaModEstadoInvest mei= new VistaModEstadoInvest(controlador);
+				VistaModEstadoInvest mei= new VistaModEstadoInvest();
 			}
 	    	
 	    });
@@ -59,7 +67,7 @@ public class VistaPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaProyectos vp= new VistaNuevaVersionDeProyecto(controlador);
+				VistaProyectos vp= new VistaNuevaVersionDeProyecto();
 			}
 	    	
 	    });
@@ -70,7 +78,7 @@ public class VistaPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaProyectos vp= new VistaAñadirFabricacion(controlador);
+				VistaProyectos vp= new VistaAñadirFabricacion();
 				
 			}
 	    	
@@ -79,10 +87,9 @@ public class VistaPrincipal extends JFrame{
 	    spm=new JButton("Solicitar Partida de Medicamentos");
 	    spm.setBounds(250, 550, 250, 30);
 	    spm.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaProyectos vp= new VistaSolicitarPartidaDeMedicamentos(controlador);
+				VistaProyectos vp= new VistaSolicitarPartidaDeMedicamentos();
 				
 			}
 	    	
@@ -91,8 +98,7 @@ public class VistaPrincipal extends JFrame{
 		panel.setBackground(Color.CYAN);
 		
 		this.getContentPane().add(panel);
-        setVisible(true);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 }

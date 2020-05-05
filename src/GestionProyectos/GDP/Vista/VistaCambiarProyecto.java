@@ -14,14 +14,11 @@ import GestionProyectos.GDP.Controlador.Controlador;
 public class VistaCambiarProyecto extends VistaProyectos{
     private JButton cambiar, cancelar;
    
-	public VistaCambiarProyecto(Controlador controlador) {
-		super(controlador);
+	public VistaCambiarProyecto() {
 		initVista();
 		initGUI();
 	}
-	
-	 
-	 
+	 	 
 	private void initGUI() {
 		JPanel SouthPanel = new JPanel();
 		SouthPanel.setLayout(new FlowLayout());
@@ -37,7 +34,7 @@ public class VistaCambiarProyecto extends VistaProyectos{
 				}
 				else {
 					String NombreProy= (String) getTabla().getValueAt(getTabla().getSelectedRow(), 0);
-					if(getControlador().cambiarproyecto(getDNISeleccionado(), NombreProy)) {
+					if(Controlador.getInstancia().cambiarproyecto(getDNISeleccionado(), NombreProy)) {
 						JOptionPane.showMessageDialog(null, "Investigador cambiado de proyecto.");
 						dispose();
 					}

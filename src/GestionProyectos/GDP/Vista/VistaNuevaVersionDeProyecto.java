@@ -16,8 +16,7 @@ import GestionProyectos.GDP.Controlador.Controlador;
 
 public class VistaNuevaVersionDeProyecto extends VistaProyectos{
     private JButton nuevaversion, cancelar;
-	public VistaNuevaVersionDeProyecto(Controlador controlador) {
-		super(controlador);
+	public VistaNuevaVersionDeProyecto() {
 		initVista();
 		initGUI();
 	}
@@ -35,8 +34,8 @@ public class VistaNuevaVersionDeProyecto extends VistaProyectos{
 					JOptionPane.showMessageDialog(null, "No has seleccionado ningún proyecto.");
 				}
 				else {
-				if(getControlador().compararfechas((String) getTabla().getValueAt(getTabla().getSelectedRow(), 4))) {
-						getControlador().GenerarNuevaVersion((String) getTabla().getValueAt(getTabla().getSelectedRow(), 0));
+				if(Controlador.getInstancia().compararfechas((String) getTabla().getValueAt(getTabla().getSelectedRow(), 4))) {
+					    Controlador.getInstancia().GenerarNuevaVersion((String) getTabla().getValueAt(getTabla().getSelectedRow(), 0));
 						JOptionPane.showMessageDialog(null, "Nueva Versión Generada Correctamente. ");
 						dispose();
 					}

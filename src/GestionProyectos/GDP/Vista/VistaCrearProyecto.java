@@ -28,7 +28,6 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 
 public class VistaCrearProyecto extends JFrame {
-    private Controlador controlador;
     private List<TPersona> participantes= new ArrayList<TPersona>();
     private JLabel etiqueta1 , etiqueta2, etiqueta3, etiqueta4, etiqueta5;
     private JTextField texto1;
@@ -37,8 +36,7 @@ public class VistaCrearProyecto extends JFrame {
     private JTextArea texto2;
     private JButton boton1, boton2, boton3;
     private JPanel panel=new JPanel();
-	public VistaCrearProyecto(Controlador controlador) {
-		this.controlador=controlador;
+	public VistaCrearProyecto() {
 		addcomponentes();
 	}
 	private void addcomponentes() {
@@ -116,23 +114,23 @@ public class VistaCrearProyecto extends JFrame {
 					Date date= new Date();
 					SimpleDateFormat sdf= new SimpleDateFormat("dd/MM/yyyy");
 					String fecha= sdf.format(date);
-					if(controlador.AddProyecto(new TProyecto(texto1.getText(), texto2.getText(), personal,  "Version "+ 1,fecha, "NO"))) {
+					if(Controlador.getInstancia().AddProyecto(new TProyecto(texto1.getText(), texto2.getText(), personal,  "Version "+ 1,fecha, "NO"))) {
 						cerrar();
 					}				
 				}
 			}		
 		});
 		TableModel modelo1=new ModeloTablaPersona();
-		modelo1=controlador.creartablaPersonas("investigador");
+		modelo1=Controlador.getInstancia().creartablaPersonas("investigador");
 		vi= new VistaAddInvestigador((ModeloTablaPersona) modelo1, this);
 		TableModel modelo2=new ModeloTablaPersona();
-		modelo2=controlador.creartablaPersonas("trabajador");
+		modelo2=Controlador.getInstancia().creartablaPersonas("trabajador");
 		vt= new VistaAddTrabajador((ModeloTablaPersona) modelo2, this);
 		panel.add(boton3);
 		getContentPane().add(panel);
 		setVisible(true);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 	}
 	public void cerrar() {

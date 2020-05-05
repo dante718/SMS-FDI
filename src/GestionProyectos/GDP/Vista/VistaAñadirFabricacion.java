@@ -18,8 +18,7 @@ import GestionProyectos.GDP.Modelo.ModeloTablaPersona;
 
 public class VistaAñadirFabricacion extends VistaProyectos{
 	private JButton fabricacion, cancelar;
-	public VistaAñadirFabricacion(Controlador controlador) {
-		super(controlador);
+	public VistaAñadirFabricacion() {	
 		initVista();
 		initGUI();
 	}
@@ -40,7 +39,7 @@ public class VistaAñadirFabricacion extends VistaProyectos{
 					JOptionPane.showMessageDialog(null, "Selecciona un proyecto que no esté ya en fabricacion. ");
 				}
 				else {
-				   if(getControlador().pasarafabricacion((String) getTabla().getValueAt(getTabla().getSelectedRow(), 0))) {
+				   if(Controlador.getInstancia().pasarafabricacion((String) getTabla().getValueAt(getTabla().getSelectedRow(), 0))) {
 					   crearTablaTrabajadores((String) getTabla().getValueAt(getTabla().getSelectedRow(), 0));
 				   }
 				   else {
@@ -59,7 +58,7 @@ public class VistaAñadirFabricacion extends VistaProyectos{
 				JPanel PANEL= new JPanel();
 				PANEL.setLayout(new BorderLayout());
 				PANEL.add(etiqueta, BorderLayout.PAGE_START);
-				ModeloTablaPersona modelo= getControlador().tablapersonaldeproyecto(NombreProy);
+				ModeloTablaPersona modelo= Controlador.getInstancia().tablapersonaldeproyecto(NombreProy);
 				JTable tabla= new JTable(modelo);
 				
 				
@@ -81,7 +80,7 @@ public class VistaAñadirFabricacion extends VistaProyectos{
 							modelo.getPersonas().remove(tabla.getSelectedRow());
 							modelo.actualizar();
 							if(modelo.getPersonas().size()==0) {
-								getControlador().ponerenfabricacion(NombreProy);
+								Controlador.getInstancia().ponerenfabricacion(NombreProy);
 								dialog.dispose();
 							}
 						}
@@ -100,7 +99,7 @@ public class VistaAñadirFabricacion extends VistaProyectos{
 							JOptionPane.showMessageDialog(null, "No has seleccionado ningún participante del proyecto.");
 						}
 						else {
-							getControlador().liberar((String) tabla.getValueAt(tabla.getSelectedRow(), 0));
+							Controlador.getInstancia().liberar((String) tabla.getValueAt(tabla.getSelectedRow(), 0));
 							modelo.getPersonas().remove(tabla.getSelectedRow());
 							modelo.actualizar();
 							if(modelo.getPersonas().size()==0) {

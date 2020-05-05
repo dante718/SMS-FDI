@@ -23,15 +23,13 @@ import GestionProyectos.GDP.Modelo.ModeloTablaPersona;
 
 @SuppressWarnings("serial")
 public class VistaModEstadoInvest extends JFrame{
-		private Controlador	controlador;
 		private JTable tabla;
 		private ModeloTablaPersona modelo= new ModeloTablaPersona();
 		private JLabel etiqueta;
 		private VistaProyectos vp;
 		private JButton liberar, cambiarproyecto, addinvestigador;
 		private JPanel panel= new JPanel();
-         public VistaModEstadoInvest(Controlador controlador) {
-        	  this.controlador= controlador;
+         public VistaModEstadoInvest() {
         	  initVista();
          }
 
@@ -40,7 +38,7 @@ public class VistaModEstadoInvest extends JFrame{
 			panel.setLayout(new BorderLayout());
 			etiqueta= new JLabel("Personal de proyecto:");
 			panel.add(etiqueta,BorderLayout.NORTH);
-			modelo=controlador.creartablaPersonas("investigador");			
+			modelo=Controlador.getInstancia().creartablaPersonas("investigador");			
 		    tabla= new JTable(modelo);
 			panel.add(new JScrollPane(tabla), BorderLayout.CENTER);
 			JPanel downPanel= new JPanel();		
@@ -59,7 +57,7 @@ public class VistaModEstadoInvest extends JFrame{
 							JOptionPane.showMessageDialog(null, "Selecciona un investigador que esté en proyecto.");
 						}
 						else if(tabla.getSelectedRow()!=-1) {
-							if(controlador.liberar((String) tabla.getValueAt(tabla.getSelectedRow(), 0))) {
+							if(Controlador.getInstancia().liberar((String) tabla.getValueAt(tabla.getSelectedRow(), 0))) {
 								modelo.actualizar();
 							}
 							else {
@@ -83,7 +81,7 @@ public class VistaModEstadoInvest extends JFrame{
 					else {
 						String estado= (String) tabla.getValueAt(tabla.getSelectedRow(), 5);
 						if(estado.toLowerCase().equals("no disponible")) {
-							vp= new VistaCambiarProyecto(controlador);
+							vp= new VistaCambiarProyecto();
 							vp.setDNI((String) tabla.getValueAt(tabla.getSelectedRow(), 0));
 							vp.setVisible(true);
 						}
@@ -108,7 +106,7 @@ public class VistaModEstadoInvest extends JFrame{
 					else {
 						String estado= (String) tabla.getValueAt(tabla.getSelectedRow(), 5);
 						if(estado.toLowerCase().equals("disponible")) {
-							vp= new VistaAñadirAProyecto(controlador);
+							vp= new VistaAñadirAProyecto();
 							vp.setDNI((String) tabla.getValueAt(tabla.getSelectedRow(), 0));
 							vp.setVisible(true);
 						}
@@ -127,6 +125,6 @@ public class VistaModEstadoInvest extends JFrame{
 			this.getContentPane().add(panel);
 			setVisible(true);
 			setLocationRelativeTo(null);
-			setDefaultCloseOperation(EXIT_ON_CLOSE);
+			setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		}
 }

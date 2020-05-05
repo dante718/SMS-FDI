@@ -16,11 +16,16 @@ import java.util.List;
 
 public class DAOPersonaImp implements DAOPersona{
 	private List<TPersona> personas;
-	
+	private static DAOPersona instancia=null;
     public DAOPersonaImp() {
     	personas= new ArrayList<TPersona>();
     }
-
+    public static DAOPersona getInstancia() {
+    	if(instancia==null) {
+    		instancia= new DAOPersonaImp();
+    	}
+    	return instancia;
+    }
 	public void leerPersonas() {
     	 try {
          	BufferedReader read= new BufferedReader(new FileReader(new File("src/BaseDatos/Personas.txt")));

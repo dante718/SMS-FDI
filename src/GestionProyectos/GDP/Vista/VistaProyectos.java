@@ -17,14 +17,12 @@ import GestionProyectos.GDP.Controlador.Controlador;
 import GestionProyectos.GDP.Modelo.ModeloTablaProyectos;
 
 public class VistaProyectos extends JFrame{
-		private Controlador controlador;
 		private JTable tabla;
 		private String DNISeleccionado;
 		private ModeloTablaProyectos modelo= new ModeloTablaProyectos();
 		private JLabel etiqueta;
 		private JPanel panel= new JPanel();
-        public VistaProyectos(Controlador controlador) {
-        	this.controlador=controlador;
+        public VistaProyectos() {	
         	initVista();
         }
         public void setDNI(String DNI) {
@@ -35,20 +33,17 @@ public class VistaProyectos extends JFrame{
 			panel.setLayout(new BorderLayout());
 			etiqueta= new JLabel("Proyectos:");
 			panel.add(etiqueta,BorderLayout.PAGE_START);
-			modelo=controlador.crearTablaProyectos();			
+			modelo=Controlador.getInstancia().crearTablaProyectos();			
 		    tabla= new JTable(modelo);
 			panel.add(new JScrollPane(tabla), BorderLayout.CENTER);
 			setLocationRelativeTo(null);
-			setDefaultCloseOperation(EXIT_ON_CLOSE);
+			setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		}
         public JPanel getPanel() {
         	return panel;
         }
         public JTable getTabla() {
         	return tabla;
-        }
-        public Controlador getControlador() {
-        	return controlador;
         }
         public String getDNISeleccionado() {
         	return DNISeleccionado;

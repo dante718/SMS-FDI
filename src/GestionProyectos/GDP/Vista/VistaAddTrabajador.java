@@ -77,7 +77,7 @@ public class VistaAddTrabajador extends JFrame{
 		panel.add(botones, BorderLayout.SOUTH);
 		getContentPane().add(panel);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
     public void cerrar() {
     	dispose();

@@ -14,10 +14,17 @@ import java.util.List;
 
 public class DAOProyectoImp implements DAOProyecto{
        private List<TProyecto> proyectos;
-       
-       public DAOProyectoImp() {
+       private static DAOProyecto instancia=null;
+       private DAOProyectoImp() {
     	   proyectos= new ArrayList<TProyecto>();
        }
+       public static DAOProyecto getInstancia() {
+    	   if(instancia==null) {
+    		   instancia= new DAOProyectoImp();
+    	   }
+    	   return instancia;
+       }
+            
 	  public TProyecto getProyecto(String NombreProy) {
 		  boolean acabar=false;
 		  int i=0;
@@ -151,7 +158,7 @@ public class DAOProyectoImp implements DAOProyecto{
 		TProyecto proyecto=getProyecto(NombreProy);
 		boolean acabar= false;
 		int i=0;
-		while(i<proyecto.getparticipantes().size()) {
+		while(i<proyecto.getparticipantes().size() && !acabar) {
 			if(proyecto.getparticipantes().get(i).equals(DNI)) {
 				acabar=true;
 			}

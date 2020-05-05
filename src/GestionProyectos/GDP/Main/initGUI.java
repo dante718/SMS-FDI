@@ -4,6 +4,6 @@ import GestionProyectos.GDP.Vista.VistaPrincipal;
 
 public class initGUI {
        public static void mainProyectos(String [] args) {
-    	   VistaPrincipal gdp= new VistaPrincipal();   
+    	  VistaPrincipal.getInstancia().setVisible(true);
        }
 }
