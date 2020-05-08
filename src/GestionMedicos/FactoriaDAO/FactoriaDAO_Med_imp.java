@@ -1,5 +1,7 @@
 package GestionMedicos.FactoriaDAO;
 
+import java.io.IOException;
+
 import General.FactoriaDAO;
 import GestionLaboratorio.integracion_Laboratorio.DAOPedido_Lab;
 import GestionLaboratorio.integracion_Laboratorio.DAOProducto_Lab;
@@ -11,9 +13,15 @@ public class FactoriaDAO_Med_imp extends FactoriaDAO{
 		return new DAODatosPlantilla();
 		
 	}
-	public DAODatosClinicos  CrearTablaDatosClinicos() {
-		return new DAODatosClinicos();
+	public DAODatosClinicos  CrearTablaDatosClinicos(String ruta) throws IOException {
+		return new DAODatosClinicos(ruta);
 	}
+	
+	//preguntar si es necesario, si es necesario debemos crear un nuevo dao?
+	
+	/*public DAOParametros CrearParametros() {
+		return new  DAOParametros();
+	}*/
 	@Override
 	public DAOProducto_Lab crearDAOProducto() {
 		// TODO Auto-generated method stub

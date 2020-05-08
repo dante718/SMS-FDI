@@ -19,117 +19,106 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import GestionMedicos.Complementos.button;
+import GestionMedicos.Complementos.etiqueta;
 import GestionMedicos.GDM.Controlador.ControladorMed;
 
-public class PantallaPrincipal extends JFrame implements ActionListener{
+public class PantallaPrincipal extends JFrame implements ActionListener {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-
-	public	PantallaPrincipal(){
-		super("Subsistema medicos");
+	
+	JPanel PanelPrincipal,PanelTitulo,PanelBotonesAcciones,PanelInferior;
+	button botonPedido,botonHacerEstudio,botonInforme;
+	public	PantallaPrincipal(String nombre){
+		super(nombre);
+		mostrarGUI();
+	}
+	private void mostrarGUI() {
 		this.setLayout(new BorderLayout());
 		this.setVisible(true);
 		
-		this.setBounds(0,0,800,800);
+		this.setPreferredSize(new Dimension(900,800));
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.getContentPane().setBackground(Color.yellow);
 		//encabezado
-		JPanel PanelPrincipal=new JPanel();
-		JPanel PanelTitulo=new JPanel();
-		JPanel PanelBotonesAcciones=new JPanel();
-		JPanel PanelInferior=new JPanel(new BorderLayout());
-		JPanel Paneliz=new JPanel();
-		PanelTitulo.setPreferredSize(new Dimension (300,200));
-		PanelInferior.setBackground(Color.red);
-		Paneliz.setBackground(Color.red);
+		
+		PanelPrincipal=new JPanel();
+		PanelPrincipal.setBackground(Color.yellow);
 		PanelPrincipal.setLayout(new BoxLayout(PanelPrincipal,BoxLayout.Y_AXIS));
-		PanelBotonesAcciones.setLayout(new BoxLayout(PanelBotonesAcciones,BoxLayout.Y_AXIS));
-		
-		button botonPedido =new button("REALIZAR PEDIDO    ",30,0,0, 0, 0);
-		button botonHacerEstudio =new button("REALIZAR ESTUDIO  ",30,0,0, 0, 0);
-		button botonInforme =new button("INFORME DE ERROR",30,0,0,0, 0);
-		
-		JLabel titulo=this.createLabel("Hospital ",Color.blue,100,0,0 ,0 ,0 );
+		//-------------------------------------------------
+		PanelTitulo=new JPanel();
+		PanelTitulo.setPreferredSize(new Dimension (300,200));
+		PanelTitulo.setBackground(Color.yellow);
+		etiqueta titulo=new etiqueta("Hospital ",Color.blue,100);
 		titulo.setIcon(new ImageIcon("cruz.png"));
 		PanelTitulo.add(Box.createRigidArea(new Dimension(10,0)));
 		PanelTitulo.add(Box.createHorizontalGlue());
 		PanelTitulo.add(titulo);
-		
+		//----------------------------------------------------------	
+		PanelBotonesAcciones=new JPanel();
+		PanelBotonesAcciones.setLayout(new BoxLayout(PanelBotonesAcciones,BoxLayout.Y_AXIS));
+		PanelBotonesAcciones.setBackground(Color.yellow);
+		botonPedido =new button("REALIZAR PEDIDO    ",30);
+		botonHacerEstudio =new button("REALIZAR ESTUDIO  ",30);
+		botonInforme =new button("INFORME DE ERROR",30);
 		PanelBotonesAcciones.add(Box.createVerticalStrut(100));
 		PanelBotonesAcciones.add(botonPedido);
 		PanelBotonesAcciones.add(Box.createVerticalStrut(40));
 		PanelBotonesAcciones.add(botonHacerEstudio);
 		PanelBotonesAcciones.add(Box.createVerticalStrut(40));
-		PanelBotonesAcciones.add(botonInforme);		
-		
-		
-		PanelPrincipal.add(PanelTitulo);
-		PanelPrincipal.add(PanelBotonesAcciones);
-	
+		PanelBotonesAcciones.add(botonInforme);	
+		//----------------------------------------------------
 		JPanel PanelOpciones=new JPanel(new BorderLayout());
+		PanelOpciones.setBackground(Color.yellow);
 		JPanel PanelEtiquetasOpciones=new JPanel(new FlowLayout());
+		PanelEtiquetasOpciones.setBackground(Color.yellow);
 		JPanel PanelOpcionesBotones=new JPanel(new FlowLayout());
-		JLabel etiquetaSalir = this.createLabel("Salir",Color.black,15,1510, 900,120, 30);
-		JLabel etiquetaContinuar = this.createLabel("Continuar",Color.black,15,1615,900,120, 30);
-		
-		button botonSalir =new button(" ",15,1535,875,80, 30);
-		button botonContinuar =new button(" ",15,1635,875, 95, 30);
+		PanelOpcionesBotones.setBackground(Color.yellow);
+		JLabel etiquetaSalir = new etiqueta("Salir",Color.black,15);
+		JLabel etiquetaContinuar = new etiqueta("Continuar",Color.black,15);
+		button botonSalir =new button(" ",15);
+		button botonContinuar =new button(" ",15);
 		botonSalir.setIcon(new ImageIcon("salir.jpg"));
 		botonContinuar.setIcon(new ImageIcon("continuar.png"));
-		
 		PanelEtiquetasOpciones.add(Box.createRigidArea(new Dimension(20,0)));
 		PanelEtiquetasOpciones.add(etiquetaSalir);
 		PanelEtiquetasOpciones.add(Box.createRigidArea(new Dimension(20,0)));
 		PanelEtiquetasOpciones.add(etiquetaContinuar,FlowLayout.LEFT);
-		
 		PanelOpcionesBotones.add(botonSalir);
 		PanelOpcionesBotones.add(botonContinuar,FlowLayout.LEFT);
-		
 		PanelOpciones.add(PanelOpcionesBotones,BorderLayout.NORTH);
 		PanelOpciones.add(PanelEtiquetasOpciones,BorderLayout.SOUTH);
-	
-		
-		
-		
+	//_--------------------------------------------------------------------
+			
+		PanelInferior=new JPanel(new BorderLayout());
+		PanelInferior.setBackground(Color.yellow);
 		PanelInferior.add(PanelOpciones,BorderLayout.EAST);
-	
+		//_----------------------------------------------------------------
+		PanelPrincipal.add(PanelTitulo);
+		PanelPrincipal.add(PanelBotonesAcciones);
 		this.add(PanelPrincipal,BorderLayout.NORTH);
 		this.add(PanelInferior,BorderLayout.PAGE_END);
-		//pulso boton de hace Estudio:
-			botonHacerEstudio.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent arg0) {// aqui debo hacer la llamada al controlador  
-					PantallaSeleccion p=new PantallaSeleccion(ControladorMed.getInstancia());
-				}
-			});
-	this.pack();
-	
-	}
-	
-
-	public JLabel createLabel(String caption, Color color, int tam,int x, int y, int w, int h){
-		JLabel label = new JLabel(caption); // se crea la etiqueta
-		label.setBounds(x,y,w,h); // se coloca y da tama�o
-		label.setHorizontalAlignment(JLabel.CENTER); // se centra en su rect�ngulo
-		label.setForeground(color); // se le da color a la fuente
-		Font fuente = new Font("Arial",Font.ITALIC,tam);
-		label.setFont(fuente);
-		return label;
-		
-			}
-	
-
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		System.out.println("has pulsado el boton");
+		botonHacerEstudio.addActionListener(this);
+		this.pack();
 		
 		
 	}
+	
+
+
+@Override
+public void actionPerformed(ActionEvent e) {
+	// TODO Auto-generated method stub
+	if(e.getSource()==this.botonHacerEstudio) {	
+		FabricaPantallaSeleccion f= new FabricaPantallaSeleccion();
+		PantallaSeleccion p=f.crearPantallaSeleccion("pantalla de seleccion", ControladorMed.getInstancia());
+	}
+	
+}
+
+	
 	
 	
 }

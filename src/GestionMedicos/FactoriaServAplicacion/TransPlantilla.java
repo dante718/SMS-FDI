@@ -14,10 +14,10 @@ public class TransPlantilla {
 	}//completar
 	public boolean equals(TransPlantilla p) {
 		
-		if(p.getEstudio().equals(this.getEstudio())){
-			/*&&(this.Farmaco.equals(p.getFarmaco()))
-			&&(this.Etapa.equals(p.getEtapa()))){
-			*/return true;
+		if((p.getEstudio().equals(this.getEstudio()))
+		&&(p.getFarmaco().equals(this.getFarmaco())
+		&&(p.getEtapa().equals(this.getEtapa())))){
+			return true;
 	
 		}
 			

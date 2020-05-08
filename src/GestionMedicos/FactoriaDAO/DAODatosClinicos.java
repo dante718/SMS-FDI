@@ -6,20 +6,40 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import GestionMedicos.FactoriaServAplicacion.TransDatosClinicos;
 import GestionMedicos.FactoriaServAplicacion.TransPlantilla;
 
 public class DAODatosClinicos {
-	public DAODatosClinicos(){
-		
+	private ArrayList<String> plantillaDatosClinicos;
+	public DAODatosClinicos(String ruta) throws IOException{
+		plantillaDatosClinicos=new ArrayList<String>();
+		CargarDatosClinicos(ruta);
 	}
 
-	public TransDatosClinicos CrearDatos(String id,String sexo,int edad,int cantidad,String fecha) {
+	public ArrayList<String> getDatosClinicos(){
+		return this.plantillaDatosClinicos;
+	}
+	private void CargarDatosClinicos(String ruta) throws IOException {
+		
+		BufferedReader buffer=new BufferedReader(new InputStreamReader(new FileInputStream(ruta)));
+		String cadena=" ";
+		while((cadena=buffer.readLine())!=null) {
+			
+			plantillaDatosClinicos.add(cadena);
+			
+		}
+		buffer.close();
+		
+		
+		
+	}
+	public TransDatosClinicos CrearDatos(String id,String sexo,int edad,String fecha,int cantidad) {
 		// TODO Auto-generated method stub
 		//se crear� el objeto Plantilla para ser Completada
 		 
-		return new TransDatosClinicos(id, sexo, edad, cantidad, fecha) ;
+		return new TransDatosClinicos( id,sexo , edad, fecha,cantidad) ;
 	}
 	
 	public void guardarDatosEnAlmacen(TransPlantilla plantilla, TransDatosClinicos  tablaDatos) {   
@@ -29,7 +49,7 @@ public class DAODatosClinicos {
 		String Estudio=plantilla.getEstudio();
 		String Pastilla=plantilla.getFarmaco();
 		String Etapa=plantilla.getEtapa();
-		String ruta="src/GestionMedicos/almacen/"+Estudio+"_"+Pastilla+"_"+Etapa+".txt";
+		String ruta="src/BaseDatos/"+Estudio+"_"+Pastilla+"_"+Etapa+".txt";
 
 		FileWriter fichero = null;
 		String datos="";
@@ -54,8 +74,8 @@ public class DAODatosClinicos {
 					fichero.write(datos);
 				//}
 				
-				fichero.write(tablaDatos.getId()+" "+tablaDatos.getSexo()+" "+tablaDatos.getEdad()+
-						" "+tablaDatos.getCantidad()+" "+tablaDatos.getFecha());
+				fichero.write(tablaDatos.getId()+" "+tablaDatos.getSexo()+" "+tablaDatos.getEdad()
+						+" "+tablaDatos.getFecha());
 
 				fichero.close();
 		} catch (FileNotFoundException e2) {

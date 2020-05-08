@@ -1,5 +1,7 @@
 package GestionMedicos.FactoriaDAO;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -10,7 +12,7 @@ import java.util.StringTokenizer;
 import GestionMedicos.FactoriaServAplicacion.TransPlantilla;
 
 public class DAODatosPlantilla {
-	private static String ruta="src/GestionMedicos/almacen/plantillas.txt";
+	private static String ruta="src/BaseDatos/plantillas.txt";
 	
 	private TransPlantilla ListaPlantillas[];
 	
@@ -78,7 +80,7 @@ public class DAODatosPlantilla {
 	}
 	
 	public TransPlantilla cargarPlantilla(String estudio, String pastilla, String etapa) {
-		//aqui a tendreé que buscar la plantilla desde el almacen voy a buscar con los 3 datos y si lo hay 
+		//aqui a tendreï¿½ que buscar la plantilla desde el almacen voy a buscar con los 3 datos y si lo hay 
 		//genero un nombre de fichero en el cual van a estar los datos
 		//2 opciones que este creado o que tengamos que crearlo
 		TransPlantilla plantilla=  CrearPlantilla(estudio,pastilla, etapa);
@@ -99,8 +101,29 @@ public class DAODatosPlantilla {
 		}
 		else {
 			actualizarPlantillas(plantilla);
+			//tengo que crear el fichero
+		crearFichero("src/BaseDatos/"+estudio+"_"+pastilla+"_"+etapa+".txt");
 			return plantilla;
 			}
+	}
+	private void  crearFichero(String ruta) {
+		File file=new File(ruta);
+		try {
+			if(!file.exists()) {
+
+				file.createNewFile();
+				
+			}
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write("");
+            bw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+		System.out.println("IMPOSIBLE CREAR FICHERO");
+			//e.printStackTrace();
+		}
+		
 	}
 	public void actualizarPlantillas(TransPlantilla p) {
 		FileWriter fichero = null;

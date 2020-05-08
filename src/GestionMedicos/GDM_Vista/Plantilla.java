@@ -1,16 +1,22 @@
 package GestionMedicos.GDM_Vista;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionListener;
 
 import GestionMedicos.Complementos.button;
 import GestionMedicos.Complementos.etiqueta;
+import GestionMedicos.FactoriaServAplicacion.TransDatosClinicos;
 import GestionMedicos.FactoriaServAplicacion.TransPlantilla;
 import GestionMedicos.GDM.Controlador.ControladorMed;
 
@@ -21,16 +27,32 @@ public class Plantilla extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	ControladorMed Controlador;
-	public Plantilla(ControladorMed controlador) {
-		super("Plantilla:");
-		this.Controlador=controlador;
-		this.setLayout(null);
+	ControladorMed Contr;
+	private List <TransDatosClinicos> personaData;
+	private tableModelDatosPlantilla modeloTabla;
+	public Plantilla(String s, ControladorMed controlador) {
+		super(s);
+		this.Contr=controlador;
+		this.setLayout(new BorderLayout());
 		this.setVisible(true);
-		this.setSize(0,0);
-		this.setBounds(0,0,700,600);
+		this.setSize(600,400);
+		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.getContentPane().setBackground(Color.LIGHT_GRAY);
+		ArrayList<String> Columnas=Contr.getParametrosPlantilla();
+		this.personaData=new ArrayList<>();
+		
+		
+		this.modeloTabla=new tableModelDatosPlantilla(this.Contr);
+		
+		JTable tabla=new JTable(); 
+		tabla.setModel(this.modeloTabla);
+		this.add(new JScrollPane(tabla));
+		
+	}
+		
+		
+		/*
 		button boton=new button("Boton",20,0,0, 400, 80);
 		
 		etiqueta id=new etiqueta("Id",Color.black,20,10,100,100,30);
@@ -43,7 +65,7 @@ public class Plantilla extends JFrame {
 		button botonGuardar=new button("GUARDAR",15,800,150, 150, 35);
 		botonEditar.setIcon(new ImageIcon("editar.png"));
 		botonCancelar.setIcon(new ImageIcon("cancel.png"));
-		botonEliminar.setIcon(new ImageIcon("borrar.png"));
+		botonEliminar.setIcon(new ImageIcon("borrar.png"));*
 		
 		this.add(id);
 		this.add(pastilla);
@@ -67,7 +89,7 @@ public class Plantilla extends JFrame {
 			}
 			
 		});
-		
+	*
 	}
 	
 	public void agregarDatos() {
@@ -94,6 +116,6 @@ public class Plantilla extends JFrame {
 		Controlador.GuardarDatos();
 		
 	}
-
+*/
 	
 }

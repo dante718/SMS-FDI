@@ -1,10 +1,16 @@
 package GestionMedicos.FactoriaServAplicacion;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
 import General.FactoriaDAO;
 import General.FactoriaSApp;
 
 public class FactoriaServAppMed_Imp extends FactoriaSApp {
-	private TransDatosClinicos plantillaDatosClinicos;
+	private ArrayList<String> plantillaDatosClinicos;
 	private TransPlantilla Plantilla;
 	public FactoriaServAppMed_Imp(String estudio, String pastilla, String etapa){
 		//esto esta bien si lo hago aqui? o ser�a mejor hacerlo en el modulo del controlador
@@ -24,8 +30,39 @@ public class FactoriaServAppMed_Imp extends FactoriaSApp {
 			
 		return PlantillaBuscada;
 	}
-	public TransDatosClinicos introducirDatos(String id,String sexo,int edad,int cantidad,String fecha) {
-		plantillaDatosClinicos=FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos().CrearDatos(id, sexo, edad, cantidad, fecha);
+	
+	
+	public ArrayList<String> CargaDatos(String ruta) throws IOException {
+		/*ArrayList<String>lista=new ArrayList<String>();
+		BufferedReader buffer=new BufferedReader(new InputStreamReader(new FileInputStream(ruta)));
+		String cadena=" ";
+		while((cadena=buffer.readLine())!=null) {
+			lista.add(cadena);
+			
+		}
+		buffer.close();
+		
+		return lista;*/
+		
+		return FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos(ruta).getDatosClinicos();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*public TransDatosClinicos introducirDatos(String id,String sexo,int edad,String fecha) {
+		plantillaDatosClinicos=FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos().CrearDatos(id, sexo, edad, fecha);
 		return plantillaDatosClinicos;
 	}
 
@@ -38,7 +75,7 @@ public class FactoriaServAppMed_Imp extends FactoriaSApp {
 	public void GuardarEnPlantilla() {
 		FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos().guardarDatosEnAlmacen(Plantilla, plantillaDatosClinicos);
 		
-	}
-
+	}*/
+	
 
 }
