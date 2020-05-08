@@ -36,7 +36,7 @@ public class VistaNuevaVersionDeProyecto extends VistaProyectos{
 				}
 				else {
 				if(Controlador.getInstancia().compararfechas((String) getTabla().getValueAt(getTabla().getSelectedRow(), 4))) {
-					    Controlador.getInstancia().GenerarNuevaVersion((String) getTabla().getValueAt(getTabla().getSelectedRow(), 0));
+					    Controlador.getInstancia().GenerarNuevaVersion(getModelo().getProyecto(getTabla().getSelectedRow()));
 						JOptionPane.showMessageDialog(null, "Nueva Versión Generada Correctamente. ");
 						dispose();
 					}

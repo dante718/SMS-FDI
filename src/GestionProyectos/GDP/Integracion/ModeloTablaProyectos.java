@@ -58,4 +58,7 @@ public class ModeloTablaProyectos extends AbstractTableModel{
      public String getColumnName(int index) {
     	 return campos[index];
      }
+     public TProyecto getProyecto(int index) {  	 
+    	 return proyectos.get(index);
+     }
 }

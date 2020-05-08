@@ -68,4 +68,7 @@ public class ModeloTablaPersona extends AbstractTableModel{
     public void removeFila(int fila) {
     	personas.remove(fila);
     }
+    public TPersona getPersona(int index) {
+    	return personas.get(index);
+    }
 }

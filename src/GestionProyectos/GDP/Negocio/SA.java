@@ -8,18 +8,20 @@ import GestionProyectos.GDP.Integracion.ModeloTablaProyectos;
 
 public interface SA {
      public void leerdatos();
+     public TProyecto getProyecto(TProyecto Proyecto);
+     public TPersona getPersona(TPersona Persona);
      public ModeloTablaPersona creartablaPersonas(String RolPersona);
-	 public TProyecto BuscarProyecto(String nombreProy);
-	 public boolean liberar(String DNI);
-	 public boolean cambiarproyecto(String DNI, String NombreProy);
+	 public TProyecto BuscarProyecto(TProyecto proyecto);
+	 public boolean liberar(TPersona Persona);
+	 public boolean cambiarproyecto(TPersona Persona, TProyecto proyecto);
 	 public void AddProyecto(TProyecto proyecto);
 	 public ModeloTablaProyectos creartablaProyectos();
-	 public void añadiraproyecto(String DNI, String NombreProy);
+	 public void añadiraproyecto(TPersona Persona, TProyecto proyecto);
 	 public boolean compararfechas(String fechaAntigua);
-	 public void GenerarNuevaVersion(String NombreProy);
-	 public boolean pasarafabricacion(String NombreProy);
-	 public ModeloTablaPersona tablapersonaldeproyecto(String NombreProy);
-	 public void ponerenfabricacion(String nombreProy);
+	 public void GenerarNuevaVersion(TProyecto proyecto);
+	 public boolean pasarafabricacion(TProyecto proyecto);
+	 public ModeloTablaPersona tablapersonaldeproyecto(TProyecto proyecto);
+	 public void ponerenfabricacion(TProyecto proyecto);
 	 public boolean addProducto(Producto producto); 
 	 public Producto[] getProductos();
 	 public void reiniciarpedido();

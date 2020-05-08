@@ -9,6 +9,7 @@ import GestionDeAlmacen.GDA.Modelo.Producto;
 import GestionProyectos.GDP.Integracion.ModeloTablaPersona;
 import GestionProyectos.GDP.Integracion.ModeloTablaProyectos;
 import GestionProyectos.GDP.Negocio.SAImp;
+import GestionProyectos.GDP.Negocio.TPersona;
 import GestionProyectos.GDP.Negocio.TProyecto;
 
 
@@ -46,7 +47,7 @@ public class Controlador {
 	}
 	public boolean AddProyecto(TProyecto proyecto) {
 		
-		if(BuscarProyecto(proyecto.getNombre())!=null) {
+		if(BuscarProyecto(proyecto)!=null) {
 			JOptionPane.showMessageDialog(null, "Ya existe un proyecto con el mismo nombre");
 			return false;
 		}
@@ -56,35 +57,35 @@ public class Controlador {
 			return true;
 		} 
 	}
-	public TProyecto BuscarProyecto(String NombreProy) {
-		return SAImp.getInstancia().BuscarProyecto(NombreProy);
+	public TProyecto BuscarProyecto(TProyecto proyecto) {
+		return SAImp.getInstancia().BuscarProyecto(proyecto);
 	}
 	public void leerdatos() {
 		SAImp.getInstancia().leerdatos();
 	}
-	public boolean liberar(String DNI) {
-		return SAImp.getInstancia().liberar(DNI);
+	public boolean liberar(TPersona Persona) {
+		return SAImp.getInstancia().liberar(Persona);
 	}
-	public boolean cambiarproyecto(String DNI, String NombreProy) {
-		return SAImp.getInstancia().cambiarproyecto(DNI, NombreProy);
+	public boolean cambiarproyecto(TPersona Persona, TProyecto proyecto) {
+		return SAImp.getInstancia().cambiarproyecto(Persona, proyecto);
 	}
-	public void añadiraproyecto(String DNI, String NombreProy) {
-		SAImp.getInstancia().añadiraproyecto(DNI, NombreProy);
+	public void añadiraproyecto(TPersona Persona, TProyecto proyecto) {
+		SAImp.getInstancia().añadiraproyecto(Persona, proyecto);
 	}
 	public boolean compararfechas(String fechaAntigua) {
 		return SAImp.getInstancia().compararfechas(fechaAntigua);
 	}
-	public void GenerarNuevaVersion(String NombreProy) {
-		SAImp.getInstancia().GenerarNuevaVersion(NombreProy);
+	public void GenerarNuevaVersion(TProyecto proyecto) {
+		SAImp.getInstancia().GenerarNuevaVersion(proyecto);
 	}
-	public boolean pasarafabricacion(String NombreProy) {
-		return SAImp.getInstancia().pasarafabricacion(NombreProy);
+	public boolean pasarafabricacion(TProyecto proyecto) {
+		return SAImp.getInstancia().pasarafabricacion(proyecto);
 	}
-	public ModeloTablaPersona tablapersonaldeproyecto(String NombreProy) {
-		return SAImp.getInstancia().tablapersonaldeproyecto(NombreProy);
+	public ModeloTablaPersona tablapersonaldeproyecto(TProyecto proyecto) {
+		return SAImp.getInstancia().tablapersonaldeproyecto(proyecto);
 	}
-	public void ponerenfabricacion(String nombreProy) {
-		SAImp.getInstancia().ponerenfabricacion(nombreProy);
+	public void ponerenfabricacion(TProyecto proyecto) {
+		SAImp.getInstancia().ponerenfabricacion(proyecto);
 	}
 	public boolean Addproducto(Producto producto) {
 		return SAImp.getInstancia().addProducto(producto);

@@ -14,15 +14,16 @@ import javax.swing.JTable;
 
 
 import GestionProyectos.GDP.Integracion.ModeloTablaProyectos;
+import GestionProyectos.GDP.Negocio.TPersona;
 
 public abstract class VistaProyectos extends JFrame{
 		private JTable tabla;
-		private String DNISeleccionado;
+		private TPersona PersonaSeleccionada;
 		private ModeloTablaProyectos modelo= new ModeloTablaProyectos();
 		private JLabel etiqueta;
 		private JPanel panel= new JPanel();
-        public void setDNI(String DNI) {
-         	this.DNISeleccionado=DNI;
+        public void setPersona(TPersona Persona) {
+         	this.PersonaSeleccionada=Persona;
          }
 		public void initVista() {
 			setSize(500,350);
@@ -41,8 +42,8 @@ public abstract class VistaProyectos extends JFrame{
         public JTable getTabla() {
         	return tabla;
         }
-        public String getDNISeleccionado() {
-        	return DNISeleccionado;
+        public TPersona getPersonaSeleccionada() {
+        	return PersonaSeleccionada;
         }
         public ModeloTablaProyectos getModelo() {
         	return modelo;

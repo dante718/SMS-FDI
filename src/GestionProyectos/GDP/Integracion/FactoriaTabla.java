@@ -15,12 +15,12 @@ public class FactoriaTabla implements FactoriaAbstracta<ModeloTablaPersona, Mode
 	
 	@Override
 	public ModeloTablaPersona CrearObjetoPersona() {
-		return FactoriaDAO.getInstancia().CrearObjetoPersona().creartablaPersonas();
+		return new ModeloTablaPersona();
 	}
 
 	@Override
 	public ModeloTablaProyectos CrearObjetoProyecto() {	
-		return FactoriaDAO.getInstancia().CrearObjetoProyecto().creartablaProyectos();
+		return new ModeloTablaProyectos();
 	}
 
 }

@@ -39,12 +39,12 @@ public class VistaCambiarProyecto extends VistaProyectos{
 				}
 				else {
 					String NombreProy= (String) getTabla().getValueAt(getTabla().getSelectedRow(), 0);
-					if(Controlador.getInstancia().cambiarproyecto(getDNISeleccionado(), NombreProy)) {
+					if(Controlador.getInstancia().cambiarproyecto(getPersonaSeleccionada(), getModelo().getProyecto(getTabla().getSelectedRow()))) {
 						JOptionPane.showMessageDialog(null, "Investigador cambiado de proyecto.");
 						dispose();
 					}
 					else {
-						JOptionPane.showMessageDialog(null, "Este investigador ya trabaja en el"+NombreProy);
+						JOptionPane.showMessageDialog(null, "No se ha podido cambiar de proyecto, esta persona ya trabaja en este proyecto o bien es la única que trabaja en su anterior proyecto, y un proyecto ha de tener minimo un participante.");
 					}
 				}
 								

@@ -61,7 +61,7 @@ public class VistaModEstadoInvest extends JFrame{
 							JOptionPane.showMessageDialog(null, "Selecciona un investigador que esté en proyecto.");
 						}
 						else if(tabla.getSelectedRow()!=-1) {
-							if(Controlador.getInstancia().liberar((String) tabla.getValueAt(tabla.getSelectedRow(), 0))) {
+							if(Controlador.getInstancia().liberar(modelo.getPersona(tabla.getSelectedRow()))) {
 								modelo.actualizar();
 							}
 							else {
@@ -85,7 +85,7 @@ public class VistaModEstadoInvest extends JFrame{
 					else {
 						String estado= (String) tabla.getValueAt(tabla.getSelectedRow(), 5);
 						if(estado.toLowerCase().equals("no disponible")) {		
-							VistaCambiarProyecto.getInstancia().setDNI((String) tabla.getValueAt(tabla.getSelectedRow(), 0));
+							VistaCambiarProyecto.getInstancia().setPersona(modelo.getPersona(tabla.getSelectedRow()));
 							VistaCambiarProyecto.getInstancia().setVisible(true);
 						}
 						else {
@@ -109,7 +109,7 @@ public class VistaModEstadoInvest extends JFrame{
 					else {
 						String estado= (String) tabla.getValueAt(tabla.getSelectedRow(), 5);
 						if(estado.toLowerCase().equals("disponible")) {
-							VistaAñadirAProyecto.getInstancia().setDNI((String) tabla.getValueAt(tabla.getSelectedRow(), 0));
+							VistaAñadirAProyecto.getInstancia().setPersona(modelo.getPersona(tabla.getSelectedRow()));
 							VistaAñadirAProyecto.getInstancia().setVisible(true);
 						}
 						else {

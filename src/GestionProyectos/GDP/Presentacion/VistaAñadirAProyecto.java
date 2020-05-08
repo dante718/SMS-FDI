@@ -37,9 +37,8 @@ public class VistaAñadirAProyecto extends VistaProyectos{
 					JOptionPane.showMessageDialog(null, "No has seleccionado ningún proyecto.");
 				}
 				else {
-					String NombreProy= (String) getTabla().getValueAt(getTabla().getSelectedRow(), 0);
-					Controlador.getInstancia().añadiraproyecto(getDNISeleccionado(), NombreProy);
-					JOptionPane.showMessageDialog(null, "Investigador añadido a "+NombreProy);
+					Controlador.getInstancia().añadiraproyecto(getPersonaSeleccionada(), getModelo().getProyecto(getTabla().getSelectedRow()));
+					JOptionPane.showMessageDialog(null, "Investigador añadido a "+getModelo().getProyecto(getTabla().getSelectedRow()).getNombre());
 					dispose();
 				}
 								

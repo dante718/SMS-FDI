@@ -14,6 +14,7 @@ import javax.swing.JTable;
 
 
 import GestionProyectos.GDP.Integracion.ModeloTablaPersona;
+import GestionProyectos.GDP.Negocio.TProyecto;
 
 public class VistaAñadirFabricacion extends VistaProyectos{
 	private JButton fabricacion, cancelar;
@@ -44,8 +45,8 @@ public class VistaAñadirFabricacion extends VistaProyectos{
 					JOptionPane.showMessageDialog(null, "Selecciona un proyecto que no esté ya en fabricacion. ");
 				}
 				else {
-				   if(Controlador.getInstancia().pasarafabricacion((String) getTabla().getValueAt(getTabla().getSelectedRow(), 0))) {
-					   crearTablaTrabajadores((String) getTabla().getValueAt(getTabla().getSelectedRow(), 0));
+				   if(Controlador.getInstancia().pasarafabricacion(getModelo().getProyecto(getTabla().getSelectedRow()))) {
+					   crearTablaTrabajadores(getModelo().getProyecto(getTabla().getSelectedRow()));
 				   }
 				   else {
 					   JOptionPane.showMessageDialog(null, "El proyecto debe estar al menos en version 3 para pasar a modo de fabricacion.");
@@ -55,7 +56,7 @@ public class VistaAñadirFabricacion extends VistaProyectos{
 								
 			}
 
-			private void crearTablaTrabajadores(String NombreProy) {
+			private void crearTablaTrabajadores(TProyecto proyecto) {
 				JDialog dialog= new JDialog();
 				dialog.setSize(500,350);
 				setLayout(new BorderLayout());
@@ -63,7 +64,7 @@ public class VistaAñadirFabricacion extends VistaProyectos{
 				JPanel PANEL= new JPanel();
 				PANEL.setLayout(new BorderLayout());
 				PANEL.add(etiqueta, BorderLayout.PAGE_START);
-				ModeloTablaPersona modelo= Controlador.getInstancia().tablapersonaldeproyecto(NombreProy);
+				ModeloTablaPersona modelo= Controlador.getInstancia().tablapersonaldeproyecto(proyecto);
 				JTable tabla= new JTable(modelo);
 				
 				
@@ -84,7 +85,7 @@ public class VistaAñadirFabricacion extends VistaProyectos{
 							modelo.getPersonas().remove(tabla.getSelectedRow());
 							modelo.actualizar();
 							if(modelo.getPersonas().size()==0) {
-								Controlador.getInstancia().ponerenfabricacion(NombreProy);
+								Controlador.getInstancia().ponerenfabricacion(getModelo().getProyecto(getTabla().getSelectedRow()));
 								dialog.dispose();
 							}
 						}
@@ -103,7 +104,7 @@ public class VistaAñadirFabricacion extends VistaProyectos{
 							JOptionPane.showMessageDialog(null, "No has seleccionado ningún participante del proyecto.");
 						}
 						else {
-							Controlador.getInstancia().liberar((String) tabla.getValueAt(tabla.getSelectedRow(), 0));
+							Controlador.getInstancia().liberar(modelo.getPersona(tabla.getSelectedRow()));
 							modelo.getPersonas().remove(tabla.getSelectedRow());
 							modelo.actualizar();
 							if(modelo.getPersonas().size()==0) {
