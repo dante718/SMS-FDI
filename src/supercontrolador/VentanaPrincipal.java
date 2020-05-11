@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import GestionDeEnvios.GDE.Controlador.ControladorEnvio;
+import GestionDeFabrica.Vista.MainFabrica;
 import GestionDeFabrica.Vista.VistaFabrica;
 import GestionLaboratorio.presentacion_Laboratorio.Vista_Lab;
 import GestionMedicos.GDM_Vista.InterfazVista;
@@ -113,8 +114,8 @@ public class VentanaPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaFabrica vistaFabrica = new VistaFabrica();
-				vistaFabrica.start();		
+				MainFabrica vistaFabrica = new MainFabrica();
+				vistaFabrica.initGUI();
 			}
 			
 		});
