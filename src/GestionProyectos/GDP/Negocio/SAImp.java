@@ -29,6 +29,13 @@ public class SAImp implements SA{
     	personas= new ArrayList<TPersona>();
     	proyectos= new ArrayList<TProyecto>();
     }
+    public static SA getInstancia() {
+    	if(instancia==null) {
+    		instancia= new SAImp();
+    	}
+    	return instancia;
+    }
+    
     public TProyecto getProyecto(TProyecto Proyecto) {
 	  	  
 		  for(TProyecto p: proyectos) {
@@ -45,12 +52,6 @@ public class SAImp implements SA{
 		  
 		  return null;
 	}
-    public static SA getInstancia() {
-    	if(instancia==null) {
-    		instancia= new SAImp();
-    	}
-    	return instancia;
-    }
     
 	@Override
 	public ModeloTablaPersona creartablaPersonas(String RolPersona)  {
@@ -202,7 +203,7 @@ public class SAImp implements SA{
 		
 		}
 
-	public void añadiraproyecto(TPersona persona, TProyecto proyecto) {
+	public void annadiraproyecto(TPersona persona, TProyecto proyecto) {
 		proyecto.getparticipantes().add(persona.getDNI());
 		FactoriaDAO.getInstancia().CrearObjetoProyecto().EscribirProyectos(proyectos);
 		persona.setEstado("No Disponible");
@@ -216,7 +217,7 @@ public class SAImp implements SA{
 			Date AntiguaDate= sdf.parse(fechaAntigua);
 			if(NuevaDate.getYear()==AntiguaDate.getYear()) {
 				if(NuevaDate.getMonth()==AntiguaDate.getMonth()) {
-					if(NuevaDate.getDay()-AntiguaDate.getDay()>=1) {
+					if((NuevaDate.getDate()-AntiguaDate.getDate())>=1) {
 						return true;
 					}
 					else {

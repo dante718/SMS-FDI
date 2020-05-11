@@ -15,15 +15,14 @@ import javax.swing.JPanel;
 
 
 
-public class VistaPrincipal extends JFrame{
+public class VistaPrincipal extends JFrame implements IVista{
 	private static VistaPrincipal instancia=null;
 	private JLabel titulo ;
 	private JButton cp, mei, cvd, cef,spm; 
 	private JPanel panel= new JPanel();
     private VistaPrincipal() {
-    	 initVista();
+    	initVista();
     }
-    
     public static VistaPrincipal getInstancia() {
     	if(instancia==null) {
     		instancia= new VistaPrincipal();
@@ -45,7 +44,7 @@ public class VistaPrincipal extends JFrame{
         cp.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaCrearProyecto.getInstancia().setVisible(true);
+				FabricaVistas.getInstancia().getVista("CrearProyecto").Visibilizar();;
 			}
         	
         });
@@ -56,7 +55,7 @@ public class VistaPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaModEstadoInvest.getInstancia().setVisible(true);
+				FabricaVistas.getInstancia().getVista("ModificarInvestigador").Visibilizar();;
 			}
 	    	
 	    });
@@ -67,7 +66,7 @@ public class VistaPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaNuevaVersionDeProyecto.getInstancia().setVisible(true);
+				FabricaVistas.getInstancia().getVista("NuevaVersionDeProyecto").Visibilizar();;
 			}
 	    	
 	    });
@@ -78,7 +77,7 @@ public class VistaPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaAñadirFabricacion.getInstancia().setVisible(true);			
+				FabricaVistas.getInstancia().getVista("AñadirFabricacion").Visibilizar();		
 			}
 	    	
 	    });
@@ -88,7 +87,7 @@ public class VistaPrincipal extends JFrame{
 	    spm.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaSolicitarPartidaDeMedicamentos.getInstancia().setVisible(true);
+				FabricaVistas.getInstancia().getVista("SolicitarMedicamentos").Visibilizar();
 			}
 	    	
 	    });
@@ -98,5 +97,9 @@ public class VistaPrincipal extends JFrame{
 		this.getContentPane().add(panel);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+	}
+	@Override
+	public void Visibilizar() {
+		setVisible(true);	
 	}
 }

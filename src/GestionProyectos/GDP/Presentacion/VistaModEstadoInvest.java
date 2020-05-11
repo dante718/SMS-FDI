@@ -21,7 +21,7 @@ import GestionProyectos.GDP.Integracion.ModeloTablaPersona;
 
 
 @SuppressWarnings("serial")
-public class VistaModEstadoInvest extends JFrame{
+public class VistaModEstadoInvest extends JFrame implements IVista{
 	    private static VistaModEstadoInvest instancia=null;
 		private JTable tabla;
 		private ModeloTablaPersona modelo= new ModeloTablaPersona();
@@ -29,7 +29,7 @@ public class VistaModEstadoInvest extends JFrame{
 		private JButton liberar, cambiarproyecto, addinvestigador;
 		private JPanel panel= new JPanel();
         private VistaModEstadoInvest() {
-        	  initVista();
+        	initVista();
         }
         public static VistaModEstadoInvest getInstancia() {
         	if(instancia==null) {
@@ -84,9 +84,9 @@ public class VistaModEstadoInvest extends JFrame{
 					}
 					else {
 						String estado= (String) tabla.getValueAt(tabla.getSelectedRow(), 5);
-						if(estado.toLowerCase().equals("no disponible")) {		
+						if(estado.toLowerCase().equals("no disponible")) {	
 							VistaCambiarProyecto.getInstancia().setPersona(modelo.getPersona(tabla.getSelectedRow()));
-							VistaCambiarProyecto.getInstancia().setVisible(true);
+							FabricaVistas.getInstancia().getVista("CambiarProyecto").Visibilizar();
 						}
 						else {
 							JOptionPane.showMessageDialog(null, "Selecciona un investigador que ya esté en un proyecto");
@@ -109,8 +109,8 @@ public class VistaModEstadoInvest extends JFrame{
 					else {
 						String estado= (String) tabla.getValueAt(tabla.getSelectedRow(), 5);
 						if(estado.toLowerCase().equals("disponible")) {
-							VistaAñadirAProyecto.getInstancia().setPersona(modelo.getPersona(tabla.getSelectedRow()));
-							VistaAñadirAProyecto.getInstancia().setVisible(true);
+							VistaAnnadirAProyecto.getInstancia().setPersona(modelo.getPersona(tabla.getSelectedRow()));
+							FabricaVistas.getInstancia().getVista("AñadirAProyecto").Visibilizar();
 						}
 						else {
 							JOptionPane.showMessageDialog(null, "Selecciona un investigador que esté libre.");
@@ -128,5 +128,9 @@ public class VistaModEstadoInvest extends JFrame{
 			setVisible(true);
 			setLocationRelativeTo(null);
 			setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		}
+		@Override
+		public void Visibilizar() {
+			setVisible(true);	
 		}
 }

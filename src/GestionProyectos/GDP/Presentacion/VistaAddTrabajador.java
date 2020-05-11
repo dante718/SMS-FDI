@@ -12,6 +12,7 @@ import java.util.List;
 
 import GestionProyectos.GDP.Presentacion.Controlador;
 import GestionProyectos.GDP.Integracion.ModeloTablaPersona;
+import GestionProyectos.GDP.Negocio.FabricaTransfer;
 import GestionProyectos.GDP.Negocio.TPersona;
 
 import javax.swing.JButton;
@@ -24,7 +25,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
 @SuppressWarnings("serial")
-public class VistaAddTrabajador extends JFrame{
+public class VistaAddTrabajador extends JFrame implements IVista{
 	 private static VistaAddTrabajador instancia=null;
 	 private ModeloTablaPersona modelo;
 	 private JTable tabla;
@@ -46,7 +47,7 @@ public class VistaAddTrabajador extends JFrame{
     	 }
     	 return instancia;
      }
-	private void initVista() {
+	public void initVista() {
 		setTitle("Trabajadores Disponibles");
 		setSize(500, 300);
 		panel.setLayout(new BorderLayout());
@@ -99,7 +100,7 @@ public class VistaAddTrabajador extends JFrame{
         	while(i<modelo.getPersonas().size() && !find) {
         		if(DNI.equals(modelo.getPersonas().get(i).getDNI())) {
         			find=true;
-        			VistaCrearProyecto.getInstancia().addPersona(new TPersona(modelo.getPersonas().get(i).getDNI(),modelo.getPersonas().get(i).getNombre(), modelo.getPersonas().get(i).getApellido1(),modelo.getPersonas().get(i).getApellido2(), modelo.getPersonas().get(i).getProfesion(), modelo.getPersonas().get(i).getEstado(), modelo.getPersonas().get(i).getRol()));
+        			VistaCrearProyecto.getInstancia().addPersona(crearPersona(i));
         			modelo.getPersonas().remove(i);
         			modelo.fireTableDataChanged();
         		}
@@ -112,4 +113,21 @@ public class VistaAddTrabajador extends JFrame{
     		return false;
     	}
     }
+    private TPersona crearPersona(int i) {
+    	List<Object> datos= new ArrayList<Object>();
+		datos.add(modelo.getPersonas().get(i).getDNI());
+		datos.add(modelo.getPersonas().get(i).getNombre());
+		datos.add(modelo.getPersonas().get(i).getApellido1());
+		datos.add(modelo.getPersonas().get(i).getApellido2());
+		datos.add(modelo.getPersonas().get(i).getProfesion());
+		datos.add(modelo.getPersonas().get(i).getEstado());
+		datos.add(modelo.getPersonas().get(i).getRol());
+		
+		return (TPersona) FabricaTransfer.getInstancia().getTransfer("Persona", datos);
+	}
+
+	@Override
+	public void Visibilizar() {
+		setVisible(true);	
+	}
 }

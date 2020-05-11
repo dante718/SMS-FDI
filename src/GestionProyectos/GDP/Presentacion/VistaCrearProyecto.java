@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
+import GestionProyectos.GDP.Negocio.FabricaTransfer;
 import GestionProyectos.GDP.Negocio.TPersona;
 import GestionProyectos.GDP.Negocio.TProyecto;
 
@@ -22,7 +22,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 
-public class VistaCrearProyecto extends JFrame {
+public class VistaCrearProyecto extends JFrame implements IVista{
 	private static VistaCrearProyecto instancia=null;
     private List<TPersona> participantes= new ArrayList<TPersona>();
     private JLabel etiqueta1 , etiqueta2, etiqueta3, etiqueta4, etiqueta5;
@@ -30,10 +30,9 @@ public class VistaCrearProyecto extends JFrame {
     private JTextArea texto2;
     private JButton boton1, boton2, boton3;
     private JPanel panel=new JPanel();
-	private VistaCrearProyecto() {
-		initVista();
-	}
-	
+    private VistaCrearProyecto() {
+    	initVista();
+    }
 	public static VistaCrearProyecto getInstancia() {
 		if(instancia==null) {
 			instancia= new VistaCrearProyecto();
@@ -79,7 +78,7 @@ public class VistaCrearProyecto extends JFrame {
 		boton1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaAddInvestigador.getInstancia().setVisible(true);
+				FabricaVistas.getInstancia().getVista("AñadirInvestigador").Visibilizar();
 			}
 			
 		});
@@ -90,7 +89,7 @@ public class VistaCrearProyecto extends JFrame {
 		boton2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaAddTrabajador.getInstancia().setVisible(true);
+				FabricaVistas.getInstancia().getVista("AñadirTrabajador").Visibilizar();
 			}		
 		});
 		panel.add(boton2);
@@ -116,15 +115,27 @@ public class VistaCrearProyecto extends JFrame {
 					Date date= new Date();
 					SimpleDateFormat sdf= new SimpleDateFormat("dd/MM/yyyy");
 					String fecha= sdf.format(date);
-					if(Controlador.getInstancia().AddProyecto(new TProyecto(texto1.getText(), texto2.getText(), personal,  "Version "+ 1,fecha, "NO"))) {
+					if(Controlador.getInstancia().AddProyecto(crearProyecto(personal, fecha))) {
 						cerrar();
 					}				
 				}
+			}
+
+			private TProyecto crearProyecto(List<String> personal, String fecha) {
+				List<Object> Datos= new ArrayList<Object>();
+				Datos.add(texto1.getText());
+				Datos.add(texto2.getText());
+				Datos.add(personal);
+				Datos.add("Version "+1);
+				Datos.add(fecha);
+				Datos.add("NO");				
+				return (TProyecto) FabricaTransfer.getInstancia().getTransfer("Proyecto", Datos);
 			}		
 		});
 		panel.add(boton3);
 		getContentPane().add(panel);
 		setLocationRelativeTo(null);
+		setVisible(true);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);		
 	}
 	public void cerrar() {
@@ -136,4 +147,8 @@ public class VistaCrearProyecto extends JFrame {
     public List<TPersona> getParticipantes(){
     	return participantes;
     }
+    @Override
+	public void Visibilizar() {
+		setVisible(true);	
+	}
 }

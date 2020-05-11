@@ -1,19 +1,10 @@
 package GestionProyectos.GDP.Negocio;
 
-public class TPersona {
+import java.util.List;
+
+public class TPersona implements ITransfer<TPersona>{
       private String DNI, Nombre, Apellido1,Apellido2, Profesion,Estado,Rol;
-      public TPersona(String DNI, String Nombre, String Apellido1, String Apellido2, String Profesion, String Estado, String Rol) {
-    	  this.DNI=DNI;
-    	  this.Nombre=Nombre;
-    	  this.Apellido1=Apellido1;
-    	  this.Apellido2=Apellido2;
-    	  this.Profesion=Profesion;
-    	  this.Estado=Estado;
-    	  if(Rol.toLowerCase().equals("investigador") || Rol.toLowerCase().equals("trabajador")) {
-    		  this.Rol=Rol;
-    	  }
-    	  else throw new IllegalArgumentException("Su rol no está entre las opciones posible, ha de ser investigador o trabajador");
-      }
+    
       public String getDNI() {
     	  return DNI;
       }
@@ -38,4 +29,17 @@ public class TPersona {
       public void setEstado(String Estado) {
     	  this.Estado=Estado;
       }
+	@Override
+	public TPersona crearObjeto(List<Object> datos) {
+			for(int i=0;i<datos.size();i++) {
+				if(i==0) this.DNI=(String) datos.get(i);
+				else if(i==1) this.Nombre=(String) datos.get(i);
+				else if(i==2) this.Apellido1=(String) datos.get(i);
+				else if(i==3) this.Apellido2=(String) datos.get(i);
+				else if(i==4) this.Profesion=(String) datos.get(i);
+				else if(i==5) this.Estado=(String) datos.get(i);
+				else if(i==6) this.Rol=(String) datos.get(i);
+			}
+			return this;
+	}
 }
