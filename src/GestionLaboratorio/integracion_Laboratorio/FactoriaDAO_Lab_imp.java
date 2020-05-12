@@ -18,7 +18,7 @@ public class FactoriaDAO_Lab_imp extends FactoriaDAO{
 		return null;
 	}
 	@Override
-	public DAODatosClinicos CrearTablaDatosClinicos() {
+	public DAODatosClinicos CrearTablaDatosClinicos(String ruta) {
 		// TODO Auto-generated method stub
 		return null;
 	}
