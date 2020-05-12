@@ -1,10 +1,9 @@
 package GestionProyectos.GDP.Main;
 
-import GestionProyectos.GDP.Presentacion.FabricaVistas;
-
+import GestionProyectos.GDP.Presentacion.VistaPrincipal;
 
 public class initGUI {
        public static void mainProyectos(String [] args) {
-    	   FabricaVistas.getInstancia().getVista("VistaPrincipal").Visibilizar();;
+    	  VistaPrincipal.getInstancia().setVisible(true);
        }
 }

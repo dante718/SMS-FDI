@@ -125,10 +125,9 @@ public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 	if(e.getSource()==(JButton)this.botonContinuar) {
 		ExtraccionValores(estudio,farmaco, etapa);
-		this.Controlador.BuscarPlantilla(Estudio,Pastilla,Etapa);
-		FabricaPlantilla f=new FabricaPlantilla();
-		Plantilla p=f.crearPlantilla("Plantilla: ", Controlador);
-		//Plantilla PlantillaDatos=new Plantilla(Controlador);
+		this.Controlador.setParametros(Estudio, Pastilla, Etapa);
+		this.Controlador.crearPantallaPlantilla();
+		
 		
 	}
 	else if(e.getSource()==(JButton)this.botonAtras) {

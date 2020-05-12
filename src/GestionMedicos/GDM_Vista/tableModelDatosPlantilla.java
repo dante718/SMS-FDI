@@ -13,6 +13,10 @@ import GestionMedicos.FactoriaServAplicacion.TransDatosClinicos;
 import GestionMedicos.GDM.Controlador.ControladorMed;
 
 public class tableModelDatosPlantilla extends AbstractTableModel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	ArrayList<TransDatosClinicos>DatosClinicos;
 	private ArrayList <String> Columnas;
 	private Class[] TipoColumnas;
@@ -66,9 +70,10 @@ public class tableModelDatosPlantilla extends AbstractTableModel{
 		case 0: 
 			return DatosClinicos.get(fila).getId();
 		case 1:
-			return DatosClinicos.get(fila).getEdad();
-		case 2:
 			return DatosClinicos.get(fila).getSexo();
+			
+		case 2:
+			return DatosClinicos.get(fila).getEdad();
 		case 3:
 			return DatosClinicos.get(fila).getFecha();
 		case 4:
@@ -101,7 +106,18 @@ public class tableModelDatosPlantilla extends AbstractTableModel{
 		this.fireTableRowsUpdated(fila,columna);
 		
 	}
-	 
+	public void actualizar() {
+		//realizar una recarga desde la base de datos
+		this.DatosClinicos=this.controlador.recargarDatos();
+	
+	
+		
+	}
+	 public void agregarFila() {
+		 
+		 
+		
+	 }
 	
 	
 

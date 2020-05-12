@@ -2,10 +2,17 @@ package GestionProyectos.GDP.Negocio;
 
 import java.util.List;
 
-public class TProyecto implements ITransfer<TProyecto>{
+public class TProyecto {
       private String nombre, descripcion, mododefabricacion, version,fechadeversion;
       private List<String> participantes;
-    
+      public TProyecto(String nombre, String descripcion, List<String> participantes, String version, String fechadeversion, String MododeFabricacion) {
+    	  this.nombre=nombre;
+    	  this.descripcion=descripcion;
+    	  this.participantes=participantes;
+    	  this.mododefabricacion=MododeFabricacion;
+    	  this.fechadeversion=fechadeversion;
+    	  this.version=version;
+      }
       public void setFecha(String fecha) {
     	  this.fechadeversion=fecha;
       }
@@ -36,17 +43,4 @@ public class TProyecto implements ITransfer<TProyecto>{
       public String getFecha() {
     	  return fechadeversion;
       }
-	@SuppressWarnings("unchecked")
-	@Override
-		public TProyecto crearObjeto(List<Object> datos) {
-				for(int i=0;i<datos.size();i++) {
-					if(i==0) this.nombre=(String) datos.get(i);
-					else if(i==1) this.descripcion=(String) datos.get(i);
-					else if(i==2) this.version=(String) datos.get(i);
-					else if(i==3) this.fechadeversion=(String) datos.get(i);
-					else if(i==4) this.mododefabricacion=(String) datos.get(i);
-					else if(i==5) this.participantes=(List<String>) datos.get(i);
-				}
-				return this;
-		}
 }

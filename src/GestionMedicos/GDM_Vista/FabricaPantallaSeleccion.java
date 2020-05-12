@@ -13,16 +13,18 @@ public class FabricaPantallaSeleccion implements FactoriaAbstractaPantallas {
 
 	
 
+
 	@Override
-	public PantallaPrincipal crearPantallaPrincipal(String s) {
+	public Plantilla crearPlantilla(String s, ControladorMed control) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 
 
+
 	@Override
-	public Plantilla crearPlantilla(String s, ControladorMed control) {
+	public PantallaPrincipal crearPantallaPrincipal(String s, ControladorMed control) {
 		// TODO Auto-generated method stub
 		return null;
 	}

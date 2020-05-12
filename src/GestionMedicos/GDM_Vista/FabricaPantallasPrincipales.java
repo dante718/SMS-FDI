@@ -5,14 +5,14 @@ import GestionMedicos.GDM.Controlador.ControladorMed;
 
 public class FabricaPantallasPrincipales implements FactoriaAbstractaPantallas {
 
+	@Override
+	public PantallaPrincipal crearPantallaPrincipal(String s, ControladorMed control) {
+		// TODO Auto-generated method stub
+		return new PantallaPrincipal(s,control);
+	}
 	
 
 
-	@Override
-	public PantallaPrincipal crearPantallaPrincipal(String s) {
-		// TODO Auto-generated method stub
-		return new PantallaPrincipal(s);
-	}
 
 	@Override
 	public PantallaSeleccion crearPantallaSeleccion(String string, ControladorMed control) {
@@ -25,5 +25,6 @@ public class FabricaPantallasPrincipales implements FactoriaAbstractaPantallas {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

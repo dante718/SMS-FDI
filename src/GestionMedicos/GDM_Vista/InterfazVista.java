@@ -5,20 +5,15 @@ import javax.swing.JFrame;
 import GestionMedicos.GDM.Controlador.ControladorMed;
 
 public class InterfazVista extends JFrame{
-		
-	public InterfazVista() {
-
+	private ControladorMed ctrl;
+	public InterfazVista(ControladorMed c) {
+		this.ctrl=c;
+		MainMedicos();
 	}
-	public  void mainMedicos() {
-		// TODO Auto-generated method stub
-		
-		//JFrame m=new PantallaPrincipal("subsistema Medicos");
-		
-		PantallaPrincipal p;
-		FabricaPantallasPrincipales FPrincipales=new FabricaPantallasPrincipales();
-		p=FPrincipales.crearPantallaPrincipal("subsitema Medicos");
-		
-		
+	private  void MainMedicos() {
+	
+		this.ctrl.CrearPantallaPrincipal();
+	
 	}
 	
 }

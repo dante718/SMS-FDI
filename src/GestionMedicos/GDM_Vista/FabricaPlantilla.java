@@ -18,9 +18,11 @@ public class FabricaPlantilla implements FactoriaAbstractaPantallas {
 	}
 
 	@Override
-	public PantallaPrincipal crearPantallaPrincipal(String s) {
+	public PantallaPrincipal crearPantallaPrincipal(String s, ControladorMed control) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 }

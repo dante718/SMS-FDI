@@ -12,9 +12,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import GestionDeEnvios.GDE.Controlador.ControladorEnvio;
-import GestionDeFabrica.Vista.MainFabrica;
 import GestionDeFabrica.Vista.VistaFabrica;
 import GestionLaboratorio.presentacion_Laboratorio.Vista_Lab;
+import GestionMedicos.GDM.Controlador.ControladorMed;
 import GestionMedicos.GDM_Vista.InterfazVista;
 import GestionProyectos.GDP.Main.initGUI;
 
@@ -97,8 +97,9 @@ public class VentanaPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				InterfazVista medicos=new InterfazVista();
-				medicos.mainMedicos();		
+				ControladorMed.getInstancia();
+				InterfazVista medicos=new InterfazVista(ControladorMed.getInstancia());
+					
 			}
 			
 		});
@@ -114,8 +115,8 @@ public class VentanaPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainFabrica vistaFabrica = new MainFabrica();
-				vistaFabrica.initGUI();
+				VistaFabrica vistaFabrica = new VistaFabrica();
+				vistaFabrica.start();		
 			}
 			
 		});

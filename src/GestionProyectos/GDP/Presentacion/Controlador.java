@@ -70,7 +70,7 @@ public class Controlador {
 		return SAImp.getInstancia().cambiarproyecto(Persona, proyecto);
 	}
 	public void añadiraproyecto(TPersona Persona, TProyecto proyecto) {
-		SAImp.getInstancia().annadiraproyecto(Persona, proyecto);
+		SAImp.getInstancia().añadiraproyecto(Persona, proyecto);
 	}
 	public boolean compararfechas(String fechaAntigua) {
 		return SAImp.getInstancia().compararfechas(fechaAntigua);

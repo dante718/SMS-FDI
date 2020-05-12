@@ -12,8 +12,10 @@ import General.FactoriaSApp;
 public class FactoriaServAppMed_Imp extends FactoriaSApp {
 	private ArrayList<String> plantillaDatosClinicos;
 	private TransPlantilla Plantilla;
-	public FactoriaServAppMed_Imp(String estudio, String pastilla, String etapa){
+	private String Ruta;
+	public FactoriaServAppMed_Imp(String estudio, String pastilla, String etapa,String ruta){
 		//esto esta bien si lo hago aqui? o ser�a mejor hacerlo en el modulo del controlador
+		this.Ruta=ruta;
 		Plantilla=buscarPlantilla(estudio, pastilla,  etapa);  
 		//ya hemos consulado atrav�s del DAODatosClinicos el almacen
 		plantillaDatosClinicos=null;
@@ -32,39 +34,34 @@ public class FactoriaServAppMed_Imp extends FactoriaSApp {
 	}
 	
 	
-	public ArrayList<String> CargaDatos(String ruta) throws IOException {
-		/*ArrayList<String>lista=new ArrayList<String>();
-		BufferedReader buffer=new BufferedReader(new InputStreamReader(new FileInputStream(ruta)));
-		String cadena=" ";
-		while((cadena=buffer.readLine())!=null) {
-			lista.add(cadena);
-			
+	public ArrayList<String> CargaDatos() throws IOException {
+		
+		
+		return FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos(this.Ruta).getDatosClinicos();
+	}
+	
+	
+	public void introducirDatos(String id,String sexo,int edad,String fecha,int cantidad) {
+		try {
+			FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos(this.Ruta).CrearDatos(id, sexo, edad, fecha,cantidad,Plantilla);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		buffer.close();
 		
-		return lista;*/
-		
-		return FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos(ruta).getDatosClinicos();
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/*public TransDatosClinicos introducirDatos(String id,String sexo,int edad,String fecha) {
-		plantillaDatosClinicos=FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos().CrearDatos(id, sexo, edad, fecha);
-		return plantillaDatosClinicos;
+	public void eliminarDato(String id) {
+		try {
+			FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos(Ruta).eliminarDatoTabla(id,Plantilla);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("fallo al borrar");
+			e.printStackTrace();
+		}
 	}
+//}
+	/*
 
 
 	public void mostrarDatosPlantilla() {

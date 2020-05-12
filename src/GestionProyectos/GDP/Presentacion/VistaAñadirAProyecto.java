@@ -10,37 +10,38 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
-public class VistaSolicitarPartidaDeMedicamentos extends VistaProyectos{
-    private JButton solicitar, cancelar;
-    private static VistaProyectos instancia=null;
-	private VistaSolicitarPartidaDeMedicamentos() {
+
+public class VistaAñadirAProyecto extends VistaProyectos{
+	private static VistaProyectos instancia=null;
+    private JButton añadir, cancelar;
+	private VistaAñadirAProyecto() {
 		initVista();
 		initGUI();
 	}
 	public static VistaProyectos getInstancia() {
 		if(instancia==null) {
-			instancia= new VistaSolicitarPartidaDeMedicamentos();
+			instancia= new VistaAñadirAProyecto();
 		}
 		return instancia;
 	}
 	private void initGUI() {
 		JPanel SouthPanel = new JPanel();
 		SouthPanel.setLayout(new FlowLayout());
-		solicitar=new JButton("Solicitar Partida");
+		añadir=new JButton("Añadir");
 		cancelar= new JButton("Cancelar");	
-		solicitar.addActionListener(new ActionListener() {
+		añadir.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(getTabla().getSelectedRow()==-1) {
 					JOptionPane.showMessageDialog(null, "No has seleccionado ningún proyecto.");
 				}
-				else if(getTabla().getValueAt(getTabla().getSelectedRow(), 5).equals("SI")) {
-					VistaFormularioMedicamentos.getInstancia().setVisible(true);
-				}
 				else {
-					JOptionPane.showMessageDialog(null, "Solo pueden solicitar partida de medicamentos proyectos en fabricacion. ");
+					Controlador.getInstancia().añadiraproyecto(getPersonaSeleccionada(), getModelo().getProyecto(getTabla().getSelectedRow()));
+					JOptionPane.showMessageDialog(null, "Investigador añadido a "+getModelo().getProyecto(getTabla().getSelectedRow()).getNombre());
+					dispose();
 				}
+								
 			}
 			
 		});
@@ -54,12 +55,11 @@ public class VistaSolicitarPartidaDeMedicamentos extends VistaProyectos{
 			
 		});
 		
-		SouthPanel.add(solicitar);
+		SouthPanel.add(añadir);
 		SouthPanel.add(cancelar);
 		getPanel().add(SouthPanel, BorderLayout.PAGE_END);
-		getContentPane().add(getPanel());
-		setVisible(true);
+		getContentPane().add(getPanel());	
 		
 	}
-
+	
 }

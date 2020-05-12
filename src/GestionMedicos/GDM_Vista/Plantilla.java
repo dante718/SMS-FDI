@@ -1,6 +1,9 @@
 package GestionMedicos.GDM_Vista;
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +12,10 @@ import java.util.Scanner;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionListener;
 
@@ -20,7 +25,7 @@ import GestionMedicos.FactoriaServAplicacion.TransDatosClinicos;
 import GestionMedicos.FactoriaServAplicacion.TransPlantilla;
 import GestionMedicos.GDM.Controlador.ControladorMed;
 
-public class Plantilla extends JFrame {
+public class Plantilla extends JFrame implements ActionListener{
 	
 	/**
 	 * 
@@ -28,90 +33,95 @@ public class Plantilla extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	ControladorMed Contr;
-	private List <TransDatosClinicos> personaData;
+	
 	private tableModelDatosPlantilla modeloTabla;
+	button agregar,modificar,eliminar,actualizar;
+	JTable tabla;
+	JTextArea usuario;
 	public Plantilla(String s, ControladorMed controlador) {
 		super(s);
 		this.Contr=controlador;
 		this.setLayout(new BorderLayout());
 		this.setVisible(true);
 		this.setSize(600,400);
-		
+		this.setBackground(Color.yellow);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.getContentPane().setBackground(Color.LIGHT_GRAY);
-		ArrayList<String> Columnas=Contr.getParametrosPlantilla();
-		this.personaData=new ArrayList<>();
-		
-		
+		this.getContentPane().setBackground(Color.yellow);		
+	
 		this.modeloTabla=new tableModelDatosPlantilla(this.Contr);
 		
-		JTable tabla=new JTable(); 
+		tabla=new JTable(); 
 		tabla.setModel(this.modeloTabla);
-		this.add(new JScrollPane(tabla));
+		
+		this.agregar=new button("agregar",12);
+		this.eliminar=new button("eliminar",12);
+		this.modificar=new button("modificar",12);
+		this.actualizar=new button("actualizar",12);
+		this.actualizar.addActionListener(this);
+		this.agregar.addActionListener(this);
+		this.eliminar.addActionListener(this);
+		this.modificar.addActionListener(this);
+		JPanel panelbotones=new JPanel();
+		JPanel panelUsuario=new JPanel();
+		panelUsuario.setLayout(new BorderLayout());
+		panelbotones.setBackground(Color.yellow);
+		panelbotones.setLayout(new FlowLayout());
+		panelbotones.add(agregar);
+		panelbotones.add(eliminar);
+		panelbotones.add(modificar,FlowLayout.LEFT);
+		panelbotones.add(actualizar);
+		this.usuario=new JTextArea(1,100);
+		panelUsuario.add(this.usuario,BorderLayout.SOUTH);
+		this.add(new JScrollPane(tabla),BorderLayout.NORTH);
+		this.add(panelUsuario,BorderLayout.AFTER_LINE_ENDS);
+		this.add(panelbotones,BorderLayout.SOUTH);
+	
+		this.pack();
+		
 		
 	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==this.actualizar) {
+			this.modeloTabla.actualizar();
+			this.modeloTabla.fireTableDataChanged();
+		}
+		if(e.getSource()==this.agregar) {
+			
+			agregarDatos();
+			
+			
+		}
+		if(e.getSource()==this.eliminar) {
+			eliminarDatos();
+		}
+		if(e.getSource()==this.modificar) {
+			
+		}
 		
+	}
+	
+	private void agregarDatos() {
+	String []aux=this.usuario.getText().split(" ");
+	
+		this.Contr.agregarDatos(aux[0],aux[1], Integer.parseInt(aux[2]), aux[3],Integer.parseInt(aux[4]));
+		this.modeloTabla.actualizar();
+		this.modeloTabla.fireTableDataChanged();
+	
 		
+	}
+	
+	private void eliminarDatos() {
+		//meter comprobaciones
+		String []aux=this.usuario.getText().split(" ");
+		this.Contr.eliminarElemento(aux[0]);
+		this.modeloTabla.actualizar();
+		this.modeloTabla.fireTableDataChanged();
+	}
+	private void modificarDatos() {
+		
+	}
 		/*
-		button boton=new button("Boton",20,0,0, 400, 80);
-		
-		etiqueta id=new etiqueta("Id",Color.black,20,10,100,100,30);
-		etiqueta pastilla=new etiqueta("Pastilla",Color.black,20,100,100,100,30);
-		etiqueta sexo=new etiqueta("Sexo",Color.black,20,200,100,100,30);
-		etiqueta dato1=new etiqueta("Dato1",Color.black,20,300,100,100,30);
-		button botonEditar =new button(" "  ,15,500,150,95, 35);
-		button botonCancelar =new button(" ",15,600,150, 95, 35);
-		button botonEliminar =new button(" ",15,700,150, 95, 35);
-		button botonGuardar=new button("GUARDAR",15,800,150, 150, 35);
-		botonEditar.setIcon(new ImageIcon("editar.png"));
-		botonCancelar.setIcon(new ImageIcon("cancel.png"));
-		botonEliminar.setIcon(new ImageIcon("borrar.png"));*
-		
-		this.add(id);
-		this.add(pastilla);
-		this.add(sexo);
-		this.add(dato1);
-		this.add(botonEditar);
-		this.add(botonCancelar);
-		this.add(botonEliminar);
-		this.add(botonGuardar);
-		botonEditar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				agregarDatos();
-				
-			}
-			
-		}); 
-		botonGuardar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			GuardarDatosIntroducidos();
-				
-			}
-			
-		});
-	*
-	}
-	
-	public void agregarDatos() {
-		String id,sexo,fecha;
-		int edad, cantidad ;
-		Scanner teclado =new Scanner (System.in);
-		System.out.println("introduce el identificador");
-		id=teclado.nextLine();
-		System.out.println("el sexo");
-		sexo=teclado.nextLine();
-		 System.out.println("la edad");
-		edad=Integer.parseInt(teclado.nextLine());
-		 System.out.println("la cantidad");
-		cantidad=Integer.parseInt(teclado.nextLine());
-		System.out.println(" la fecha");		
-		fecha=teclado.nextLine();
-		System.out.println("PULSA GUARDAR");
-	
-		
-		Controlador.agregarDatos(id, sexo, edad, cantidad, fecha);
-		
-	}
 	public void GuardarDatosIntroducidos() {
 		Controlador.GuardarDatos();
 		

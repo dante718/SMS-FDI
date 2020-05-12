@@ -13,15 +13,17 @@ import GestionMedicos.FactoriaServAplicacion.TransPlantilla;
 
 public class DAODatosClinicos {
 	private ArrayList<String> plantillaDatosClinicos;
+	private String ruta;
 	public DAODatosClinicos(String ruta) throws IOException{
+		this.ruta=ruta;
 		plantillaDatosClinicos=new ArrayList<String>();
-		CargarDatosClinicos(ruta);
+		CargarDatosClinicos();
 	}
 
 	public ArrayList<String> getDatosClinicos(){
 		return this.plantillaDatosClinicos;
 	}
-	private void CargarDatosClinicos(String ruta) throws IOException {
+	private void CargarDatosClinicos() throws IOException {
 		
 		BufferedReader buffer=new BufferedReader(new InputStreamReader(new FileInputStream(ruta)));
 		String cadena=" ";
@@ -35,14 +37,62 @@ public class DAODatosClinicos {
 		
 		
 	}
-	public TransDatosClinicos CrearDatos(String id,String sexo,int edad,String fecha,int cantidad) {
-		// TODO Auto-generated method stub
-		//se crear� el objeto Plantilla para ser Completada
+	public void CrearDatos(String id,String sexo,int edad,String fecha,int cantidad,TransPlantilla plantilla) {
+			
+		 agregarDatosEnAlmacen(plantilla, new TransDatosClinicos( id,sexo , edad, fecha,cantidad));
 		 
-		return new TransDatosClinicos( id,sexo , edad, fecha,cantidad) ;
+	}
+	public void eliminarDatoTabla(String id, TransPlantilla p) {
+		boolean encontrado=false;
+		int i=0;
+		String[] idlista;
+		while(!encontrado) {
+			idlista=this.plantillaDatosClinicos.get(i).split(" ");
+			if(id.equals(idlista[0])) {
+				encontrado=true;
+			}
+			else {
+				i++;
+			}
+		}
+		if(encontrado) {
+		this.plantillaDatosClinicos.remove(i);
+		actualizarDatosEnAlmacen(p);
+		}
+	}
+	public void actualizarDatosEnAlmacen (TransPlantilla plantilla) {
+		String Estudio=plantilla.getEstudio();
+		String Pastilla=plantilla.getFarmaco();
+		String Etapa=plantilla.getEtapa();
+		//String ruta="src/BaseDatos/"+Estudio+"_"+Pastilla+"_"+Etapa+".txt";
+
+		FileWriter fichero = null;
+		String datos="";
+		int cont=0;
+	
+		try {
+			fichero = new FileWriter(ruta);
+			
+			for(;cont<this.plantillaDatosClinicos.size();cont++) {
+				fichero.write(this.plantillaDatosClinicos.get(cont)+"\n" );	
+				
+			}
+		
+			fichero.close();
+			
+		} catch (FileNotFoundException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+	
+		 catch (IOException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
+
 	}
 	
-	public void guardarDatosEnAlmacen(TransPlantilla plantilla, TransDatosClinicos  tablaDatos) {   
+	public void agregarDatosEnAlmacen(TransPlantilla plantilla, TransDatosClinicos  tablaDatos) {   
 		//aqui realizar� una serializacion de los datos 
 		//aqui debo escribir en un fichero cuya ruta es Estudio pastilla etapa la linea
 		//de datos
@@ -75,7 +125,7 @@ public class DAODatosClinicos {
 				//}
 				
 				fichero.write(tablaDatos.getId()+" "+tablaDatos.getSexo()+" "+tablaDatos.getEdad()
-						+" "+tablaDatos.getFecha());
+						+" "+tablaDatos.getFecha()+" "+tablaDatos.GetCantidad());
 
 				fichero.close();
 		} catch (FileNotFoundException e2) {

@@ -11,10 +11,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import javax.swing.JComboBox;
+
 import General.FactoriaSApp;
 import GestionMedicos.FactoriaServAplicacion.FactoriaServAppMed_Imp;
 import GestionMedicos.FactoriaServAplicacion.TransDatosClinicos;
 import GestionMedicos.FactoriaServAplicacion.TransPlantilla;
+import GestionMedicos.GDM_Vista.FabricaPantallaSeleccion;
+import GestionMedicos.GDM_Vista.FabricaPantallasPrincipales;
+import GestionMedicos.GDM_Vista.FabricaPlantilla;
+import GestionMedicos.GDM_Vista.PantallaPrincipal;
+import GestionMedicos.GDM_Vista.PantallaSeleccion;
+import GestionMedicos.GDM_Vista.Plantilla;
 
 
 public class ControladorMed extends FactoriaControladorMed {
@@ -28,15 +36,15 @@ public class ControladorMed extends FactoriaControladorMed {
 	private ArrayList<String> ListaFarmacos;
 	private ArrayList<String> ParametrosPlantilla;
 	private ArrayList<TransDatosClinicos> personas;
-
-	
+	private String ruta;
+	String estudio,  pastilla, etapa;
 	public ControladorMed() {
 		ListaEstudios= null;
 		ListaFarmacos=null;
 		ListaEtapas=null;
 		ParametrosPlantilla=null;
 		personas=null;
-		//BuscarPlantilla( estudio,  pastilla,  etapa);
+	
 		
 	try {
 		CargarDatos();
@@ -47,7 +55,33 @@ public class ControladorMed extends FactoriaControladorMed {
 	
 	
 	}
+	
+///fabricas Pantallas//
+public void CrearPantallaPrincipal() {
+	FabricaPantallasPrincipales FPrincipales=new FabricaPantallasPrincipales();
+	FPrincipales.crearPantallaPrincipal("subsitema Medicos",this);
+	
+}
+public void crearPantallaSeleccion() {
+	FabricaPantallaSeleccion f= new FabricaPantallaSeleccion();
+	PantallaSeleccion p=f.crearPantallaSeleccion("pantalla de seleccion",this);
+	
+}
+public void crearPantallaPlantilla() {
+	BuscarPlantilla();
+	FabricaPlantilla f=new FabricaPlantilla();
+	Plantilla p=f.crearPlantilla("Plantilla: ",this);
+}
 
+//////////////////////	
+	
+	
+public void setParametros(	String estudio2, String pastilla, String etapa2) {
+this.estudio=estudio2;	
+ this.etapa=etapa2;
+ this.pastilla=pastilla;
+	
+}
 	public void CargarDatos() throws IOException {
 			this.ListaEstudios=lectura(rutaestudios);
 			this.ListaFarmacos=lectura(rutafarmacos);
@@ -85,7 +119,7 @@ public class ControladorMed extends FactoriaControladorMed {
 		return this.personas;
 	}
 	
-	public  void BuscarPlantilla(String estudio, String pastilla, String etapa) {
+	public  void BuscarPlantilla() {
 		
 		//realizo la comprobacion de los datos :
 		//comprobacionDatos(estudio, pastilla, etapa);
@@ -98,9 +132,11 @@ public class ControladorMed extends FactoriaControladorMed {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		ServicioApp= (FactoriaServAppMed_Imp) FactoriaSApp.getInstancia_Med(estudio, pastilla, etapa);
+		this.ruta="src/BaseDatos/"+estudio+"_"+pastilla+"_"+etapa+".txt";
+		ServicioApp= (FactoriaServAppMed_Imp) FactoriaSApp.getInstancia_Med(estudio, pastilla, etapa,ruta);
+		
 		try {
-			aux=ServicioApp.CargaDatos("src/BaseDatos/"+estudio+"_"+pastilla+"_"+etapa+".txt");
+			aux=ServicioApp.CargaDatos();
 			this.personas=generarListaPersonas(aux);
 			
 		} catch (IOException e) {
@@ -115,24 +151,43 @@ public class ControladorMed extends FactoriaControladorMed {
 		ArrayList<TransDatosClinicos> personas=new ArrayList<>();
 		TransDatosClinicos p;
 		String[] cadena;
-		for(String e:lista) {
-			 cadena=e.split(" ");
-			
-		p=new TransDatosClinicos(cadena[0],cadena[1],Integer.parseInt(cadena[2]),cadena[3],
-							 Integer.parseInt(cadena[4]));			
-			 	
-		personas.add(p);
-			 
-		}
-		return personas;
+		
+			for(String e:lista) {
+				 cadena=e.split(" ");
+				
+			p=new TransDatosClinicos(cadena[0],cadena[1],Integer.parseInt(cadena[2]),cadena[3],
+								 Integer.parseInt(cadena[4]));			
+				 	
+			personas.add(p);
+				 
+			}
+			return personas;
+		
+		
 	}
 	
 	
-	
+	public ArrayList<TransDatosClinicos> recargarDatos() {
+		ArrayList <String> aux;
+		
+		try {
+			aux=ServicioApp.CargaDatos();
+			this.personas=generarListaPersonas(aux);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("fallo al cargar datos");
+		}
+		return this.personas;
+	}
 	
 	//va a ser interpretado como un objeto con una serie de datos 
-	public  void agregarDatos(String id,String sexo,int edad,int cantidad,String fecha) {
-		//ServicioApp.introducirDatos(id, sexo,edad,fecha);
+	public  void agregarDatos(String id,String sexo,int edad,String fecha,int cantidad) {
+		ServicioApp.introducirDatos(id, sexo,edad,fecha,cantidad);
+		
+	}
+	public void eliminarElemento(String id) {
+		ServicioApp.eliminarDato(id);
 		
 	}
 	

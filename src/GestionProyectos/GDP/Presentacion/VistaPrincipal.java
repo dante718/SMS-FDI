@@ -15,14 +15,15 @@ import javax.swing.JPanel;
 
 
 
-public class VistaPrincipal extends JFrame implements IVista{
+public class VistaPrincipal extends JFrame{
 	private static VistaPrincipal instancia=null;
 	private JLabel titulo ;
 	private JButton cp, mei, cvd, cef,spm; 
 	private JPanel panel= new JPanel();
     private VistaPrincipal() {
-    	initVista();
+    	 initVista();
     }
+    
     public static VistaPrincipal getInstancia() {
     	if(instancia==null) {
     		instancia= new VistaPrincipal();
@@ -44,7 +45,7 @@ public class VistaPrincipal extends JFrame implements IVista{
         cp.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FabricaVistas.getInstancia().getVista("CrearProyecto").Visibilizar();;
+				VistaCrearProyecto.getInstancia().setVisible(true);
 			}
         	
         });
@@ -55,7 +56,7 @@ public class VistaPrincipal extends JFrame implements IVista{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FabricaVistas.getInstancia().getVista("ModificarInvestigador").Visibilizar();;
+				VistaModEstadoInvest.getInstancia().setVisible(true);
 			}
 	    	
 	    });
@@ -66,7 +67,7 @@ public class VistaPrincipal extends JFrame implements IVista{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FabricaVistas.getInstancia().getVista("NuevaVersionDeProyecto").Visibilizar();;
+				VistaNuevaVersionDeProyecto.getInstancia().setVisible(true);
 			}
 	    	
 	    });
@@ -77,7 +78,7 @@ public class VistaPrincipal extends JFrame implements IVista{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FabricaVistas.getInstancia().getVista("AñadirFabricacion").Visibilizar();		
+				VistaAñadirFabricacion.getInstancia().setVisible(true);			
 			}
 	    	
 	    });
@@ -87,7 +88,7 @@ public class VistaPrincipal extends JFrame implements IVista{
 	    spm.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FabricaVistas.getInstancia().getVista("SolicitarMedicamentos").Visibilizar();
+				VistaSolicitarPartidaDeMedicamentos.getInstancia().setVisible(true);
 			}
 	    	
 	    });
@@ -97,9 +98,5 @@ public class VistaPrincipal extends JFrame implements IVista{
 		this.getContentPane().add(panel);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-	}
-	@Override
-	public void Visibilizar() {
-		setVisible(true);	
 	}
 }

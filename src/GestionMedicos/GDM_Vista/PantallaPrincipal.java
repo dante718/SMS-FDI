@@ -31,8 +31,10 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
 	
 	JPanel PanelPrincipal,PanelTitulo,PanelBotonesAcciones,PanelInferior;
 	button botonPedido,botonHacerEstudio,botonInforme;
-	public	PantallaPrincipal(String nombre){
+	ControladorMed controller;
+	public	PantallaPrincipal(String nombre,ControladorMed ctrl){
 		super(nombre);
+		this.controller=ctrl;
 		mostrarGUI();
 	}
 	private void mostrarGUI() {
@@ -112,8 +114,8 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 	if(e.getSource()==this.botonHacerEstudio) {	
-		FabricaPantallaSeleccion f= new FabricaPantallaSeleccion();
-		PantallaSeleccion p=f.crearPantallaSeleccion("pantalla de seleccion", ControladorMed.getInstancia());
+		this.controller.crearPantallaSeleccion();
+		
 	}
 	
 }

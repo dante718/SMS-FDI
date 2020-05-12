@@ -16,7 +16,7 @@ public interface SA {
 	 public boolean cambiarproyecto(TPersona Persona, TProyecto proyecto);
 	 public void AddProyecto(TProyecto proyecto);
 	 public ModeloTablaProyectos creartablaProyectos();
-	 public void annadiraproyecto(TPersona Persona, TProyecto proyecto);
+	 public void añadiraproyecto(TPersona Persona, TProyecto proyecto);
 	 public boolean compararfechas(String fechaAntigua);
 	 public void GenerarNuevaVersion(TProyecto proyecto);
 	 public boolean pasarafabricacion(TProyecto proyecto);

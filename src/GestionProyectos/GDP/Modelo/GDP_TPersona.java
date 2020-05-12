@@ -1,8 +1,8 @@
-package GestionProyectos.GDP.Negocio;
+package GestionProyectos.GDP.Modelo;
 
-public class TPersona {
+public class GDP_TPersona {
       private String DNI, Nombre, Apellido1,Apellido2, Profesion,Estado,Rol;
-      public TPersona(String DNI, String Nombre, String Apellido1, String Apellido2, String Profesion, String Estado, String Rol) {
+      public GDP_TPersona(String DNI, String Nombre, String Apellido1, String Apellido2, String Profesion, String Estado, String Rol) {
     	  this.DNI=DNI;
     	  this.Nombre=Nombre;
     	  this.Apellido1=Apellido1;
@@ -34,8 +34,5 @@ public class TPersona {
       }
       public String getRol() {
     	  return Rol;
-      }
-      public void setEstado(String Estado) {
-    	  this.Estado=Estado;
       }
 }
