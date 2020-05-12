@@ -68,7 +68,7 @@ public class Controlador {
 	public boolean cambiarproyecto(TPersona Persona, TProyecto proyecto) {
 		return SAImp.getInstancia().cambiarproyecto(Persona, proyecto);
 	}
-	public void añadiraproyecto(TPersona Persona, TProyecto proyecto) {
+	public void annadiraproyecto(TPersona Persona, TProyecto proyecto) {
 		SAImp.getInstancia().annadiraproyecto(Persona, proyecto);
 	}
 	public boolean compararfechas(String fechaAntigua) {
