@@ -38,7 +38,7 @@ public class VistaAnnadirAProyecto extends VistaProyectos{
 				}
 				else {
 					Controlador.getInstancia().añadiraproyecto(getPersonaSeleccionada(), getModelo().getProyecto(getTabla().getSelectedRow()));
-					JOptionPane.showMessageDialog(null, "Investigador añadido a "+getModelo().getProyecto(getTabla().getSelectedRow()).getNombre());
+					JOptionPane.showMessageDialog(null, "Investigador añadido a "+getModelo().getProyecto(getTabla().getSelectedRow()).leerNombre());
 					dispose();
 				}
 								

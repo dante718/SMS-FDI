@@ -29,22 +29,6 @@ public class SAImp implements SA{
     	personas= new ArrayList<TPersona>();
     	proyectos= new ArrayList<TProyecto>();
     }
-    public TProyecto getProyecto(TProyecto Proyecto) {
-	  	  
-		  for(TProyecto p: proyectos) {
-			  if(p.getNombre().equals(Proyecto.getNombre())) return p;
-		  }
-		  
-		  return null;
-		 
-	}
-    public TPersona getPersona(TPersona Persona) {
-    	 for(TPersona p: personas) {
-			  if(p.getDNI().equals(Persona.getDNI())) return p;
-		  }
-		  
-		  return null;
-	}
     public static SA getInstancia() {
     	if(instancia==null) {
     		instancia= new SAImp();
@@ -52,13 +36,30 @@ public class SAImp implements SA{
     	return instancia;
     }
     
+    public TProyecto getProyecto(TProyecto Proyecto) {
+	  	  
+		  for(TProyecto p: proyectos) {
+			  if(p.leerNombre().equals(Proyecto.leerNombre())) return p;
+		  }
+		  
+		  return null;
+		 
+	}
+    public TPersona getPersona(TPersona Persona) {
+    	 for(TPersona p: personas) {
+			  if(p.leerDNI().equals(Persona.leerDNI())) return p;
+		  }
+		  
+		  return null;
+	}
+    
 	@Override
 	public ModeloTablaPersona creartablaPersonas(String RolPersona)  {
 
-		ModeloTablaPersona TA= FactoriaTabla.getInstancia().CrearObjetoPersona();
+		ModeloTablaPersona TA= FactoriaTabla.getInstancia().CrearObjetoPersona(null);
 		
 		for(int i=0;i<personas.size();i++) {
-			if(RolPersona.equals(personas.get(i).getRol())) {
+			if(RolPersona.equals(personas.get(i).leerRol())) {
 				TA.addPersonas(personas.get(i));
 				TA.fireTableDataChanged();			
 			}
@@ -69,7 +70,7 @@ public class SAImp implements SA{
 	@Override
 	public TProyecto BuscarProyecto(TProyecto proyecto) {		
          for(TProyecto p: proyectos) {
-        	 if(p.getNombre().equals(proyecto.getNombre())) return p;
+        	 if(p.leerNombre().equals(proyecto.leerNombre())) return p;
          }
          return null;
 	}
@@ -77,14 +78,14 @@ public class SAImp implements SA{
 	@Override
 	public void AddProyecto(TProyecto proyecto) {
 		proyectos.add(proyecto);
-		FactoriaDAO.getInstancia().CrearObjetoProyecto().EscribirProyectos(proyectos);
+		FactoriaDAO.getInstancia().CrearObjetoProyecto(null).EscribirProyectos(proyectos);
 		updateEstado(proyecto, "No Disponible");
-		FactoriaDAO.getInstancia().CrearObjetoPersona().EscribirPersonas(personas);
+		FactoriaDAO.getInstancia().CrearObjetoPersona(null).EscribirPersonas(personas);
 	}
 	private void updateEstado(TProyecto proyecto, String Estado) {
-		for(int i=0, j=0; i<personas.size() && j<proyecto.getparticipantes().size();i++) {
-			if(personas.get(i).getDNI().equals(proyecto.getparticipantes().get(j))) {
-				personas.get(i).setEstado(Estado);
+		for(int i=0, j=0; i<personas.size() && j<proyecto.leerparticipantes().size();i++) {
+			if(personas.get(i).leerDNI().equals(proyecto.leerparticipantes().get(j))) {
+				personas.get(i).updateEstado(Estado);
 				j++;
 			}
 		}
@@ -92,8 +93,8 @@ public class SAImp implements SA{
 	}
 	@Override
 	public void leerdatos() {
-		personas= FactoriaDAO.getInstancia().CrearObjetoPersona().leerPersonas();	
-		proyectos= FactoriaDAO.getInstancia().CrearObjetoProyecto().leerProyectos();
+		personas= FactoriaDAO.getInstancia().CrearObjetoPersona(null).leerPersonas();	
+		proyectos= FactoriaDAO.getInstancia().CrearObjetoProyecto(null).leerProyectos();
 	}
 	@Override
 	public boolean liberar(TPersona persona) {
@@ -106,15 +107,15 @@ public class SAImp implements SA{
 		}
 	}
 	private void LiberarPersona(String Estado, TPersona persona) {
-		getPersona(persona).setEstado(Estado);
-		FactoriaDAO.getInstancia().CrearObjetoPersona().EscribirPersonas(personas);
+		getPersona(persona).updateEstado(Estado);
+		FactoriaDAO.getInstancia().CrearObjetoPersona(null).EscribirPersonas(personas);
 	}
 	private boolean LiberarPersonadeProyecto(TPersona Persona) {
 		boolean find=false;
 		int i=0, j=0;
 		while(i<proyectos.size() && !find) {
-			while(j<proyectos.get(i).getparticipantes().size() && !find) {
-				if(proyectos.get(i).getparticipantes().get(j).equals(Persona.getDNI())){
+			while(j<proyectos.get(i).leerparticipantes().size() && !find) {
+				if(proyectos.get(i).leerparticipantes().get(j).equals(Persona.leerDNI())){
 					find=true;		
 				}
 				if(!find) {		
@@ -128,12 +129,12 @@ public class SAImp implements SA{
 		}
 		
 		if(find) {
-			if(proyectos.get(i).getparticipantes().size()==1) {
+			if(proyectos.get(i).leerparticipantes().size()==1) {
 				return false;
 			}
 			else {
-				proyectos.get(i).getparticipantes().remove(j);
-				FactoriaDAO.getInstancia().CrearObjetoProyecto().EscribirProyectos(proyectos);
+				proyectos.get(i).leerparticipantes().remove(j);
+				FactoriaDAO.getInstancia().CrearObjetoProyecto(null).EscribirProyectos(proyectos);
 				return true;
 			}
 		}
@@ -144,7 +145,7 @@ public class SAImp implements SA{
 	
 	@Override
 	public ModeloTablaProyectos creartablaProyectos() {		
-		ModeloTablaProyectos TP= FactoriaTabla.getInstancia().CrearObjetoProyecto();
+		ModeloTablaProyectos TP= FactoriaTabla.getInstancia().CrearObjetoProyecto(null);
 		for(int i=0; i<proyectos.size();i++) {
 			TP.addProyecto(proyectos.get(i));
 		}
@@ -154,8 +155,8 @@ public class SAImp implements SA{
 		TProyecto p=getProyecto(proyecto);
 		boolean acabar= false;
 		int i=0;
-		while(i<p.getparticipantes().size() && !acabar) {
-			if(p.getparticipantes().get(i).equals(persona.getDNI())) {
+		while(i<p.leerparticipantes().size() && !acabar) {
+			if(p.leerparticipantes().get(i).equals(persona.leerDNI())) {
 				acabar=true;
 			}
 			else {
@@ -170,15 +171,15 @@ public class SAImp implements SA{
 		}
 		else {
 			intercambiarproyectos(persona, proyectos.indexOf(proyecto));
-			FactoriaDAO.getInstancia().CrearObjetoProyecto().EscribirProyectos(proyectos);
+			FactoriaDAO.getInstancia().CrearObjetoProyecto(null).EscribirProyectos(proyectos);
 			return true;
 		}
 	}
 	private boolean ProyectoConTamaño1(TPersona persona) {
 		for(int i=0;i<proyectos.size();i++) {
-			for(String s: proyectos.get(i).getparticipantes()) {
-				if(s.equals(persona.getDNI())) {
-					return proyectos.get(i).getparticipantes().size()==1;
+			for(String s: proyectos.get(i).leerparticipantes()) {
+				if(s.equals(persona.leerDNI())) {
+					return proyectos.get(i).leerparticipantes().size()==1;
 				}
 			}
 		}
@@ -188,10 +189,10 @@ public class SAImp implements SA{
 		boolean acabar=false;
 		int i=0, j=0;
 		while(i<proyectos.size() && !acabar) {		
-				while(j<proyectos.get(i).getparticipantes().size() && !acabar){
-					if(proyectos.get(i).getparticipantes().get(j).equals(persona.getDNI())) {
-						proyectos.get(indice).getparticipantes().add(persona.getDNI());
-						proyectos.get(i).getparticipantes().remove(j);
+				while(j<proyectos.get(i).leerparticipantes().size() && !acabar){
+					if(proyectos.get(i).leerparticipantes().get(j).equals(persona.leerDNI())) {
+						proyectos.get(indice).leerparticipantes().add(persona.leerDNI());
+						proyectos.get(i).leerparticipantes().remove(j);
 						acabar=true;
 					}					
 					j++;
@@ -202,11 +203,11 @@ public class SAImp implements SA{
 		
 		}
 
-	public void añadiraproyecto(TPersona persona, TProyecto proyecto) {
-		proyecto.getparticipantes().add(persona.getDNI());
-		FactoriaDAO.getInstancia().CrearObjetoProyecto().EscribirProyectos(proyectos);
-		persona.setEstado("No Disponible");
-		FactoriaDAO.getInstancia().CrearObjetoPersona().EscribirPersonas(personas);
+	public void annadiraproyecto(TPersona persona, TProyecto proyecto) {
+		proyecto.leerparticipantes().add(persona.leerDNI());
+		FactoriaDAO.getInstancia().CrearObjetoProyecto(null).EscribirProyectos(proyectos);
+		persona.updateEstado("No Disponible");
+		FactoriaDAO.getInstancia().CrearObjetoPersona(null).EscribirPersonas(personas);
 	}
 	@Override
 	public boolean compararfechas(String fechaAntigua) {
@@ -216,7 +217,7 @@ public class SAImp implements SA{
 			Date AntiguaDate= sdf.parse(fechaAntigua);
 			if(NuevaDate.getYear()==AntiguaDate.getYear()) {
 				if(NuevaDate.getMonth()==AntiguaDate.getMonth()) {
-					if(NuevaDate.getDay()-AntiguaDate.getDay()>=1) {
+					if((NuevaDate.getDate()-AntiguaDate.getDate())>=1) {
 						return true;
 					}
 					else {
@@ -238,13 +239,13 @@ public class SAImp implements SA{
 	}
 	@Override
 	public void GenerarNuevaVersion(TProyecto proyecto) {
-		int num= extraerNumeroDeVersion(proyecto.getVersion());
-		proyecto.setVersion("Version "+num);
+		int num= extraerNumeroDeVersion(proyecto.leerVersion());
+		proyecto.updateVersion("Version "+num);
 		Date date = new Date();
 		SimpleDateFormat sdf= new SimpleDateFormat("dd/MM/yyyy");
 		String fecha= sdf.format(date);
-		proyecto.setFecha(fecha);
-		FactoriaDAO.getInstancia().CrearObjetoProyecto().EscribirProyectos(proyectos);
+		proyecto.updateFecha(fecha);
+		FactoriaDAO.getInstancia().CrearObjetoProyecto(null).EscribirProyectos(proyectos);
 		
 	}
 	private int extraerNumeroDeVersion(String version) {
@@ -261,7 +262,7 @@ public class SAImp implements SA{
 	@Override
 	public boolean pasarafabricacion(TProyecto proyecto) {	
 		if(proyecto!=null) {
-			if(proyecto.getVersion().equals("Version 1") || proyecto.getVersion().equals("Version 2")) {
+			if(proyecto.leerVersion().equals("Version 1") || proyecto.leerVersion().equals("Version 2")) {
 				return false;
 			}
 			else {
@@ -272,9 +273,9 @@ public class SAImp implements SA{
 	}
 	@Override
 	public ModeloTablaPersona tablapersonaldeproyecto(TProyecto proyecto) {
-		ModeloTablaPersona p= FactoriaTabla.getInstancia().CrearObjetoPersona();
-		for(int i=0, j=0; i<personas.size() && j<proyecto.getparticipantes().size();i++) {
-			if (personas.get(i).getDNI().equals(proyecto.getparticipantes().get(j))) {
+		ModeloTablaPersona p= FactoriaTabla.getInstancia().CrearObjetoPersona(null);
+		for(int i=0, j=0; i<personas.size() && j<proyecto.leerparticipantes().size();i++) {
+			if (personas.get(i).leerDNI().equals(proyecto.leerparticipantes().get(j))) {
 				p.addPersonas(personas.get(i));
 				j++;
 			}
@@ -283,8 +284,8 @@ public class SAImp implements SA{
 	}
 	@Override
 	public void ponerenfabricacion(TProyecto proyecto) {
-		proyecto.setFabricacion("SI");
-		FactoriaDAO.getInstancia().CrearObjetoProyecto().EscribirProyectos(proyectos);
+		proyecto.updateFabricacion("SI");
+		FactoriaDAO.getInstancia().CrearObjetoProyecto(null).EscribirProyectos(proyectos);
 	}
 	@Override
 	public boolean addProducto(Producto producto) {

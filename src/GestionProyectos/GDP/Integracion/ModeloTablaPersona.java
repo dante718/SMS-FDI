@@ -33,25 +33,25 @@ public class ModeloTablaPersona extends AbstractTableModel{
 		Object ret=null;
 		switch(columnIndex) {
 		case 0:
-			ret=personas.get(rowIndex).getDNI();
+			ret=personas.get(rowIndex).leerDNI();
 			break;
 		case 1:
-			ret=personas.get(rowIndex).getNombre();
+			ret=personas.get(rowIndex).leerNombre();
 			break;
 		case 2:
-			ret=personas.get(rowIndex).getApellido1();
+			ret=personas.get(rowIndex).leerApellido1();
 			break;
 		case 3:
-			ret=personas.get(rowIndex).getApellido2();
+			ret=personas.get(rowIndex).leerApellido2();
 			break;
 		case 4:
-			ret=personas.get(rowIndex).getProfesion();
+			ret=personas.get(rowIndex).leerProfesion();
 			break;
 		case 5:
-			ret=personas.get(rowIndex).getEstado();
+			ret=personas.get(rowIndex).leerEstado();
 			break;
 		case 6:
-			ret=personas.get(rowIndex).getRol();
+			ret=personas.get(rowIndex).leerRol();
 			break;	
 		}
 		return ret;

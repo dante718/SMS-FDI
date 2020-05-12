@@ -12,6 +12,7 @@ import java.util.List;
 
 import GestionProyectos.GDP.Presentacion.Controlador;
 import GestionProyectos.GDP.Integracion.ModeloTablaPersona;
+import GestionProyectos.GDP.Negocio.FabricaTransfer;
 import GestionProyectos.GDP.Negocio.TPersona;
 
 import javax.swing.JButton;
@@ -25,7 +26,7 @@ import javax.swing.table.TableModel;
 
 
 @SuppressWarnings("serial")
-public class VistaAddInvestigador extends JFrame{
+public class VistaAddInvestigador extends JFrame implements IVista{
 	 private static VistaAddInvestigador instancia=null;
 	 private ModeloTablaPersona modelo;
 	 private JTable tabla;
@@ -46,7 +47,7 @@ public class VistaAddInvestigador extends JFrame{
     	 return instancia;
      }
      
-	private void initVista() {
+	public void initVista() {
 		setTitle("Investigadores Disponibles");
 		setSize(500,300);
 		panel.setLayout(new BorderLayout());
@@ -97,9 +98,9 @@ public class VistaAddInvestigador extends JFrame{
         	String DNI=(String) tabla.getValueAt(tabla.getSelectedRow(), 0);
         	boolean find=false;
         	while(i<modelo.getPersonas().size() && !find) {
-        		if(DNI.equals(modelo.getPersonas().get(i).getDNI())) {
+        		if(DNI.equals(modelo.getPersona(i).leerDNI())) {
         			find=true;
-        			VistaCrearProyecto.getInstancia().addPersona(new TPersona(modelo.getPersonas().get(i).getDNI(),modelo.getPersonas().get(i).getNombre(), modelo.getPersonas().get(i).getApellido1(),modelo.getPersonas().get(i).getApellido2(), modelo.getPersonas().get(i).getProfesion(), modelo.getPersonas().get(i).getEstado(), modelo.getPersonas().get(i).getRol()));
+        			VistaCrearProyecto.getInstancia().addPersona(modelo.getPersona(i));
         			modelo.getPersonas().remove(i);
         			modelo.fireTableDataChanged();
         		}
@@ -112,5 +113,9 @@ public class VistaAddInvestigador extends JFrame{
     		return false;
     	}
     }
+	@Override
+	public void Visibilizar() {
+		setVisible(true);	
+	}
     
 }

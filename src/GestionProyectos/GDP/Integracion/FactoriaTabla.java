@@ -1,5 +1,7 @@
 package GestionProyectos.GDP.Integracion;
 
+import java.util.List;
+
 public class FactoriaTabla implements FactoriaAbstracta<ModeloTablaPersona, ModeloTablaProyectos>{
     private static FactoriaTabla instancia=null;
     
@@ -14,12 +16,12 @@ public class FactoriaTabla implements FactoriaAbstracta<ModeloTablaPersona, Mode
 	
 	
 	@Override
-	public ModeloTablaPersona CrearObjetoPersona() {
+	public ModeloTablaPersona CrearObjetoPersona(List<Object> datos) {
 		return new ModeloTablaPersona();
 	}
 
 	@Override
-	public ModeloTablaProyectos CrearObjetoProyecto() {	
+	public ModeloTablaProyectos CrearObjetoProyecto(List<Object> datos) {	
 		return new ModeloTablaProyectos();
 	}
 

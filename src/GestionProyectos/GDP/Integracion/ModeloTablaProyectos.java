@@ -35,22 +35,22 @@ public class ModeloTablaProyectos extends AbstractTableModel{
 		Object o=null;
 		switch(columnIndex) {
 		case 0:
-			o=proyectos.get(rowIndex).getNombre();
+			o=proyectos.get(rowIndex).leerNombre();
 			break;
 		case 1:
-			o=proyectos.get(rowIndex).getDescripcion();
+			o=proyectos.get(rowIndex).leerDescripcion();
 			break;
 		case 2:
-			o=proyectos.get(rowIndex).getNparticipantes();
+			o=proyectos.get(rowIndex).leerNparticipantes();
 			break;
 		case 3:
-			o=proyectos.get(rowIndex).getVersion();
+			o=proyectos.get(rowIndex).leerVersion();
 			break;
 		case 4:
-			o=proyectos.get(rowIndex).getFecha();
+			o=proyectos.get(rowIndex).leerFecha();
 			break;
 		case 5:
-			o=proyectos.get(rowIndex).getFabricacion();
+			o=proyectos.get(rowIndex).leerFabricacion();
 			break;
 		}
 		return o;

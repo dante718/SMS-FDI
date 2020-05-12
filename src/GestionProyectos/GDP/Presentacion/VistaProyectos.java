@@ -16,7 +16,7 @@ import javax.swing.JTable;
 import GestionProyectos.GDP.Integracion.ModeloTablaProyectos;
 import GestionProyectos.GDP.Negocio.TPersona;
 
-public abstract class VistaProyectos extends JFrame{
+public class VistaProyectos extends JFrame implements IVista{
 		private JTable tabla;
 		private TPersona PersonaSeleccionada;
 		private ModeloTablaProyectos modelo= new ModeloTablaProyectos();
@@ -25,7 +25,7 @@ public abstract class VistaProyectos extends JFrame{
         public void setPersona(TPersona Persona) {
          	this.PersonaSeleccionada=Persona;
          }
-		public void initVista() {
+		protected void initVista() {
 			setSize(500,350);
 			panel.setLayout(new BorderLayout());
 			etiqueta= new JLabel("Proyectos:");
@@ -48,5 +48,8 @@ public abstract class VistaProyectos extends JFrame{
         public ModeloTablaProyectos getModelo() {
         	return modelo;
         }
-       
+		@Override
+		public void Visibilizar() {
+			setVisible(true);			
+		} 
 }

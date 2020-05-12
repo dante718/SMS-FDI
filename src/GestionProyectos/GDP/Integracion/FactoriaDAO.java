@@ -1,5 +1,7 @@
 package GestionProyectos.GDP.Integracion;
 
+import java.util.List;
+
 public class FactoriaDAO implements FactoriaAbstracta<DAOPersona, DAOProyecto>{
 	private static FactoriaDAO instancia=null;
 	private FactoriaDAO() {};
@@ -11,13 +13,13 @@ public class FactoriaDAO implements FactoriaAbstracta<DAOPersona, DAOProyecto>{
 	}
 	
 	@Override
-	public DAOPersona CrearObjetoPersona() {
+	public DAOPersona CrearObjetoPersona(List<Object> datos) {
 		DAOPersona ret= DAOPersonaImp.getInstancia();
 		return ret;
 	}
 
 	@Override
-	public DAOProyecto CrearObjetoProyecto() {
+	public DAOProyecto CrearObjetoProyecto(List<Object> datos) {
 		DAOProyecto ret= DAOProyectoImp.getInstancia();	
 		return ret;
 	}

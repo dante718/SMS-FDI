@@ -9,12 +9,12 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class VistaNuevaVersionDeProyecto extends VistaProyectos{
+public class VistaNuevaVersionDeProyecto extends VistaProyectos implements IVista{
     private JButton nuevaversion, cancelar;
     private static VistaProyectos instancia=null;
 	private VistaNuevaVersionDeProyecto() {
-		initVista();
-		initGUI();
+		super.initVista();
+		this.initVista();
 	}
 	public static VistaProyectos getInstancia() {
 		if(instancia==null) {
@@ -22,7 +22,7 @@ public class VistaNuevaVersionDeProyecto extends VistaProyectos{
 		}
 		return instancia;
 	}
-	private void initGUI() {
+	protected void initVista() {
 		JPanel SouthPanel = new JPanel();
 		SouthPanel.setLayout(new FlowLayout());
 		nuevaversion=new JButton("Generar Nueva Version");
@@ -43,7 +43,6 @@ public class VistaNuevaVersionDeProyecto extends VistaProyectos{
 					else {
 						JOptionPane.showMessageDialog(null, "Deben pasar al menos un dia para que los estadísticos concluyan sus estudios. Y generar así una nueva versión. ");
 					}			
-					dispose();
 				}
 								
 			}
@@ -64,5 +63,8 @@ public class VistaNuevaVersionDeProyecto extends VistaProyectos{
 		getPanel().add(SouthPanel, BorderLayout.PAGE_END);
 		getContentPane().add(getPanel());
 	}
-
+	@Override
+	public void Visibilizar() {
+		super.Visibilizar();	
+	}
 }

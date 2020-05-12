@@ -2,7 +2,9 @@ package GestionProyectos.GDP.Negocio;
 
 import java.util.List;
 
-public class FabricaTransfer {
+import GestionProyectos.GDP.Integracion.FactoriaAbstracta;
+
+public class FabricaTransfer implements FactoriaAbstracta<TPersona, TProyecto>{
       private static FabricaTransfer instancia=null;
       
       public static FabricaTransfer getInstancia() {
@@ -11,16 +13,15 @@ public class FabricaTransfer {
     	  }
     	  return instancia;
       }
-      
-      public ITransfer<?> getTransfer(String tipoTransfer, List<Object> Datos) {
-    	  if(tipoTransfer.toLowerCase().equals("persona")) {
-    		  return new TPersona().crearObjeto(Datos);
-    	  }
-    	  else if(tipoTransfer.toLowerCase().equals("proyecto")) {
-    		  return new TProyecto().crearObjeto(Datos);
-    	  }
-    	  else {
-    		  return null;
-    	  }
-      }
+
+	@Override
+	public TPersona CrearObjetoPersona(List<Object> datos) {	
+		return new TPersona().crearObjeto(datos);
+	}
+
+	@Override
+	public TProyecto CrearObjetoProyecto(List<Object> datos) {
+		
+		return new TProyecto().crearObjeto(datos);
+	}
 }

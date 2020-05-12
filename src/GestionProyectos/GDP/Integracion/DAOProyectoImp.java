@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import GestionProyectos.GDP.Negocio.FabricaTransfer;
 import GestionProyectos.GDP.Negocio.TProyecto;
 
 
@@ -27,6 +28,7 @@ public class DAOProyectoImp implements DAOProyecto{
             
 	  public List<TProyecto> leerProyectos() {
 		List<TProyecto> proyectos= new ArrayList<TProyecto>();
+		List<Object> datosproyecto= new ArrayList<Object>();
     	List<String> personas= new ArrayList<String>();		 	
 		String line=null;
 		
@@ -37,21 +39,28 @@ public class DAOProyectoImp implements DAOProyecto{
 			while(line!=null) {
 				String NombreProy=line;
 				line=read2.readLine();
+				datosproyecto.add(NombreProy);
 				String Descripcion=line;
 				line=read2.readLine();
+				datosproyecto.add(Descripcion);
 				String Version=line;
 				line=read2.readLine();
+				datosproyecto.add(Version);
 				String Fecha=line;
 				line=read2.readLine();
+				datosproyecto.add(Fecha);
 				String MododeFabricacion=line;
 				line=read2.readLine();
+				datosproyecto.add(MododeFabricacion);
 				int nparticipantes= Integer.parseInt(line);
 				for(int i=0;i < nparticipantes;i++) {
 					line=read2.readLine();
 					personas.add(line);
 				}
-				proyectos.add(new TProyecto(NombreProy, Descripcion,personas, Version, Fecha, MododeFabricacion));
-				personas = new ArrayList<String>();	
+				datosproyecto.add(personas);
+				proyectos.add(FabricaTransfer.getInstancia().CrearObjetoProyecto(datosproyecto));
+				personas = new ArrayList<String>();
+				datosproyecto= new ArrayList<Object>();
 				line=read2.readLine();
 			}
 			read2.close();
@@ -69,14 +78,14 @@ public class DAOProyectoImp implements DAOProyecto{
 		BufferedWriter w= new BufferedWriter(new FileWriter(new File("src/BaseDatos/Proyectos.txt")));
 		String s="";
 		while(i<proyectos.size()) {
-			s+=proyectos.get(i).getNombre()+"\n";
-			s+=proyectos.get(i).getDescripcion()+"\n";
-			s+=proyectos.get(i).getVersion()+"\n";
-			s+=proyectos.get(i).getFecha()+"\n";
-			s+=proyectos.get(i).getFabricacion()+"\n";
-			s+=proyectos.get(i).getparticipantes().size()+"\n";
-			for(int j=0;j<proyectos.get(i).getparticipantes().size();j++) {
-				s+=proyectos.get(i).getparticipantes().get(j)+"\n";
+			s+=proyectos.get(i).leerNombre()+"\n";
+			s+=proyectos.get(i).leerDescripcion()+"\n";
+			s+=proyectos.get(i).leerVersion()+"\n";
+			s+=proyectos.get(i).leerFecha()+"\n";
+			s+=proyectos.get(i).leerFabricacion()+"\n";
+			s+=proyectos.get(i).leerparticipantes().size()+"\n";
+			for(int j=0;j<proyectos.get(i).leerparticipantes().size();j++) {
+				s+=proyectos.get(i).leerparticipantes().get(j)+"\n";
 			}							
 			i++;
 		}				

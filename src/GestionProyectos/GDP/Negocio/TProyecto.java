@@ -2,45 +2,51 @@ package GestionProyectos.GDP.Negocio;
 
 import java.util.List;
 
-public class TProyecto {
+public class TProyecto implements ITransfer<TProyecto>{
       private String nombre, descripcion, mododefabricacion, version,fechadeversion;
       private List<String> participantes;
-      public TProyecto(String nombre, String descripcion, List<String> participantes, String version, String fechadeversion, String MododeFabricacion) {
-    	  this.nombre=nombre;
-    	  this.descripcion=descripcion;
-    	  this.participantes=participantes;
-    	  this.mododefabricacion=MododeFabricacion;
-    	  this.fechadeversion=fechadeversion;
-    	  this.version=version;
-      }
-      public void setFecha(String fecha) {
+    
+      public void updateFecha(String fecha) {
     	  this.fechadeversion=fecha;
       }
-      public void setFabricacion(String Fab) {
+      public void updateFabricacion(String Fab) {
     	  this.mododefabricacion=Fab;
       }
-      public void setVersion(String version) {
+      public void updateVersion(String version) {
     	  this.version=version;
       }
-      public String getNombre(){
+      public String leerNombre(){
     	  return nombre;
       }
-      public String getDescripcion(){
+      public String leerDescripcion(){
     	  return descripcion;
       }
-      public List<String> getparticipantes() {
+      public List<String> leerparticipantes() {
     	  return participantes;
       }
-      public int getNparticipantes() {
+      public int leerNparticipantes() {
     	  return participantes.size();
       }
-      public String getVersion() {
+      public String leerVersion() {
     	  return version;
       }
-      public String getFabricacion() {
+      public String leerFabricacion() {
     	  return mododefabricacion;
       }
-      public String getFecha() {
+      public String leerFecha() {
     	  return fechadeversion;
       }
+	@SuppressWarnings("unchecked")
+	@Override
+		public TProyecto crearObjeto(List<Object> datos) {
+				for(int i=0;i<datos.size();i++) {
+					if(i==0) this.nombre=(String) datos.get(i);
+					else if(i==1) this.descripcion=(String) datos.get(i);
+					else if(i==2) this.version=(String) datos.get(i);
+					else if(i==3) this.fechadeversion=(String) datos.get(i);
+					else if(i==4) this.mododefabricacion=(String) datos.get(i);
+					else if(i==5) this.participantes=(List<String>) datos.get(i);
+				}
+				return this;
+		}
 }

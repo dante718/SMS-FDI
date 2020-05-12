@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import GestionDeAlmacen.GDA.Modelo.Pedido;
 
 
-public class VistaFormularioMedicamentos extends JFrame{
+public class VistaFormularioMedicamentos extends JFrame implements IVista{
 	  private static VistaFormularioMedicamentos instancia=null;
       private JPanel panel = new JPanel();
       private JButton addproducto, enviarpedido, cancelar;
@@ -43,7 +43,7 @@ public class VistaFormularioMedicamentos extends JFrame{
 		addproducto.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaAñadirProducto.getInstancia().setVisible(true);	
+				FabricaVistas.getInstancia().getVista("AñadirProducto").Visibilizar();
 			}
 			
 		});
@@ -67,6 +67,7 @@ public class VistaFormularioMedicamentos extends JFrame{
 						}catch(NumberFormatException e1) {
 							throw new IllegalArgumentException("El id ha de ser un valor entero. ");
 						}
+						fieldpedido.setText("");
 						dispose();
 					}					
 				}
@@ -93,4 +94,8 @@ public class VistaFormularioMedicamentos extends JFrame{
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 	}
+	  @Override
+		public void Visibilizar() {
+			setVisible(true);	
+		}
 }
