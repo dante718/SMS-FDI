@@ -8,9 +8,9 @@ public abstract class FactoriaSApp {
 	
 private static FactoriaSApp instanciaMed=null;
 
-	static public FactoriaSApp getInstancia_Med(String estudio, String pastilla, String etapa) {
+	static public FactoriaSApp getInstancia_Med(String estudio, String pastilla, String etapa,String ruta) {
 		if(instanciaMed==null) {
-			instanciaMed=new FactoriaServAppMed_Imp(estudio,pastilla,etapa);
+			instanciaMed=new FactoriaServAppMed_Imp(estudio,pastilla,etapa, ruta);
 		}
 		return instanciaMed;
 		

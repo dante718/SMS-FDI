@@ -1,5 +1,7 @@
 package General;
 
+import java.io.IOException;
+
 import GestionLaboratorio.integracion_Laboratorio.DAOPedido_Lab;
 import GestionLaboratorio.integracion_Laboratorio.DAOProducto_Lab;
 import GestionLaboratorio.integracion_Laboratorio.FactoriaDAO_Lab_imp;
@@ -42,7 +44,7 @@ public abstract class FactoriaDAO {
 	
 	public abstract DAODatosPlantilla crearDAOPlantilla();
 	
-	public abstract DAODatosClinicos CrearTablaDatosClinicos();
+	public abstract DAODatosClinicos CrearTablaDatosClinicos(String ruta) throws IOException;
 	
 	
 	
