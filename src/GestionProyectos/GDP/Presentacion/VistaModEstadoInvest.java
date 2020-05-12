@@ -86,7 +86,7 @@ public class VistaModEstadoInvest extends JFrame implements IVista{
 						String estado= (String) tabla.getValueAt(tabla.getSelectedRow(), 5);
 						if(estado.toLowerCase().equals("no disponible")) {	
 							VistaCambiarProyecto.getInstancia().setPersona(modelo.getPersona(tabla.getSelectedRow()));
-							FactoriaVistas.getInstancia().getVista("CambiarProyecto").Visibilizar();
+							FactoriaVistas.getInstancia().CrearObjetoVista("CambiarProyecto").Visibilizar();
 						}
 						else {
 							JOptionPane.showMessageDialog(null, "Selecciona un investigador que ya esté en un proyecto");
@@ -110,7 +110,7 @@ public class VistaModEstadoInvest extends JFrame implements IVista{
 						String estado= (String) tabla.getValueAt(tabla.getSelectedRow(), 5);
 						if(estado.toLowerCase().equals("disponible")) {
 							VistaAnnadirAProyecto.getInstancia().setPersona(modelo.getPersona(tabla.getSelectedRow()));
-							FactoriaVistas.getInstancia().getVista("AñadirAProyecto").Visibilizar();
+							FactoriaVistas.getInstancia().CrearObjetoVista("AñadirAProyecto").Visibilizar();
 						}
 						else {
 							JOptionPane.showMessageDialog(null, "Selecciona un investigador que esté libre.");

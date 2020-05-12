@@ -78,7 +78,7 @@ public class VistaCrearProyecto extends JFrame implements IVista{
 		boton1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FactoriaVistas.getInstancia().getVista("AñadirInvestigador").Visibilizar();
+				FactoriaVistas.getInstancia().CrearObjetoVista("AñadirInvestigador").Visibilizar();
 			}
 			
 		});
@@ -89,7 +89,7 @@ public class VistaCrearProyecto extends JFrame implements IVista{
 		boton2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FactoriaVistas.getInstancia().getVista("AñadirTrabajador").Visibilizar();
+				FactoriaVistas.getInstancia().CrearObjetoVista("AñadirTrabajador").Visibilizar();
 			}		
 		});
 		panel.add(boton2);

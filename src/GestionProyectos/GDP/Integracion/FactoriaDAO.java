@@ -2,6 +2,8 @@ package GestionProyectos.GDP.Integracion;
 
 import java.util.List;
 
+import GestionProyectos.GDP.Presentacion.IVista;
+
 public class FactoriaDAO implements FactoriaAbstracta<DAOPersona, DAOProyecto>{
 	private static FactoriaDAO instancia=null;
 	private FactoriaDAO() {};
@@ -22,6 +24,10 @@ public class FactoriaDAO implements FactoriaAbstracta<DAOPersona, DAOProyecto>{
 	public DAOProyecto CrearObjetoProyecto(List<Object> datos) {
 		DAOProyecto ret= DAOProyectoImp.getInstancia();	
 		return ret;
+	}
+	@Override
+	public IVista CrearObjetoVista(String tipo) {
+		return null;
 	}
 
 }

@@ -44,7 +44,7 @@ public class VistaPrincipal extends JFrame implements IVista{
         cp.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FactoriaVistas.getInstancia().getVista("CrearProyecto").Visibilizar();;
+				FactoriaVistas.getInstancia().CrearObjetoVista("CrearProyecto").Visibilizar();
 			}
         	
         });
@@ -55,7 +55,7 @@ public class VistaPrincipal extends JFrame implements IVista{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FactoriaVistas.getInstancia().getVista("ModificarInvestigador").Visibilizar();;
+				FactoriaVistas.getInstancia().CrearObjetoVista("ModificarInvestigador").Visibilizar();;
 			}
 	    	
 	    });
@@ -66,7 +66,7 @@ public class VistaPrincipal extends JFrame implements IVista{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FactoriaVistas.getInstancia().getVista("NuevaVersionDeProyecto").Visibilizar();;
+				FactoriaVistas.getInstancia().CrearObjetoVista("NuevaVersionDeProyecto").Visibilizar();;
 			}
 	    	
 	    });
@@ -77,7 +77,7 @@ public class VistaPrincipal extends JFrame implements IVista{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FactoriaVistas.getInstancia().getVista("AñadirFabricacion").Visibilizar();		
+				FactoriaVistas.getInstancia().CrearObjetoVista("AñadirFabricacion").Visibilizar();		
 			}
 	    	
 	    });
@@ -87,7 +87,7 @@ public class VistaPrincipal extends JFrame implements IVista{
 	    spm.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FactoriaVistas.getInstancia().getVista("SolicitarMedicamentos").Visibilizar();
+				FactoriaVistas.getInstancia().CrearObjetoVista("SolicitarMedicamentos").Visibilizar();
 			}
 	    	
 	    });

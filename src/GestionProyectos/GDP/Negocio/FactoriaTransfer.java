@@ -3,6 +3,7 @@ package GestionProyectos.GDP.Negocio;
 import java.util.List;
 
 import GestionProyectos.GDP.Integracion.FactoriaAbstracta;
+import GestionProyectos.GDP.Presentacion.IVista;
 
 public class FactoriaTransfer implements FactoriaAbstracta<TPersona, TProyecto>{
       private static FactoriaTransfer instancia=null;
@@ -20,8 +21,12 @@ public class FactoriaTransfer implements FactoriaAbstracta<TPersona, TProyecto>{
 	}
 
 	@Override
-	public TProyecto CrearObjetoProyecto(List<Object> datos) {
-		
+	public TProyecto CrearObjetoProyecto(List<Object> datos) {		
 		return new TProyecto().crearObjeto(datos);
+	}
+
+	@Override
+	public IVista CrearObjetoVista(String tipo) {
+		return null;
 	}
 }

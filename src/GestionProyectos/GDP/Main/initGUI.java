@@ -5,6 +5,6 @@ import GestionProyectos.GDP.Presentacion.FactoriaVistas;
 
 public class initGUI {
        public static void mainProyectos(String [] args) {
-    	   FactoriaVistas.getInstancia().getVista("VistaPrincipal").Visibilizar();;
+    	   FactoriaVistas.getInstancia().CrearObjetoVista("VistaPrincipal").Visibilizar();;
        }
 }

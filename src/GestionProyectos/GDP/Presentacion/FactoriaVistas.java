@@ -1,8 +1,14 @@
 package GestionProyectos.GDP.Presentacion;
 
+import java.util.List;
+
 import javax.swing.JFrame;
 
-public class FactoriaVistas{
+import GestionProyectos.GDP.Integracion.FactoriaAbstracta;
+import GestionProyectos.GDP.Negocio.TPersona;
+import GestionProyectos.GDP.Negocio.TProyecto;
+
+public class FactoriaVistas implements FactoriaAbstracta<TPersona,TProyecto>{
     private static FactoriaVistas instancia=null;
 	
 	public static FactoriaVistas getInstancia() {
@@ -11,48 +17,59 @@ public class FactoriaVistas{
 		}
 		return instancia;
 	}
-				
-	public IVista getVista(String nombrevista) {
-		if(nombrevista.toLowerCase().equals("vistaprincipal")) {
+
+
+	@Override
+	public TPersona CrearObjetoPersona(List<Object> datos) {
+		return null;
+	}
+
+	@Override
+	public TProyecto CrearObjetoProyecto(List<Object> datos) {
+		return null;
+	}
+
+	@Override
+	public IVista CrearObjetoVista(String tipo) {
+		if(tipo.toLowerCase().equals("vistaprincipal")) {
 			return VistaPrincipal.getInstancia();
 		}
-		else if(nombrevista.toLowerCase().equals("crearproyecto")) {
+		else if(tipo.toLowerCase().equals("crearproyecto")) {
 			return VistaCrearProyecto.getInstancia();
 		}
-		else if(nombrevista.toLowerCase().equals("modificarinvestigador")) {
+		else if(tipo.toLowerCase().equals("modificarinvestigador")) {
 			return VistaModEstadoInvest.getInstancia();
 		}
-		else if(nombrevista.toLowerCase().equals("nuevaversiondeproyecto")) {
+		else if(tipo.toLowerCase().equals("nuevaversiondeproyecto")) {
 			return VistaNuevaVersionDeProyecto.getInstancia();
 		}
-		else if(nombrevista.toLowerCase().equals("añadirfabricacion")) {
+		else if(tipo.toLowerCase().equals("añadirfabricacion")) {
 			return VistaAnnadirFabricacion.getInstancia();
 		}
-		else if(nombrevista.toLowerCase().equals("solicitarmedicamentos")) {
+		else if(tipo.toLowerCase().equals("solicitarmedicamentos")) {
 			return VistaSolicitarPartidaDeMedicamentos.getInstancia();
 		}
-		else if(nombrevista.toLowerCase().equals("añadirinvestigador")) {
+		else if(tipo.toLowerCase().equals("añadirinvestigador")) {
 			return VistaAddInvestigador.getInstancia();
 		}
-		else if(nombrevista.toLowerCase().equals("añadirtrabajador")) {
+		else if(tipo.toLowerCase().equals("añadirtrabajador")) {
 			return VistaAddTrabajador.getInstancia();
 		}
-		else if(nombrevista.toLowerCase().equals("añadiraproyecto")) {
+		else if(tipo.toLowerCase().equals("añadiraproyecto")) {
 			return VistaAnnadirAProyecto.getInstancia();
 		}
-		else if(nombrevista.toLowerCase().equals("cambiarproyecto")) {
+		else if(tipo.toLowerCase().equals("cambiarproyecto")) {
 			return VistaCambiarProyecto.getInstancia();
 		}
-		else if(nombrevista.toLowerCase().equals("añadirproducto")) {
+		else if(tipo.toLowerCase().equals("añadirproducto")) {
 			return VistaAnnadirProducto.getInstancia();
 		}
-		else if(nombrevista.toLowerCase().equals("formulariomedicamentos")) {
+		else if(tipo.toLowerCase().equals("formulariomedicamentos")) {
 			return VistaFormularioMedicamentos.getInstancia();
 		}
 		else {
 			return null;
 		}
-		
 	}
 	
 	
