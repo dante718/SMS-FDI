@@ -3,7 +3,7 @@ Juan
 Palomo
 Perez
 Estadistico
-Disponible
+No Disponible
 Investigador
 1234B
 Ramon
@@ -59,7 +59,7 @@ Walter
 Ruiz
 Ruiz
 Quimico
-Disponible
+No Disponible
 Trabajador
 1234J
 Silvia
