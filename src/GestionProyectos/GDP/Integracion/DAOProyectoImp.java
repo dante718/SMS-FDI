@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import GestionProyectos.GDP.Negocio.FabricaTransfer;
+import GestionProyectos.GDP.Negocio.FactoriaTransfer;
 import GestionProyectos.GDP.Negocio.TProyecto;
 
 
@@ -58,7 +58,7 @@ public class DAOProyectoImp implements DAOProyecto{
 					personas.add(line);
 				}
 				datosproyecto.add(personas);
-				proyectos.add(FabricaTransfer.getInstancia().CrearObjetoProyecto(datosproyecto));
+				proyectos.add(FactoriaTransfer.getInstancia().CrearObjetoProyecto(datosproyecto));
 				personas = new ArrayList<String>();
 				datosproyecto= new ArrayList<Object>();
 				line=read2.readLine();

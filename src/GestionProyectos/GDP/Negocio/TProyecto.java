@@ -2,7 +2,7 @@ package GestionProyectos.GDP.Negocio;
 
 import java.util.List;
 
-public class TProyecto implements ITransfer<TProyecto>{
+public class TProyecto{
       private String nombre, descripcion, mododefabricacion, version,fechadeversion;
       private List<String> participantes;
     
@@ -36,8 +36,7 @@ public class TProyecto implements ITransfer<TProyecto>{
       public String leerFecha() {
     	  return fechadeversion;
       }
-	@SuppressWarnings("unchecked")
-	@Override
+	
 		public TProyecto crearObjeto(List<Object> datos) {
 				for(int i=0;i<datos.size();i++) {
 					if(i==0) this.nombre=(String) datos.get(i);

@@ -1,13 +1,13 @@
 package GestionProyectos.GDP.Presentacion;
 
-import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridLayout;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -44,7 +44,7 @@ public class VistaPrincipal extends JFrame implements IVista{
         cp.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FabricaVistas.getInstancia().getVista("CrearProyecto").Visibilizar();;
+				FactoriaVistas.getInstancia().getVista("CrearProyecto").Visibilizar();;
 			}
         	
         });
@@ -55,7 +55,7 @@ public class VistaPrincipal extends JFrame implements IVista{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FabricaVistas.getInstancia().getVista("ModificarInvestigador").Visibilizar();;
+				FactoriaVistas.getInstancia().getVista("ModificarInvestigador").Visibilizar();;
 			}
 	    	
 	    });
@@ -66,7 +66,7 @@ public class VistaPrincipal extends JFrame implements IVista{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FabricaVistas.getInstancia().getVista("NuevaVersionDeProyecto").Visibilizar();;
+				FactoriaVistas.getInstancia().getVista("NuevaVersionDeProyecto").Visibilizar();;
 			}
 	    	
 	    });
@@ -77,7 +77,7 @@ public class VistaPrincipal extends JFrame implements IVista{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FabricaVistas.getInstancia().getVista("AñadirFabricacion").Visibilizar();		
+				FactoriaVistas.getInstancia().getVista("AñadirFabricacion").Visibilizar();		
 			}
 	    	
 	    });
@@ -87,7 +87,7 @@ public class VistaPrincipal extends JFrame implements IVista{
 	    spm.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FabricaVistas.getInstancia().getVista("SolicitarMedicamentos").Visibilizar();
+				FactoriaVistas.getInstancia().getVista("SolicitarMedicamentos").Visibilizar();
 			}
 	    	
 	    });

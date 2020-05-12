@@ -1,10 +1,10 @@
 package GestionProyectos.GDP.Main;
 
-import GestionProyectos.GDP.Presentacion.FabricaVistas;
+import GestionProyectos.GDP.Presentacion.FactoriaVistas;
 
 
 public class initGUI {
        public static void mainProyectos(String [] args) {
-    	   FabricaVistas.getInstancia().getVista("VistaPrincipal").Visibilizar();;
+    	   FactoriaVistas.getInstancia().getVista("VistaPrincipal").Visibilizar();;
        }
 }

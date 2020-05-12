@@ -2,7 +2,7 @@ package GestionProyectos.GDP.Negocio;
 
 import java.util.List;
 
-public class TPersona implements ITransfer<TPersona>{
+public class TPersona {
       private String DNI, Nombre, Apellido1,Apellido2, Profesion,Estado,Rol;
     
       public String leerDNI() {
@@ -30,8 +30,8 @@ public class TPersona implements ITransfer<TPersona>{
     	  this.Estado=Estado;
       }
          
-	@Override
-	public TPersona crearObjeto(List<Object> datos) {
+	
+      public TPersona crearObjeto(List<Object> datos) {
 			for(int i=0;i<datos.size();i++) {
 				if(i==0) this.DNI=(String) datos.get(i);
 				else if(i==1) this.Nombre=(String) datos.get(i);

@@ -43,7 +43,7 @@ public class VistaFormularioMedicamentos extends JFrame implements IVista{
 		addproducto.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FabricaVistas.getInstancia().getVista("AñadirProducto").Visibilizar();
+				FactoriaVistas.getInstancia().getVista("AñadirProducto").Visibilizar();
 			}
 			
 		});

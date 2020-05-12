@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import GestionProyectos.GDP.Negocio.FabricaTransfer;
+import GestionProyectos.GDP.Negocio.FactoriaTransfer;
 import GestionProyectos.GDP.Negocio.TPersona;
 import GestionProyectos.GDP.Negocio.TProyecto;
 
@@ -78,7 +78,7 @@ public class VistaCrearProyecto extends JFrame implements IVista{
 		boton1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FabricaVistas.getInstancia().getVista("AñadirInvestigador").Visibilizar();
+				FactoriaVistas.getInstancia().getVista("AñadirInvestigador").Visibilizar();
 			}
 			
 		});
@@ -89,7 +89,7 @@ public class VistaCrearProyecto extends JFrame implements IVista{
 		boton2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FabricaVistas.getInstancia().getVista("AñadirTrabajador").Visibilizar();
+				FactoriaVistas.getInstancia().getVista("AñadirTrabajador").Visibilizar();
 			}		
 		});
 		panel.add(boton2);
@@ -131,7 +131,7 @@ public class VistaCrearProyecto extends JFrame implements IVista{
 				Datos.add(fecha);
 				Datos.add("NO");
 				Datos.add(personal);							
-				return FabricaTransfer.getInstancia().CrearObjetoProyecto(Datos);
+				return FactoriaTransfer.getInstancia().CrearObjetoProyecto(Datos);
 			}		
 		});
 		panel.add(boton3);

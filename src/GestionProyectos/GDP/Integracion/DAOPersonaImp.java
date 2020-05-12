@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import GestionProyectos.GDP.Negocio.FabricaTransfer;
+import GestionProyectos.GDP.Negocio.FactoriaTransfer;
 import GestionProyectos.GDP.Negocio.TPersona;
 import GestionProyectos.GDP.Negocio.TProyecto;
 
@@ -57,7 +57,7 @@ public class DAOPersonaImp implements DAOPersona{
  				String Rol=line;
  				line=read.readLine();
  				datospersona.add(Rol);
- 				personas.add(FabricaTransfer.getInstancia().CrearObjetoPersona(datospersona));
+ 				personas.add(FactoriaTransfer.getInstancia().CrearObjetoPersona(datospersona));
  				datospersona= new ArrayList<Object>();
  			}
  			read.close();

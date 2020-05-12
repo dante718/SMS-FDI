@@ -36,7 +36,7 @@ public class VistaSolicitarPartidaDeMedicamentos extends VistaProyectos{
 					JOptionPane.showMessageDialog(null, "No has seleccionado ningún proyecto.");
 				}
 				else if(getTabla().getValueAt(getTabla().getSelectedRow(), 5).equals("SI")) {
-					FabricaVistas.getInstancia().getVista("FormularioMedicamentos").Visibilizar();
+					FactoriaVistas.getInstancia().getVista("FormularioMedicamentos").Visibilizar();
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Solo pueden solicitar partida de medicamentos proyectos en fabricacion. ");
