@@ -319,4 +319,10 @@ public class SAImp implements SA{
 	public int getTamProductos() {		
 		return contadordeproductos;
 	}
+	public int getTamProyectos() {
+		return proyectos.size();
+	}
+	public int getTamPersonas() {
+		return personas.size();
+	}
 }

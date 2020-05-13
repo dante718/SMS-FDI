@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
@@ -55,7 +56,12 @@ public class VistaPrincipal extends JFrame implements IVista{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FactoriaVistas.getInstancia().CrearObjetoVista("ModificarInvestigador").Visibilizar();;
+				if(Controlador.getInstancia().getTamProyectos()>0) {
+					FactoriaVistas.getInstancia().CrearObjetoVista("ModificarInvestigador").Visibilizar();		
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "No hay ningún proyecto creado todavia");
+				}
 			}
 	    	
 	    });
@@ -66,7 +72,12 @@ public class VistaPrincipal extends JFrame implements IVista{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FactoriaVistas.getInstancia().CrearObjetoVista("NuevaVersionDeProyecto").Visibilizar();;
+				if(Controlador.getInstancia().getTamProyectos()>0) {
+					FactoriaVistas.getInstancia().CrearObjetoVista("NuevaVersionDeProyecto").Visibilizar();
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "No hay ningún proyecto creado todavia");
+				}
 			}
 	    	
 	    });
@@ -77,7 +88,12 @@ public class VistaPrincipal extends JFrame implements IVista{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FactoriaVistas.getInstancia().CrearObjetoVista("AñadirFabricacion").Visibilizar();		
+				if(Controlador.getInstancia().getTamProyectos()>0) {
+					FactoriaVistas.getInstancia().CrearObjetoVista("AñadirFabricacion").Visibilizar();		
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "No hay ningún proyecto creado todavia");
+				}
 			}
 	    	
 	    });
@@ -87,7 +103,12 @@ public class VistaPrincipal extends JFrame implements IVista{
 	    spm.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FactoriaVistas.getInstancia().CrearObjetoVista("SolicitarMedicamentos").Visibilizar();
+				if(Controlador.getInstancia().getTamProyectos()>0) {
+					FactoriaVistas.getInstancia().CrearObjetoVista("SolicitarMedicamentos").Visibilizar();		
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "No hay ningún proyecto creado todavia");
+				}
 			}
 	    	
 	    });

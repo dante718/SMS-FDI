@@ -26,4 +26,6 @@ public interface SA {
 	 public Producto[] getProductos();
 	 public void reiniciarpedido();
 	 public int getTamProductos();
+	 public int getTamPersonas();
+	 public int getTamProyectos();
 }

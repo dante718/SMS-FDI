@@ -98,4 +98,10 @@ public class Controlador {
 	public void reinicarpedido() {
 		SAImp.getInstancia().reiniciarpedido();
 	}
+	public int getTamProyectos() {
+		return SAImp.getInstancia().getTamProyectos();
+	}
+	public int getTamPersonas() {
+		return SAImp.getInstancia().getTamPersonas();
+	}
 }

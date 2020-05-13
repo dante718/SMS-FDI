@@ -78,7 +78,12 @@ public class VistaCrearProyecto extends JFrame implements IVista{
 		boton1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FactoriaVistas.getInstancia().CrearObjetoVista("AñadirInvestigador").Visibilizar();
+				if(Controlador.getInstancia().getTamPersonas()>0) {
+					FactoriaVistas.getInstancia().CrearObjetoVista("AñadirInvestigador").Visibilizar();
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "No hay ninguna persona registrada en la base de datos");
+				}
 			}
 			
 		});
@@ -89,7 +94,12 @@ public class VistaCrearProyecto extends JFrame implements IVista{
 		boton2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FactoriaVistas.getInstancia().CrearObjetoVista("AñadirTrabajador").Visibilizar();
+				if(Controlador.getInstancia().getTamPersonas()>0) {
+					FactoriaVistas.getInstancia().CrearObjetoVista("AñadirTrabajador").Visibilizar();
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "No hay ninguna persona registrada en la base de datos");
+				}
 			}		
 		});
 		panel.add(boton2);
