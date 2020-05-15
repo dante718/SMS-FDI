@@ -61,7 +61,11 @@ public class VistaFormularioMedicamentos extends JFrame implements IVista{
 					}
 					else{
 						try {
-							Pedido pedido= new Pedido(Integer.parseInt(fieldpedido.getText()), Controlador.getInstancia().getProductos());
+							try {
+								Pedido pedido= new Pedido(Integer.parseInt(fieldpedido.getText()), Controlador.getInstancia().getProductos());
+							}catch(NumberFormatException exception) {
+								JOptionPane.showMessageDialog(null, "El id ha de ser un numero entero.");
+							}
 							Controlador.getInstancia().reinicarpedido();
 							JOptionPane.showMessageDialog(null, "Pedido realizado con éxito. ");
 						}catch(NumberFormatException e1) {
