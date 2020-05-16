@@ -8,6 +8,10 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -18,12 +22,17 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import GestionDeFabrica.Controlador.ControladorDeFabrica;
+import GestionDeFabrica.Modelo.EstadoPedido;
 import GestionDeFabrica.Modelo.Fabrica;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JTable;
 import javax.swing.border.CompoundBorder;
 import javax.swing.table.DefaultTableModel;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import javax.swing.border.LineBorder;
 
 public class VistaFabrica extends JFrame {
@@ -62,6 +71,41 @@ public class VistaFabrica extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				new VistaFarmacos(_ctrl);
+				
+				/*
+				JSONObject jo = new JSONObject();
+				
+				String type = "nuevo pedido";
+				String id = "Le123";
+				String usuario = "pedro";
+				String producto = "pepsi";
+				int cantidad = 10;
+				EstadoPedido estado = EstadoPedido.ACCEPTADO;
+				jo.put("type", type);
+				
+				JSONArray ja = new JSONArray();
+				
+				JSONObject j1 = new JSONObject();
+				
+				j1.put("id", id);
+				j1.put("usuario", usuario);
+				j1.put("producto", producto);
+				j1.put("cantidad", cantidad);
+				j1.put("estado", estado.toString());
+				
+				ja.put(j1);
+				
+				jo.put("data", ja);
+				
+				try {
+				String _outFile = "ejemplo.json";
+				OutputStream out = _outFile == null ? System.out : new FileOutputStream(new File(_outFile));
+				PrintStream print = new PrintStream(out);
+				print.println(jo);
+				}
+				catch (Exception ex) {
+					
+				}*/
 			}
 		});
 		btnNewButton.setBounds(204, 207, 164, 44);

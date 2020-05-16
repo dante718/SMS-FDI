@@ -22,7 +22,7 @@ public class Fabrica implements Observable<FabricaObservadora> {
 		this.listaEventos = new ArrayList<Event>();
 		
 		//Capaz hay que eliminar todo esto
-		this.pedidos = new Pedidos();
+		//this.pedidos = new Pedidos();
 		this.listaPedidos = new ArrayList<Pedidos>();
 		
 		this.listaObservadores = new ArrayList<FabricaObservadora>();

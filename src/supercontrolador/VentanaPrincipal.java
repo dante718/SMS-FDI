@@ -115,8 +115,8 @@ public class VentanaPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaFabrica vistaFabrica = new VistaFabrica();
-				vistaFabrica.start();		
+				MainFabrica mainFabrica = new MainFabrica();
+				mainFabrica.initGUI();		
 			}
 			
 		});

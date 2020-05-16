@@ -24,8 +24,6 @@ public class ControladorDeFabrica implements FabricaObservadora {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ControladorDeFabrica()
-	
 	public void loadPedidosLaboratorio(InputStream in) {
 		
 		if (in != null) {
