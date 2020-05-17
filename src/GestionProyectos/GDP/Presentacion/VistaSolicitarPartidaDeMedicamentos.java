@@ -1,6 +1,7 @@
 package GestionProyectos.GDP.Presentacion;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,8 +15,8 @@ public class VistaSolicitarPartidaDeMedicamentos extends VistaProyectos{
     private JButton solicitar, cancelar;
     private static VistaProyectos instancia=null;
 	private VistaSolicitarPartidaDeMedicamentos() {
-		initVista();
-		initGUI();
+		super.initVista();
+		this.initVista();
 	}
 	public static VistaProyectos getInstancia() {
 		if(instancia==null) {
@@ -23,11 +24,14 @@ public class VistaSolicitarPartidaDeMedicamentos extends VistaProyectos{
 		}
 		return instancia;
 	}
-	private void initGUI() {
+	protected void initVista() {
+		setTitle("Solcitar Partida de Medicamentos");
 		JPanel SouthPanel = new JPanel();
 		SouthPanel.setLayout(new FlowLayout());
 		solicitar=new JButton("Solicitar Partida");
 		cancelar= new JButton("Cancelar");	
+		cancelar.setForeground(Color.WHITE);
+		cancelar.setBackground(Color.RED);
 		solicitar.addActionListener(new ActionListener() {
 
 			@Override
@@ -36,7 +40,7 @@ public class VistaSolicitarPartidaDeMedicamentos extends VistaProyectos{
 					JOptionPane.showMessageDialog(null, "No has seleccionado ningún proyecto.");
 				}
 				else if(getTabla().getValueAt(getTabla().getSelectedRow(), 5).equals("SI")) {
-					FactoriaVistas.getInstancia().CrearObjetoVista("FormularioMedicamentos").Visibilizar();
+					FactoriaVistas.getInstancia().CrearObjetoVista("AñadirPedido").Visibilizar();
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Solo pueden solicitar partida de medicamentos proyectos en fabricacion. ");

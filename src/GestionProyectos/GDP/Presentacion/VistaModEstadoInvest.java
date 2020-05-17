@@ -38,6 +38,7 @@ public class VistaModEstadoInvest extends JFrame implements IVista{
         	return instancia;
         }
 		private void initVista() {
+			setTitle("Modificar Estado de Investigador");
 			setSize(500, 350);
 			panel.setLayout(new BorderLayout());
 			etiqueta= new JLabel("Personal de proyecto:");

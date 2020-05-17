@@ -1,6 +1,7 @@
 package GestionProyectos.GDP.Presentacion;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,8 +16,8 @@ public class VistaCambiarProyecto extends VistaProyectos{
     private JButton cambiar, cancelar;
     private static VistaProyectos instancia=null;
 	private VistaCambiarProyecto() {
-		initVista();
-		initGUI();
+		super.initVista();
+		this.initVista();
 	}
 	public static VistaProyectos getInstancia() {
 		if(instancia==null) {
@@ -24,12 +25,14 @@ public class VistaCambiarProyecto extends VistaProyectos{
 		}
 		return instancia;
 	}	 
-	private void initGUI() {
+	protected void initVista() {
+		setTitle("Cambiar de Proyecto");
 		JPanel SouthPanel = new JPanel();
 		SouthPanel.setLayout(new FlowLayout());
 		cambiar=new JButton("Cambiar");
 		cancelar= new JButton("Cancelar");
-		
+		cancelar.setForeground(Color.WHITE);
+		cancelar.setBackground(Color.RED);
 		cambiar.addActionListener(new ActionListener() {
 
 			@Override

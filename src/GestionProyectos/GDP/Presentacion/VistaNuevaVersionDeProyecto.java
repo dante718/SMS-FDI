@@ -1,6 +1,7 @@
 package GestionProyectos.GDP.Presentacion;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,10 +24,13 @@ public class VistaNuevaVersionDeProyecto extends VistaProyectos implements IVist
 		return instancia;
 	}
 	protected void initVista() {
+		setTitle("Nueva Version de Proyecto");
 		JPanel SouthPanel = new JPanel();
 		SouthPanel.setLayout(new FlowLayout());
 		nuevaversion=new JButton("Generar Nueva Version");
-		cancelar= new JButton("Cancelar");	
+		cancelar= new JButton("Cancelar");
+		cancelar.setForeground(Color.WHITE);
+		cancelar.setBackground(Color.RED);
 		nuevaversion.addActionListener(new ActionListener() {
 
 			@Override

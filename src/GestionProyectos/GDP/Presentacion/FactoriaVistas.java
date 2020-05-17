@@ -61,11 +61,8 @@ public class FactoriaVistas implements FactoriaAbstracta<TPersona,TProyecto>{
 		else if(tipo.toLowerCase().equals("cambiarproyecto")) {
 			return VistaCambiarProyecto.getInstancia();
 		}
-		else if(tipo.toLowerCase().equals("añadirproducto")) {
-			return VistaAnnadirProducto.getInstancia();
-		}
-		else if(tipo.toLowerCase().equals("formulariomedicamentos")) {
-			return VistaFormularioMedicamentos.getInstancia();
+		else if(tipo.toLowerCase().equals("añadirpedido")) {
+			return VistaAnnadirPedido.getInstancia();
 		}
 		else {
 			return null;

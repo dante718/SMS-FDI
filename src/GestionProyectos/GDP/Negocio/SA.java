@@ -3,6 +3,7 @@ package GestionProyectos.GDP.Negocio;
 
 
 import GestionDeAlmacen.GDA.Modelo.Producto;
+import GestionDeFabrica.TransfersObjects.PedidosTransfer;
 import GestionProyectos.GDP.Integracion.ModeloTablaPersona;
 import GestionProyectos.GDP.Integracion.ModeloTablaProyectos;
 
@@ -21,10 +22,7 @@ public interface SA {
 	 public boolean pasarafabricacion(TProyecto proyecto);
 	 public ModeloTablaPersona tablapersonaldeproyecto(TProyecto proyecto);
 	 public void ponerenfabricacion(TProyecto proyecto);
-	 public boolean addProducto(Producto producto); 
-	 public Producto[] getProductos();
-	 public void reiniciarpedido();
-	 public int getTamProductos();
+	 public void EnviarPedido(PedidosTransfer pedido);
 	 public int getTamPersonas();
 	 public int getTamProyectos();
 }

@@ -1,6 +1,7 @@
 package GestionProyectos.GDP.Negocio;
 
 
+import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -10,6 +11,8 @@ import java.util.List;
 
 
 import GestionDeAlmacen.GDA.Modelo.Producto;
+import GestionDeFabrica.Factoria.FactoriaAbstractaDAO;
+import GestionDeFabrica.TransfersObjects.PedidosTransfer;
 import GestionProyectos.GDP.Integracion.DAOPersonaImp;
 import GestionProyectos.GDP.Integracion.DAOProyectoImp;
 import GestionProyectos.GDP.Integracion.FactoriaDAO;
@@ -21,11 +24,7 @@ import GestionProyectos.GDP.Integracion.ModeloTablaProyectos;
 
 public class SAImp implements SA{
 	private static SA instancia= null;
-    private Producto[] productos;
-    private int contadordeproductos=0;  
-    private SAImp() {   	
-    	productos= new Producto[1000];
-    }
+    private SAImp() {}
     public static SA getInstancia() {
     	if(instancia==null) {
     		instancia= new SAImp();
@@ -124,42 +123,18 @@ public class SAImp implements SA{
 	public void ponerenfabricacion(TProyecto proyecto) {	
 		FactoriaDAO.getInstancia().CrearObjetoProyecto(null).ponerenfabricacion(proyecto);
 	}
-	@Override
-	public boolean addProducto(Producto producto) {
-		if(!estaelproducto(producto)) {
-			productos[contadordeproductos]=producto;
-			contadordeproductos++;
-			return true;
-		}
-		else return false;
-	}
-	private boolean estaelproducto(Producto producto) {
-		int i=0;
-		boolean encontrado=false;		
-		while(i<contadordeproductos && !encontrado) {
-			if(productos[i].get_id()==producto.get_id()) {
-				encontrado=true;
-			}	
-			i++;
-		}	
-		return encontrado;
-	}
-	public Producto[] getProductos() {
-		return productos;
-	}
-	@Override
-	public void reiniciarpedido() {
-		this.contadordeproductos=0;
-		
-	}
-	@Override
-	public int getTamProductos() {		
-		return contadordeproductos;
-	}
 	public int getTamProyectos() {
 		return FactoriaDAO.getInstancia().CrearObjetoProyecto(null).getTamProyectos();
 	}
 	public int getTamPersonas() {
 		return FactoriaDAO.getInstancia().CrearObjetoPersona(null).getTamPersonas();
+	}
+	@Override
+	public void EnviarPedido(PedidosTransfer pedido) {
+		try {
+			FactoriaAbstractaDAO.getFactoriaAbstractaDAO(1).getPedidoDAO().insertarPedido(pedido);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}		
 	}
 }

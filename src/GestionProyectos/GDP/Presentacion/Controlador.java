@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 
 
 import GestionDeAlmacen.GDA.Modelo.Producto;
+import GestionDeFabrica.TransfersObjects.PedidosTransfer;
 import GestionProyectos.GDP.Integracion.ModeloTablaPersona;
 import GestionProyectos.GDP.Integracion.ModeloTablaProyectos;
 import GestionProyectos.GDP.Negocio.SAImp;
@@ -86,18 +87,10 @@ public class Controlador {
 	public void ponerenfabricacion(TProyecto proyecto) {
 		SAImp.getInstancia().ponerenfabricacion(proyecto);
 	}
-	public boolean Addproducto(Producto producto) {
-		return SAImp.getInstancia().addProducto(producto);
+	public void EnviarPedido(PedidosTransfer pedido) {
+		 SAImp.getInstancia().EnviarPedido(pedido);
 	}
-	public Producto[] getProductos() {
-		return SAImp.getInstancia().getProductos();
-	}
-	public int getTamProductos() {
-		return SAImp.getInstancia().getTamProductos();
-	}
-	public void reinicarpedido() {
-		SAImp.getInstancia().reiniciarpedido();
-	}
+	
 	public int getTamProyectos() {
 		return SAImp.getInstancia().getTamProyectos();
 	}

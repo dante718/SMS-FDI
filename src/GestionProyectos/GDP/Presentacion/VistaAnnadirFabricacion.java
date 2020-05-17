@@ -1,5 +1,6 @@
 package GestionProyectos.GDP.Presentacion;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,8 +21,8 @@ public class VistaAnnadirFabricacion extends VistaProyectos{
 	private JButton fabricacion, cancelar;
 	private static VistaProyectos instancia=null;
 	private VistaAnnadirFabricacion() {	
-		initVista();
-		initGUI();
+		super.initVista();
+		this.initVista();
 	}
 	public static VistaProyectos getInstancia() {
 		if(instancia==null) {
@@ -29,11 +30,14 @@ public class VistaAnnadirFabricacion extends VistaProyectos{
 		}
 		return instancia;
 	}
-	private void initGUI() {
+	protected void initVista() {
+		setTitle("Confirmar Estado de Fabricacion");
 		JPanel SouthPanel = new JPanel();
 		SouthPanel.setLayout(new FlowLayout());
 		fabricacion=new JButton("Pasar a modo Fabricacion");
 		cancelar= new JButton("Cancelar");	
+		cancelar.setForeground(Color.WHITE);
+		cancelar.setBackground(Color.RED);
 		fabricacion.addActionListener(new ActionListener() {
 
 			@Override

@@ -33,6 +33,7 @@ public class VistaPrincipal extends JFrame implements IVista{
     
     
 	private void initVista() {
+		setTitle("Gestion de Proyectos");
 		setSize(700,700);
 		panel.setLayout(null);
 		titulo=new JLabel();
@@ -113,8 +114,7 @@ public class VistaPrincipal extends JFrame implements IVista{
 	    	
 	    });
 	    panel.add(spm);
-		panel.setBackground(Color.CYAN);
-		
+		panel.setBackground(Color.CYAN);		
 		this.getContentPane().add(panel);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);

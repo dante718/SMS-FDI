@@ -1,6 +1,7 @@
 package GestionProyectos.GDP.Presentacion;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,8 +16,8 @@ public class VistaAnnadirAProyecto extends VistaProyectos{
 	private static VistaProyectos instancia=null;
     private JButton añadir, cancelar;
 	private VistaAnnadirAProyecto() {
-		initVista();
-		initGUI();
+		super.initVista();
+		this.initVista();
 	}
 	public static VistaProyectos getInstancia() {
 		if(instancia==null) {
@@ -24,11 +25,16 @@ public class VistaAnnadirAProyecto extends VistaProyectos{
 		}
 		return instancia;
 	}
-	private void initGUI() {
+	protected void initVista() {
+		setTitle("Añadir Investigador A Proyecto");
 		JPanel SouthPanel = new JPanel();
 		SouthPanel.setLayout(new FlowLayout());
 		añadir=new JButton("Añadir");
+		añadir.setForeground(Color.WHITE);
+		añadir.setBackground(Color.GREEN);
 		cancelar= new JButton("Cancelar");	
+		cancelar.setForeground(Color.WHITE);
+		cancelar.setBackground(Color.RED);
 		añadir.addActionListener(new ActionListener() {
 
 			@Override
