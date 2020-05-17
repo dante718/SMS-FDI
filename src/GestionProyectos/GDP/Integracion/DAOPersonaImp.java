@@ -20,8 +20,9 @@ import GestionProyectos.GDP.Negocio.TProyecto;
 
 public class DAOPersonaImp implements DAOPersona{
 	private static DAOPersona instancia=null;
+	private List<TPersona> personas;
     public DAOPersonaImp() {
-    	
+    	personas= new ArrayList<TPersona>();
     }
     public static DAOPersona getInstancia() {
     	if(instancia==null) {
@@ -29,8 +30,7 @@ public class DAOPersonaImp implements DAOPersona{
     	}
     	return instancia;
     }
-	public List<TPersona> leerPersonas() {
-		List<TPersona> personas= new ArrayList<TPersona>();
+    public void leerPersonas() {
 		List<Object> datospersona= new ArrayList<Object>();
     	 try {
          	BufferedReader read= new BufferedReader(new FileReader(new File("src/BaseDatos/Personas.txt")));
@@ -64,12 +64,12 @@ public class DAOPersonaImp implements DAOPersona{
  		} catch (IOException e) {			
  			e.printStackTrace();
  		}
-    	 return personas;
+    	 
     }
   
 	
 	
-	public void EscribirPersonas(List<TPersona> personas) {
+	public void EscribirPersonas() {
 		String s="";
 		String line=null;
 		int k=0;
@@ -86,9 +86,62 @@ public class DAOPersonaImp implements DAOPersona{
 		}
 		
 	}
+    public TPersona getPersona(TPersona Persona) {
+   	 for(TPersona p: personas) {
+			  if(p.leerDNI().equals(Persona.leerDNI())) return p;
+		  }
+		  
+		  return null;
+	}
+    public ModeloTablaPersona creartablaPersonas(String RolPersona)  {
 
-	
-
-
+		ModeloTablaPersona TA= FactoriaTabla.getInstancia().CrearObjetoPersona(null);
+		
+		for(int i=0;i<personas.size();i++) {
+			if(RolPersona.equals(personas.get(i).leerRol())) {
+				TA.addPersonas(personas.get(i));
+				TA.fireTableDataChanged();			
+			}
+		}	
+		return TA;
+	}
+    public void liberar(TPersona persona) {
+		LiberarPersona("Disponible", persona);
+	}
+	private void LiberarPersona(String Estado, TPersona persona) {
+		getPersona(persona).updateEstado(Estado);
+		EscribirPersonas();
+	}
+	public void AddProyecto(TProyecto proyecto) {
+		updateEstado(proyecto, "No Disponible");
+		EscribirPersonas();
+	}
+	private void updateEstado(TProyecto proyecto, String Estado) {
+		for(int i=0, j=0; i<personas.size() && j<proyecto.leerparticipantes().size();i++) {
+			if(personas.get(i).leerDNI().equals(proyecto.leerparticipantes().get(j))) {
+				personas.get(i).updateEstado(Estado);
+				j++;
+			}
+		}
+		
+	}
+	public void annadiraproyecto(TPersona persona) {
+		personas.get(personas.indexOf(persona)).updateEstado("No Disponible");
+		EscribirPersonas();
+	}
+	public ModeloTablaPersona tablapersonaldeproyecto(TProyecto proyecto) {
+		ModeloTablaPersona p= FactoriaTabla.getInstancia().CrearObjetoPersona(null);
+		for(int i=0, j=0; i<personas.size() && j<proyecto.leerparticipantes().size();i++) {
+			if (personas.get(i).leerDNI().equals(proyecto.leerparticipantes().get(j))) {
+				p.addPersonas(personas.get(i));
+				j++;
+			}
+		}
+		return p;
+	}
+	@Override
+	public int getTamPersonas() {		
+		return personas.size();
+	}
 
 }

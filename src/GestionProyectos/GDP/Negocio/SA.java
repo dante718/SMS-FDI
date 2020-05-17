@@ -11,7 +11,6 @@ public interface SA {
      public TProyecto getProyecto(TProyecto Proyecto);
      public TPersona getPersona(TPersona Persona);
      public ModeloTablaPersona creartablaPersonas(String RolPersona);
-	 public TProyecto BuscarProyecto(TProyecto proyecto);
 	 public boolean liberar(TPersona Persona);
 	 public boolean cambiarproyecto(TPersona Persona, TProyecto proyecto);
 	 public void AddProyecto(TProyecto proyecto);

@@ -57,7 +57,7 @@ public class Controlador {
 		} 
 	}
 	public TProyecto BuscarProyecto(TProyecto proyecto) {
-		return SAImp.getInstancia().BuscarProyecto(proyecto);
+		return SAImp.getInstancia().getProyecto(proyecto);
 	}
 	public void leerdatos() {
 		SAImp.getInstancia().leerdatos();
