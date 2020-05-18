@@ -1,4 +1,4 @@
 3
-Estudio_1 Pastilla_contra_el_catarro Etapa_1
-Estudio_2 Pastilla_contra_la_alergia Etapa_2
-Estudio_3 Pastilla_para_el_sue�o Etapa_2
+Estudio_1 dolquine etapa2
+Estudio_1 Aspirina Etapa_1
+Estudio_2 Dolquine Etapa_2
