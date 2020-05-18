@@ -48,5 +48,9 @@ public void setSexo(String s){
 public void setCantidad(int c){
 	this.Cantidad=c;
 }
+@Override
+public String toString() {
+	return this.Id+" "+this.Sexo+" "+this.Edad+" "+this.Fecha+" "+this.Cantidad;
+}
 
 }

@@ -13,7 +13,10 @@ public class FactoriaServAppMed_Imp extends FactoriaSApp {
 	private ArrayList<String> plantillaDatosClinicos;
 	private TransPlantilla Plantilla;
 	private String Ruta;
-	public FactoriaServAppMed_Imp(String estudio, String pastilla, String etapa,String ruta){
+	
+	public FactoriaServAppMed_Imp() {
+	}
+	public void setValores(String estudio, String pastilla, String etapa,String ruta){
 		//esto esta bien si lo hago aqui? o ser�a mejor hacerlo en el modulo del controlador
 		this.Ruta=ruta;
 		Plantilla=buscarPlantilla(estudio, pastilla,  etapa);  
@@ -21,6 +24,7 @@ public class FactoriaServAppMed_Imp extends FactoriaSApp {
 		plantillaDatosClinicos=null;
 		
 	}
+	
 	public TransPlantilla getPlantillaCargada() {
 		return this.Plantilla;
 	}
@@ -37,13 +41,14 @@ public class FactoriaServAppMed_Imp extends FactoriaSApp {
 	public ArrayList<String> CargaDatos() throws IOException {
 		
 		
-		return FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos(this.Ruta).getDatosClinicos();
+		return FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos(this.Ruta,this.Plantilla).getDatosClinicos();
 	}
 	
 	
 	public void introducirDatos(String id,String sexo,int edad,String fecha,int cantidad) {
 		try {
-			FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos(this.Ruta).CrearDatos(id, sexo, edad, fecha,cantidad,Plantilla);
+			//pasar a un String los datos
+			FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos(this.Ruta,this.Plantilla).CrearDatos(id, sexo, edad, fecha,cantidad);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -51,28 +56,40 @@ public class FactoriaServAppMed_Imp extends FactoriaSApp {
 		
 	}
 	
-	public void eliminarDato(String id) {
+	public boolean eliminarDato(String id) {
+		boolean respuesta=false;
 		try {
-			FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos(Ruta).eliminarDatoTabla(id,Plantilla);
+			respuesta= FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos(Ruta,this.Plantilla).eliminarDatoTabla(id);
+				
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.out.println("fallo al borrar");
 			e.printStackTrace();
 		}
+		return respuesta;
 	}
-//}
-	/*
-
-
-	public void mostrarDatosPlantilla() {
-		//Aqui debe mostrar la plantilla
-	 System.out.print(this.Plantilla);
-		
-	}
-	public void GuardarEnPlantilla() {
-		FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos().guardarDatosEnAlmacen(Plantilla, plantillaDatosClinicos);
-		
-	}*/
 	
-
+	public void modificarDatos(String  datos,int i) {
+		try {
+			FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos(Ruta,this.Plantilla).modificarDatos(datos,i);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Imposible modificar datos");
+			e.printStackTrace();
+		}
+	}
+	public void realizarPedido(String pedido) {
+		FactoriaDAO.getInstancia_Med().CrearPedidoMedicos().realizarPedido(pedido);
+	}	
+	public String consultarPedido(String id, String nombre) {
+		return FactoriaDAO.getInstancia_Med().CrearPedidoMedicos().consultarPedido(id,nombre);
+	}	
+	 public boolean  crearInforme(String informe) {
+		 return FactoriaDAO.getInstancia_Med().CrearInformesMedicos().crearInforme(informe);
+	 }
+	 public String consultarInforme(boolean todos,String id) {
+			return FactoriaDAO.getInstancia_Med().CrearInformesMedicos().consultarInforme (todos,id);
+		}
+	 
 }

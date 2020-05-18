@@ -26,11 +26,11 @@ import GestionMedicos.GDM_Vista.Plantilla;
 
 
 public class ControladorMed extends FactoriaControladorMed {
-	static FactoriaServAppMed_Imp ServicioApp;
+	
 	static String rutaestudios="src/BaseDatos/estudios.txt";
 	static String rutafarmacos="src/BaseDatos/farmacos.txt";
 	static String rutaetapas="src/BaseDatos/etapas.txt";
-
+	private FactoriaServAppMed_Imp ServicioApp;
 	private ArrayList<String> ListaEstudios;
 	private ArrayList<String> ListaEtapas;
 	private ArrayList<String> ListaFarmacos;
@@ -38,12 +38,16 @@ public class ControladorMed extends FactoriaControladorMed {
 	private ArrayList<TransDatosClinicos> personas;
 	private String ruta;
 	String estudio,  pastilla, etapa;
+	FabricaPantallasPrincipales FPrincipales;
+	 FabricaPantallaSeleccion FPSeleccion;
 	public ControladorMed() {
 		ListaEstudios= null;
 		ListaFarmacos=null;
 		ListaEtapas=null;
 		ParametrosPlantilla=null;
 		personas=null;
+		FPSeleccion= new FabricaPantallaSeleccion();
+		this.ServicioApp=(FactoriaServAppMed_Imp) FactoriaSApp.getInstancia_Med();
 	
 		
 	try {
@@ -58,20 +62,48 @@ public class ControladorMed extends FactoriaControladorMed {
 	
 ///fabricas Pantallas//
 public void CrearPantallaPrincipal() {
-	FabricaPantallasPrincipales FPrincipales=new FabricaPantallasPrincipales();
-	FPrincipales.crearPantallaPrincipal("subsitema Medicos",this);
+	FPrincipales=new FabricaPantallasPrincipales();
+	FPrincipales.crearPantallaMenuMedicos("subsitema Medicos",this);
 	
 }
+public void crearIncidencia() {
+	
+	FPrincipales.crearPantallaIncidencia("Crear Incidencia",this);
+}
+public void crearPantallaPedido() {
+	
+	FPrincipales.crearPantallaPedidos("Realizar Pedido",this);
+}
+
 public void crearPantallaSeleccion() {
-	FabricaPantallaSeleccion f= new FabricaPantallaSeleccion();
-	PantallaSeleccion p=f.crearPantallaSeleccion("pantalla de seleccion",this);
+	
+	FPSeleccion.crearPantallaSeleccion("pantalla de seleccion formulario",this);
 	
 }
+public void crearPantallaSeleccionPedido() {
+
+	FPSeleccion.CrearPantallaSeleccionPedido("Pedido a realizar",this);
+}
+
+public void crearPantallaInformacionPedido() {
+	FPSeleccion.CrearPantallaInformacionPedido("Informacion pedido", this);
+}
+public void crearPantallaSeleccionCreacionInforme() {
+	FPSeleccion.CrearPantallaSeleccionCreacionInforme("Informe", this);
+}
+public void crearPantallaConsultaInforme() {
+	FPSeleccion.CrearPantallaConsultaInforme("Mis Informes", this);
+}
+
+
 public void crearPantallaPlantilla() {
 	BuscarPlantilla();
 	FabricaPlantilla f=new FabricaPlantilla();
 	Plantilla p=f.crearPlantilla("Plantilla: ",this);
 }
+
+
+
 
 //////////////////////	
 	
@@ -133,8 +165,8 @@ this.estudio=estudio2;
 			e.printStackTrace();
 		}
 		this.ruta="src/BaseDatos/"+estudio+"_"+pastilla+"_"+etapa+".txt";
-		ServicioApp= (FactoriaServAppMed_Imp) FactoriaSApp.getInstancia_Med(estudio, pastilla, etapa,ruta);
-		
+		//ServicioApp= (FactoriaServAppMed_Imp) FactoriaSApp.getInstancia_Med(estudio, pastilla, etapa,ruta);
+		 this.ServicioApp.setValores(estudio, pastilla, etapa,ruta);
 		try {
 			aux=ServicioApp.CargaDatos();
 			this.personas=generarListaPersonas(aux);
@@ -186,14 +218,98 @@ this.estudio=estudio2;
 		ServicioApp.introducirDatos(id, sexo,edad,fecha,cantidad);
 		
 	}
-	public void eliminarElemento(String id) {
-		ServicioApp.eliminarDato(id);
+	public String eliminarElemento(String id) {
+		if(ServicioApp.eliminarDato(id)) {
+			return " Se ha eliminado correctamente ";
+		}
+		else{
+			return " No existe el dato ";
+		}
 		
 	}
 	
-	public  void GuardarDatos() {
-		//ServicioApp.GuardarEnPlantilla();
-	} 
+	public String modificarDatos(String [] aux) {
+		boolean encontrado=false;
+		String resultado="";
+		int i=0;
+		String id;
+		while(!encontrado && i<this.personas.size()) {
+			//this.personas.get(i);
+			if(aux[0].equals(this.personas.get(i).getId())){
+				encontrado=true;
+			}
+			else {
+				i++;
+			}
+			
+		}
+		if(encontrado) {
+			if(aux[1].equals(this.ParametrosPlantilla.get(1))) {
+				this.personas.get(i).setSexo(aux[2]);
+			}
+			if(aux[1].equals(this.ParametrosPlantilla.get(2))){
+				this.personas.get(i).setEdad(Integer.parseInt(aux[2]));
+			}
+			if(aux[1].equals(this.ParametrosPlantilla.get(3))){
+				this.personas.get(i).setFecha(aux[2]);
+			}
+			if(aux[1].equals( this.ParametrosPlantilla.get(4))) {
+				this.personas.get(i).setCantidad(Integer.parseInt(aux[2]));
+			}
+			ServicioApp.modificarDatos(this.personas.get(i).toString(),i);
+			resultado=" Modificacion realizada ";
+		}
+		else {
+			resultado =" No se ha podido realizar la Modificacion ";
+		}
+		return resultado;
+	
+		
+		
+		
+	}
+	
+	
+	public void realizarPedido(String pedido) {
+		
+		ServicioApp.realizarPedido(pedido);
+		
+	}
+	public String consultarPedido(String info) {
+		String [] s=info.split(" ");
+		String [] estado=this.ServicioApp.consultarPedido(s[0],s[1]).split(" ");
+		if(!estado[0].equals("no")) {
+			//imprimo el estado
+			return estado[2]+" "+ estado[3];
+		}
+		else{
+			//pedido no encontradox[]
+			return "no se ha encontrado pedido";
+		}
+		
+	}
+	public boolean realizarInforme(String informe) {
+		return ServicioApp.crearInforme(informe);
+	}
+	public String consultarInfome(String info) {
+		String [] s=info.split(" ");
+		if(s[0].equals("todos")) {
+			return this.ServicioApp.consultarInforme(true,s[0]);//.split(" ");
+		}
+		else {
+
+			String  estado=this.ServicioApp.consultarInforme(false,s[0]);
+			if(!estado.equals("")) {
+				//imprimo el estado
+				return estado;
+			}
+			else{
+				//pedido no encontradox[]
+				return "no se ha encontrado pedido";
+			}	
+		}
+		
+	}
 	
 
 }

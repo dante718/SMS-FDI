@@ -11,7 +11,7 @@ import java.util.StringTokenizer;
 
 import GestionMedicos.FactoriaServAplicacion.TransPlantilla;
 
-public class DAODatosPlantilla {
+public class DAODatosPlantilla extends FactoriaDAO_Med_imp {
 	private static String ruta="src/BaseDatos/plantillas.txt";
 	
 	private TransPlantilla ListaPlantillas[];
@@ -100,7 +100,7 @@ public class DAODatosPlantilla {
 			return this.ListaPlantillas[i];
 		}
 		else {
-			actualizarPlantillas(plantilla);
+			actualizarPlantillas(plantilla);//escribo una nueva linea
 			//tengo que crear el fichero
 		crearFichero("src/BaseDatos/"+estudio+"_"+pastilla+"_"+etapa+".txt");
 			return plantilla;

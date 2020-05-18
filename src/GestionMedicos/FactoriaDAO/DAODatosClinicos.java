@@ -8,16 +8,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import javax.swing.text.html.HTMLDocument.Iterator;
+
 import GestionMedicos.FactoriaServAplicacion.TransDatosClinicos;
 import GestionMedicos.FactoriaServAplicacion.TransPlantilla;
 
 public class DAODatosClinicos {
 	private ArrayList<String> plantillaDatosClinicos;
 	private String ruta;
-	public DAODatosClinicos(String ruta) throws IOException{
+	private TransPlantilla p;
+	public DAODatosClinicos(String ruta,TransPlantilla p) throws IOException{
 		this.ruta=ruta;
+		this.p=p;
 		plantillaDatosClinicos=new ArrayList<String>();
-		CargarDatosClinicos();
+		CargarDatosClinicos();//leerDatos
 	}
 
 	public ArrayList<String> getDatosClinicos(){
@@ -37,16 +41,16 @@ public class DAODatosClinicos {
 		
 		
 	}
-	public void CrearDatos(String id,String sexo,int edad,String fecha,int cantidad,TransPlantilla plantilla) {
+	public void CrearDatos(String id,String sexo,int edad,String fecha,int cantidad) {
 			
-		 agregarDatosEnAlmacen(plantilla, new TransDatosClinicos( id,sexo , edad, fecha,cantidad));
+		 agregarDatosEnAlmacen( new TransDatosClinicos( id,sexo , edad, fecha,cantidad));
 		 
 	}
-	public void eliminarDatoTabla(String id, TransPlantilla p) {
+	public boolean eliminarDatoTabla(String id) {
 		boolean encontrado=false;
 		int i=0;
 		String[] idlista;
-		while(!encontrado) {
+		while(!encontrado&& i<this.plantillaDatosClinicos.size()) {
 			idlista=this.plantillaDatosClinicos.get(i).split(" ");
 			if(id.equals(idlista[0])) {
 				encontrado=true;
@@ -57,17 +61,14 @@ public class DAODatosClinicos {
 		}
 		if(encontrado) {
 		this.plantillaDatosClinicos.remove(i);
-		actualizarDatosEnAlmacen(p);
+		actualizarDatosEnAlmacen();
 		}
+		return encontrado;
 	}
-	public void actualizarDatosEnAlmacen (TransPlantilla plantilla) {
-		String Estudio=plantilla.getEstudio();
-		String Pastilla=plantilla.getFarmaco();
-		String Etapa=plantilla.getEtapa();
-		//String ruta="src/BaseDatos/"+Estudio+"_"+Pastilla+"_"+Etapa+".txt";
-
+	public void actualizarDatosEnAlmacen () {
+	
 		FileWriter fichero = null;
-		String datos="";
+
 		int cont=0;
 	
 		try {
@@ -92,13 +93,13 @@ public class DAODatosClinicos {
 
 	}
 	
-	public void agregarDatosEnAlmacen(TransPlantilla plantilla, TransDatosClinicos  tablaDatos) {   
+	public void agregarDatosEnAlmacen(TransDatosClinicos  tablaDatos) {   
 		//aqui realizar� una serializacion de los datos 
 		//aqui debo escribir en un fichero cuya ruta es Estudio pastilla etapa la linea
 		//de datos
-		String Estudio=plantilla.getEstudio();
-		String Pastilla=plantilla.getFarmaco();
-		String Etapa=plantilla.getEtapa();
+		String Estudio=p.getEstudio();
+		String Pastilla=p.getFarmaco();
+		String Etapa=p.getEtapa();
 		String ruta="src/BaseDatos/"+Estudio+"_"+Pastilla+"_"+Etapa+".txt";
 
 		FileWriter fichero = null;
@@ -138,12 +139,15 @@ public class DAODatosClinicos {
 			e3.printStackTrace();
 		}
 
-
+			
+	}
+	public void modificarDatos(String  datos,int i) {
+		//System.out.println(datos);
+		this.plantillaDatosClinicos.remove(i);
+		this.plantillaDatosClinicos.add(datos);
+		actualizarDatosEnAlmacen();
 		
 		
-
-
-	
 	}
 
 }
