@@ -2,6 +2,7 @@ package GestionProyectos.GDP.Integracion;
 
 import java.util.List;
 
+import GestionProyectos.GDP.FactoriaAbstracta.FactoriaAbstracta;
 import GestionProyectos.GDP.Presentacion.IVista;
 
 public class FactoriaTabla implements FactoriaAbstracta<ModeloTablaPersona, ModeloTablaProyectos>{

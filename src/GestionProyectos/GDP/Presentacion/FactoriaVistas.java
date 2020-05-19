@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.swing.JFrame;
 
-import GestionProyectos.GDP.Integracion.FactoriaAbstracta;
+import GestionProyectos.GDP.FactoriaAbstracta.FactoriaAbstracta;
 import GestionProyectos.GDP.Negocio.TPersona;
 import GestionProyectos.GDP.Negocio.TProyecto;
 

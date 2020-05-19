@@ -2,7 +2,7 @@ package GestionProyectos.GDP.Negocio;
 
 import java.util.List;
 
-import GestionProyectos.GDP.Integracion.FactoriaAbstracta;
+import GestionProyectos.GDP.FactoriaAbstracta.FactoriaAbstracta;
 import GestionProyectos.GDP.Presentacion.IVista;
 
 public class FactoriaTransfer implements FactoriaAbstracta<TPersona, TProyecto>{
