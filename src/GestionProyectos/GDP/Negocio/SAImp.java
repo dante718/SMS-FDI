@@ -137,4 +137,8 @@ public class SAImp implements SA{
 			e.printStackTrace();
 		}		
 	}
+	@Override
+	public boolean proyectocontamaño1(TPersona persona) {	
+		return DAOProyectoImp.getInstancia().ProyectoConTamaño1(persona);
+	}
 }

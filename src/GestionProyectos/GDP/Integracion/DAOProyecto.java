@@ -17,5 +17,6 @@ public interface DAOProyecto {
       public void GenerarNuevaVersion(TProyecto proyecto);
       public boolean pasarafabricacion(TProyecto proyecto);
       public void ponerenfabricacion(TProyecto proyecto);
+      public boolean ProyectoConTamaño1(TPersona persona);
       public int getTamProyectos();
 }

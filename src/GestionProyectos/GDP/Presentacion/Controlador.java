@@ -90,7 +90,9 @@ public class Controlador {
 	public void EnviarPedido(PedidosTransfer pedido) {
 		 SAImp.getInstancia().EnviarPedido(pedido);
 	}
-	
+	public boolean proyectocontamaño1(TPersona persona) {
+		return SAImp.getInstancia().proyectocontamaño1(persona);
+	}
 	public int getTamProyectos() {
 		return SAImp.getInstancia().getTamProyectos();
 	}

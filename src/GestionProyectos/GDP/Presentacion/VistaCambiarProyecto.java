@@ -47,7 +47,13 @@ public class VistaCambiarProyecto extends VistaProyectos{
 						dispose();
 					}
 					else {
-						JOptionPane.showMessageDialog(null, "No se ha podido cambiar de proyecto, esta persona ya trabaja en este proyecto o bien es la única que trabaja en su anterior proyecto, y un proyecto ha de tener minimo un participante.");
+						if(Controlador.getInstancia().proyectocontamaño1(getPersonaSeleccionada())) {
+							JOptionPane.showMessageDialog(null, "No se ha podido cambiar de proyecto, mínimo debe haber una persona trabajando en un proyecto");
+						}
+						else {
+							JOptionPane.showMessageDialog(null, "No se ha podido cambair de proyecto, la persona seleccionada ya trabaja en este proyecto");
+						}
+						
 					}
 				}
 								

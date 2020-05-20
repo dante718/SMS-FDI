@@ -25,4 +25,5 @@ public interface SA {
 	 public void EnviarPedido(PedidosTransfer pedido);
 	 public int getTamPersonas();
 	 public int getTamProyectos();
+	 public boolean proyectocontamaño1(TPersona persona);
 }

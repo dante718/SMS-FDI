@@ -2,7 +2,6 @@ package GestionProyectos.GDP.Presentacion;
 
 import java.util.List;
 
-import javax.swing.JFrame;
 
 import GestionProyectos.GDP.FactoriaAbstracta.FactoriaAbstracta;
 import GestionProyectos.GDP.Negocio.TPersona;

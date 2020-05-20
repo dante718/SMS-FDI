@@ -159,7 +159,7 @@ public class DAOProyectoImp implements DAOProyecto{
    			return true;
    		}
    	}
-   	private boolean ProyectoConTamaño1(TPersona persona) {
+   	public boolean ProyectoConTamaño1(TPersona persona) {
    		for(int i=0;i<proyectos.size();i++) {
    			for(String s: proyectos.get(i).leerparticipantes()) {
    				if(s.equals(persona.leerDNI())) {
