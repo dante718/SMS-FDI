@@ -108,11 +108,15 @@ public class VistaAnnadirFabricacion extends VistaProyectos{
 							JOptionPane.showMessageDialog(null, "No has seleccionado ningún participante del proyecto.");
 						}
 						else {
-							Controlador.getInstancia().liberar(modelo.getPersona(tabla.getSelectedRow()));
-							modelo.getPersonas().remove(tabla.getSelectedRow());
-							modelo.actualizar();
-							if(modelo.getPersonas().size()==0) {
-								dialog.dispose();
+							if(Controlador.getInstancia().liberar(modelo.getPersona(tabla.getSelectedRow()))) {
+								modelo.getPersonas().remove(tabla.getSelectedRow());
+								modelo.actualizar();
+								if(modelo.getPersonas().size()==0) {
+									dialog.dispose();
+								}
+							}
+							else {
+								JOptionPane.showMessageDialog(null, "No se puede eliminar este participante puesto que es el último del proyecto, y un proyecto debe tener al menos uno");
 							}
 						}
 						
