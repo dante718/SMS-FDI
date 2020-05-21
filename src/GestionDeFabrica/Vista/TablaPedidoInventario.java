@@ -8,25 +8,25 @@ import javax.swing.table.AbstractTableModel;
 import GestionDeFabrica.Controlador.ControladorDeFabrica;
 import GestionDeFabrica.Modelo.FabricaObservadora;
 import GestionDeFabrica.Modelo.MapaFabrica;
-import GestionDeFabrica.Modelo.Pedidos;
 import GestionDeFabrica.TransfersObjects.PedidosTransfer;
 
-public class TablaPedidosLaboratorio extends AbstractTableModel implements FabricaObservadora {
+public class TablaPedidoInventario extends AbstractTableModel implements FabricaObservadora{
 
-	private List<PedidosTransfer> listaPedidosLab;
+	private List<PedidosTransfer> listaPedidoInventario;
 	
-	private final String[] columnNames = {"ID", "Usuario", "Producto", "Cantidad"};
+	private final String[] columnNames = {"ID", "Usuario", "Producto", "Cantidad", "Descripcion"};
 	
-	public TablaPedidosLaboratorio(ControladorDeFabrica ctrl) {
+	public TablaPedidoInventario(ControladorDeFabrica ctrl) {
 		
 		ctrl.addObserver(this);
-		listaPedidosLab = new ArrayList<PedidosTransfer>();
+		listaPedidoInventario = new ArrayList<PedidosTransfer>();
+		
 	}
 	
 	@Override
 	public int getRowCount() {
 		// TODO Auto-generated method stub
-		return listaPedidosLab.size();
+		return listaPedidoInventario.size();
 	}
 
 	@Override
@@ -34,28 +34,30 @@ public class TablaPedidosLaboratorio extends AbstractTableModel implements Fabri
 		// TODO Auto-generated method stub
 		return columnNames.length;
 	}
-
+	
 	@Override
 	public String getColumnName(int c) {
 		// TODO Auto-generated method stub
 		return columnNames[c];
 	}
-	
+
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		// TODO Auto-generated method stub
 		
 		switch (columnIndex) {
 		
-		case 0 : return listaPedidosLab.get(rowIndex).getIdPedido();
-		
-		case 1 : return listaPedidosLab.get(rowIndex).getUsuario();
-		
-		case 2 : return listaPedidosLab.get(rowIndex).getProducto();
-		
-		case 3 : return listaPedidosLab.get(rowIndex).getCantidad();
-		
-		default : return false;
+			case 0 : return listaPedidoInventario.get(rowIndex).getIdPedido();
+			
+			case 1 : return "Gestor Factoria";
+			
+			case 2 : return listaPedidoInventario.get(rowIndex).getProducto();
+			
+			case 3 : return listaPedidoInventario.get(rowIndex).getCantidad();
+			
+			case 4 : return listaPedidoInventario.get(rowIndex).getNombre();
+			
+			default : return false;
 		}
 	}
 
@@ -63,7 +65,7 @@ public class TablaPedidosLaboratorio extends AbstractTableModel implements Fabri
 	public void enPedidoAdded(MapaFabrica mapa, List<PedidosTransfer> pedidos, PedidosTransfer e) {
 		// TODO Auto-generated method stub
 		
-		this.listaPedidosLab = mapa.getPedidosLaboratorio();
+		this.listaPedidoInventario = mapa.getPedidosInventario();
 		this.fireTableDataChanged();
 	}
 
@@ -71,7 +73,7 @@ public class TablaPedidosLaboratorio extends AbstractTableModel implements Fabri
 	public void enPedidoEliminado(MapaFabrica mapa, List<PedidosTransfer> pedidos, PedidosTransfer e) {
 		// TODO Auto-generated method stub
 		
-		this.listaPedidosLab = mapa.getPedidosLaboratorio();
+		this.listaPedidoInventario = mapa.getPedidosInventario();
 		this.fireTableDataChanged();
 	}
 
@@ -79,7 +81,7 @@ public class TablaPedidosLaboratorio extends AbstractTableModel implements Fabri
 	public void enPedidoModificado(MapaFabrica mapa, List<PedidosTransfer> pedidos, PedidosTransfer e) {
 		// TODO Auto-generated method stub
 		
-		this.listaPedidosLab = mapa.getPedidosLaboratorio();
+		this.listaPedidoInventario = mapa.getPedidosInventario();
 		this.fireTableDataChanged();
 	}
 
@@ -87,7 +89,7 @@ public class TablaPedidosLaboratorio extends AbstractTableModel implements Fabri
 	public void enObservadoraRegistrada(MapaFabrica mapa, List<PedidosTransfer> pedidos) {
 		// TODO Auto-generated method stub
 		
-		this.listaPedidosLab = mapa.getPedidosLaboratorio();
+		this.listaPedidoInventario = mapa.getPedidosInventario();
 		this.fireTableDataChanged();
 	}
 
@@ -95,9 +97,8 @@ public class TablaPedidosLaboratorio extends AbstractTableModel implements Fabri
 	public void enReinicio(MapaFabrica mapa, List<PedidosTransfer> pedidos) {
 		// TODO Auto-generated method stub
 		
-		this.listaPedidosLab = mapa.getPedidosLaboratorio();
+		this.listaPedidoInventario = mapa.getPedidosInventario();
 		this.fireTableDataChanged();
 	}
-
 
 }

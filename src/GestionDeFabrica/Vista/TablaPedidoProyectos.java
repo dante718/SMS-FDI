@@ -8,25 +8,25 @@ import javax.swing.table.AbstractTableModel;
 import GestionDeFabrica.Controlador.ControladorDeFabrica;
 import GestionDeFabrica.Modelo.FabricaObservadora;
 import GestionDeFabrica.Modelo.MapaFabrica;
-import GestionDeFabrica.Modelo.Pedidos;
 import GestionDeFabrica.TransfersObjects.PedidosTransfer;
 
-public class TablaPedidosLaboratorio extends AbstractTableModel implements FabricaObservadora {
+public class TablaPedidoProyectos extends AbstractTableModel implements FabricaObservadora{
 
-	private List<PedidosTransfer> listaPedidosLab;
+	private List<PedidosTransfer> listaPedidoProyectos;
 	
-	private final String[] columnNames = {"ID", "Usuario", "Producto", "Cantidad"};
+	private final String[] columnNames = {"ID", "Usuario", "Nombre Comercial", "Producto", "Compuesto Quimico", 
+			"Cantidad a Producir", "Estado"};
 	
-	public TablaPedidosLaboratorio(ControladorDeFabrica ctrl) {
+	public TablaPedidoProyectos(ControladorDeFabrica ctrl) {
 		
 		ctrl.addObserver(this);
-		listaPedidosLab = new ArrayList<PedidosTransfer>();
+		listaPedidoProyectos = new ArrayList<PedidosTransfer>();
 	}
 	
 	@Override
 	public int getRowCount() {
 		// TODO Auto-generated method stub
-		return listaPedidosLab.size();
+		return listaPedidoProyectos.size();
 	}
 
 	@Override
@@ -34,28 +34,36 @@ public class TablaPedidosLaboratorio extends AbstractTableModel implements Fabri
 		// TODO Auto-generated method stub
 		return columnNames.length;
 	}
-
+	
 	@Override
 	public String getColumnName(int c) {
 		// TODO Auto-generated method stub
 		return columnNames[c];
 	}
-	
+
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		// TODO Auto-generated method stub
 		
+		System.out.println(listaPedidoProyectos.get(rowIndex).getIdPedido());
+		
 		switch (columnIndex) {
 		
-		case 0 : return listaPedidosLab.get(rowIndex).getIdPedido();
-		
-		case 1 : return listaPedidosLab.get(rowIndex).getUsuario();
-		
-		case 2 : return listaPedidosLab.get(rowIndex).getProducto();
-		
-		case 3 : return listaPedidosLab.get(rowIndex).getCantidad();
-		
-		default : return false;
+			case 0 : return listaPedidoProyectos.get(rowIndex).getIdPedido();
+			
+			case 1 : return listaPedidoProyectos.get(rowIndex).getUsuario();
+			
+			case 2 : return listaPedidoProyectos.get(rowIndex).getNombre();
+			
+			case 3 : return listaPedidoProyectos.get(rowIndex).getProducto();
+			
+			case 4 : return listaPedidoProyectos.get(rowIndex).getCompuesto();
+			
+			case 5 : return listaPedidoProyectos.get(rowIndex).getCantidad();
+			
+			case 6 : return listaPedidoProyectos.get(rowIndex).getEstadoPedido();
+			
+			default : return false;
 		}
 	}
 
@@ -63,7 +71,7 @@ public class TablaPedidosLaboratorio extends AbstractTableModel implements Fabri
 	public void enPedidoAdded(MapaFabrica mapa, List<PedidosTransfer> pedidos, PedidosTransfer e) {
 		// TODO Auto-generated method stub
 		
-		this.listaPedidosLab = mapa.getPedidosLaboratorio();
+		this.listaPedidoProyectos = mapa.getPedidosProyecto();
 		this.fireTableDataChanged();
 	}
 
@@ -71,15 +79,15 @@ public class TablaPedidosLaboratorio extends AbstractTableModel implements Fabri
 	public void enPedidoEliminado(MapaFabrica mapa, List<PedidosTransfer> pedidos, PedidosTransfer e) {
 		// TODO Auto-generated method stub
 		
-		this.listaPedidosLab = mapa.getPedidosLaboratorio();
+		this.listaPedidoProyectos = mapa.getPedidosProyecto();
 		this.fireTableDataChanged();
 	}
 
 	@Override
 	public void enPedidoModificado(MapaFabrica mapa, List<PedidosTransfer> pedidos, PedidosTransfer e) {
 		// TODO Auto-generated method stub
-		
-		this.listaPedidosLab = mapa.getPedidosLaboratorio();
+	
+		this.listaPedidoProyectos = mapa.getPedidosProyecto();
 		this.fireTableDataChanged();
 	}
 
@@ -87,7 +95,7 @@ public class TablaPedidosLaboratorio extends AbstractTableModel implements Fabri
 	public void enObservadoraRegistrada(MapaFabrica mapa, List<PedidosTransfer> pedidos) {
 		// TODO Auto-generated method stub
 		
-		this.listaPedidosLab = mapa.getPedidosLaboratorio();
+		this.listaPedidoProyectos = mapa.getPedidosProyecto();
 		this.fireTableDataChanged();
 	}
 
@@ -95,9 +103,8 @@ public class TablaPedidosLaboratorio extends AbstractTableModel implements Fabri
 	public void enReinicio(MapaFabrica mapa, List<PedidosTransfer> pedidos) {
 		// TODO Auto-generated method stub
 		
-		this.listaPedidosLab = mapa.getPedidosLaboratorio();
+		this.listaPedidoProyectos = mapa.getPedidosProyecto();
 		this.fireTableDataChanged();
 	}
-
 
 }

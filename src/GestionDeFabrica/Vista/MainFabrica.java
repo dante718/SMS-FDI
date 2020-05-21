@@ -20,7 +20,8 @@ public class MainFabrica {
 					
 					Fabrica fac = new Fabrica();
 					ControladorDeFabrica ctrl = new ControladorDeFabrica(fac);
-					new VistaFabrica();
+					ctrl.initGUI();
+					//new VistaFabrica(ctrl);
 					//new VistaFabrica(ctrl);
 					
 				} catch (Exception e) {

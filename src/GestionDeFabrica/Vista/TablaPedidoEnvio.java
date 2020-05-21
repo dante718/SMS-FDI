@@ -8,25 +8,24 @@ import javax.swing.table.AbstractTableModel;
 import GestionDeFabrica.Controlador.ControladorDeFabrica;
 import GestionDeFabrica.Modelo.FabricaObservadora;
 import GestionDeFabrica.Modelo.MapaFabrica;
-import GestionDeFabrica.Modelo.Pedidos;
 import GestionDeFabrica.TransfersObjects.PedidosTransfer;
 
-public class TablaPedidosLaboratorio extends AbstractTableModel implements FabricaObservadora {
+public class TablaPedidoEnvio extends AbstractTableModel implements FabricaObservadora {
 
-	private List<PedidosTransfer> listaPedidosLab;
+	private List<PedidosTransfer> listaPedidosEnvio;
 	
-	private final String[] columnNames = {"ID", "Usuario", "Producto", "Cantidad"};
+	private final String[] columnNames = {"ID", "Usuario", "Nombre", "Producto", "Compuesto", "Cantidad", "Estado"};
 	
-	public TablaPedidosLaboratorio(ControladorDeFabrica ctrl) {
+	public TablaPedidoEnvio(ControladorDeFabrica ctrl) {
 		
 		ctrl.addObserver(this);
-		listaPedidosLab = new ArrayList<PedidosTransfer>();
+		listaPedidosEnvio = new ArrayList<PedidosTransfer>();
 	}
 	
 	@Override
 	public int getRowCount() {
 		// TODO Auto-generated method stub
-		return listaPedidosLab.size();
+		return this.listaPedidosEnvio.size();
 	}
 
 	@Override
@@ -47,15 +46,29 @@ public class TablaPedidosLaboratorio extends AbstractTableModel implements Fabri
 		
 		switch (columnIndex) {
 		
-		case 0 : return listaPedidosLab.get(rowIndex).getIdPedido();
+		case 0 : return listaPedidosEnvio.get(rowIndex).getIdPedido();
 		
-		case 1 : return listaPedidosLab.get(rowIndex).getUsuario();
+		case 1 : 
+			
+			if (listaPedidosEnvio.get(rowIndex).getUsuario() != null) {
+				
+				return listaPedidosEnvio.get(rowIndex).getUsuario();
+			}
+			else {
+				
+				return "Anonimo";
+			}
 		
-		case 2 : return listaPedidosLab.get(rowIndex).getProducto();
+		case 2 : return listaPedidosEnvio.get(rowIndex).getNombre();
 		
-		case 3 : return listaPedidosLab.get(rowIndex).getCantidad();
+		case 3 : return listaPedidosEnvio.get(rowIndex).getProducto();
+		
+		case 4 : return listaPedidosEnvio.get(rowIndex).getCantidad();
+		
+		case 5 : return listaPedidosEnvio.get(rowIndex).getEstadoPedido();
 		
 		default : return false;
+		
 		}
 	}
 
@@ -63,7 +76,7 @@ public class TablaPedidosLaboratorio extends AbstractTableModel implements Fabri
 	public void enPedidoAdded(MapaFabrica mapa, List<PedidosTransfer> pedidos, PedidosTransfer e) {
 		// TODO Auto-generated method stub
 		
-		this.listaPedidosLab = mapa.getPedidosLaboratorio();
+		this.listaPedidosEnvio = mapa.getPedidosEnvio();
 		this.fireTableDataChanged();
 	}
 
@@ -71,7 +84,7 @@ public class TablaPedidosLaboratorio extends AbstractTableModel implements Fabri
 	public void enPedidoEliminado(MapaFabrica mapa, List<PedidosTransfer> pedidos, PedidosTransfer e) {
 		// TODO Auto-generated method stub
 		
-		this.listaPedidosLab = mapa.getPedidosLaboratorio();
+		this.listaPedidosEnvio = mapa.getPedidosEnvio();
 		this.fireTableDataChanged();
 	}
 
@@ -79,7 +92,7 @@ public class TablaPedidosLaboratorio extends AbstractTableModel implements Fabri
 	public void enPedidoModificado(MapaFabrica mapa, List<PedidosTransfer> pedidos, PedidosTransfer e) {
 		// TODO Auto-generated method stub
 		
-		this.listaPedidosLab = mapa.getPedidosLaboratorio();
+		this.listaPedidosEnvio = mapa.getPedidosEnvio();
 		this.fireTableDataChanged();
 	}
 
@@ -87,7 +100,7 @@ public class TablaPedidosLaboratorio extends AbstractTableModel implements Fabri
 	public void enObservadoraRegistrada(MapaFabrica mapa, List<PedidosTransfer> pedidos) {
 		// TODO Auto-generated method stub
 		
-		this.listaPedidosLab = mapa.getPedidosLaboratorio();
+		this.listaPedidosEnvio = mapa.getPedidosEnvio();
 		this.fireTableDataChanged();
 	}
 
@@ -95,9 +108,8 @@ public class TablaPedidosLaboratorio extends AbstractTableModel implements Fabri
 	public void enReinicio(MapaFabrica mapa, List<PedidosTransfer> pedidos) {
 		// TODO Auto-generated method stub
 		
-		this.listaPedidosLab = mapa.getPedidosLaboratorio();
+		this.listaPedidosEnvio = mapa.getPedidosEnvio();
 		this.fireTableDataChanged();
 	}
-
 
 }
