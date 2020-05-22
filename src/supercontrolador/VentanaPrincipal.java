@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 
 import GestionDeEnvios.GDE.Controlador.ControladorEnvio;
 import GestionDeFabrica.Vista.VistaFabrica;
+import GestionDeInformatica.GDI.Vista.mainInformatico;
 import GestionLaboratorio.presentacion_Laboratorio.Vista_Lab;
 import GestionMedicos.GDM.Controlador.ControladorMed;
 import GestionMedicos.GDM_Vista.InterfazVista;
@@ -20,8 +21,8 @@ import GestionProyectos.GDP.Main.initGUI;
 
 public class VentanaPrincipal extends JFrame{
     
-	private JButton GDP, GDM, GDL, GDF, GDE, GDA;
-	private JLabel gdp, gdm, gdl, gdf, gde, gda, clinicos;
+	private JButton GDP, GDM, GDL, GDF, GDE, GDA,GDI;
+	private JLabel gdp, gdm, gdl, gdf, gde, gda,gdi, clinicos;
 	
 	public VentanaPrincipal() {
 		initVentana();
@@ -82,7 +83,16 @@ public class VentanaPrincipal extends JFrame{
 		GDA.setBounds(650, 600, 100, 100);
 		ImageIcon imagen6= new ImageIcon("ImagenGDA.jpg");
 		GDA.setIcon(new ImageIcon(imagen6.getImage().getScaledInstance(GDA.getWidth(),GDA.getHeight(), Image.SCALE_SMOOTH)));
-		getContentPane().add(GDA);		
+		getContentPane().add(GDA);	
+		
+		gdi=new JLabel("Gestion de Informatico: ");
+		gdi.setBounds(350, 550, 150, 50);
+		getContentPane().add(gdi);
+		GDI= new JButton();
+		GDI.setBounds(350, 600, 100, 100);
+		ImageIcon imagen7= new ImageIcon("ImagenGDI.jpg");
+		GDI.setIcon(new ImageIcon(imagen7.getImage().getScaledInstance(GDI.getWidth(),GDI.getHeight(), Image.SCALE_SMOOTH)));
+		getContentPane().add(GDI);	
 		
 		GDP.addActionListener(new ActionListener() {
 
@@ -138,6 +148,14 @@ public class VentanaPrincipal extends JFrame{
 			
 		});
 		
+		GDI.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainInformatico.iniciar();			
+			}
+			
+		});
 		
 		
 		getContentPane().setBackground(Color.YELLOW);
