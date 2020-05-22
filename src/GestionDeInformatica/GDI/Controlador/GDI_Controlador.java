@@ -1,4 +1,4 @@
-package GestionDeInformatica.GDI.Vista;
+package GestionDeInformatica.GDI.Controlador;
 
 import java.util.ArrayList;
 
