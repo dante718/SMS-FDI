@@ -140,8 +140,8 @@ public class GDI_VistaListaEstudios extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 
 				int filaSeleccionada = table_1.rowAtPoint(arg0.getPoint());
-				System.out.println(table_1.getValueAt(filaSeleccionada,0).toString());
-				System.out.println(filaSeleccionada);
+				//System.out.println(table_1.getValueAt(filaSeleccionada,0).toString());
+				//System.out.println(filaSeleccionada);
 				fila=filaSeleccionada;
 			}
 		});
