@@ -27,8 +27,8 @@ public class MenuMedicos extends PantallaPrincipal {
 
 	button botonPedido,botonHacerEstudio,botonInforme, botonSalir;
 	
-	public MenuMedicos(String s,ControladorMed control) {
-		super(s,control,"Hospital ","cruz.png");
+	public MenuMedicos(String s) {
+		super(s,"Hospital ","cruz.png");
 		
 	}
 	@Override
@@ -82,7 +82,7 @@ public class MenuMedicos extends PantallaPrincipal {
 		
 	}
 	
-	public void exit() {
+	private void exit() {
 		String[] options = { "Si", "No" };
 		int n = JOptionPane.showOptionDialog(this, "Va a salir de tu sesion", "Exit",
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
@@ -96,7 +96,7 @@ public class MenuMedicos extends PantallaPrincipal {
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 	if(e.getSource()==this.botonHacerEstudio) {	
-		this.controller.crearPantallaSeleccion();
+		this.controller.crearPantallaSeleccionPlantilla();
 		
 	}
 	if(e.getSource()==this.botonPedido) {	

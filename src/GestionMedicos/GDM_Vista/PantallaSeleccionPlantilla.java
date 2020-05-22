@@ -21,16 +21,19 @@ public class PantallaSeleccionPlantilla extends PantallaSeleccion {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private  String Estudio="";
-	private  String Etapa=" ";
-	private  String Pastilla=" ";
+	private  String Estudio;
+	private  String Etapa;
+	private  String Pastilla;
 	
 	private JComboBox<String> estudio,farmaco,etapa;
 
 	private etiqueta etiEstudios,etiFarmacos,etiEtapas;
 	
-	public PantallaSeleccionPlantilla(String titulo ,ControladorMed control) {
-		super(titulo,control);
+	public PantallaSeleccionPlantilla(String titulo) {
+		super(titulo);
+		 Estudio="";
+		 Etapa=" ";
+		 Pastilla=" "; 
 		
 	}
 	

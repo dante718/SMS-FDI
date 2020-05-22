@@ -8,14 +8,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class DAOIncidencias {
+public class DAOIncidencias extends ModeloPlantilla {
 	private ArrayList<String> listaIncidencias;
 	private String ruta;
 	public DAOIncidencias(){
 		//leer
 		ruta="src/BaseDatos/IncidenciasMedicos.txt";
 		try {
-		listaIncidencias=leerIncidencias(ruta);
+		listaIncidencias=leerDatos(ruta);//leerIncidencias(ruta);
 		}
 		catch(IOException e) {
 			System.out.println("Error al cargar las incidencias");
@@ -116,6 +116,18 @@ public class DAOIncidencias {
 			
 		}
 		return datos;	
+		
+	}
+
+	@Override
+	public void crearDatos(String dato) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void convertirDatos() {
+		// TODO Auto-generated method stub
 		
 	}
 	

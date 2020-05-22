@@ -14,58 +14,51 @@ import GestionMedicos.Complementos.button;
 import GestionMedicos.Complementos.etiqueta;
 import GestionMedicos.GDM.Controlador.ControladorMed;
 
-public class pantallaPedido extends PantallaPrincipal {
+public class pantallaInforme extends PantallaPrincipal {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	button hacerPedido,informacionPedido,atras;
-	public pantallaPedido(String nombre) {
-		super(nombre, "Pedidos","envios.png");
-		// TODO Auto-generated constructor stub
+	button crearInforme,verMisInformes,atras;
+	public pantallaInforme(String nombre) {
+		super(nombre, " Informes ","informe.png");
+		
 	}
+
 	@Override
-	public void mostrarGUI(){
-		
+	public void mostrarGUI() {
 		this.setResizable(false);
-		
-		hacerPedido=new button("HACER PEDIDO" ,30);
-		informacionPedido=new button(" INFOR PEDIDO ",30);
+		crearInforme=new button("CREAR INFORME",30);
+		verMisInformes=new button(" VER INFORMES ",30);
 		atras =new button("atras",15);
-		
-		PanelBotonesAcciones.add(hacerPedido);
+		PanelBotonesAcciones.add(Box.createVerticalStrut(100));
+		PanelBotonesAcciones.add(crearInforme);
 		PanelBotonesAcciones.add(Box.createVerticalStrut(50));
-		PanelBotonesAcciones.add(informacionPedido);
+		PanelBotonesAcciones.add(verMisInformes);
 		PanelBotonesAcciones.add(Box.createVerticalStrut(50));
-		//informacionPedido.addActionListener(this);
-		//hacerPedido.addActionListener(this);
-		
+		crearInforme.addActionListener(this);
+		verMisInformes.addActionListener(this);
+		atras.addActionListener(this);
 		this.PanelInferior=new JPanel();
 		PanelInferior.setBackground(Color.yellow);
+
 		PanelInferior.add(atras);
 		PanelPrincipal.add(PanelInferior,BorderLayout.PAGE_END);
-		atras.addActionListener(this);
-		hacerPedido.addActionListener(this);
-		informacionPedido.addActionListener(this);
-		
-
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		if(e.getSource()==this.hacerPedido) {
-			System.out.print("hola");
-			this.controller.crearPantallaSeleccionPedido();
+		if(e.getSource()==crearInforme) {
+			this.controller.crearPantallaSeleccionCreacionInforme();
 		}
-		if(e.getSource()==this.informacionPedido) {
-			
-			this.controller.crearPantallaInformacionPedido();
-			
+		if(e.getSource()==verMisInformes){
+			this.controller.crearPantallaConsultaInforme();
 		}
 		if(e.getSource()==this.atras) {
 			dispose();
 		}
+		
 	}
+
 
 }

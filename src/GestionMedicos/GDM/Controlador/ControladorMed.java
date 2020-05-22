@@ -19,7 +19,7 @@ import GestionMedicos.FactoriaServAplicacion.TransDatosClinicos;
 import GestionMedicos.FactoriaServAplicacion.TransPlantilla;
 import GestionMedicos.GDM_Vista.FabricaPantallaSeleccion;
 import GestionMedicos.GDM_Vista.FabricaPantallasPrincipales;
-import GestionMedicos.GDM_Vista.FabricaPlantilla;
+import GestionMedicos.GDM_Vista.FabricaPantallaPlantilla;
 import GestionMedicos.GDM_Vista.PantallaPrincipal;
 import GestionMedicos.GDM_Vista.PantallaSeleccion;
 import GestionMedicos.GDM_Vista.Plantilla;
@@ -37,9 +37,10 @@ public class ControladorMed extends FactoriaControladorMed {
 	private ArrayList<String> ParametrosPlantilla;
 	private ArrayList<TransDatosClinicos> personas;
 	private String ruta;
-	String estudio,  pastilla, etapa;
-	FabricaPantallasPrincipales FPrincipales;
-	 FabricaPantallaSeleccion FPSeleccion;
+	private String estudio,  pastilla, etapa;
+	private FabricaPantallasPrincipales FPrincipales;
+	private  FabricaPantallaSeleccion FPSeleccion;
+	private FabricaPantallaPlantilla FPpantallaPlantilla;
 	public ControladorMed() {
 		ListaEstudios= null;
 		ListaFarmacos=null;
@@ -47,6 +48,8 @@ public class ControladorMed extends FactoriaControladorMed {
 		ParametrosPlantilla=null;
 		personas=null;
 		FPSeleccion= new FabricaPantallaSeleccion();
+		FPrincipales=new FabricaPantallasPrincipales();
+		FPpantallaPlantilla=new FabricaPantallaPlantilla();
 		this.ServicioApp=(FactoriaServAppMed_Imp) FactoriaSApp.getInstancia_Med();
 	
 		
@@ -62,44 +65,44 @@ public class ControladorMed extends FactoriaControladorMed {
 	
 ///fabricas Pantallas//
 public void CrearPantallaPrincipal() {
-	FPrincipales=new FabricaPantallasPrincipales();
-	FPrincipales.crearPantallaMenuMedicos("subsitema Medicos",this);
+	
+	FPrincipales.crearPantallaMenuMedicos("subsitema Medicos");
 	
 }
 public void crearIncidencia() {
 	
-	FPrincipales.crearPantallaIncidencia("Crear Incidencia",this);
+	FPrincipales.crearPantallaIncidencia("Crear Incidencia");
 }
 public void crearPantallaPedido() {
 	
-	FPrincipales.crearPantallaPedidos("Realizar Pedido",this);
+	FPrincipales.crearPantallaPedidos("Realizar Pedido");
 }
 
-public void crearPantallaSeleccion() {
+public void crearPantallaSeleccionPlantilla() {
 	
-	FPSeleccion.crearPantallaSeleccion("pantalla de seleccion formulario",this);
+	FPSeleccion.crearPantallaSeleccion("pantalla de seleccion formulario");
 	
 }
 public void crearPantallaSeleccionPedido() {
 
-	FPSeleccion.CrearPantallaSeleccionPedido("Pedido a realizar",this);
+	FPSeleccion.CrearPantallaSeleccionPedido("Pedido a realizar");
 }
 
 public void crearPantallaInformacionPedido() {
-	FPSeleccion.CrearPantallaInformacionPedido("Informacion pedido", this);
+	FPSeleccion.CrearPantallaInformacionPedido("Informacion pedido");
 }
 public void crearPantallaSeleccionCreacionInforme() {
-	FPSeleccion.CrearPantallaSeleccionCreacionInforme("Informe", this);
+	FPSeleccion.CrearPantallaSeleccionCreacionInforme("Informe");
 }
 public void crearPantallaConsultaInforme() {
-	FPSeleccion.CrearPantallaConsultaInforme("Mis Informes", this);
+	FPSeleccion.CrearPantallaConsultaInforme("Mis Informes");
 }
 
 
 public void crearPantallaPlantilla() {
 	BuscarPlantilla();
-	FabricaPlantilla f=new FabricaPlantilla();
-	Plantilla p=f.crearPlantilla("Plantilla: ",this);
+	
+	Plantilla p=FPpantallaPlantilla.crearPlantilla("Plantilla: ");
 }
 
 
@@ -115,24 +118,16 @@ this.estudio=estudio2;
 	
 }
 	public void CargarDatos() throws IOException {
-			this.ListaEstudios=lectura(rutaestudios);
+			/*this.ListaEstudios=lectura(rutaestudios);
 			this.ListaFarmacos=lectura(rutafarmacos);
 			this.ListaEtapas=lectura(rutaetapas);
 			//this.ParametrosPlantilla=lectura(rutaParametrosPlantilla);
-			//si hay que agregar un nuevo dao tendria que meter un nuevo sistema de app 
+			//si hay que agregar un nuevo dao tendria que meter un nuevo sistema de app */
+		this.ListaEstudios=this.ServicioApp.primeraLectura(rutaestudios);
+		this.ListaEtapas=this.ServicioApp.primeraLectura(rutaetapas);
+		this.ListaFarmacos=this.ServicioApp.primeraLectura(rutafarmacos);
 	}
 
-	private ArrayList<String> lectura(String ruta) throws IOException{
-		ArrayList<String>lista=new ArrayList<String>();
-		BufferedReader buffer=new BufferedReader(new InputStreamReader(new FileInputStream(ruta)));
-		String cadena=" ";
-		while((cadena=buffer.readLine())!=null) {
-			lista.add(cadena);
-			
-		}
-		buffer.close();
-	return lista;
-}
 	public ArrayList<String> getListaEstudios() {
 		return this.ListaEstudios;
 	}
@@ -151,19 +146,15 @@ this.estudio=estudio2;
 		return this.personas;
 	}
 	
-	public  void BuscarPlantilla() {
+	private  void BuscarPlantilla() {
 		
 		//realizo la comprobacion de los datos :
 		//comprobacionDatos(estudio, pastilla, etapa);
 		
 		//si son validos:
 		ArrayList <String> aux;
-		try {
-			this.ParametrosPlantilla=lectura("src/BaseDatos/parametros_"+estudio+"_"+pastilla+"_"+etapa+".txt");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		this.ParametrosPlantilla=this.ServicioApp.primeraLectura("src/BaseDatos/parametros_"+estudio+"_"+pastilla+"_"+etapa+".txt");//lectura("src/BaseDatos/parametros_"+estudio+"_"+pastilla+"_"+etapa+".txt");
 		this.ruta="src/BaseDatos/"+estudio+"_"+pastilla+"_"+etapa+".txt";
 		//ServicioApp= (FactoriaServAppMed_Imp) FactoriaSApp.getInstancia_Med(estudio, pastilla, etapa,ruta);
 		 this.ServicioApp.setValores(estudio, pastilla, etapa,ruta);

@@ -23,13 +23,13 @@ public class PantallaSeleccionCreacionInforme extends PantallaSeleccion {
 	private etiqueta etiquetaMotivo,etiquetafecha,etiquetaplantilla,etiquetaIdentificador;
 	private  final String  ids="ID";
 	private static int cont=0;
-	public PantallaSeleccionCreacionInforme(String titulo, ControladorMed control) {
-		super(titulo, control);
+	public PantallaSeleccionCreacionInforme(String titulo) {
+		super(titulo);
 		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public void init() {
-		Descripcion=new etiqueta("Introduzca la informacion para realizar el pedido ",Color.BLACK,20);
+		Descripcion=new etiqueta("Introduzca la informacion para realizar el Informe ",Color.BLACK,20);
 		panelOpciones=new JPanel();
 		panelDescripcion =new JPanel();
 		panelConfirmacion=new JPanel(new FlowLayout());

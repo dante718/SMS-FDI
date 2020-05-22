@@ -21,8 +21,8 @@ public class PantallaConsultaPedido extends PantallaSeleccion {
 	private static final long serialVersionUID = 1L;
 	private JTextArea nombre,id,resultado,fallo;
 	private etiqueta etiquetaNombre,etiquetaIdentificador,etiquetaEstado;
-	public PantallaConsultaPedido(String titulo, ControladorMed control) {
-		super(titulo, control);
+	public PantallaConsultaPedido(String titulo) {
+		super(titulo);
 	
 	}
 	@Override

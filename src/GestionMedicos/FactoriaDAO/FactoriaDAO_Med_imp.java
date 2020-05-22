@@ -27,6 +27,23 @@ public  class FactoriaDAO_Med_imp extends FactoriaDAO{
 		// TODO Auto-generated method stub
 		return new DAOIncidencias();
 	}
+	@Override
+	public DAOPrimeraLectura primeraCarga() {
+		// TODO Auto-generated method stub
+		return new DAOPrimeraLectura();
+	}
+	
+	@Override
+	public DAOProducto_Lab crearDAOProducto() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public DAOPedido_Lab crearDAOPedido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	//preguntar si es necesario, si es necesario debemos crear un nuevo dao?
 	
@@ -58,17 +75,7 @@ public  class FactoriaDAO_Med_imp extends FactoriaDAO{
 	
 	
 ///////////////////////////////////////////////	
-	@Override
-	public DAOProducto_Lab crearDAOProducto() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public DAOPedido_Lab crearDAOPedido() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
+
 	
 }
 

@@ -16,6 +16,10 @@ public class FactoriaServAppMed_Imp extends FactoriaSApp {
 	
 	public FactoriaServAppMed_Imp() {
 	}
+	public ArrayList<String>primeraLectura(String ruta){
+		
+		return FactoriaDAO.getInstancia_Med().primeraCarga().leerPrimeravez(ruta);
+	}
 	public void setValores(String estudio, String pastilla, String etapa,String ruta){
 		//esto esta bien si lo hago aqui? o ser�a mejor hacerlo en el modulo del controlador
 		this.Ruta=ruta;
@@ -48,7 +52,7 @@ public class FactoriaServAppMed_Imp extends FactoriaSApp {
 	public void introducirDatos(String id,String sexo,int edad,String fecha,int cantidad) {
 		try {
 			//pasar a un String los datos
-			FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos(this.Ruta,this.Plantilla).CrearDatos(id, sexo, edad, fecha,cantidad);
+			FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos(this.Ruta,this.Plantilla).crearDatos(id+" "+sexo+" "+ edad+" "+fecha+" "+cantidad);//CrearDatos(id, sexo, edad, fecha,cantidad);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

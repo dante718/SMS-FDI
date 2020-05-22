@@ -21,8 +21,8 @@ public class pantallaConsultaInforme extends PantallaSeleccion {
 	private static final long serialVersionUID = 1L;
 	private JTextArea plantilla,id,resultado;
 	private etiqueta etiquetaplantilla,etiquetaIdentificador;
-	public pantallaConsultaInforme(String titulo, ControladorMed control) {
-		super(titulo, control);
+	public pantallaConsultaInforme(String titulo) {
+		super(titulo);
 		// TODO Auto-generated constructor stub
 	}
 	@Override
