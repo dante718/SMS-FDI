@@ -27,4 +27,28 @@ public class Controlador_Lab extends FactoriaControlador_Lab {
 	public int Id_Pedido() {
 		return FactoriaSA_Lab.getInscania().Id_Pedido();
 	}
-}
+	public TransferProducto_Lab BuscarPedido(String id_ped){
+		TransferProducto_Lab p=null;
+		FactoriaSA_Lab.getInscania().BuscarPedido(id_ped);
+		
+		return p;
+	}
+	public void Demo() {
+		FactoriaSA_Lab.getInscania().DemoMod();
+		
+	}
+	public String Id_Solicitante() {
+		return FactoriaSA_Lab.getInscania().Id_Solicitante();
+	}
+	public String Id_NombreSolicitante() {
+		return FactoriaSA_Lab.getInscania().Nombre_Solicitante();
+	}
+	public void EliminarPedido(String id_ped) {
+		
+		FactoriaSA_Lab.getInscania().EliminarPedido(id_ped);
+	}
+	
+	
+	
+	
+	}

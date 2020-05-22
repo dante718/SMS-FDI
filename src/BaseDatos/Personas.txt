@@ -40,10 +40,3 @@ Ruiz
 Quimico
 No Disponible
 Trabajador
-1234G
-Silvia
-Fernandez
-Ayuso
-Farmaceutico
-Disponible
-Trabajador

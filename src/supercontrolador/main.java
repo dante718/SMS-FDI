@@ -1,6 +1,6 @@
 package supercontrolador;
 
-import GestionLaboratorio.presentacion_Laboratorio.Vista_Lab;
+import GestionLaboratorio.presentacion_Laboratorio.CrearPedido;
 import GestionMedicos.GDM_Vista.InterfazVista;
 import GestionDeFabrica.Vista.VistaFabrica;
 

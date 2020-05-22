@@ -1,162 +1,88 @@
 package GestionLaboratorio.presentacion_Laboratorio;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+
+import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
-import GestionLaboratorio.negocio_Laboratorio.TransferProducto_Lab;
-public class Vista_Lab {
-	private JFrame marco;
-	private JLabel titulo;
-	private JPanel panel;
-	private JPanel superior;
-	private JPanel medio;
-	private JButton confirmar;
-	private JButton ok;
-	private JButton eliminar;
-	private JLabel id_cod;
-	private JLabel cant;
-	private JTextField id_codT;
-	private JTextField cantT;
-	private JTextArea infoPedido;
-	public Vista_Lab() {
-		
-	 marco =new JFrame(" Gestion de Laboratorio ");
-	 panel =new JPanel(new BorderLayout());
-	 marco.setMaximumSize(new Dimension(700, 600));
-	 marco.setMinimumSize(new Dimension(700, 600));
-	 marco.setPreferredSize(new Dimension(700, 600));
-	 
-	 superior =new JPanel(new BorderLayout());
-	 titulo= new JLabel("                    Gestion de pedido Laboratorio ");
-	 titulo.setFont(new Font("Serif",Font.PLAIN,30));
-	 superior.add(titulo,BorderLayout.CENTER);
-	 infoPedido= new JTextArea("        InfoPedido");
-	 infoPedido.setPreferredSize(new Dimension(350,300));
-	 //-----------------------------------------------------------------------------------
-	 medio = new JPanel(new GridBagLayout());
-	 medio.setPreferredSize(new Dimension(350,300));
-	 id_cod= new JLabel("Id Codigo: ");
-	 cant=new JLabel("Cantidad: ");
-	 id_codT =new JTextField(10);
-	 cantT =new JTextField(10);
-	 ok=new JButton("Add Producto");
-	 eliminar= new JButton("Eliminar Producto");
-	 GridBagConstraints gc= new GridBagConstraints();
-	 //--------------Primera linea----------
-	 gc.weightx=1;
-	 gc.weighty=0.1;
-	 
-	 gc.gridx=0;
-	 gc.gridy=0;
-	 gc.fill=GridBagConstraints.NONE;
-	 gc.anchor=GridBagConstraints.LINE_END;
-	 medio.add(id_cod,gc);
-	 
-	 gc.gridx=1;
-	 gc.gridy=0;
-	 gc.anchor=GridBagConstraints.LINE_START;
-	 medio.add(id_codT,gc);
-	 //--------------Segunda linea-----------
-	 gc.weightx=1;
-	 gc.weighty=0.1;
-	 
-	 gc.gridx=0;
-	 gc.gridy=1;
-	 gc.anchor=GridBagConstraints.LINE_END;
-	 medio.add(cant,gc);
-	 
-	 gc.gridx=1;
-	 gc.gridy=1;
-	 gc.anchor=GridBagConstraints.LINE_START;
-	 medio.add(cantT,gc);
-	 //---------------Tercera linea------------
-	 gc.weightx=1;
-	 gc.weighty=0.1;
-	 gc.gridx=0;
-	 gc.gridy=2;
-	 gc.anchor=GridBagConstraints.FIRST_LINE_START;
-	 medio.add(ok,gc);
-	 gc.gridx=1;
-	 gc.gridy=2;
-	 medio.add(eliminar,gc);
+
+
+import javax.swing.JFrame;
+
+public class Vista_Lab extends JFrame{
+	private JButton crear,modificar,eliminar;
+	private JLabel c,m,e;
 	
-	 //----------------------------------------------------------------------------------------
-	 confirmar= new JButton("Confirmar");
-	 
-	 panel.add(confirmar,BorderLayout.SOUTH);
-	 panel.add(medio,BorderLayout.WEST);
-	 panel.add(infoPedido,BorderLayout.EAST);
-	 panel.add(superior,BorderLayout.NORTH);
-	 
-	 marco.getContentPane().add(panel);
-	 marco.pack();
-	 marco.setVisible(true);
-	 
-	 confirmar.addActionListener(new ActionListener() {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			Controlador_Lab.getInstancia().guardarPedido();
-		}
-		 
-	 });
-	 ok.addActionListener(new ActionListener() {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			
-			try{
-				Controlador_Lab.getInstancia().addProducto(Integer.parseInt(id_codT.getText()), Integer.parseInt(cantT.getText()));
-				List<TransferProducto_Lab>lista=Controlador_Lab.getInstancia().listarPedido();
-				infoPedido.setText("Id_Pedido: "+Controlador_Lab.getInstancia().Id_Pedido()+"\n");
-				for(int i =0;i<lista.size();i++) {
-					infoPedido.append("  Id_Codigo: "+ lista.get(i).get_idProducto() +" Cantidad :" + lista.get(i).get_cantidad()+"\n");
-				}
-			
-				
-			}
-			catch(IllegalArgumentException ex) {
-				JOptionPane.showMessageDialog(marco, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-			}
-			
-		}
-	 });
-	 eliminar.addActionListener(new ActionListener() {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-
-			try{
-				Controlador_Lab.getInstancia().borrarProducto(Integer.parseInt(id_codT.getText()));
-				List<TransferProducto_Lab>lista=Controlador_Lab.getInstancia().listarPedido();
-				infoPedido.setText("Id_Pedido: "+Controlador_Lab.getInstancia().Id_Pedido()+"\n");
-				for(int i =0;i<lista.size();i++) {
-					infoPedido.append("  Id_Codigo: "+ lista.get(i).get_idProducto() +" Cantidad :" + lista.get(i).get_cantidad()+"\n");
-				}
-			
-				
-			}
-			catch(IllegalArgumentException ex) {
-				JOptionPane.showMessageDialog(marco, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-			}
-		
-		}
-	 });
-		
+	public Vista_Lab() {
+		initGui();
 	}
 	
-	
-	
-	/*public static void main(String[] args) {
-		new Vista_Lab();
+	private void initGui() {
+		setSize(950, 1000);
+		setLayout(null);
+		JLabel gestionlab = new JLabel("Laboratorio");
+		gestionlab.setBounds(300, 50, 400, 70);
+		gestionlab.setFont(new Font("", 3, 70));
+		gestionlab.setForeground(Color.BLACK);
+		getContentPane().add(gestionlab);
+		c=new JLabel("Crear Pedido ");
+		c.setBounds(100, 150, 150, 50);
+		getContentPane().add(c);
+		crear= new JButton();
+		crear.setBounds(100, 200, 100, 100);
+		ImageIcon imagen1= new ImageIcon("iconosuma.png");
+		crear.setIcon(new ImageIcon(imagen1.getImage().getScaledInstance(crear.getWidth(),crear.getHeight(), Image.SCALE_SMOOTH)));
+		getContentPane().add(crear);
+		m=new JLabel("Modificar Pedido ");
+		m.setBounds(650, 150, 150, 50);
+		getContentPane().add(m);
+		modificar= new JButton();
+		modificar.setBounds(650, 200, 100, 100);
+		ImageIcon imagen2= new ImageIcon("editar.png");
+		modificar.setIcon(new ImageIcon(imagen2.getImage().getScaledInstance(modificar.getWidth(),modificar.getHeight(), Image.SCALE_SMOOTH)));
+		getContentPane().add(modificar);
+		e=new JLabel("Eliminar Pedido ");
+		e.setBounds(100, 350, 150, 50);
+		getContentPane().add(e);
+		eliminar= new JButton();
+		eliminar.setBounds(100, 400, 100, 100);
+		ImageIcon imagen3= new ImageIcon("borrar.png");
+		eliminar.setIcon(new ImageIcon(imagen3.getImage().getScaledInstance(eliminar.getWidth(),eliminar.getHeight(), Image.SCALE_SMOOTH)));
+		getContentPane().add(eliminar);
+		crear.addActionListener(new ActionListener() {
 
-	}*/
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new CrearPedido();	
+			}
+		});
+		modificar.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new BuscarPedido();	
+			}
+		});
+		eliminar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new EliminarPedido();	
+			}
+		});
+		
+		
+		
+		
+		getContentPane().setBackground(Color.WHITE);
+		setVisible(true);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+	
 }

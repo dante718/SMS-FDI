@@ -10,7 +10,7 @@ import GestionLaboratorio.negocio_Laboratorio.TransferProducto_Lab;
 public class DAOProducto_Lab {
 
 	
-	String bbdd_almacen = "src/GestionLaboratorio/integracion_Laboratorio/bbdd_almacen.txt";
+	String bbdd_almacen = "src/BaseDatos/bbdd_almacen.txt";
 	
 	private String[][]productos;
 	

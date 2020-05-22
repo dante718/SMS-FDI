@@ -1,6 +1,11 @@
 package GestionLaboratorio.integracion_Laboratorio;
 
+import java.io.IOException;
+
 import General.FactoriaDAO;
+import GestionDeInformatica.GDI.Modelo.DaoEmpleados;
+import GestionDeInformatica.GDI.Modelo.DaoErrores;
+import GestionDeInformatica.GDI.Modelo.DaoPlantillas;
 import GestionMedicos.FactoriaDAO.DAODatosClinicos;
 import GestionMedicos.FactoriaDAO.DAODatosPlantilla;
 import GestionMedicos.FactoriaDAO.DAOIncidencias;
@@ -21,17 +26,22 @@ public class FactoriaDAO_Lab_imp extends FactoriaDAO{
 		return null;
 	}
 	@Override
-	public DAODatosClinicos CrearTablaDatosClinicos(String ruta,TransPlantilla p) {
+	public DAODatosClinicos CrearTablaDatosClinicos(String ruta) throws IOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public DAOPedidosMedicos CrearPedidoMedicos() {
+	public DaoEmpleados crearDAOEmpleados() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public DAOIncidencias CrearInformesMedicos() {
+	public DaoPlantillas crearDAOPlantillas() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public DaoErrores crearDAOErrores() {
 		// TODO Auto-generated method stub
 		return null;
 	}

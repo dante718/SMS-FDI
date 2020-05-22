@@ -1,5 +1,7 @@
 package GestionLaboratorio.negocio_Laboratorio;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 import General.FactoriaDAO;
@@ -72,11 +74,54 @@ public class SAPedido_Lab extends FactoriaSApp  {
 	
 	
 	
+	public TransferPedido_Lab BuscarPedido(String id_ped) {
+	
+		pedido= FactoriaDAO.getInstancia_Lab().crearDAOPedido().BuscarPedidoEnsisPedidos(id_ped);
+		
+		
+		
+		return pedido;
+	}
+	
+	
+	public void EliminarPedido(String id_ped) {
+		FactoriaDAO.getInstancia_Lab().crearDAOPedido().EliminarPedido(id_ped);
+	}
+
+	
 	
 	public void guardarPedido() {
 		FactoriaDAO.getInstancia_Lab().crearDAOPedido().guardarPedidoEnSisPedidos(pedido);;
 	}
 	public int Id_Pedido() {
 		return pedido.get_idPedido();
+	}
+	public String Id_Solicitante() {
+		return pedido.get_idSolicitante();
+	}
+	public String Nombre_Solicitante() {
+		return pedido.get_NombreSolicitante();
+	}
+	public void DemoMod() {
+		pedido.set_idSolicitante("AXXSA");
+		pedido.set_NombreSolicitante("ALEX");
+		TransferProducto_Lab producto1 = new TransferProducto_Lab();
+		producto1.set_idProducto(1331);
+		producto1.set_cantidad(2);
+		producto1.set_nombre("jeringa");
+		TransferProducto_Lab producto2 = new TransferProducto_Lab();
+		producto2.set_idProducto(1234);
+		producto2.set_cantidad(2);
+		producto2.set_nombre("Alcohol");
+		TransferProducto_Lab producto3 = new TransferProducto_Lab();
+		producto3.set_idProducto(1654);
+		producto3.set_cantidad(4);
+		producto3.set_nombre("Acido");
+		
+	    List<TransferProducto_Lab> pro = new ArrayList<TransferProducto_Lab>();
+	    pro.add(producto1);
+	    pro.add(producto2);
+	    pro.add(producto3);
+	    pedido.set_productos(pro);
 	}
 }
