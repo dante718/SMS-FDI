@@ -2,6 +2,10 @@ package General;
 
 import java.io.IOException;
 
+import GestionDeInformatica.GDI.Modelo.DaoEmpleados;
+import GestionDeInformatica.GDI.Modelo.DaoErrores;
+import GestionDeInformatica.GDI.Modelo.DaoPlantillas;
+import GestionDeInformatica.GDI.Modelo.GDI_FactoriaDAO_Inf_imp;
 import GestionLaboratorio.integracion_Laboratorio.DAOPedido_Lab;
 import GestionLaboratorio.integracion_Laboratorio.DAOProducto_Lab;
 import GestionLaboratorio.integracion_Laboratorio.FactoriaDAO_Lab_imp;
@@ -47,5 +51,16 @@ public abstract class FactoriaDAO {
 	public abstract DAODatosClinicos CrearTablaDatosClinicos(String ruta) throws IOException;
 	
 	
+private static FactoriaDAO instanciaInf=null;
+	
+	static public FactoriaDAO getInstancia_Inf(){
+		
+		if (instanciaInf == null) instanciaInf= new GDI_FactoriaDAO_Inf_imp();
+	
+		return instanciaInf;
+	}
+	public abstract DaoEmpleados crearDAOEmpleados();
+	public abstract DaoPlantillas crearDAOPlantillas();
+	public abstract DaoErrores crearDAOErrores();
 	
 }
