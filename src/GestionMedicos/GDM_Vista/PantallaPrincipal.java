@@ -23,7 +23,6 @@ import GestionMedicos.Complementos.etiqueta;
 import GestionMedicos.GDM.Controlador.ControladorMed;
 
 public abstract class PantallaPrincipal extends JFrame implements ActionListener {
-	
 	/**
 	 * 
 	 */
@@ -32,9 +31,9 @@ public abstract class PantallaPrincipal extends JFrame implements ActionListener
 	JPanel PanelPrincipal,PanelTitulo,PanelBotonesAcciones,PanelInferior;
 	etiqueta titulo;
 	ControladorMed controller;
-	public	PantallaPrincipal(String nombre,ControladorMed ctrl,String T,String I){
+	public	PantallaPrincipal(String nombre,String T,String I){
 		super(nombre);
-		this.controller=ctrl;
+		this.controller=ControladorMed.getInstancia();
 		this.setLayout(new BorderLayout());
 		this.setVisible(true);
 		this.setPreferredSize(new Dimension(900,900));

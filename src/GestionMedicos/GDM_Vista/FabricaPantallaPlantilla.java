@@ -2,13 +2,14 @@ package GestionMedicos.GDM_Vista;
 
 import General.FactoriaAbstractaPantallas;
 
-public class FabricaPantallaSeleccion implements FactoriaAbstractaPantallas {
+public class FabricaPantallaPlantilla implements FactoriaAbstractaPantallas {
 
+	
 
 	@Override
 	public Plantilla crearPlantilla(String s) {
 		// TODO Auto-generated method stub
-		return null;
+		return new Plantilla(s);
 	}
 
 	@Override
@@ -26,33 +27,31 @@ public class FabricaPantallaSeleccion implements FactoriaAbstractaPantallas {
 	@Override
 	public PantallaSeleccion crearPantallaSeleccion(String s) {
 		// TODO Auto-generated method stub
-		return new PantallaSeleccionPlantilla(s);
+		return null;
 	}
 
 	@Override
 	public PantallaSeleccion CrearPantallaSeleccionPedido(String s) {
 		// TODO Auto-generated method stub
-		return new PantallaSeleccionPedido(s);
+		return null;
 	}
+
 	@Override
 	public PantallaSeleccion CrearPantallaInformacionPedido(String s) {
 		// TODO Auto-generated method stub
-		return new PantallaConsultaPedido(s);
+		return null;
 	}
 
 	@Override
 	public PantallaSeleccion CrearPantallaSeleccionCreacionInforme(String s) {
 		// TODO Auto-generated method stub
-		return new PantallaSeleccionCreacionInforme(s);
+		return null;
 	}
 
 	@Override
 	public PantallaSeleccion CrearPantallaConsultaInforme(String s) {
 		// TODO Auto-generated method stub
-		return new pantallaConsultaInforme(s);
+		return null;
 	}
 
 }
-
-
-

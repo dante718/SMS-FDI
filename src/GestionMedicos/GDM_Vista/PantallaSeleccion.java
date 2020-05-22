@@ -37,9 +37,9 @@ public abstract class PantallaSeleccion extends JFrame implements ActionListener
 	button botonAtras , botonContinuar;
 	JPanel panelOpciones, panelDescripcion,panelConfirmacion;
 	etiqueta Descripcion;
-public PantallaSeleccion(String titulo ,ControladorMed control){
+public PantallaSeleccion(String titulo){
 	super(titulo);
-	Controlador=control;
+	Controlador=ControladorMed.getInstancia();
 	this.setLayout(new BorderLayout());
 	this.setVisible(true);
 	this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -8,13 +8,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class DAOPedidosMedicos {
+public class DAOPedidosMedicos  extends ModeloPlantilla {
 	private ArrayList<String> Listapedidos;
 	private String ruta;
 	public DAOPedidosMedicos() {
 		this.ruta="src/BaseDatos/pedidosMedicos.txt";
 		try {
-			Listapedidos=cargaPedidos(ruta);
+			Listapedidos= leerDatos(ruta);//cargaPedidos(ruta);
 		}
 		catch(IOException e) {
 			System.out.println("fallo al cargar los ficheros de pedidos");
@@ -77,7 +77,7 @@ public class DAOPedidosMedicos {
 		
 		
 	}
-	public void guardarPedido() {
+	private void guardarPedido() {
 		
 
 		FileWriter fichero = null;
@@ -103,5 +103,15 @@ public class DAOPedidosMedicos {
 			e3.printStackTrace();
 		}
 
+	}
+	@Override
+	public void crearDatos(String dato) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void convertirDatos() {
+		// TODO Auto-generated method stub
+		
 	}
 }

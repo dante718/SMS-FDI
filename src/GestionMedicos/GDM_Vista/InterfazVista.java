@@ -6,8 +6,8 @@ import GestionMedicos.GDM.Controlador.ControladorMed;
 
 public class InterfazVista extends JFrame{
 	private ControladorMed ctrl;
-	public InterfazVista(ControladorMed c) {
-		this.ctrl=c;
+	public InterfazVista() {
+		this.ctrl=ControladorMed.getInstancia();
 		MainMedicos();
 	}
 	private  void MainMedicos() {

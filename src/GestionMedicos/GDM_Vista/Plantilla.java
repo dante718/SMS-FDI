@@ -35,12 +35,12 @@ public class Plantilla extends JFrame implements ActionListener{
 	ControladorMed Contr;
 	
 	private tableModelDatosPlantilla modeloTabla;
-	button agregar,modificar,eliminar,actualizar;
+	 private button agregar,modificar,eliminar,actualizar;
 	JTable tabla;
 	JTextArea usuario,fallo;
-	public Plantilla(String s, ControladorMed controlador) {
+	public Plantilla(String s) {
 		super(s);
-		this.Contr=controlador;
+		this.Contr=ControladorMed.getInstancia();
 		this.setLayout(new BorderLayout());
 		this.setVisible(true);
 		this.setSize(600,400);
@@ -126,7 +126,7 @@ public class Plantilla extends JFrame implements ActionListener{
 	
 	private void agregarDatos(String[] aux) {
 	
-		if(aux.length==4) {
+		if(aux.length==5) {
 		this.Contr.agregarDatos(aux[0],aux[1], Integer.parseInt(aux[2]), aux[3],Integer.parseInt(aux[4]));
 		fallo.setVisible(false);
 		}

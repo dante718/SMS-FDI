@@ -27,8 +27,8 @@ public class PantallaSeleccionPedido extends PantallaSeleccion {
 	private etiqueta etiquetaDescripcion,etiquetaCantidad,etiquetaNombre,etiquetaIdentificador;
 	private  final String  ids="ID";
 	private static int cont=0;
-public PantallaSeleccionPedido(String titulo ,ControladorMed control) {
-	super(titulo,control);
+public PantallaSeleccionPedido(String titulo ) {
+	super(titulo);
 }
 
 @Override
