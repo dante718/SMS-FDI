@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import General.FactoriaDAO;
+import General.FactoriaAbstractaDAO;
 import General.FactoriaSApp;
 
 public class FactoriaServAppMed_Imp extends FactoriaSApp {
@@ -18,7 +18,7 @@ public class FactoriaServAppMed_Imp extends FactoriaSApp {
 	}
 	public ArrayList<String>primeraLectura(String ruta){
 		
-		return FactoriaDAO.getInstancia_Med().primeraCarga().leerPrimeravez(ruta);
+		return FactoriaAbstractaDAO.getInstancia_Med().primeraCarga().leerPrimeravez(ruta);
 	}
 	public void setValores(String estudio, String pastilla, String etapa,String ruta){
 		//esto esta bien si lo hago aqui? o ser�a mejor hacerlo en el modulo del controlador
@@ -36,7 +36,7 @@ public class FactoriaServAppMed_Imp extends FactoriaSApp {
 	private TransPlantilla buscarPlantilla(String estudio, String pastilla, String etapa) {
 		//ServApp ->DAODatosPlantilla
 		TransPlantilla PlantillaBuscada=null;
-		PlantillaBuscada=FactoriaDAO.getInstancia_Med().crearDAOPlantilla().cargarPlantilla(estudio, pastilla, etapa);
+		PlantillaBuscada=FactoriaAbstractaDAO.getInstancia_Med().crearDAOPlantilla().cargarPlantilla(estudio, pastilla, etapa);
 			
 		return PlantillaBuscada;
 	}
@@ -45,14 +45,14 @@ public class FactoriaServAppMed_Imp extends FactoriaSApp {
 	public ArrayList<String> CargaDatos() throws IOException {
 		
 		
-		return FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos(this.Ruta,this.Plantilla).getDatosClinicos();
+		return FactoriaAbstractaDAO.getInstancia_Med().CrearTablaDatosClinicos(this.Ruta,this.Plantilla).getDatosClinicos();
 	}
 	
 	
 	public void introducirDatos(String id,String sexo,int edad,String fecha,int cantidad) {
 		try {
 			//pasar a un String los datos
-			FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos(this.Ruta,this.Plantilla).crearDatos(id+" "+sexo+" "+ edad+" "+fecha+" "+cantidad);//CrearDatos(id, sexo, edad, fecha,cantidad);
+			FactoriaAbstractaDAO.getInstancia_Med().CrearTablaDatosClinicos(this.Ruta,this.Plantilla).crearDatos(id+" "+sexo+" "+ edad+" "+fecha+" "+cantidad);//CrearDatos(id, sexo, edad, fecha,cantidad);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,7 +63,7 @@ public class FactoriaServAppMed_Imp extends FactoriaSApp {
 	public boolean eliminarDato(String id) {
 		boolean respuesta=false;
 		try {
-			respuesta= FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos(Ruta,this.Plantilla).eliminarDatoTabla(id);
+			respuesta= FactoriaAbstractaDAO.getInstancia_Med().CrearTablaDatosClinicos(Ruta,this.Plantilla).eliminarDatoTabla(id);
 				
 			
 		} catch (IOException e) {
@@ -76,7 +76,7 @@ public class FactoriaServAppMed_Imp extends FactoriaSApp {
 	
 	public void modificarDatos(String  datos,int i) {
 		try {
-			FactoriaDAO.getInstancia_Med().CrearTablaDatosClinicos(Ruta,this.Plantilla).modificarDatos(datos,i);
+			FactoriaAbstractaDAO.getInstancia_Med().CrearTablaDatosClinicos(Ruta,this.Plantilla).modificarDatos(datos,i);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Imposible modificar datos");
@@ -84,16 +84,16 @@ public class FactoriaServAppMed_Imp extends FactoriaSApp {
 		}
 	}
 	public void realizarPedido(String pedido) {
-		FactoriaDAO.getInstancia_Med().CrearPedidoMedicos().realizarPedido(pedido);
+		FactoriaAbstractaDAO.getInstancia_Med().CrearPedidoMedicos().realizarPedido(pedido);
 	}	
 	public String consultarPedido(String id, String nombre) {
-		return FactoriaDAO.getInstancia_Med().CrearPedidoMedicos().consultarPedido(id,nombre);
+		return FactoriaAbstractaDAO.getInstancia_Med().CrearPedidoMedicos().consultarPedido(id,nombre);
 	}	
 	 public boolean  crearInforme(String informe) {
-		 return FactoriaDAO.getInstancia_Med().CrearInformesMedicos().crearInforme(informe);
+		 return FactoriaAbstractaDAO.getInstancia_Med().CrearInformesMedicos().crearInforme(informe);
 	 }
 	 public String consultarInforme(boolean todos,String id) {
-			return FactoriaDAO.getInstancia_Med().CrearInformesMedicos().consultarInforme (todos,id);
+			return FactoriaAbstractaDAO.getInstancia_Med().CrearInformesMedicos().consultarInforme (todos,id);
 		}
 	 
 }

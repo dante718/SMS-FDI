@@ -21,3 +21,17 @@ Productos:
   Cantidad_Por_Producto: 1
 
 
+Id_Pedido: 100
+Id_Solicitante: null
+Nombre_Solicitante: null
+Productos: 
+  ID_Producto: 1331
+  Nombre_Producto: null
+  Cantidad_Por_Producto: 11
+  ID_Producto: 1331
+  Nombre_Producto: null
+  Cantidad_Por_Producto: 11
+  ID_Producto: 1331
+  Nombre_Producto: null
+  Cantidad_Por_Producto: 11
+

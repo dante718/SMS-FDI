@@ -4,7 +4,7 @@ package GestionLaboratorio.negocio_Laboratorio;
 import java.util.ArrayList;
 import java.util.List;
 
-import General.FactoriaDAO;
+import General.FactoriaAbstractaDAO;
 import General.FactoriaSApp;
 
 
@@ -17,13 +17,13 @@ public class SAPedido_Lab extends FactoriaSApp  {
 	}
 	
 	public void crearPedido() {
-		   pedido=FactoriaDAO.getInstancia_Lab().crearDAOPedido().crearPedido();
+		   pedido=FactoriaAbstractaDAO.getInstancia_Lab().crearDAOPedido().crearPedido();
 		   ModificaPedido(pedido, null, null, null);
 	}
 
 	public void addProducto(int id_Producto,int cantidad) {
 		TransferProducto_Lab ProductoBuscado=null;
-		ProductoBuscado=FactoriaDAO.getInstancia_Lab().crearDAOProducto().ConsultaStock(id_Producto, cantidad);
+		ProductoBuscado=FactoriaAbstractaDAO.getInstancia_Lab().crearDAOProducto().ConsultaStock(id_Producto, cantidad);
 		if(ProductoBuscado!=null) {
 			List<TransferProducto_Lab>lista =pedido.get_productos();
 			lista.add(ProductoBuscado);
@@ -76,7 +76,7 @@ public class SAPedido_Lab extends FactoriaSApp  {
 	
 	public TransferPedido_Lab BuscarPedido(String id_ped) {
 	
-		pedido= FactoriaDAO.getInstancia_Lab().crearDAOPedido().BuscarPedidoEnsisPedidos(id_ped);
+		pedido= FactoriaAbstractaDAO.getInstancia_Lab().crearDAOPedido().BuscarPedidoEnsisPedidos(id_ped);
 		
 		
 		
@@ -85,13 +85,13 @@ public class SAPedido_Lab extends FactoriaSApp  {
 	
 	
 	public void EliminarPedido(String id_ped) {
-		FactoriaDAO.getInstancia_Lab().crearDAOPedido().EliminarPedido(id_ped);
+		FactoriaAbstractaDAO.getInstancia_Lab().crearDAOPedido().EliminarPedido(id_ped);
 	}
 
 	
 	
 	public void guardarPedido() {
-		FactoriaDAO.getInstancia_Lab().crearDAOPedido().guardarPedidoEnSisPedidos(pedido);;
+		FactoriaAbstractaDAO.getInstancia_Lab().crearDAOPedido().guardarPedidoEnSisPedidos(pedido);;
 	}
 	public int Id_Pedido() {
 		return pedido.get_idPedido();
