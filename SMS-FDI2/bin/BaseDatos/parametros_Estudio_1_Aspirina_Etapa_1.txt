@@ -1,0 +1,5 @@
+id
+sexo
+edad
+fecha
+cantidad

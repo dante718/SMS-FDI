@@ -1,0 +1,49 @@
+{
+  "array": [
+    {
+      "id": "pr_01",
+      "usuario": "oscar",
+      "nombre": "atamel",
+      "producto": "pastillas",
+      "compuesto": "acetaminofen",
+      "cantidad": 10,
+      "estado": "aceptado"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    }
+  ]
+}
