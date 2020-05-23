@@ -1,0 +1,5 @@
+id
+hambre
+edad
+fecha
+cantidad
