@@ -1,0 +1,211 @@
+{
+  "array": [
+    {
+      "id": "Pr_01",
+      "usuario": "Oscar",
+      "nombre": "Atamel",
+      "producto": "pastillas",
+      "compuesto": "acetaminofen",
+      "cantidad": 10,
+      "estado": "aceptado"
+    },
+    {
+      "id": "Pr_02",
+      "usuario": "Oscar",
+      "nombre": "Atamel",
+      "producto": "pastillas",
+      "compuesto": "estrofico",
+      "cantidad": 900,
+      "estado": "aceptado"
+    },
+    {
+      "id": "Pr_03",
+      "usuario": "Oscar",
+      "nombre": "Fresticio",
+      "producto": "pastillas",
+      "compuesto": "frestrapalo",
+      "cantidad": 888,
+      "estado": "aceptado"
+    },
+    {
+      "id": "Pr_04",
+      "usuario": "Oscar",
+      "nombre": "Libertfoc",
+      "producto": "Jarabe",
+      "compuesto": "Lidft",
+      "cantidad": 10000,
+      "estado": "aceptado"
+    },
+    {
+      "id": "Pr_05",
+      "usuario": "Diego",
+      "nombre": "Medofassilestio",
+      "producto": "Jarabe",
+      "compuesto": "Meodicaer",
+      "cantidad": 9000,
+      "estado": "aceptado"
+    },
+    {
+      "id": "Pr_06",
+      "usuario": "Jefe",
+      "nombre": "CuraTodo",
+      "producto": "Inhalador",
+      "compuesto": "demartoc",
+      "cantidad": 756110,
+      "estado": "aceptado"
+    },
+    {
+      "id": "Pr_07",
+      "usuario": "Jefe",
+      "nombre": "RemedioDeDios",
+      "producto": "Inhalador",
+      "compuesto": "inhaptaar",
+      "cantidad": 58522,
+      "estado": "aceptado"
+    },
+    {
+      "id": "Pr_08",
+      "usuario": "Jefe",
+      "nombre": "Depratofi",
+      "producto": "Inyeccion",
+      "compuesto": "petraficasa",
+      "cantidad": 822412,
+      "estado": "aceptado"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    }
+  ]
+}

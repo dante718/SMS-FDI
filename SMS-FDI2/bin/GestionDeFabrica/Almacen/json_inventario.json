@@ -1,0 +1,211 @@
+{
+  "array": [
+    {
+      "compuesto": "acetaminofen",
+      "estado": "aceptado",
+      "usuario": "Diego",
+      "id": "inv_01",
+      "producto": "pastillas",
+      "cantidad": 5,
+      "nombre": "prueba"
+    },
+    {
+      "compuesto": "null",
+      "estado": "aceptado",
+      "usuario": "Diego",
+      "id": "inv_02",
+      "producto": "pastillas",
+      "cantidad": 10,
+      "nombre": "aceite"
+    },
+    {
+      "compuesto": "null",
+      "estado": "aceptado",
+      "usuario": "Diego",
+      "id": "inv_03",
+      "producto": "pastillas",
+      "cantidad": 30,
+      "nombre": "clamidi"
+    },
+    {
+      "compuesto": "null",
+      "estado": "aceptado",
+      "usuario": "Diego",
+      "id": "inv_04",
+      "producto": "pastillas",
+      "cantidad": 20,
+      "nombre": "anonimo"
+    },
+    {
+      "compuesto": "null",
+      "estado": "en_proceso",
+      "usuario": "Jose",
+      "id": "inv_05",
+      "producto": "aceite",
+      "cantidad": 40,
+      "nombre": "no tiene"
+    },
+    {
+      "compuesto": "null",
+      "estado": "en_proceso",
+      "usuario": "Jose",
+      "id": "inv_06",
+      "producto": "camisas",
+      "cantidad": 60,
+      "nombre": "equipo"
+    },
+    {
+      "compuesto": "null",
+      "estado": "en_proceso",
+      "usuario": "Mendez",
+      "id": "inv_07",
+      "producto": "liquido",
+      "cantidad": 50,
+      "nombre": "laboratorio"
+    },
+    {
+      "compuesto": "null",
+      "estado": "en_proceso",
+      "usuario": "Pedro",
+      "id": "inv_08",
+      "producto": "secreto",
+      "cantidad": 70,
+      "nombre": "para almacenar"
+    },
+    {
+      "compuesto": "gas",
+      "estado": "en_proceso",
+      "usuario": "Pedro",
+      "id": "inv_09",
+      "producto": "gas",
+      "cantidad": 80,
+      "nombre": "cuidado"
+    },
+    {
+      "compuesto": "null",
+      "estado": "aceptado",
+      "usuario": "Pedro",
+      "id": "inv_10",
+      "producto": "pastillas",
+      "cantidad": 90,
+      "nombre": "para el dolor"
+    },
+    {
+      "compuesto": "null",
+      "estado": "null",
+      "usuario": "Pedro",
+      "id": "inv_11",
+      "producto": "hierro",
+      "cantidad": 20,
+      "nombre": "acero"
+    },
+    {
+      "compuesto": "null",
+      "estado": "null",
+      "usuario": "Juan",
+      "id": "inv_12",
+      "producto": "tubo",
+      "cantidad": 90,
+      "nombre": "hierro"
+    },
+    {
+      "compuesto": "null",
+      "estado": "null",
+      "usuario": "Juan",
+      "id": "inv_13",
+      "producto": "comida",
+      "cantidad": 40,
+      "nombre": "comida para trabajo"
+    },
+    {
+      "compuesto": "null",
+      "estado": "null",
+      "usuario": "Juan",
+      "id": "inv_14",
+      "producto": "Sodio",
+      "cantidad": 60,
+      "nombre": "Sodio"
+    },
+    {
+      "compuesto": "null",
+      "estado": "null",
+      "usuario": "Juan",
+      "id": "inv_15",
+      "producto": "Potasio",
+      "cantidad": 10,
+      "nombre": "Potasio"
+    },
+    {
+      "compuesto": "null",
+      "estado": "null",
+      "usuario": "Elvira",
+      "id": "inv_16",
+      "producto": "Magnesio",
+      "cantidad": 20,
+      "nombre": "Magnesio"
+    },
+    {
+      "compuesto": "null",
+      "estado": "null",
+      "usuario": "null",
+      "id": "null",
+      "producto": "null",
+      "cantidad": 0,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "null",
+      "usuario": "null",
+      "id": "null",
+      "producto": "null",
+      "cantidad": 0,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "null",
+      "usuario": "null",
+      "id": "null",
+      "producto": "null",
+      "cantidad": 0,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "null",
+      "usuario": "null",
+      "id": "null",
+      "producto": "null",
+      "cantidad": 0,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "null",
+      "usuario": "null",
+      "id": "null",
+      "producto": "null",
+      "cantidad": 0,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "null",
+      "usuario": "null",
+      "id": "null",
+      "producto": "null",
+      "cantidad": 0,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "null",
+      "usuario": "null",
+      "id": "null",
+      "producto": "null",
+      "cantidad": 0,
+      "nombre": "null"
+    }
+  ]
+}

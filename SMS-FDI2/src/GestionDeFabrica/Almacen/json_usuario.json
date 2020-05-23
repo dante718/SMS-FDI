@@ -1,0 +1,149 @@
+{
+  "array": [
+    {
+      "apellido2": "Rodriguez",
+      "disponibilidad": false,
+      "apellido1": "Pereira",
+      "proyecto": "proyecto01",
+      "telefono": "957842186",
+      "nombre": "Diego",
+      "dni": "12345678A"
+    },
+
+    {
+      "apellido2": "mendez",
+      "disponibilidad": false,
+      "apellido1": "rodriguez",
+      "proyecto": "proyecto07",
+      "telefono": "549544892",
+      "nombre": "Pedro",
+      "dni": "5578842B"
+    },
+    {
+      "apellido2": "Carrero",
+      "disponibilidad": false,
+      "apellido1": "Real",
+      "proyecto": "proyecto02",
+      "telefono": "98484418",
+      "nombre": "Elvira",
+      "dni": "97475744A"
+    },
+    {
+      "apellido2": "Araque",
+      "disponibilidad": false,
+      "apellido1": "Cassado",
+      "proyecto": "proyecto03",
+      "telefono": "7495414",
+      "nombre": "Dina",
+      "dni": "4845845B"
+    },
+    {
+      "apellido2": "Casandro",
+      "disponibilidad": true,
+      "apellido1": "Fernandez",
+      "proyecto": "",
+      "telefono": "4874748",
+      "nombre": "Maria",
+      "dni": "84594459G"
+    },
+    {
+      "apellido2": "Perez",
+      "disponibilidad": true,
+      "apellido1": "Safeer",
+      "proyecto": "",
+      "telefono": "9548954",
+      "nombre": "Jose",
+      "dni": "4784874A"
+    },
+    {
+      "apellido2": "Peroij",
+      "disponibilidad": false,
+      "apellido1": "Fajar",
+      "proyecto": "",
+      "telefono": "6545614",
+      "nombre": "Pepe",
+      "dni": "15854854N"
+    },
+    {
+      "apellido2": "null",
+      "disponibilidad": false,
+      "apellido1": "null",
+      "proyecto": "",
+      "telefono": "null",
+      "nombre": "null",
+      "dni": "null"
+    },
+    {
+      "apellido2": "null",
+      "disponibilidad": false,
+      "apellido1": "null",
+      "proyecto": "",
+      "telefono": "null",
+      "nombre": "null",
+      "dni": "null"
+    },
+    {
+      "apellido2": "null",
+      "disponibilidad": false,
+      "apellido1": "null",
+      "proyecto": "",
+      "telefono": "null",
+      "nombre": "null",
+      "dni": "null"
+    },
+    {
+      "apellido2": "null",
+      "disponibilidad": false,
+      "apellido1": "null",
+      "proyecto": "",
+      "telefono": "null",
+      "nombre": "null",
+      "dni": "null"
+    },
+    {
+      "apellido2": "null",
+      "disponibilidad": false,
+      "apellido1": "null",
+      "proyecto": "",
+      "telefono": "null",
+      "nombre": "null",
+      "dni": "null"
+    },
+    {
+      "apellido2": "null",
+      "disponibilidad": false,
+      "apellido1": "null",
+      "proyecto": "",
+      "telefono": "null",
+      "nombre": "null",
+      "dni": "null"
+    },
+    {
+      "apellido2": "null",
+      "disponibilidad": false,
+      "apellido1": "null",
+      "proyecto": "",
+      "telefono": "null",
+      "nombre": "null",
+      "dni": "null"
+    },
+    {
+      "apellido2": "null",
+      "disponibilidad": false,
+      "apellido1": "null",
+      "proyecto": "",
+      "telefono": "null",
+      "nombre": "null",
+      "dni": "null"
+    },
+    {
+      "apellido2": "null",
+      "disponibilidad": false,
+      "apellido1": "null",
+      "proyecto": "",
+      "telefono": "null",
+      "nombre": "null",
+      "dni": "null"
+    }
+  ]
+}

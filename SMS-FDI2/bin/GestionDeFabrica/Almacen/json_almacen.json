@@ -1,0 +1,194 @@
+{
+  "array": [
+    {
+      "compuesto": "Acero_inoxidable",
+      "estado": "aceptado",
+      "usuario": "Fajar",
+      "id": "Al_01",
+      "producto": "Acero",
+      "cantidad": 10,
+      "nombre": "solicitud"
+    },
+
+    {
+      "compuesto": "Lana",
+      "estado": "ACEPTADO",
+      "usuario": "Gestor Fabrica",
+      "id": "Al_02",
+      "producto": "Camisa",
+      "cantidad": 15,
+      "nombre": ""
+    },
+    {
+      "compuesto": "null",
+      "estado": "aceptado",
+      "usuario": "Fajar",
+      "id": "Al_04",
+      "producto": "Acetaminofen",
+      "cantidad": 50,
+      "nombre": "Atamel"
+    },
+    {
+      "compuesto": "null",
+      "estado": "aceptado",
+      "usuario": "Fajar",
+      "id": "Al_03",
+      "producto": "Carbon",
+      "cantidad": 50,
+      "nombre": "Carbon"
+    },
+    {
+      "compuesto": "null",
+      "estado": "en_proceso",
+      "usuario": "Diego",
+      "id": "Al_05",
+      "producto": "Fibra",
+      "cantidad": 40,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "en_proceso",
+      "usuario": "Juan",
+      "id": "AL_06",
+      "producto": "Acetaminofen",
+      "cantidad": 5,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "en_proceso",
+      "usuario": "Pedro",
+      "id": "Al_07",
+      "producto": "Quimicos",
+      "cantidad": 100,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "aceptado",
+      "usuario": "Diego",
+      "id": "Al_08",
+      "producto": "Aceite",
+      "cantidad": 30,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "aceptado",
+      "usuario": "Diego",
+      "id": "Al_09",
+      "producto": "Harina",
+      "cantidad": 20,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "aceptado",
+      "usuario": "Diego",
+      "id": "Al_10",
+      "producto": "Gas",
+      "cantidad": 60,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "aceptado",
+      "usuario": "Pedro",
+      "id": "Al_11",
+      "producto": "Sodio",
+      "cantidad": 90,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "en_proceso",
+      "usuario": "Juan",
+      "id": "Al_12",
+      "producto": "Potasio",
+      "cantidad": 80,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "aceptado",
+      "usuario": "Diego",
+      "id": "Al_13",
+      "producto": "null",
+      "cantidad": 30,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "en_proceso",
+      "usuario": "Fajardo",
+      "id": "Al_14",
+      "producto": "Calcio",
+      "cantidad": 40,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "aceptado",
+      "usuario": "Fajardo",
+      "id": "Al_15",
+      "producto": "Magnesio",
+      "cantidad": 50,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "null",
+      "usuario": "null",
+      "id": "null",
+      "producto": "null",
+      "cantidad": 0,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "null",
+      "usuario": "null",
+      "id": "null",
+      "producto": "null",
+      "cantidad": 0,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "null",
+      "usuario": "null",
+      "id": "null",
+      "producto": "null",
+      "cantidad": 0,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "null",
+      "usuario": "null",
+      "id": "null",
+      "producto": "null",
+      "cantidad": 0,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "null",
+      "usuario": "null",
+      "id": "null",
+      "producto": "null",
+      "cantidad": 0,
+      "nombre": "null"
+    },
+    {
+      "compuesto": "null",
+      "estado": "null",
+      "usuario": "null",
+      "id": "null",
+      "producto": "null",
+      "cantidad": 0,
+      "nombre": "null"
+    }
+  ]
+}

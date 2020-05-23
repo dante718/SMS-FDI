@@ -1,0 +1,247 @@
+{
+  "array": [
+    {
+      "id": "En_01",
+      "usuario": "Sebas",
+      "nombre": "envio",
+      "producto": "pastillas",
+      "compuesto": "acetaminofen",
+      "cantidad": 10,
+      "estado": "aceptado"
+    },
+    {
+      "id": "En_02",
+      "usuario": "Sebas",
+      "nombre": "envio",
+      "producto": "pastillas",
+      "compuesto": "Sodio",
+      "cantidad": 90,
+      "estado": "rechazado"
+    },
+    {
+      "id": "En_03",
+      "usuario": "Diego",
+      "nombre": "envio",
+      "producto": "pastillas",
+      "compuesto": "Potasio",
+      "cantidad": 50,
+      "estado": "rechazado"
+    },
+    {
+      "id": "En_04",
+      "usuario": "Sebas",
+      "nombre": "envio",
+      "producto": "pastillas",
+      "compuesto": "Potasio",
+      "cantidad": 70,
+      "estado": "rechazado"
+    },
+    {
+      "id": "En_05",
+      "usuario": "Diego",
+      "nombre": "Envio_Express",
+      "producto": "gas",
+      "compuesto": "Helio",
+      "cantidad": 90,
+      "estado": "aceptado"
+    },
+    {
+      "id": "En_06",
+      "usuario": "Sebas",
+      "nombre": "Envio_Express",
+      "producto": "gas",
+      "compuesto": "Helio",
+      "cantidad": 80,
+      "estado": "aceptado"
+    },
+    {
+      "id": "En_07",
+      "usuario": "Diego",
+      "nombre": "Envio_Express",
+      "producto": "gas",
+      "compuesto": "Helio",
+      "cantidad": 10,
+      "estado": "aceptado"
+    },
+    {
+      "id": "En_08",
+      "usuario": "Sebas",
+      "nombre": "Envio_Express",
+      "producto": "gas",
+      "compuesto": "Helio",
+      "cantidad": 20,
+      "estado": "aceptado"
+    },
+    {
+      "id": "En_09",
+      "usuario": "Diego",
+      "nombre": "Envio_Express",
+      "producto": "liquido",
+      "compuesto": "Agua",
+      "cantidad": 30,
+      "estado": "aceptado"
+    },
+    {
+      "id": "En_10",
+      "usuario": "Juan",
+      "nombre": "Envio_Express",
+      "producto": "liquido",
+      "compuesto": "anonimo",
+      "cantidad": 40,
+      "estado": "aceptado"
+    },
+    {
+      "id": "En_11",
+      "usuario": "Juan",
+      "nombre": "Envio_Economico",
+      "producto": "liquido",
+      "compuesto": "anonimo",
+      "cantidad": 80,
+      "estado": "en_proceso"
+    },
+    {
+      "id": "En_12",
+      "usuario": "Pepe",
+      "nombre": "Envio_Economico",
+      "producto": "liquido",
+      "compuesto": "anonimo",
+      "cantidad": 100,
+      "estado": "en_proceso"
+    },
+    {
+      "id": "En_13",
+      "usuario": "Pepe",
+      "nombre": "Envio_Economico",
+      "producto": "solido",
+      "compuesto": "anonimo",
+      "cantidad": 50,
+      "estado": "en_proceso"
+    },
+    {
+      "id": "En_14",
+      "usuario": "Jose",
+      "nombre": "Envio_Economico",
+      "producto": "solido",
+      "compuesto": "anonimo",
+      "cantidad": 70,
+      "estado": "en_proceso"
+    },
+    {
+      "id": "En_15",
+      "usuario": "Jose",
+      "nombre": "Envio_Economico",
+      "producto": "solido",
+      "compuesto": "anonimo",
+      "cantidad": 80,
+      "estado": "en_proceso"
+    },
+    {
+      "id": "En_16",
+      "usuario": "Juan",
+      "nombre": "Envio_Economico",
+      "producto": "solido",
+      "compuesto": "anonimo",
+      "cantidad": 90,
+      "estado": "en_proceso"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "array": [
+    {
+      "id": "Lab_01",
+      "usuario": "Diego",
+      "nombre": "prueba",
+      "producto": "pastillas",
+      "compuesto": "acetaminofen",
+      "cantidad": 5,
+      "estado": "aceptado"
+    },
+    {
+      "id": "Lab_02",
+      "usuario": "Diego",
+      "nombre": "aceite",
+      "producto": "pastillas",
+      "compuesto": "null",
+      "cantidad": 10,
+      "estado": "aceptado"
+    },
+    {
+      "id": "Lab_03",
+      "usuario": "Diego",
+      "nombre": "null",
+      "producto": "pastillas",
+      "compuesto": "null",
+      "cantidad": 30,
+      "estado": "aceptado"
+    },
+    {
+      "id": "Lab_04",
+      "usuario": "Diego",
+      "nombre": "null",
+      "producto": "pastillas",
+      "compuesto": "null",
+      "cantidad": 20,
+      "estado": "aceptado"
+    },
+    {
+      "id": "Lab_05",
+      "usuario": "laboratorio",
+      "nombre": "null",
+      "producto": "aceite",
+      "compuesto": "null",
+      "cantidad": 40,
+      "estado": "en_proceso"
+    },
+    {
+      "id": "Lab_06",
+      "usuario": "laboratorio",
+      "nombre": "null",
+      "producto": "camisas",
+      "compuesto": "null",
+      "cantidad": 60,
+      "estado": "en_proceso"
+    },
+    {
+      "id": "Lab_07",
+      "usuario": "Mendez",
+      "nombre": "laboratorio",
+      "producto": "liquido",
+      "compuesto": "null",
+      "cantidad": 50,
+      "estado": "en_proceso"
+    },
+    {
+      "id": "Lab_08",
+      "usuario": "Ming",
+      "nombre": "null",
+      "producto": "secreto",
+      "compuesto": "null",
+      "cantidad": 70,
+      "estado": "en_proceso"
+    },
+    {
+      "id": "Lab_09",
+      "usuario": "Ming",
+      "nombre": "null",
+      "producto": "gas",
+      "compuesto": "gas",
+      "cantidad": 80,
+      "estado": "en_proceso"
+    },
+    {
+      "id": "Lab_10",
+      "usuario": "Ming",
+      "nombre": "null",
+      "producto": "pastillas",
+      "compuesto": "null",
+      "cantidad": 90,
+      "estado": "aceptado"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    },
+    {
+      "id": "null",
+      "usuario": "null",
+      "nombre": "null",
+      "producto": "null",
+      "compuesto": "null",
+      "cantidad": 0,
+      "estado": "null"
+    }
+  ]
+}

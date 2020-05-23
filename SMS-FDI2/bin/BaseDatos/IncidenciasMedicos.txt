@@ -1,0 +1,2 @@
+id1 dato duplicado linea 34
+id2 dato duplicado linea 0
